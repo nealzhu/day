@@ -34,10 +34,28 @@ async function upload(localPath, key, contentType) {
 const root = resolve('src/content/posts');
 for (const entry of await readdir(root, { withFileTypes: true })) {
   if (!entry.isDirectory()) continue;
+
   const assetsDir = join(root, entry.name, 'assets');
-  for (const file of await readdir(assetsDir)) {
-    if (!file.endsWith('.webp')) throw new Error(`Unexpected media file: ${assetsDir}/${file}`);
-    await upload(join(assetsDir, file), `posts/${entry.name}/${file}`, 'image/webp');
+  let files;
+  try {
+    files = await readdir(assetsDir);
+  } catch (err) {
+    if (err?.code === 'ENOENT') {
+      // 纯文字文章允许没有 assets 目录
+      continue;
+    }
+    throw err;
+  }
+
+  for (const file of files) {
+    if (!file.endsWith('.webp')) {
+      throw new Error(`Unexpected media file: ${assetsDir}/${file}`);
+    }
+    await upload(
+      join(assetsDir, file),
+      `posts/${entry.name}/${file}`,
+      'image/webp'
+    );
   }
 }
 

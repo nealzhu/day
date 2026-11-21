@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+---
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>qians.day — 内容站点部署验证</title>
+    <meta name="description" content="qians.day M2 发布流水线验证站点" />
+  </head>
+  <body>
+    <main>
+      <header><strong>qians.day</strong><small>M2 · 发布链路验证</small></header>
+      <h1>文章列表</h1>
+      <p>这是临时工程页面，后续 M3/M4 将替换为正式设计。</p>
+      <ul>
+        {posts.map(post => (
+          <li><a href={`/posts/${post.data.slug}/`}>{post.data.title}</a></li>
+        ))}
+      </ul>
+    </main>
+    <style>
+      :global(body) { margin: 0; background: #f8f7f5; color: #252525; font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
+      main { max-width: 760px; margin: 7vh auto; padding: 24px; }
+      header { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+      small { color: #888; }
+      h1 { font-weight: 600; margin-top: 70px; }
+      li { padding: 10px 0; }
+      a { color: inherit; text-underline-offset: 4px; }
+    </style>
+  </body>
+</html>

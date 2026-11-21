@@ -7,12 +7,12 @@ The goal is a single publishing path: GitHub PR → merge to `main` → R2 uploa
 
 - Website: <https://qians.day> (bind to Pages after initial deployment)
 - Media CDN: <https://site-cdn.qians.day> (R2 custom domain)
-- Cloudflare Pages project name in workflow: `qians-site` (create this exact project or edit the workflow)
+- Cloudflare Pages project name in workflow: `qians-day` (create this exact project or edit the workflow)
 - R2 bucket name is **not hardcoded**; set repository variable `R2_BUCKET`.
 
 ## Bootstrap locally
 
-1. Extract into a NEW public GitHub repo (for example `qians-site`).
+1. Extract into a NEW public GitHub repo (for example `qians-day`).
 2. With Node.js 22 and corepack installed, run:
 
    ```bash
@@ -24,7 +24,7 @@ The goal is a single publishing path: GitHub PR → merge to `main` → R2 uploa
    ```
 
 3. Commit all files **including the generated `pnpm-lock.yaml`**, then push to `main`. The CI requires `--frozen-lockfile`.
-4. Create Cloudflare Pages project in **Direct Upload** mode with project name `qians-site`, production branch `main`.
+4. Create Cloudflare Pages project in **Direct Upload** mode with project name `qians-day`, production branch `main`.
 5. First push will **skip** the production deploy until `R2_BUCKET` is configured. On GitHub set **repository variable** `R2_BUCKET` to your existing R2 bucket name only after Pages and secrets are ready.
 6. Create restricted Cloudflare credentials and add GitHub **Actions secrets** (never commit or send them in chat):
 

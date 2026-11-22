@@ -1,17 +1,18 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { articleSchema } from './lib/content-model';
 
-const posts = defineCollection({
-  loader: glob({ pattern: '**/index.md', base: './src/content/posts' }),
-  schema: z.object({
-    articleId: z.string().min(8),
-    title: z.string().min(1),
-    slug: z.string().min(1),
-    category: z.string().min(1),
-    tags: z.array(z.string()).default([]),
-    description: z.string().default(''),
-    publishedAt: z.coerce.date(),
+export const collections = {
+  posts: defineCollection({
+    loader: glob({
+      base: './src/content/posts',
+      pattern: '*/index.md',
+      generateId: ({ entry, data }) => {
+        const [id] = entry.split('/');
+        if (data.articleId !== id) throw new Error(`${entry}: articleId must match folder ${id}`);
+        return id;
+      },
+    }),
+    schema: articleSchema,
   }),
-});
-
-export const collections = { posts };
+};

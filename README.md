@@ -1,61 +1,68 @@
-# qians.day · M2 infrastructure starter
+# qians.day
 
-This repository contains the **M2 smoke-test scaffold**, not the final website UI.
-The goal is a single publishing path: GitHub PR → merge to `main` → R2 upload → Astro build → Cloudflare Pages Direct Upload.
+Astro 静态内容站。首页默认按日期倒序展示文章标题，也可切换图文卡片。分类、文章、RSS 和 Sitemap 共用同一份已发布文章查询。
 
-## Public infrastructure
+## 本地运行
 
-- Website: <https://qians.day> (bind to Pages after initial deployment)
-- Media CDN: <https://site-cdn.qians.day> (R2 custom domain)
-- Cloudflare Pages project name in workflow: `qians-day` (create this exact project or edit the workflow)
-- R2 bucket name is **not hardcoded**; set repository variable `R2_BUCKET`.
+使用 Node.js 24 和项目锁定的 pnpm 10.22.0。在仓库根目录运行：
 
-## Bootstrap locally
-
-1. Extract into a NEW public GitHub repo (for example `qians-day`).
-2. With Node.js 22 and corepack installed, run:
-
-   ```bash
-   corepack enable
-   corepack pnpm install
-   corepack pnpm run verify:media
-   corepack pnpm run check
-   corepack pnpm run build
-   ```
-
-3. Commit all files **including the generated `pnpm-lock.yaml`**, then push to `main`. The CI requires `--frozen-lockfile`.
-4. Create Cloudflare Pages project in **Direct Upload** mode with project name `qians-day`, production branch `main`.
-5. First push will **skip** the production deploy until `R2_BUCKET` is configured. On GitHub set **repository variable** `R2_BUCKET` to your existing R2 bucket name only after Pages and secrets are ready.
-6. Create restricted Cloudflare credentials and add GitHub **Actions secrets** (never commit or send them in chat):
-
-   - `CLOUDFLARE_ACCOUNT_ID`
-   - `CLOUDFLARE_API_TOKEN` (Account / Cloudflare Pages / Edit, scoped to account)
-   - `R2_ACCESS_KEY_ID` (R2 Object Read & Write, limited to one bucket)
-   - `R2_SECRET_ACCESS_KEY` (same R2 token pair)
-
-7. Push to `main` for first deploy (or manually dispatch Production Deploy **from `main` only**). Check Pages `*.pages.dev` then bind `qians.day` in Cloudflare Pages Custom domains.
-8. Once PR Check has run at least once, activate a `main` ruleset: require PR, zero approvals, required check `validate`, forbid force-push/deletion, squash merge.
-
-## Media contract, MVP
-
-Each article has a stable directory name equal to its `articleId` and an `index.md`:
-
-```
-src/content/posts/<articleId>/
-  index.md
-  assets/photo-<sha256-first-12-hex>.webp
+```sh
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-Markdown images always use `![alt](./assets/photo-...webp)`. During local dev Astro loads local files; during a production build our Remark transformer rewrites them to `https://site-cdn.qians.day/posts/<articleId>/<file>`. The production workflow uploads media to R2 **before** building and deploying the page.
+开发服务器默认使用生产 CDN，与 `pnpm build && pnpm preview` 的图片地址一致。编辑尚未上传的图片时，可用 `MEDIA_BASE_URL=/ pnpm dev --force`。此时开发服务器从文章目录读取图片，浏览器使用与 R2 相同的 `/posts/<articleId>/<filename>` 路径。
 
-**Important M2 test:** inspect `dist/_astro` and the built article HTML to confirm the production WebP isn't bundled into Pages. If Astro's Markdown pipeline changes, adjust the transformer before rollout. Cover derivation, rich UI and macOS editing are M3+ work.
+## Markdown 文章
 
-## Security and testing caveats
+每篇文章保存为 `src/content/posts/<articleId>/index.md`。客户端在创建文章时分配一次 ID，后续编辑沿用同一目录与 ID。新客户端可生成 ULID，现有 M2 ID 继续有效。标题、分类与发布日期均可独立编辑。Slug 决定公开地址 `/posts/<slug>/`，发布后应保留。RSS 以文章 ID 标识条目。
 
-- PR Check never receives production R2/Pages secrets.
-- Deploy runs only on `main` or explicit manual dispatch.
-- Only immutable, hash-named media is uploaded; no automatic deletion.
-- The provided example WebP is a tiny generated test artifact, not a final brand image.
-- First deploy isn't live until the project, secrets and bucket are configured.
-- The scaffold was statically validated but has **not** passed dependency installation / Astro build in the artifact environment; run the local commands and CI before treating it as verified.
-- GitHub repo contents are public, including unfinished PRs. Do not put private drafts or confidential images in the public repo.
+```markdown
+---
+articleId: '01K00000000000000000000001'
+title: '一篇新文章'
+slug: 'first-note'
+description: '这篇文章在列表、订阅和搜索结果中使用的摘要。'
+publishedAt: '2026-11-22'
+category: engineering
+tags: ['Astro']
+status: draft
+---
+
+在这里写正文。
+
+## 小节标题
+
+文章目录使用二级和三级标题。
+```
+
+- 发布时将 `status` 改为 `published`。省略状态时默认为草稿。两个状态都接受校验，只有已发布文章生成公开页面并进入 RSS 和 Sitemap。
+- GitHub 仓库及 PR 公开可读，包括草稿正文和图片。私密草稿请保存在本机。
+- 分类键与中文名称维护在 [categories.json](src/lib/categories.json)。[内容 Schema](src/lib/content-model.ts) 供 Astro 与命令行校验共用。运行 `pnpm exec astro sync` 会生成 `.astro/collections/posts.schema.json`，供编辑器读取。
+- ID 和 Slug 在草稿及已发布文章中全局唯一。标签可省略。发布日期建议使用带引号的 `YYYY-MM-DD`。
+
+## 媒体
+
+先生成 WebP，再取文件内容 SHA-256 的前 12 位小写十六进制字符，命名为 `assets/<name>-<hash>.webp`。修改图片时生成新文件名。纯文字文章只需 `index.md`。
+
+正文使用 `![说明](./assets/<name>-<hash>.webp)`，也支持 Markdown 引用式图片。封面取 Markdown 语法树中按正文顺序出现的第一张图片。代码示例、普通链接和未使用的引用定义不会成为封面。缺图、非约定路径或错误哈希会导致校验失败。
+
+Remark 在 Astro 收集静态资源前将图片地址改写为 `https://site-cdn.qians.day/posts/<articleId>/<filename>`。正文和卡片共用这个结果。预览其他 CDN 时可在构建前设置 `MEDIA_BASE_URL`。
+
+无图文章的图文卡片共用 `media/site/card-placeholder.webp`。替换这张图后，构建和 R2 同步会根据新内容生成新的缓存地址。
+
+## 检查与发布
+
+```sh
+pnpm run verify:media
+pnpm run check
+pnpm test
+pnpm run build
+pnpm run preview
+```
+
+浏览器回归测试使用本机 Google Chrome 稳定版。无 Chrome 的开发机可先执行 `pnpm exec playwright-core install chrome`。测试在临时目录构造文章、构建站点并打开移动端尺寸的浏览器，结束后自动清理。
+
+PR 的 `validate` 作业执行内容校验、类型检查、测试与构建。合并到 `main` 后，生产工作流先将已发布文章的 WebP 同步到 R2，再构建并将 `dist/` 上传至 Cloudflare Pages 项目 `qians-day`。已存在的对象按键跳过，历史对象保留。字体同步继续使用 `media/fonts/*.woff2`。
+
+生产配置沿用仓库变量 `R2_BUCKET`（当前为 `website`）及 Actions secrets `CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。PR 检查只需仓库读取权限。

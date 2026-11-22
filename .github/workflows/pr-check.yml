@@ -21,4 +21,5 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run verify:media
       - run: pnpm run check
+      - run: pnpm test
       - run: pnpm run build

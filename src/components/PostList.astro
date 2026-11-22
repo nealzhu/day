@@ -1,0 +1,36 @@
+---
+import { cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
+import { mediaBase } from '../../scripts/remark-cdn-media.mjs';
+import { firstImage, postPath, type Post } from '../lib/posts';
+interface Props { posts: Post[]; switchable?: boolean }
+const placeholder = { src: `${mediaBase}/${cardPlaceholderKey}`, alt: '' };
+const { posts, switchable } = Astro.props;
+---
+{posts.length === 0 && <p>暂无已发布文章。</p>}
+<ul class="posts" data-view="list">
+  {posts.map(post => {
+    const cover = switchable ? (firstImage(post) ?? placeholder) : null;
+    return <li>
+      {cover && <template><img src={cover.src} alt={cover.alt} loading="lazy" /></template>}
+      <div class="entry">
+        <a href={postPath(post.data.slug)}>{post.data.title}</a>
+        <time datetime={post.data.publishedAt}>{post.data.publishedAt}</time>
+        {switchable && <p class="summary">{post.data.description}</p>}
+      </div>
+    </li>;
+  })}
+</ul>
+<style>
+  .posts { list-style: none; margin: 1.5rem 0 0; padding: 0; }
+  li { border-top: 1px solid #d5dad4; }
+  .entry { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; padding: 1rem 0; }
+  .entry a { font-size: 1.1rem; font-weight: 600; }
+  time { font-size: .9rem; white-space: nowrap; }
+  .summary, [data-view="list"] img { display: none; }
+  [data-view="cards"] { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1.2rem; }
+  [data-view="cards"] li { background: white; border: 1px solid #d5dad4; }
+  [data-view="cards"] .entry { display: grid; padding: 1.2rem; }
+  [data-view="cards"] .summary { display: block; margin: .4rem 0 0; }
+  img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  @media(max-width: 32rem) { .entry { display: grid; } }
+</style>

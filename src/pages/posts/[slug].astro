@@ -1,39 +1,47 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
+import Site from '../../layouts/Site.astro';
+import { categories } from '../../lib/content-model';
+import { categoryPath, publishedPosts } from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map(post => ({ params: { slug: post.data.slug }, props: { post } }));
+  return (await publishedPosts()).map(post => ({ params: { slug: post.data.slug }, props: { post } }));
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { title, description, publishedAt, category, tags } = post.data;
+const { Content, headings } = await render(post);
+const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 3);
 ---
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{post.data.title} · qians.day</title>
-    <meta name="description" content={post.data.description} />
-  </head>
-  <body>
-    <main>
-      <nav><a href="/">← 返回首页</a></nav>
+<Site title={title} description={description}>
+  <div class="columns">
+    <article>
       <header>
-        <h1>{post.data.title}</h1>
-        <p>{post.data.category} · <time datetime={post.data.publishedAt.toISOString()}>{post.data.publishedAt.toISOString().slice(0, 10)}</time></p>
+        <h1>{title}</h1>
+        <time datetime={publishedAt}>{publishedAt}</time>
+        <p>{description}</p>
       </header>
-      <article><Content /></article>
-    </main>
-    <style>
-      :global(body) { margin: 0; background: #f8f7f5; color: #252525; font: 17px/1.8 -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
-      main { max-width: 760px; margin: 7vh auto; padding: 24px; }
-      header { padding: 36px 0 20px; }
-      h1 { font-size: 2rem; line-height: 1.4; }
-      header p { color: #777; font-size: 14px; }
-      a { color: inherit; text-underline-offset: 4px; }
-      article :global(img) { max-width: 100%; height: auto; border-radius: 10px; }
-    </style>
-  </body>
-</html>
+      <Content />
+    </article>
+    <aside aria-label="文章信息">
+      <a href={categoryPath(category)}>{categories[category]}</a>
+      {tags.length > 0 && <p class="quiet">{tags.join(' · ')}</p>}
+      {toc.length > 0 && <nav aria-label="文章目录">
+        <h2>文章目录</h2>
+        <ul>
+          {toc.map(({ depth, slug, text }) => <li class:list={[{ sub: depth === 3 }]}><a href={`#${slug}`}>{text}</a></li>)}
+        </ul>
+      </nav>}
+    </aside>
+  </div>
+</Site>
+<style>
+  .columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(10rem, 14rem); gap: clamp(2rem, 5vw, 4rem); }
+  article header { padding-bottom: .6rem; border-bottom: 1px solid #d5dad4; }
+  aside { align-self: start; border-left: 1px solid #cdd4cd; padding-left: 1rem; }
+  aside h2 { font-size: 1.1rem; }
+  aside ul { list-style: none; padding: 0; }
+  aside li { margin: .35rem 0; }
+  .sub { padding-left: 1rem; }
+  @media(max-width: 42rem) { .columns { grid-template-columns: minmax(0, 1fr); } }
+</style>

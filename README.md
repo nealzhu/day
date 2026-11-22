@@ -49,7 +49,7 @@ status: draft
 
 Remark 在 Astro 收集静态资源前将图片地址改写为 `https://site-cdn.qians.day/posts/<articleId>/<filename>`。正文和卡片共用这个结果。预览其他 CDN 时可在构建前设置 `MEDIA_BASE_URL`。
 
-无图文章使用标题排成的文字封面。独占一段的 Markdown 图片可用可选 title 写图注，例如 `![画面说明](./assets/<name>-<hash>.webp "摄影署名")`。
+无图文章使用共享占位图 `media/site/card-placeholder.webp`。所有图文卡片按 5∶3 展示封面，日期、标题和摘要排列在封面下方。独占一段的 Markdown 图片可用可选 title 写图注，例如 `![画面说明](./assets/<name>-<hash>.webp "摄影署名")`。
 
 ## 检查与发布
 

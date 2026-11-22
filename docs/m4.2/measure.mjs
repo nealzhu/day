@@ -64,7 +64,8 @@ export async function audit(page) {
           assert.equal(result.tocOpen, width >= 960);
           assert.ok(result.codeOverflow > 0);
         }
-        if (scene === 'cards' || scene === 'life') assert.equal(result.images.length, 2);
+        if (scene === 'cards') assert.equal(result.images.length, 5);
+        if (scene === 'life') assert.equal(result.images.length, 2);
         const name = `${scene}-${width}-${theme}`;
         if (captures.has(name)) {
           let anchor;

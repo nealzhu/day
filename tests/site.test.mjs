@@ -6,6 +6,7 @@ import { join, resolve } from 'node:path';
 import test from 'node:test';
 import { preview } from 'astro';
 import { chromium } from 'playwright-core';
+import { cardPlaceholderFile, cardPlaceholderKey } from '../scripts/card-placeholder.mjs';
 import { article, copySiteFixture, temporaryDirectory } from './fixtures.mjs';
 
 test('production build and browser behaviour', async t => {
@@ -36,6 +37,8 @@ test('production build and browser behaviour', async t => {
     cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
   });
   const dist = join(project, 'dist');
+  const placeholder = await readFile(join(project, cardPlaceholderFile));
+  const placeholderUrl = `${cdn}/${cardPlaceholderKey}`;
   const cover = `${cdn}/posts/pictured/${file}`;
   const html = path => readFile(join(dist, path), 'utf8');
 
@@ -80,7 +83,7 @@ test('production build and browser behaviour', async t => {
         const page = await browser.newPage({ viewport: { width: 375, height: 812 } });
         await page.route(cdn + '/**', route => route.fulfill({
           contentType: 'image/webp',
-          body: bytes,
+          body: route.request().url() === placeholderUrl ? placeholder : bytes,
         }));
         await page.goto(`http://127.0.0.1:${server.server.address().port}/`);
         const list = page.getByRole('button', { name: '列表' });
@@ -88,12 +91,18 @@ test('production build and browser behaviour', async t => {
         assert.equal(await list.getAttribute('aria-pressed'), 'true');
         assert.equal(await page.locator('img').count(), 0);
         await cards.click();
-        assert.equal(await page.locator('img:visible').count(), 1);
+        assert.equal(await page.locator('img:visible').count(), older.length + 2);
         const imageFor = title => page.getByRole('listitem')
           .filter({ has: page.getByRole('link', { name: title, exact: true }) })
           .locator('img');
-        assert.equal(await imageFor('text-only').count(), 0);
+        const fallback = imageFor('text-only');
+        assert.equal(await fallback.getAttribute('src'), placeholderUrl);
+        assert.equal(await fallback.getAttribute('alt'), '');
+        await fallback.evaluate(img => img.decode());
         const coverSize = await imageFor('pictured').boundingBox();
+        const fallbackSize = await fallback.boundingBox();
+        assert.equal(fallbackSize.width, coverSize.width);
+        assert.equal(fallbackSize.height, coverSize.height);
         assert.ok(Math.abs(coverSize.width / coverSize.height - 5 / 3) < 0.01);
         await page.reload();
         assert.equal(await cards.getAttribute('aria-pressed'), 'true');

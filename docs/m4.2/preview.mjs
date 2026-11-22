@@ -5,6 +5,7 @@ import { copyFile, cp, mkdir, mkdtemp, readFile, readdir, rm } from 'node:fs/pro
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { preview } from 'astro';
+import { cardPlaceholderFile, cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
 import { article, copySiteFixture } from '../../tests/fixtures.mjs';
 
 const project = await mkdtemp(join(tmpdir(), 'qians-m42-'));
@@ -45,6 +46,7 @@ try {
     const files = await readdir(join(posts, id));
     if (files.includes('assets')) await cp(join(posts, id, 'assets'), join(project, 'dist/posts', id), { recursive: true });
   }
+  await cp(cardPlaceholderFile, join(project, 'dist', cardPlaceholderKey));
   const server = await preview({ root: project, server: { host: '127.0.0.1', port: 4632 } });
   await new Promise(resolve => {
     process.once('SIGINT', resolve);

@@ -1,9 +1,13 @@
 ---
+import { cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
+import { mediaBase } from '../../scripts/remark-cdn-media.mjs';
 import { categories } from '../lib/content-model';
 import { firstImage, postPath, type Post } from '../lib/posts';
 
 interface Props { posts: Post[]; switchable?: boolean }
 const { posts, switchable } = Astro.props;
+const placeholder = { src: `${mediaBase}/${cardPlaceholderKey}`, alt: '' };
+
 // Preserve the order supplied by publishedPosts, including its same-day tie break.
 const years = new Map<string, Post[]>();
 for (const post of posts) {
@@ -19,8 +23,8 @@ for (const post of posts) {
     <ul>
       {entries.map(post => {
         const { title, publishedAt, description, slug, category } = post.data;
-        const cover = switchable && firstImage(post);
-        return <li class:list={[{ 'text-only': !cover }]}>
+        const cover = switchable ? (firstImage(post) ?? placeholder) : null;
+        return <li>
           {cover && <template><img src={cover.src} alt={cover.alt} loading="lazy" /></template>}
           <div class="meta"><time datetime={publishedAt}>{publishedAt.slice(5).replace('-', ' 月 ')} 日</time>{category && <span>{categories[category]}</span>}</div>
           <h3><a href={postPath(slug)}>{title}</a></h3>
@@ -48,17 +52,13 @@ for (const post of posts) {
   [data-view="list"] img { display: none; }
   [data-view="cards"] ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
   [data-view="cards"] li { border: 0; padding: 0; display: flex; flex-direction: column; align-items: start; }
-  [data-view="cards"] img, [data-view="cards"] .text-only h3 {
+  [data-view="cards"] img {
+    display: block; object-fit: cover;
     width: 100%; aspect-ratio: 5 / 3; background: var(--inset); border-radius: var(--radius);
-  }
-  [data-view="cards"] img { display: block; object-fit: cover; }
-  [data-view="cards"] .text-only h3 {
-    order: -1; margin: 0; display: grid; place-items: center; text-align: center; padding: var(--s2);
   }
   [data-view="cards"] .meta { margin-top: var(--s2); }
   [data-view="cards"] h3 { font-size: var(--h3); }
   [data-view="cards"] p { font-size: 1rem; }
-  [data-view="cards"] .text-only p { margin-top: .3em; }
   @media (max-width: 600px) {
     .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
     .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }

@@ -10,7 +10,7 @@ import { article, temporaryDirectory } from './fixtures.mjs';
 
 test('production build and browser behaviour', async t => {
   const project = await temporaryDirectory(t);
-  for (const path of ['src', 'scripts', 'astro.config.mjs', 'package.json', 'tsconfig.json']) {
+  for (const path of ['src', 'scripts', 'media', 'astro.config.mjs', 'package.json', 'tsconfig.json']) {
     await cp(path, join(project, path), { recursive: true });
   }
   // Link packages individually so Astro and Vite write caches only inside the fixture.
@@ -41,6 +41,9 @@ test('production build and browser behaviour', async t => {
     cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
   });
   const dist = join(project, 'dist');
+  const placeholder = await readFile(join(project, 'media/site/card-placeholder.webp'));
+  const placeholderHash = createHash('sha256').update(placeholder).digest('hex').slice(0, 12);
+  const placeholderUrl = `${cdn}/site/card-placeholder-${placeholderHash}.webp`;
   const cover = `${cdn}/posts/pictured/${file}`;
   const html = path => readFile(join(dist, path), 'utf8');
 
@@ -76,17 +79,28 @@ test('production build and browser behaviour', async t => {
       const browser = await chromium.launch({ channel: 'chrome' });
       try {
         const page = await browser.newPage({ viewport: { width: 375, height: 812 } });
-        await page.route(cdn + '/**', route => route.fulfill({ contentType: 'image/webp', body: bytes }));
+        await page.route(cdn + '/**', route => route.fulfill({
+          contentType: 'image/webp',
+          body: route.request().url() === placeholderUrl ? placeholder : bytes,
+        }));
         await page.goto(`http://127.0.0.1:${server.server.address().port}/`);
         const list = page.getByRole('button', { name: '列表' });
         const cards = page.getByRole('button', { name: '图文卡片' });
         assert.equal(await list.getAttribute('aria-pressed'), 'true');
         assert.equal(await page.locator('img').count(), 0);
         await cards.click();
-        assert.equal(await page.locator('img:visible').count(), 1);
+        assert.equal(await page.locator('img:visible').count(), 2);
+        const imageFor = title => page.getByRole('listitem')
+          .filter({ has: page.getByRole('link', { name: title, exact: true }) })
+          .locator('img');
+        const fallback = imageFor('text-only');
+        assert.equal(await fallback.getAttribute('src'), placeholderUrl);
+        assert.equal(await fallback.getAttribute('alt'), '');
+        await fallback.evaluate(image => image.decode());
+        assert.equal(await fallback.evaluate(image => image.naturalWidth / image.naturalHeight), 16 / 9);
         await page.reload();
         assert.equal(await cards.getAttribute('aria-pressed'), 'true');
-        assert.equal(await page.locator('img').getAttribute('src'), cover);
+        assert.equal(await imageFor('pictured').getAttribute('src'), cover);
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
         await list.click();
         assert.equal(await page.locator('img:visible').count(), 0);

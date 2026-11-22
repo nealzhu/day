@@ -49,6 +49,8 @@ status: draft
 
 Remark 在 Astro 收集静态资源前将图片地址改写为 `https://site-cdn.qians.day/posts/<articleId>/<filename>`。正文和卡片共用这个结果。预览其他 CDN 时可在构建前设置 `MEDIA_BASE_URL`。
 
+无图文章的图文卡片共用 `media/site/card-placeholder.webp`。替换这张图后，构建和 R2 同步会根据新内容生成新的缓存地址。
+
 ## 检查与发布
 
 ```sh

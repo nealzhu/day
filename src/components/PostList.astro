@@ -1,12 +1,15 @@
 ---
+import { cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
+import { mediaBase } from '../../scripts/remark-cdn-media.mjs';
 import { firstImage, postPath, type Post } from '../lib/posts';
 interface Props { posts: Post[]; switchable?: boolean }
+const placeholder = { src: `${mediaBase}/${cardPlaceholderKey}`, alt: '' };
 const { posts, switchable } = Astro.props;
 ---
 {posts.length === 0 && <p>暂无已发布文章。</p>}
 <ul class="posts" data-view="list">
   {posts.map(post => {
-    const cover = switchable ? firstImage(post) : null;
+    const cover = switchable ? (firstImage(post) ?? placeholder) : null;
     return <li>
       {cover && <template><img src={cover.src} alt={cover.alt} loading="lazy" /></template>}
       <div class="entry">

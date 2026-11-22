@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { S3Client, HeadObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { cardPlaceholderFile, cardPlaceholderKey } from './card-placeholder.mjs';
 import { verifyArticles } from './article-files.mjs';
 import { mediaKey } from './remark-cdn-media.mjs';
 
@@ -39,6 +40,8 @@ for (const { data, directory, assets } of await verifyArticles()) {
     await upload(join(directory, 'assets', filename), mediaKey(data.articleId, filename), 'image/webp');
   }
 }
+
+await upload(cardPlaceholderFile, cardPlaceholderKey, 'image/webp');
 
 // Optional future font assets: media/fonts/*.woff2
 const fontsDir = resolve('media/fonts');

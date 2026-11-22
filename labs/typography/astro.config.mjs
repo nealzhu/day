@@ -1,0 +1,6 @@
+import { defineConfig } from 'astro/config';
+
+export default defineConfig({
+  markdown: { syntaxHighlight: false },
+  devToolbar: { enabled: false },
+});

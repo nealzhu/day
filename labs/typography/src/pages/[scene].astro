@@ -1,0 +1,50 @@
+---
+import { Content as Essay } from '../samples/essay.md';
+import { Content as Tech } from '../samples/tech.md';
+import Life from '../samples/life.astro';
+import '../styles/reading.css';
+
+export function getStaticPaths() {
+  return [
+    { params: { scene: 'tech' }, props: { Body: Tech, title: '从一张照片说起：静态文章里的资源、地址与缓存', section: '技术文章' } },
+    { params: { scene: 'essay' }, props: { Body: Essay, title: '街角的钟表店', section: '个人随笔' } },
+    { params: { scene: 'life' }, props: { Body: Life, title: '杯沿与猫眼里的光', section: '生活图文' } },
+  ];
+}
+
+const { Body, title, section } = Astro.props;
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>{title} · 排版实验</title>
+  <link rel="stylesheet" crossorigin="anonymous" href="http://127.0.0.1:4602/fonts/v1.530/faces.css" />
+  <script is:inline>
+    const params = new URLSearchParams(location.search);
+    const root = document.documentElement;
+    const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = params.get('theme') === 'dark' || (!params.has('theme') && dark) ? 'dark' : 'light';
+    for (const [name, token, choices, unit] of [
+      ['size','--reading-size',['17','18'],'px'],
+      ['leading','--reading-leading',['1.8','1.85','1.9'],''],
+      ['measure','--reading-measure',['680','700','720'],'px'],
+    ]) {
+      const value = params.get(name);
+      if (choices.includes(value)) root.style.setProperty(token, value + unit);
+    }
+  </script>
+</head>
+<body>
+  <header class="mast"><span lang="en">qian’s day</span><nav aria-label="阅读样稿">
+    {Object.entries({tech:'技术', essay:'随笔', life:'图文'}).map(([id,label]) =>
+      <a href={'/' + id + '/'} aria-current={Astro.params.scene === id ? 'page' : undefined}>{label}</a>)}
+  </nav></header>
+  <main><article>
+    <header class="intro"><div class="caption">{section} · 排版测试稿</div><h1>{title}</h1></header>
+    <div class="prose"><Body /></div>
+  </article></main>
+</body>
+</html>

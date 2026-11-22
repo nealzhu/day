@@ -66,3 +66,7 @@ pnpm run preview
 PR 的 `validate` 作业执行内容校验、类型检查、测试与构建。合并到 `main` 后，生产工作流先将已发布文章的 WebP 同步到 R2，再构建并将 `dist/` 上传至 Cloudflare Pages 项目 `qians-day`。已存在的对象按键跳过，历史对象保留。字体同步继续使用 `media/fonts/*.woff2`。
 
 生产配置沿用仓库变量 `R2_BUCKET`（当前为 `website`）及 Actions secrets `CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。PR 检查只需仓库读取权限。
+
+## M4.1 阅读排版实验
+
+运行 `pnpm run lab:typography`，打开 [本地随笔样稿](http://127.0.0.1:4601/essay/)。[排版规范与浏览器验收报告](docs/m4.1/README.md) 包含三类样稿、字体来源、Design Tokens、网络数据和原始截图。

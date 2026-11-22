@@ -1,0 +1,21 @@
+http://127.0.0.1:4602/fonts/v1.530/003f130a020fc600a7fa.woff2 (HEAD, Origin http://127.0.0.1:4601)
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://127.0.0.1:4601
+Timing-Allow-Origin: http://127.0.0.1:4601
+Content-Type: font/woff2
+Cache-Control: public, max-age=31536000, immutable
+Content-Length: 25392
+Date: Sun, 22 Nov 2026 17:37:50 GMT
+https://site-cdn.qians.day/fonts/v1.530/003f130a020fc600a7fa.woff2 (HEAD, Origin https://qians.day)
+HTTP/2 404
+date: Sun, 22 Nov 2026 17:37:51 GMT
+content-type: text/plain;charset=UTF-8
+cf-ray: a5e9b456a9836726-AMS
+
+http://127.0.0.1:4602/fonts/v1.530/faces.css (GET, Accept-Encoding gzip, If-None-Match "e741c6b69a29859296c64a83553a88edcaa2de6481c08696dc973f816e0df103")
+HTTP/1.1 304 Not Modified
+Date: Sun, 22 Nov 2026 17:46:13 GMT
+ETag: "e741c6b69a29859296c64a83553a88edcaa2de6481c08696dc973f816e0df103"
+Cache-Control: no-cache
+Vary: Accept-Encoding
+Access-Control-Allow-Origin: http://127.0.0.1:4601

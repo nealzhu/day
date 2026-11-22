@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import { mediaBase, remarkCdnMedia } from './scripts/remark-cdn-media.mjs';
+import { rehypeFigureCaptions } from './scripts/rehype-figure-captions.mjs';
 import { serveLocalMedia } from './scripts/local-media.mjs';
 import { verifyArticles } from './scripts/article-files.mjs';
 
@@ -8,6 +9,8 @@ export default defineConfig({
   site: 'https://qians.day',
   output: 'static',
   markdown: {
+    shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' }, defaultColor: false },
+    rehypePlugins: [rehypeFigureCaptions],
     remarkPlugins: [[remarkCdnMedia, { base: mediaBase }]],
   },
   integrations: [{

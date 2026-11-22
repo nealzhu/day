@@ -1,6 +1,6 @@
-import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { cp, mkdir, readdir, symlink, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 
 export async function temporaryDirectory(t) {
   const path = await mkdtemp(join(tmpdir(), 'qians-m3-'));
@@ -19,4 +19,16 @@ export async function article(root, id, overrides = {}, body = 'Text only.') {
     .map(([key, value]) => `${key}: ${JSON.stringify(value)}`).join('\n');
   await writeFile(join(directory, 'index.md'), `---\n${yaml}\n---\n\n${body}\n`);
   return directory;
+}
+
+export async function copySiteFixture(project) {
+  for (const path of ['src', 'scripts', 'media', 'public', 'astro.config.mjs', 'package.json', 'tsconfig.json']) {
+    await cp(path, join(project, path), { recursive: true, dereference: true });
+  }
+  // Link packages individually so Astro and Vite write caches only inside the fixture.
+  const modules = join(project, 'node_modules');
+  await mkdir(modules);
+  for (const name of await readdir('node_modules')) {
+    if (!name.startsWith('.')) await symlink(resolve('node_modules', name), join(modules, name), 'dir');
+  }
 }

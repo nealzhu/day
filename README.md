@@ -1,4 +1,4 @@
-# qians.day
+# 骞言碎语 · qians.day
 
 Astro 静态内容站。首页默认按日期倒序展示文章标题，也可切换图文卡片。分类、文章、RSS 和 Sitemap 共用同一份已发布文章查询。
 
@@ -39,7 +39,7 @@ status: draft
 - 发布时将 `status` 改为 `published`。省略状态时默认为草稿。两个状态都接受校验，只有已发布文章生成公开页面并进入 RSS 和 Sitemap。
 - GitHub 仓库及 PR 公开可读，包括草稿正文和图片。私密草稿请保存在本机。
 - 分类键与中文名称维护在 [categories.json](src/lib/categories.json)。[内容 Schema](src/lib/content-model.ts) 供 Astro 与命令行校验共用。运行 `pnpm exec astro sync` 会生成 `.astro/collections/posts.schema.json`，供编辑器读取。
-- ID 和 Slug 在草稿及已发布文章中全局唯一。标签可省略。发布日期建议使用带引号的 `YYYY-MM-DD`。
+- ID 和 Slug 在草稿及已发布文章中全局唯一。分类与标签可省略。发布日期建议使用带引号的 `YYYY-MM-DD`。
 
 ## 媒体
 
@@ -49,7 +49,7 @@ status: draft
 
 Remark 在 Astro 收集静态资源前将图片地址改写为 `https://site-cdn.qians.day/posts/<articleId>/<filename>`。正文和卡片共用这个结果。预览其他 CDN 时可在构建前设置 `MEDIA_BASE_URL`。
 
-无图文章的图文卡片共用 `media/site/card-placeholder.webp`。替换这张图后，构建和 R2 同步会根据新内容生成新的缓存地址。
+无图文章使用标题排成的文字封面。独占一段的 Markdown 图片可用可选 title 写图注，例如 `![画面说明](./assets/<name>-<hash>.webp "摄影署名")`。
 
 ## 检查与发布
 
@@ -70,3 +70,7 @@ PR 的 `validate` 作业执行内容校验、类型检查、测试与构建。�
 ## M4.1 阅读排版实验
 
 运行 `pnpm run lab:typography`，打开 [本地随笔样稿](http://127.0.0.1:4601/essay/)。[排版规范与浏览器验收报告](docs/m4.1/README.md) 包含三类样稿、字体来源、Design Tokens、网络数据和原始截图。
+
+## M4.2 整站视觉系统
+
+[视觉验收记录](docs/m4.2/README.md) 包含正式首页、长文与图文样稿的真实浏览器截图、主题和断点说明。运行 `node docs/m4.2/preview.mjs` 可阅读带样稿的本地静态预览。

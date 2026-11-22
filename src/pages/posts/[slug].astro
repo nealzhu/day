@@ -2,46 +2,115 @@
 import { render } from 'astro:content';
 import Site from '../../layouts/Site.astro';
 import { categories } from '../../lib/content-model';
-import { categoryPath, publishedPosts } from '../../lib/posts';
+import { categoryPath, postPath, publishedPosts } from '../../lib/posts';
+import '../../styles/prose.css';
 
 export async function getStaticPaths() {
-  return (await publishedPosts()).map(post => ({ params: { slug: post.data.slug }, props: { post } }));
+  const posts = await publishedPosts();
+  const archive = posts.map(({ data }) => ({ title: data.title, slug: data.slug }));
+  return posts.map(post => ({ params: { slug: post.data.slug }, props: { post, archive } }));
 }
 
-const { post } = Astro.props;
+const { post, archive } = Astro.props;
 const { title, description, publishedAt, category, tags } = post.data;
 const { Content, headings } = await render(post);
 const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 3);
 ---
 <Site title={title} description={description}>
   <div class="columns">
+    <details class="rail library">
+      <summary>全部文章 <small>{archive.length}</small></summary>
+      <nav aria-label="全部已发布文章" id="library">
+        {archive.map(entry => <a href={postPath(entry.slug)} aria-current={entry.slug === post.data.slug ? 'page' : undefined}>{entry.title}</a>)}
+      </nav>
+    </details>
+    {toc.length > 0 && <details class="rail contents">
+      <summary>本文目录</summary>
+      <nav aria-label="本文目录">
+        {toc.map(({ depth, slug, text }) => <a class:list={[{ sub: depth === 3 }]} href={`#${slug}`}>{text}</a>)}
+      </nav>
+    </details>}
     <article>
-      <header>
+      <header class="intro">
+        <div class="meta"><time datetime={publishedAt}>{publishedAt}</time>
+          {category && <a href={categoryPath(category)}>{categories[category]}</a>}
+        </div>
         <h1>{title}</h1>
-        <time datetime={publishedAt}>{publishedAt}</time>
         <p>{description}</p>
+        {tags.length > 0 && <div class="tags">{tags.join(' · ')}</div>}
       </header>
-      <Content />
+      <div class="prose"><Content /></div>
     </article>
-    <aside aria-label="文章信息">
-      <a href={categoryPath(category)}>{categories[category]}</a>
-      {tags.length > 0 && <p class="quiet">{tags.join(' · ')}</p>}
-      {toc.length > 0 && <nav aria-label="文章目录">
-        <h2>文章目录</h2>
-        <ul>
-          {toc.map(({ depth, slug, text }) => <li class:list={[{ sub: depth === 3 }]}><a href={`#${slug}`}>{text}</a></li>)}
-        </ul>
-      </nav>}
-    </aside>
   </div>
 </Site>
 <style>
-  .columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(10rem, 14rem); gap: clamp(2rem, 5vw, 4rem); }
-  article header { padding-bottom: .6rem; border-bottom: 1px solid #d5dad4; }
-  aside { align-self: start; border-left: 1px solid #cdd4cd; padding-left: 1rem; }
-  aside h2 { font-size: 1.1rem; }
-  aside ul { list-style: none; padding: 0; }
-  aside li { margin: .35rem 0; }
-  .sub { padding-left: 1rem; }
-  @media(max-width: 42rem) { .columns { grid-template-columns: minmax(0, 1fr); } }
+  .columns { display: grid; grid-template-columns: minmax(0, var(--reading-measure)); gap: var(--s1); justify-content: center; align-items: start; }
+  article { min-width: 0; }
+  .intro { border-bottom: var(--rule); padding-block: var(--s3); margin-bottom: var(--s4); }
+  .meta, .tags { color: var(--muted); font-size: var(--small); }
+  .meta { display: flex; gap: var(--s2); }
+  .intro h1 { margin-block: .35em; }
+  .intro p { margin: 0; color: var(--muted); }
+  .tags { margin-top: var(--s1); }
+  .rail { min-width: 0; font-size: var(--small); color: var(--muted); border-bottom: var(--rule); }
+  .rail summary { color: var(--ink); padding-block: var(--s1); }
+  .rail small { margin-inline-start: .3em; color: var(--muted); font-size: inherit; }
+  .rail nav { display: grid; align-content: start; max-height: min(42vh, 24rem); overflow-y: auto; overscroll-behavior: contain; padding: 3px; margin-bottom: var(--s2); }
+  .rail a { display: block; padding: .4em .6em; border-inline-start: 2px solid transparent; color: inherit; text-decoration: none; line-height: 1.55; }
+  .rail a:hover { text-decoration: underline; color: var(--accent); }
+  .rail a[aria-current="page"] { color: var(--accent); border-color: var(--accent); background: var(--inset); }
+  .rail .sub { padding-inline-start: 1.5em; }
+  /* Pair the closed indexes above the text; an expanded index gets a full row. */
+  @media (max-width: 959px) {
+    .columns { max-width: var(--reading-measure); margin-inline: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s2); }
+    article, .rail[open], .rail:only-of-type { grid-column: 1 / -1; }
+  }
+  @media (min-width: 960px) {
+    .columns { grid-template-columns: minmax(0, var(--reading-measure)) minmax(9rem, 12rem); column-gap: var(--s4); }
+    .library { grid-column: 1; }
+    article { grid-column: 1; grid-row: 2; }
+    .contents { grid-column: 2; grid-row: 2; --pinned: 1; position: sticky; top: var(--s2); }
+    .rail nav { max-height: calc(100dvh - 6rem); }
+    .library nav { max-height: min(42vh, 24rem); }
+    .intro { padding-top: 0; }
+  }
+  @media (min-width: 960px) and (max-width: 1179px) {
+    .columns:not(:has(.contents)) { grid-template-columns: minmax(0, var(--reading-measure)); }
+  }
+  @media (min-width: 1180px) {
+    .columns { grid-template-columns: minmax(0, 1fr) minmax(0, var(--reading-measure)) minmax(0, 1fr); }
+    .library { --pinned: 1; grid-column: 1; position: sticky; top: var(--s2); }
+    .library nav { max-height: calc(100dvh - 6rem); }
+    article { grid-column: 2; grid-row: 1; }
+    .contents { grid-column: 3; grid-row: 1; }
+  }
 </style>
+<script>
+  const rails = document.querySelectorAll<HTMLDetailsElement>('.rail');
+  const library = document.querySelector<HTMLElement>('#library')!;
+  const key = 'qians.day:archive-scroll';
+  let saved = 0;
+  try { saved = Number(sessionStorage.getItem(key)) || 0; } catch { /* Optional storage. */ }
+  for (const rail of rails) {
+    let pinned: boolean | undefined;
+    function sync() {
+      const next = getComputedStyle(rail).getPropertyValue('--pinned').trim() === '1';
+      if (next !== pinned) rail.open = next;
+      pinned = next;
+    }
+    sync();
+    new ResizeObserver(sync).observe(document.documentElement);
+  }
+  function restore() {
+    if (library.clientHeight) library.scrollTop = saved;
+  }
+  library.closest('details')!.addEventListener('toggle', restore);
+  restore();
+  document.fonts.ready.then(restore);
+  library.addEventListener('scroll', () => {
+    if (library.clientHeight) saved = library.scrollTop;
+  });
+  window.addEventListener('pagehide', () => {
+    try { sessionStorage.setItem(key, String(library.clientHeight ? library.scrollTop : saved)); } catch { /* Optional storage. */ }
+  });
+</script>

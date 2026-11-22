@@ -5,14 +5,16 @@ import { publishedPosts } from '../lib/posts';
 const posts = await publishedPosts();
 ---
 <Site title="文章" description="按发布日期浏览 qians.day 的文章，或从分类查找感兴趣的内容。">
-  <div class="section-head">
-    <h1>文章</h1>
-    <div id="views" role="group" aria-label="文章显示方式" hidden>
-      <button data-mode="list" aria-pressed="true">列表</button>
-      <button data-mode="cards" aria-pressed="false">图文卡片</button>
+  <div class="archive">
+    <div class="archive-head">
+      <h1>文章目录</h1>
+      <div id="views" role="group" aria-label="文章显示方式" hidden>
+        <button data-mode="list" aria-pressed="true">列表</button>
+        <button data-mode="cards" aria-pressed="false">图文卡片</button>
+      </div>
     </div>
+    <PostList posts={posts} switchable />
   </div>
-  <PostList posts={posts} switchable />
 </Site>
 <script>
   const key = 'qians.day:post-view';
@@ -42,6 +44,7 @@ const posts = await publishedPosts();
   controls.hidden = false;
 </script>
 <style>
-  button { font: inherit; cursor: pointer; padding: .35rem .8rem; border: 1px solid #bbc5bc; border-radius: .2rem; color: #304a3d; background: transparent; }
-  button[aria-pressed="true"] { background: #304a3d; color: white; }
+  #views { display: inline-flex; align-items: center; padding: 3px; background: var(--inset); border-radius: var(--radius); }
+  button { border: 0; font-size: var(--small); padding: .2em .8em; background: transparent; color: var(--muted); border-radius: var(--radius); }
+  button[aria-pressed="true"] { background: var(--paper); color: var(--accent); }
 </style>

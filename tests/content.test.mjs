@@ -25,3 +25,10 @@ test('missing referenced WebP identifies the article and filename', async t => {
   await article(root, 'article-a', {}, '![photo][f]\n\n[f]: ./assets/missing.webp');
   await assert.rejects(verifyArticles(root), /article-a\/index.md: missing image .\/assets\/missing.webp/);
 });
+
+test('category may be omitted', async t => {
+  const root = await temporaryDirectory(t);
+  await article(root, 'article-a', { category: undefined });
+  const [entry] = await verifyArticles(root);
+  assert.equal(entry.data.category, undefined);
+});

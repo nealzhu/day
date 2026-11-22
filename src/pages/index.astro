@@ -1,35 +1,47 @@
 ---
-import { getCollection } from 'astro:content';
-const posts = (await getCollection('posts'))
-  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+import Site from '../layouts/Site.astro';
+import PostList from '../components/PostList.astro';
+import { publishedPosts } from '../lib/posts';
+const posts = await publishedPosts();
 ---
-<!doctype html>
-<html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>qians.day — 内容站点部署验证</title>
-    <meta name="description" content="qians.day M2 发布流水线验证站点" />
-  </head>
-  <body>
-    <main>
-      <header><strong>qians.day</strong><small>M2 · 发布链路验证</small></header>
-      <h1>文章列表</h1>
-      <p>这是临时工程页面，后续 M3/M4 将替换为正式设计。</p>
-      <ul>
-        {posts.map(post => (
-          <li><a href={`/posts/${post.data.slug}/`}>{post.data.title}</a></li>
-        ))}
-      </ul>
-    </main>
-    <style>
-      :global(body) { margin: 0; background: #f8f7f5; color: #252525; font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', sans-serif; }
-      main { max-width: 760px; margin: 7vh auto; padding: 24px; }
-      header { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
-      small { color: #888; }
-      h1 { font-weight: 600; margin-top: 70px; }
-      li { padding: 10px 0; }
-      a { color: inherit; text-underline-offset: 4px; }
-    </style>
-  </body>
-</html>
+<Site title="文章" description="按发布日期浏览 qians.day 的文章，或从分类查找感兴趣的内容。">
+  <div class="section-head">
+    <h1>文章</h1>
+    <div id="views" role="group" aria-label="文章显示方式" hidden>
+      <button data-mode="list" aria-pressed="true">列表</button>
+      <button data-mode="cards" aria-pressed="false">图文卡片</button>
+    </div>
+  </div>
+  <PostList posts={posts} switchable />
+</Site>
+<script>
+  const key = 'qians.day:post-view';
+  const controls = document.querySelector<HTMLElement>('#views')!;
+  const list = document.querySelector<HTMLElement>('.posts')!;
+  const buttons = controls.querySelectorAll<HTMLButtonElement>('button');
+
+  function show(mode: string | null) {
+    const view = mode === 'cards' ? 'cards' : 'list';
+    if (view === 'cards') {
+      for (const template of list.querySelectorAll('template')) {
+        template.replaceWith(template.content.cloneNode(true));
+      }
+    }
+    list.dataset.view = view;
+    for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.mode === view));
+  }
+
+  try { show(localStorage.getItem(key)); } catch { show('list'); }
+  for (const button of buttons) {
+    button.addEventListener('click', () => {
+      const mode = button.dataset.mode!;
+      show(mode);
+      try { localStorage.setItem(key, mode); } catch { /* Storage is optional. */ }
+    });
+  }
+  controls.hidden = false;
+</script>
+<style>
+  button { font: inherit; cursor: pointer; padding: .35rem .8rem; border: 1px solid #bbc5bc; border-radius: .2rem; color: #304a3d; background: transparent; }
+  button[aria-pressed="true"] { background: #304a3d; color: white; }
+</style>

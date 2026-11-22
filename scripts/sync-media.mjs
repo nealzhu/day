@@ -1,6 +1,8 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { S3Client, HeadObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { verifyArticles } from './article-files.mjs';
+import { mediaKey } from './remark-cdn-media.mjs';
 
 const { CLOUDFLARE_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET } = process.env;
 if (![CLOUDFLARE_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET].every(Boolean)) {
@@ -31,31 +33,10 @@ async function upload(localPath, key, contentType) {
   console.log(`PUT ${key} (${bytes.length} bytes)`);
 }
 
-const root = resolve('src/content/posts');
-for (const entry of await readdir(root, { withFileTypes: true })) {
-  if (!entry.isDirectory()) continue;
-
-  const assetsDir = join(root, entry.name, 'assets');
-  let files;
-  try {
-    files = await readdir(assetsDir);
-  } catch (err) {
-    if (err?.code === 'ENOENT') {
-      // 纯文字文章允许没有 assets 目录
-      continue;
-    }
-    throw err;
-  }
-
-  for (const file of files) {
-    if (!file.endsWith('.webp')) {
-      throw new Error(`Unexpected media file: ${assetsDir}/${file}`);
-    }
-    await upload(
-      join(assetsDir, file),
-      `posts/${entry.name}/${file}`,
-      'image/webp'
-    );
+for (const { data, directory, assets } of await verifyArticles()) {
+  if (data.status !== 'published') continue;
+  for (const filename of assets) {
+    await upload(join(directory, 'assets', filename), mediaKey(data.articleId, filename), 'image/webp');
   }
 }
 

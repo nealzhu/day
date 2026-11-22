@@ -2,6 +2,7 @@
 articleId: '01TESTTEXTONLY'
 title: 'M2 发布链路无图测试'
 slug: 'm2-smoke-no-image-test'
+status: published
 category: 'engineering'
 tags: ['Astro', 'Cloudflare']
 description: '验证 GitHub Actions、R2 与 Cloudflare Pages 的部署闭环。发布链路无图'

@@ -1,0 +1,19 @@
+---
+import Site from '../../layouts/Site.astro';
+import PostList from '../../components/PostList.astro';
+import { categories } from '../../lib/content-model';
+import { publishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await publishedPosts();
+  return Object.entries(categories).map(([category, label]) => ({
+    params: { category },
+    props: { label, posts: posts.filter(post => post.data.category === category) },
+  }));
+}
+const { label, posts } = Astro.props;
+---
+<Site title={`${label}分类`} description={`qians.day「${label}」分类下的已发布文章。`}>
+  <h1>{label}</h1>
+  <PostList posts={posts} />
+</Site>

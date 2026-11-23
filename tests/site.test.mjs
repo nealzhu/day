@@ -29,7 +29,10 @@ test('production build and browser behaviour', async t => {
   for (const name of [file, second]) await writeFile(join(directory, 'assets', name), bytes);
   await article(posts, 'text-only', { category: undefined });
   const older = Array.from({ length: 30 }, (_, i) => `archive-${String(i).padStart(2, '0')}`);
-  for (const id of older) await article(posts, id, { category: undefined, publishedAt: '2025-01-01' });
+  const chapters = Array.from({ length: 30 }, (_, i) => `## Chapter ${i + 1}\n\nChapter text.`).join('\n\n');
+  for (const id of older) {
+    await article(posts, id, { category: undefined, publishedAt: '2025-01-01' }, id === older[0] ? chapters : undefined);
+  }
   await article(posts, 'secret-draft', { status: 'draft' });
   await article(posts, 'implicit-draft', { status: undefined });
 
@@ -201,6 +204,40 @@ test('production build and browser behaviour', async t => {
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));
         assert.equal((await page.goto(new URL('/posts/secret-draft/', page.url()).href)).status(), 404);
+        await t.test('the full outline can be scrolled to its last link without scrolling the article', async t => {
+          const reader = await browser.newPage();
+          t.after(() => reader.close());
+          await reader.goto(new URL(`/posts/${older[0]}/`, page.url()).href);
+          await reader.evaluate(() => document.fonts.ready);
+          const outline = reader.getByRole('navigation', { name: '本文目录' });
+          const last = outline.getByRole('link').last();
+          for (const { width, height, y } of [
+            { width: 1440, height: 900, y: 0 },
+            { width: 1440, height: 900, y: 70 },
+            { width: 1440, height: 900, y: 600 },
+            { width: 1024, height: 600, y: 600 },
+            { width: 1024, height: 600, y: 0 },
+          ]) {
+            await reader.setViewportSize({ width, height });
+            await reader.evaluate(y => scrollTo(0, y), y);
+            await reader.waitForFunction(() => Math.abs(document.querySelector('.contents nav').getBoundingClientRect().bottom - innerHeight) <= 1);
+            const box = await outline.boundingBox();
+            await reader.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+            await reader.mouse.wheel(0, 3000);
+            await reader.waitForFunction(() => {
+              const nav = document.querySelector('.contents nav');
+              return nav.scrollTop > 0 && nav.scrollTop + nav.clientHeight >= nav.scrollHeight - 1;
+            });
+            assert.equal(await reader.evaluate(() => scrollY), y);
+            assert.ok(await last.evaluate(a => {
+              const box = a.getBoundingClientRect();
+              return box.bottom <= innerHeight && a.contains(document.elementFromPoint(box.x + box.width / 2, box.bottom - 1));
+            }));
+          }
+          await last.click();
+          await reader.waitForURL('**/#chapter-30');
+          await reader.waitForFunction(() => document.querySelector('.contents [aria-current]')?.hash === '#chapter-30');
+        });
         await t.test('deep closing headings keep distinct destinations at the bottom of the page', async () => {
           await page.goto(new URL('/posts/pictured/', page.url()).href);
           await choose(mini);

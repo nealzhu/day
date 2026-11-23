@@ -24,6 +24,15 @@ const { headings } = Astro.props;
     border-radius: var(--radius);
     line-height: 1.55;
   }
+  @media (min-width: 960px) {
+    :global(html:not([data-mini-toc])) .contents {
+      display: flex;
+      flex-direction: column;
+      max-height: calc(100dvh - max(var(--article-top, 50dvh), var(--s4)));
+    }
+    :global(html:not([data-mini-toc])) .contents h2 { flex: none; }
+    :global(html:not([data-mini-toc])) .contents nav { max-height: none; }
+  }
   @media (max-width: 959px) {
     .contents { position: sticky; top: 0; z-index: 1; background: var(--paper); padding-block: .35rem; margin-bottom: var(--s3); }
     .contents nav { display: flex; overflow-x: auto; overflow-y: hidden; margin-block: 0; }
@@ -109,6 +118,8 @@ const { headings } = Astro.props;
 
   function setup(toc: HTMLElement) {
     const root = document.documentElement;
+    const article = toc.closest('article')!;
+    const sidebar = matchMedia('(min-width: 960px)');
     const prose = document.querySelector<HTMLElement>('.prose')!;
     const nav = toc.querySelector('nav')!;
     const links = Array.from(nav.querySelectorAll('a'));
@@ -147,6 +158,11 @@ const { headings } = Astro.props;
 
     function update() {
       frame = 0;
+      if (sidebar.matches && !root.hasAttribute('data-mini-toc')) {
+        // The article's top stays independent of the sticky outline's own height.
+        const top = Math.max(0, article.getBoundingClientRect().top);
+        toc.style.setProperty('--article-top', `${top}px`);
+      }
       const guide = parseFloat(getComputedStyle(headings[0]).scrollMarginTop) + 1;
       let current = 0;
       for (let i = 1; i < headings.length; i++) {

@@ -21,15 +21,15 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
   <div class="columns">
     <article>
       <header class="intro">
-        <div class="title-field">
-          <h1>{title}</h1>
-          <div class="meta">
-            <time datetime={publishedAt}>{publishedAt}</time>
-            {category && <a href={categoryPath(category)}>{categories[category]}</a>}
-          </div>
+        <div class="meta">
+          <time datetime={publishedAt}>{publishedAt}</time>
+          {category && <a href={categoryPath(category)}>{categories[category]}</a>}
         </div>
-        <p>{description}</p>
-        {tags.length > 0 && <div class="tags">{tags.join(' · ')}</div>}
+        <h1>{title}</h1>
+        <dl class="article-notes">
+          <div><dt>摘要</dt><dd>{description}</dd></div>
+          {tags.length > 0 && <div><dt>标签</dt><dd>{tags.join('、')}</dd></div>}
+        </dl>
       </header>
       {toc.length > 0 && <ArticleContents headings={toc} />}
       <div class="prose"><Content /></div>
@@ -45,16 +45,19 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
 <style is:global>
   .columns { max-width: var(--reading-measure); margin-inline: auto; }
   .columns article, .prose { min-width: 0; }
-  .intro { padding-block-end: var(--s4); }
-  .intro .meta, .intro .tags { color: var(--muted); font-size: var(--small); }
-  .title-field {
-    text-align: center;
-    background: var(--inset);
-    padding: clamp(1.25rem, 2.5vw, 2.25rem) clamp(.75rem, 2vw, 1.75rem);
+  .intro { margin-block-end: var(--s3); padding-block-end: var(--s3); border-bottom: var(--group-rule); }
+  .intro .meta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); font-size: var(--small); color: var(--muted); }
+  .intro h1 { margin-block: var(--s1) var(--s3); }
+  .article-notes { margin: 0; color: var(--muted); font-size: 1rem; }
+  .article-notes > div {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    align-items: baseline;
+    column-gap: var(--s2);
   }
-  .intro .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--s1) var(--s2); margin-top: .6rem; }
-  .intro p { margin: var(--s2) 0 0; color: var(--muted); }
-  .intro .tags { margin-top: var(--s1); }
+  .article-notes > div + div { margin-block-start: var(--s1); font-size: var(--small); }
+  .article-notes dt { font-size: var(--small); }
+  .article-notes dd { margin: 0; }
   .rail { min-width: 0; align-self: start; color: var(--muted); font-size: var(--small); }
   .rail h2 { color: var(--ink); font-size: 1rem; }
   .rail small { margin-inline-start: .4em; color: var(--muted); }

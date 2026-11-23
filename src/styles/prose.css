@@ -18,7 +18,7 @@
 
 .prose { font-synthesis: none; }
 .prose :is(strong,b) { font-synthesis: weight; }
-.prose > :is(h2,h3) { scroll-margin-block-start: var(--s3); }
+.prose > :is(h2,h3) { text-wrap: balance; scroll-margin-block-start: var(--s3); }
 .prose img { display: block; margin-inline: auto; }
 .prose pre { overflow-wrap: normal; border-radius: var(--radius); }
 .prose pre span { color: light-dark(var(--shiki-light, var(--ink)), var(--shiki-dark, var(--ink))); }

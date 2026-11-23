@@ -21,10 +21,13 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
   <div class="columns">
     <article>
       <header class="intro">
-        <div class="meta"><time datetime={publishedAt}>{publishedAt}</time>
-          {category && <a href={categoryPath(category)}>{categories[category]}</a>}
+        <div class="title-field">
+          <h1>{title}</h1>
+          <div class="meta">
+            <time datetime={publishedAt}>{publishedAt}</time>
+            {category && <a href={categoryPath(category)}>{categories[category]}</a>}
+          </div>
         </div>
-        <h1>{title}</h1>
         <p>{description}</p>
         {tags.length > 0 && <div class="tags">{tags.join(' · ')}</div>}
       </header>
@@ -44,19 +47,21 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
   .columns article, .prose { min-width: 0; }
   .intro { padding-block-end: var(--s4); }
   .intro .meta, .intro .tags { color: var(--muted); font-size: var(--small); }
-  .intro .meta { display: flex; gap: var(--s2); }
-  .intro h1 { position: relative; margin-block: .35em; }
-  .intro h1::before { content: ''; position: absolute; left: -.45em; top: .54em; width: 2px; height: .36em; transform: skew(-12deg); background: var(--accent); }
-  .intro p { margin: 0; color: var(--muted); }
+  .title-field {
+    text-align: center;
+    background: var(--inset);
+    padding: clamp(1.25rem, 2.5vw, 2.25rem) clamp(.75rem, 2vw, 1.75rem);
+  }
+  .intro .meta { display: flex; justify-content: center; flex-wrap: wrap; gap: var(--s1) var(--s2); margin-top: .6rem; }
+  .intro p { margin: var(--s2) 0 0; color: var(--muted); }
   .intro .tags { margin-top: var(--s1); }
   .rail { min-width: 0; align-self: start; color: var(--muted); font-size: var(--small); }
   .rail h2 { color: var(--ink); font-size: 1rem; }
   .rail small { margin-inline-start: .4em; color: var(--muted); }
   .rail nav { display: grid; max-height: min(40vh, 20rem); overflow: auto; overscroll-behavior: contain; padding: 4px; margin: .5rem 0 0 -4px; }
-  .rail a { position: relative; display: block; padding: .42em .65em; color: inherit; text-decoration: none; line-height: 1.55; }
+  .rail a { display: block; padding: .42em .65em; color: inherit; text-decoration: none; line-height: 1.55; }
   .rail a:hover { text-decoration: underline; color: var(--accent); }
-  .rail a[aria-current] { color: var(--accent); }
-  .rail a[aria-current]::before { content: ''; position: absolute; left: 0; top: .78em; width: 2px; height: .7em; transform: skew(-12deg); background: currentColor; }
+  .rail a[aria-current] { color: var(--accent); text-decoration: underline; text-underline-offset: .24em; }
   .library { margin-top: var(--page-gap); }
   @media (min-width: 960px) {
     .columns { max-width: none; display: grid; grid-template-columns: minmax(0, var(--reading-measure)) minmax(9rem, 12rem); gap: var(--s4); justify-content: center; }

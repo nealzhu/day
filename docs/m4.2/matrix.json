@@ -9,28 +9,7 @@
     "subsets": 23,
     "font": "18px",
     "leading": "33.3px",
-    "images": [
-      [
-        600,
-        400
-      ],
-      [
-        768,
-        432
-      ],
-      [
-        320,
-        180
-      ],
-      [
-        768,
-        432
-      ],
-      [
-        768,
-        432
-      ]
-    ],
+    "images": [],
     "archivePosition": null,
     "tocPosition": null,
     "codeOverflow": null,

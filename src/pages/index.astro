@@ -6,9 +6,7 @@ const posts = await publishedPosts();
 ---
 <Site title="文章" description="按发布日期浏览 qians.day 的文章，或从分类查找感兴趣的内容。">
   <div class="archive">
-    <div class="archive-head">
-      <h1>文章目录</h1>
-    </div>
+    <h1 class="visually-hidden">全部文章</h1>
     <PostList posts={posts} />
   </div>
 </Site>

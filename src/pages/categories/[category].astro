@@ -15,7 +15,7 @@ const { label, posts } = Astro.props;
 ---
 <Site title={`${label}分类`} description={`qians.day「${label}」分类下的已发布文章。`}>
   <div class="archive">
-    <header class="archive-head"><h1>文章目录</h1><span class="scope">{label} · {posts.length} 篇</span></header>
+    <h1 class="visually-hidden">{label}分类的文章</h1>
     <PostList posts={posts} />
   </div>
 </Site>

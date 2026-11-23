@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 
-const base = 'http://127.0.0.1:4632';
 const sizes = [[1440, 900], [1024, 768], [768, 1024], [390, 844], [375, 812]];
 const captures = new Set([
   'list-1440-light', 'cards-1440-light', 'cards-1024-dark', 'list-390-light',
@@ -34,7 +33,7 @@ function measure() {
   };
 }
 
-export async function audit(page) {
+export async function audit(page, base = 'http://localhost:4632') {
   const rows = [];
   for (const [width, height] of sizes) {
     await page.cdp('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile: width < 600 });

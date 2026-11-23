@@ -9,12 +9,13 @@ const { title, description, noindex } = Astro.props;
 const pathname = Astro.url.pathname;
 ---
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-view="cards">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>
       try {
+        if (localStorage.getItem('qians.day:post-view') === 'list') document.documentElement.dataset.view = 'list';
         const theme = localStorage.getItem('qians.day:theme');
         if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
         if (localStorage.getItem('qians.day:mini-toc') === 'true') document.documentElement.setAttribute('data-mini-toc', '');

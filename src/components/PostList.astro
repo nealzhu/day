@@ -16,7 +16,7 @@ for (const post of posts) {
   years.get(year)!.push(post);
 }
 ---
-<div class="posts" data-view="list">
+<div class="posts">
   {posts.length === 0 && <p>暂无已发布文章。</p>}
   {Array.from(years, ([year, entries]) => <section class="year">
     <header><h2>{year}</h2><span>{entries.length} 篇</span></header>
@@ -26,7 +26,7 @@ for (const post of posts) {
         const cover = firstImage(post) ?? placeholder;
         const newDay = index > 0 && entries[index - 1].data.publishedAt !== publishedAt;
         return <li class:list={[{ 'new-day': newDay }]}>
-          <template><img src={cover.src} alt={cover.alt} loading="lazy" /></template>
+          <img src={cover.src} alt={cover.alt} loading="lazy" />
           <div class="meta"><time datetime={publishedAt}>{publishedAt.slice(5).replace('-', ' 月 ')} 日</time>{category && <span>{categories[category]}</span>}</div>
           <h3><a href={postPath(slug)}>{title}</a></h3>
           <p>{description}</p>
@@ -43,7 +43,7 @@ for (const post of posts) {
   ul { padding: 0; margin: 0; list-style: none; }
   li { position: relative; padding-block: var(--s2) var(--s3); }
   .year + .year { margin-top: var(--s4); padding-top: var(--s2); border-top: var(--group-rule); }
-  [data-view="list"] .new-day { border-top: var(--group-rule); }
+  :global([data-view="list"]) .new-day { border-top: var(--group-rule); }
   h3 { font-size: var(--h2); margin-block: .18em; }
   h3 a { color: inherit; text-decoration: underline; text-decoration-color: transparent; }
   h3 a::after { content: ''; position: absolute; inset: 0; }
@@ -52,19 +52,19 @@ for (const post of posts) {
   .meta span { color: var(--muted); }
   .meta span::before { content: '·'; margin-right: .7em; }
   p { margin: 0; color: var(--muted); }
-  [data-view="list"] img { display: none; }
-  [data-view="cards"] ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
-  [data-view="cards"] li { border: 0; padding: 0; display: flex; flex-direction: column; align-items: start; }
-  [data-view="cards"] img {
+  :global([data-view="list"]) img { display: none; }
+  :global([data-view="cards"]) ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
+  :global([data-view="cards"]) li { border: 0; padding: 0; display: flex; flex-direction: column; align-items: start; }
+  :global([data-view="cards"]) img {
     display: block; object-fit: cover;
     width: 100%; aspect-ratio: 5 / 3; background: var(--inset); border-radius: var(--radius);
   }
-  [data-view="cards"] .meta { margin-top: var(--s2); }
-  [data-view="cards"] h3 { font-size: var(--h3); }
-  [data-view="cards"] p { font-size: 1rem; }
+  :global([data-view="cards"]) .meta { margin-top: var(--s2); }
+  :global([data-view="cards"]) h3 { font-size: var(--h3); }
+  :global([data-view="cards"]) p { font-size: 1rem; }
   @media (prefers-reduced-motion: no-preference) {
     h3 a { transition: color var(--motion-ink) ease-out, text-decoration-color var(--motion-ink) ease-out; }
-    [data-view="cards"][data-reveal-covers] img { animation: cover-in var(--motion-settle) ease-out; }
+    :global([data-view="cards"][data-reveal-covers]) img { animation: cover-in var(--motion-settle) ease-out; }
     @keyframes cover-in { from { opacity: .65; } to { opacity: 1; } }
   }
   @media (max-width: 600px) {

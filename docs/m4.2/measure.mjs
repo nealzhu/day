@@ -58,11 +58,15 @@ export async function audit(page, base = 'http://localhost:4632') {
       for (const scene of ['list', 'cards', 'tech', 'life', 'essay', 'depth', 'code', 'markdown']) {
         const home = scene === 'list' || scene === 'cards';
         await page.goto(base + (home ? '/' : `/posts/lab-${scene}/`));
-        if (home) await page.click('#settings-trigger');
-        if (home) await page.click(`button[data-mode="${scene}"]`);
+        if (home) {
+          await page.click('#settings-trigger');
+          await page.click(`button[data-mode="${scene}"]`);
+          await page.keyboard.press('Escape');
+        }
         if (scene === 'depth') {
           await page.click('#settings-trigger');
           await page.click('[data-outline="mini"]');
+          await page.keyboard.press('Escape');
           await page.click('.contents a:nth-child(5)');
           await page.waitForFunction(() => document.querySelector('.contents a:nth-child(5)').hasAttribute('aria-current'));
         }
@@ -128,6 +132,7 @@ export async function audit(page, base = 'http://localhost:4632') {
         if (scene === 'depth') {
           await page.click('#settings-trigger');
           await page.click('[data-outline="full"]');
+          await page.keyboard.press('Escape');
         }
       }
     }

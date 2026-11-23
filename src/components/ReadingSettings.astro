@@ -1,11 +1,11 @@
-<button id="settings-trigger" class="settings-trigger" popovertarget="reading-settings" aria-label="阅读设置" title="阅读设置" hidden>
+<button id="settings-trigger" class="settings-trigger" popovertarget="reading-settings" aria-label="阅读设置" hidden>
   <span class="book-icon" aria-hidden="true"></span><span><span class="settings-prefix">阅读</span>设置</span>
 </button>
 <div popover="auto" id="reading-settings" aria-label="阅读设置">
   <fieldset>
     <legend>文章视图</legend>
-    <button data-mode="list" aria-pressed="true"><i class="list-icon" aria-hidden="true"></i>列表</button>
-    <button data-mode="cards" aria-pressed="false"><i class="card-icon" aria-hidden="true"></i>图文卡片</button>
+    <button data-mode="cards" aria-pressed="true"><i class="card-icon" aria-hidden="true"></i>图文卡片</button>
+    <button data-mode="list" aria-pressed="false"><i class="list-icon" aria-hidden="true"></i>列表</button>
   </fieldset>
   <fieldset>
     <legend>主题</legend>
@@ -28,13 +28,10 @@
   const outlineKey = 'qians.day:mini-toc';
 
   function view(choice: string | null, fromSettings = false) {
-    const mode = choice === 'cards' ? 'cards' : 'list';
-    for (const list of document.querySelectorAll<HTMLElement>('.posts')) {
-      if (list.dataset.view !== mode) list.toggleAttribute('data-reveal-covers', fromSettings && mode === 'cards');
-      if (mode === 'cards') {
-        for (const t of list.querySelectorAll('template')) t.replaceWith(t.content.cloneNode(true));
-      }
-      list.dataset.view = mode;
+    const mode = choice === 'list' ? 'list' : 'cards';
+    if (root.dataset.view !== mode) {
+      root.toggleAttribute('data-reveal-covers', fromSettings && mode === 'cards');
+      root.dataset.view = mode;
     }
     for (const b of panel.querySelectorAll<HTMLButtonElement>('[data-mode]')) {
       b.setAttribute('aria-pressed', String(b.dataset.mode === mode));
@@ -82,12 +79,34 @@
       outline(mini);
     } else return;
     try { localStorage.setItem(key, value); } catch {}
-    panel.hidePopover();
-    trigger.focus({ preventScroll: true });
+  });
+  // Allow the pointer to cross the gap between the trigger and the floating panel.
+  let closeTimer = 0;
+  for (const area of [trigger, panel]) {
+    area.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse') return;
+      clearTimeout(closeTimer);
+      if (area === trigger) panel.showPopover();
+    });
+    area.addEventListener('pointerleave', event => {
+      if (event.pointerType !== 'mouse') return;
+      closeTimer = window.setTimeout(() => {
+        if (!panel.querySelector(':focus-visible') && !trigger.matches(':focus-visible')) panel.hidePopover();
+      }, 180);
+    });
+  }
+  trigger.addEventListener('click', event => {
+    // A mouse click follows pointerenter. Touch and keyboard use the native toggle.
+    if (event.pointerType === 'mouse' && panel.matches(':popover-open')) event.preventDefault();
+  });
+  panel.addEventListener('focusout', event => {
+    const next = event.relatedTarget;
+    if (next instanceof Element && next !== trigger && !panel.contains(next)) panel.hidePopover();
   });
   function positionPanel() {
-    panel.style.top = `${trigger.getBoundingClientRect().bottom + 6}px`;
-    panel.style.right = `${Math.max(12, document.documentElement.clientWidth - trigger.getBoundingClientRect().right)}px`;
+    const anchor = trigger.getBoundingClientRect();
+    panel.style.top = `${anchor.bottom}px`;
+    panel.style.right = `${Math.max(12, root.clientWidth - anchor.right)}px`;
   }
   panel.addEventListener('beforetoggle', positionPanel);
   for (const event of ['scroll', 'resize']) {
@@ -100,12 +119,14 @@
 </script>
 <style>
   button { border: 0; background: transparent; }
-  .settings-trigger { display: inline-flex; gap: .55em; align-items: center; min-height: 44px; padding-inline: .5em; font-size: var(--small); }
+  .settings-trigger, #reading-settings { --settings-gap: 6px; }
+  .settings-trigger { position: relative; display: inline-flex; gap: .55em; align-items: center; min-height: 44px; padding-inline: .5em; font-size: var(--small); }
+  .settings-trigger:has(+ :popover-open)::after { content: ''; position: absolute; inset: 100% 0 auto; height: var(--settings-gap); }
   .settings-trigger:hover { color: var(--accent); }
   .book-icon { position: relative; width: 1.25em; height: .95em; }
   .book-icon::before, .book-icon::after { content: ''; position: absolute; inset: 0 50% 0 0; border: 1.5px solid currentColor; border-radius: 1px 3px 0 1px; transform: skewY(9deg); }
   .book-icon::after { inset: 0 0 0 50%; transform: skewY(-9deg); border-radius: 3px 1px 1px 0; }
-  #reading-settings { position: fixed; inset: auto; margin: 0; padding: 1.15rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--ink); max-width: calc(100vw - 24px); }
+  #reading-settings { position: fixed; inset: auto; margin: var(--settings-gap) 0 0; padding: 1.15rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--ink); max-width: calc(100vw - 24px); }
   fieldset { border: 0; margin: 0; padding: 0; }
   fieldset + fieldset { margin-top: .85rem; }
   legend { font-size: var(--small); color: var(--muted); margin-bottom: .3rem; }

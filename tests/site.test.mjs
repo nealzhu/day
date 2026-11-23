@@ -91,15 +91,47 @@ test('production build and browser behaviour', async t => {
         }));
         await page.goto(`http://127.0.0.1:${server.server.address().port}/`);
         const settings = page.getByRole('button', { name: '阅读设置' });
+        const panel = page.locator('#reading-settings:popover-open');
         const list = page.locator('button[data-mode="list"]');
         const cards = page.locator('button[data-mode="cards"]');
         async function choose(button) {
-          await settings.click();
+          if (!await panel.count()) await settings.hover();
           await button.click();
+          assert.equal(await panel.count(), 1);
+          await page.keyboard.press('Escape');
         }
         await settings.waitFor();
-        assert.equal(await list.getAttribute('aria-pressed'), 'true');
-        assert.equal(await page.locator('img').count(), 0);
+        assert.deepEqual(await page.locator('#reading-settings button[aria-pressed="true"]').allTextContents(), ['图文卡片', '随系统', '完整']);
+        assert.deepEqual(await page.locator('button[data-mode]').allTextContents(), ['图文卡片', '列表']);
+        assert.equal(await page.locator('img:visible').count(), older.length + 2);
+        await t.test('hover and keyboard allow consecutive changes in the reading settings', async () => {
+          await settings.hover();
+          await panel.waitFor();
+          assert.ok(await settings.evaluate(b => {
+            const box = b.getBoundingClientRect();
+            return document.elementFromPoint(box.x + box.width / 2, box.bottom + 2) === b;
+          }));
+          await settings.click();
+          await list.click();
+          await page.getByRole('button', { name: '深色', exact: true }).click();
+          assert.equal(await list.getAttribute('aria-pressed'), 'true');
+          assert.equal(await page.locator('html').getAttribute('data-theme'), 'dark');
+          assert.equal(await panel.count(), 1);
+          await page.mouse.move(5, 450);
+          await panel.waitFor({ state: 'detached' });
+
+          await settings.focus();
+          await page.keyboard.press('Enter');
+          await page.keyboard.press('Tab');
+          assert.equal(await cards.evaluate(b => b === document.activeElement), true);
+          await page.keyboard.press('Space');
+          assert.equal(await cards.getAttribute('aria-pressed'), 'true');
+          assert.equal(await panel.count(), 1);
+          await page.keyboard.press('Escape');
+          assert.equal(await panel.count(), 0);
+          assert.equal(await settings.evaluate(b => b === document.activeElement), true);
+        });
+        await choose(list);
         await choose(cards);
         assert.equal(await page.locator('img:visible').count(), older.length + 2);
         const imageFor = title => page.getByRole('listitem')
@@ -124,6 +156,8 @@ test('production build and browser behaviour', async t => {
         assert.equal(await page.locator('img:visible').count(), 0);
         await page.reload();
         assert.equal(await list.getAttribute('aria-pressed'), 'true');
+        assert.equal(await page.locator('img:visible').count(), 0);
+        assert.equal(await page.evaluate(() => performance.getEntriesByType('resource').some(r => r.name.endsWith('.webp'))), false);
         await page.getByRole('link', { name: '工程' }).click();
         await choose(cards);
         await page.emulateMedia({ colorScheme: 'light' });
@@ -135,7 +169,7 @@ test('production build and browser behaviour', async t => {
         assert.equal(await scheme(), 'dark');
         await page.goBack();
         assert.equal(await cards.getAttribute('aria-pressed'), 'true');
-        assert.equal(await page.locator('.posts').getAttribute('data-view'), 'cards');
+        assert.equal(await page.locator('html').getAttribute('data-view'), 'cards');
         await page.getByRole('link', { name: 'pictured' }).click();
         await choose(page.getByRole('button', { name: '随系统' }));
         assert.equal(await scheme(), 'light');
@@ -255,6 +289,10 @@ test('production build and browser behaviour', async t => {
           assert.equal(await phone.locator('.contents').count(), 0);
           await phone.getByRole('button', { name: '阅读设置' }).tap();
           await phone.getByRole('button', { name: '迷你', exact: true }).tap();
+          await phone.getByRole('button', { name: '列表', exact: true }).tap();
+          assert.equal(await phone.locator('#reading-settings:popover-open').count(), 1);
+          await phone.touchscreen.tap(6, 6);
+          assert.equal(await phone.locator('#reading-settings:popover-open').count(), 0);
           await phone.goto(new URL('/posts/pictured/', phone.url()).href);
           const target = phone.locator('[data-heading="notes-1"]');
           const hint = phone.locator('.chapter-hint');

@@ -17,6 +17,9 @@
   --group-rule: 1px solid color-mix(in srgb, var(--line) 65%, var(--paper));
   --radius: 3px;
   --focus: 2px solid var(--accent);
+  --motion-ink: 100ms;
+  --motion-settle: 150ms;
+  --ease-settle: cubic-bezier(.2, .7, .2, 1);
   --regular: 400;
   --h1: 36px;
   --h2: 27px;

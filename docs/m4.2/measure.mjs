@@ -39,7 +39,7 @@ function outlineMarks() {
     const mark = getComputedStyle(a, '::before');
     const row = getComputedStyle(a);
     return {
-      width: parseFloat(mark.width), height: parseFloat(mark.height),
+      width: parseFloat(mark.width), height: parseFloat(mark.height), step: a.getBoundingClientRect().height,
       alignment: row.justifyContent,
       end: a.getBoundingClientRect().right - parseFloat(row.paddingInlineEnd),
       target: document.getElementById(a.dataset.heading)?.tagName,
@@ -90,7 +90,7 @@ export async function audit(page, base = 'http://localhost:4632') {
           await page.mouse.move(width / 2, 100);
           const resting = await page.evaluate(outlineMarks);
           assert.deepEqual(resting.slice(0, 5).map(m => m.target), ['H2','H3','H4','H5','H6']);
-          assert.ok(resting.every(m => m.target && m.height === 2 && m.width === resting[0].width && m.alignment === 'flex-end' && m.end === resting[0].end));
+          assert.ok(resting.every(m => m.target && m.height === 2 && m.width === 12 && m.step === 10 && m.alignment === 'flex-end' && m.end === resting[0].end));
           await page.hover('.contents a:nth-child(3)');
           const expanded = await page.evaluate(outlineMarks);
           assert.ok(expanded.every(m => m.height === 2 && m.end === resting[0].end && m.alignment === 'flex-end'));

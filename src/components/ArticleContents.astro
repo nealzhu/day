@@ -32,10 +32,10 @@ const { headings } = Astro.props;
   }
   :global(html[data-mini-toc]) .contents {
     --node-width: 40px;
-    --rest-mark: 20px;
+    --rest-mark: 12px;
     --chapter-mark: 32px;
     --level-step: 5px;
-    --step: 16px;
+    --step: 10px;
     width: var(--node-width);
     margin-inline-start: auto;
     z-index: 1;
@@ -88,7 +88,6 @@ const { headings } = Astro.props;
   @media (max-width: 959px) {
     :global(html[data-mini-toc]) .contents {
       --node-width: 24px;
-      --rest-mark: 14px;
       --chapter-mark: 20px;
       --level-step: 3px;
       top: var(--s2);
@@ -97,8 +96,11 @@ const { headings } = Astro.props;
     }
     :global(html[data-mini-toc]) .contents nav { max-height: 60dvh; }
   }
-  @media (pointer: coarse) {
-    :global(html[data-mini-toc]) .contents { --step: 24px; }
+  @media (prefers-reduced-motion: no-preference) {
+    :global(html[data-mini-toc]) .contents nav a { transition: color var(--motion-ink) ease-out; }
+    :global(html[data-mini-toc]) .contents a::before { transition: width var(--motion-settle) var(--ease-settle); }
+    .chapter-hint:not([hidden]) { animation: hint-in var(--motion-ink) ease-out; }
+    @keyframes hint-in { from { opacity: 0; } to { opacity: 1; } }
   }
 </style>
 <script>

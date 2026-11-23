@@ -81,7 +81,7 @@ test('production build and browser behaviour', async t => {
     try {
       const browser = await chromium.launch({ channel: 'chrome' });
       try {
-        const page = await browser.newPage({ viewport: { width: 375, height: 812 } });
+        const page = await browser.newPage({ viewport: { width: 375, height: 812 }, reducedMotion: 'no-preference' });
         await page.route(cdn + '/**', route => route.fulfill({
           contentType: 'image/webp',
           body: route.request().url() === placeholderUrl ? placeholder : bytes,
@@ -103,6 +103,7 @@ test('production build and browser behaviour', async t => {
           .filter({ has: page.getByRole('link', { name: title, exact: true }) })
           .locator('img');
         const fallback = imageFor('text-only');
+        assert.notEqual(await fallback.evaluate(img => getComputedStyle(img).animationName), 'none');
         assert.equal(await fallback.getAttribute('src'), placeholderUrl);
         assert.equal(await fallback.getAttribute('alt'), '');
         await fallback.evaluate(img => img.decode());
@@ -114,6 +115,7 @@ test('production build and browser behaviour', async t => {
         await page.reload();
         assert.equal(await cards.getAttribute('aria-pressed'), 'true');
         assert.equal(await imageFor('pictured').getAttribute('src'), cover);
+        assert.equal(await imageFor('pictured').evaluate(img => getComputedStyle(img).animationName), 'none');
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
         await choose(list);
         assert.equal(await page.locator('img:visible').count(), 0);
@@ -139,8 +141,9 @@ test('production build and browser behaviour', async t => {
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
         const mini = page.getByRole('button', { name: '迷你', exact: true });
         const full = page.getByRole('button', { name: '完整', exact: true });
-        function markWidths() {
-          return [...document.querySelectorAll('.contents a')].map(a => parseFloat(getComputedStyle(a, '::before').width));
+        function marksAtWidths(expected) {
+          const links = [...document.querySelectorAll('.contents a')];
+          return links.length === expected.length && links.every((a, i) => parseFloat(getComputedStyle(a, '::before').width) === expected[i]);
         }
         await choose(mini);
         await page.reload();
@@ -158,7 +161,7 @@ test('production build and browser behaviour', async t => {
         await page.keyboard.press('Tab');
         await hint.waitFor();
         assert.equal(await section.evaluate(a => a === document.activeElement), true);
-        assert.deepEqual(await page.evaluate(markWidths), [20, 17, 14, 11, 8]);
+        await page.waitForFunction(marksAtWidths, [20, 17, 14, 11, 8]);
         await page.keyboard.press('Escape');
         assert.equal(await hint.isVisible(), false);
         await page.keyboard.press('Enter');
@@ -210,6 +213,7 @@ test('production build and browser behaviour', async t => {
         });
         await t.test('a saved mini outline previews then follows a chapter on touch', async () => {
           const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+          await phone.emulateMedia({ reducedMotion: 'reduce' });
           await phone.goto(new URL('/posts/text-only/', page.url()).href);
           assert.equal(await phone.locator('.contents').count(), 0);
           await phone.getByRole('button', { name: '阅读设置' }).tap();
@@ -217,18 +221,19 @@ test('production build and browser behaviour', async t => {
           await phone.goto(new URL('/posts/pictured/', phone.url()).href);
           const target = phone.locator('[data-heading="notes-1"]');
           const hint = phone.locator('.chapter-hint');
-          const resting = await phone.evaluate(markWidths);
-          assert.equal(new Set(resting).size, 1);
+          const resting = [12, 12, 12, 12, 12];
+          assert.ok(await phone.evaluate(marksAtWidths, resting));
+          assert.equal(await target.evaluate(a => getComputedStyle(a, '::before').transitionDuration), '0s');
           await target.tap();
           assert.equal(new URL(phone.url()).hash, '');
           assert.equal(await hint.innerText(), 'Notes');
           assert.ok(await hint.isVisible());
-          assert.deepEqual(await phone.evaluate(markWidths), [20, 17, 14, 11, 8]);
+          assert.ok(await phone.evaluate(marksAtWidths, [20, 17, 14, 11, 8]));
           await target.tap();
           await phone.waitForURL('**/#notes-1');
           await phone.waitForFunction(() => document.querySelector('[data-heading="notes-1"]').hasAttribute('aria-current'));
           assert.equal(await hint.isVisible(), false);
-          assert.deepEqual(await phone.evaluate(markWidths), resting);
+          assert.ok(await phone.evaluate(marksAtWidths, resting));
           await phone.close();
         });
       } finally {

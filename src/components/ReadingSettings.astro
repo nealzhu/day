@@ -27,9 +27,10 @@
   const themeKey = 'qians.day:theme';
   const outlineKey = 'qians.day:mini-toc';
 
-  function view(choice: string | null) {
+  function view(choice: string | null, fromSettings = false) {
     const mode = choice === 'cards' ? 'cards' : 'list';
     for (const list of document.querySelectorAll<HTMLElement>('.posts')) {
+      if (list.dataset.view !== mode) list.toggleAttribute('data-reveal-covers', fromSettings && mode === 'cards');
       if (mode === 'cards') {
         for (const t of list.querySelectorAll('template')) t.replaceWith(t.content.cloneNode(true));
       }
@@ -69,7 +70,7 @@
     if (b.dataset.mode) {
       key = viewKey;
       value = b.dataset.mode;
-      view(value);
+      view(value, true);
     } else if (b.dataset.themeChoice) {
       key = themeKey;
       value = b.dataset.themeChoice;
@@ -110,6 +111,19 @@
   legend { font-size: var(--small); color: var(--muted); margin-bottom: .3rem; }
   fieldset button { padding: .3rem .65rem; min-height: 40px; font-size: 1rem; border-radius: var(--radius); }
   button[aria-pressed="true"] { background: var(--inset); color: var(--accent); }
+  @media (prefers-reduced-motion: no-preference) {
+    #reading-settings {
+      opacity: 0;
+      transform: translateY(-3px);
+      pointer-events: none;
+      transition: opacity var(--motion-ink) ease-out, transform var(--motion-ink) var(--ease-settle),
+        display var(--motion-ink) allow-discrete, overlay var(--motion-ink) allow-discrete;
+    }
+    #reading-settings:popover-open { opacity: 1; transform: none; pointer-events: auto; transition-duration: var(--motion-settle); }
+    @starting-style {
+      #reading-settings:popover-open { opacity: 0; transform: translateY(-3px); }
+    }
+  }
   i { display: inline-block; width: .8em; height: .72em; margin-right: .45em; position: relative; }
   .list-icon { border-block: 1px solid currentColor; }
   .list-icon::before { content: ''; position: absolute; left: 0; top: 45%; width: 70%; border-top: 1px solid currentColor; }

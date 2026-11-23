@@ -26,10 +26,12 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
           {category && <a href={categoryPath(category)}>{categories[category]}</a>}
         </div>
         <h1>{title}</h1>
-        <dl class="article-notes">
-          <div><dt>摘要</dt><dd>{description}</dd></div>
-          {tags.length > 0 && <div><dt>标签</dt><dd>{tags.join('、')}</dd></div>}
-        </dl>
+        <p class="standfirst"><span class="visually-hidden">摘要：</span>{description}</p>
+        {tags.length > 0 && (
+          <ul class="post-tags" role="list" aria-label="文章标签">
+            {tags.map(tag => <li>{tag}</li>)}
+          </ul>
+        )}
       </header>
       {toc.length > 0 && <ArticleContents headings={toc} />}
       <div class="prose"><Content /></div>
@@ -47,17 +49,26 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
   .columns article, .prose { min-width: 0; }
   .intro { margin-block-end: var(--s3); padding-block-end: var(--s3); border-bottom: var(--group-rule); }
   .intro .meta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); font-size: var(--small); color: var(--muted); }
-  .intro h1 { margin-block: var(--s1) var(--s3); }
-  .article-notes { margin: 0; color: var(--muted); font-size: 1rem; }
-  .article-notes > div {
-    display: grid;
-    grid-template-columns: max-content minmax(0, 1fr);
-    align-items: baseline;
-    column-gap: var(--s2);
+  .intro h1 { margin-block: var(--s1) var(--s2); }
+  .standfirst {
+    margin: 0;
+    max-inline-size: 32em;
+    color: var(--muted);
+    font-size: 1.08em;
+    line-height: 1.7;
   }
-  .article-notes > div + div { margin-block-start: var(--s1); font-size: var(--small); }
-  .article-notes dt { font-size: var(--small); }
-  .article-notes dd { margin: 0; }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25em var(--s2);
+    margin: var(--s2) 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: var(--small);
+    line-height: 1.5;
+    color: var(--accent);
+  }
+  .post-tags li { max-inline-size: 100%; }
   .rail { min-width: 0; align-self: start; color: var(--muted); font-size: var(--small); }
   .rail h2 { color: var(--ink); font-size: 1rem; }
   .rail small { margin-inline-start: .4em; color: var(--muted); }

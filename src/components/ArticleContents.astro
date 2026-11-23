@@ -6,12 +6,12 @@ const { headings } = Astro.props;
 <aside class="contents rail" aria-label="章节导航">
   <h2>本文目录</h2>
   <nav aria-label="本文目录">
-    {headings.map(({ depth, slug, text }) => <a data-heading={slug} class:list={[{ sub: depth === 3 }]} href={`#${slug}`}><span title={text}>{text}</span></a>)}
+    {headings.map(({ depth, slug, text }) => <a data-heading={slug} style={`--level: ${depth - 2}`} href={`#${slug}`}><span title={text}>{text}</span></a>)}
   </nav>
   <span class="chapter-hint" aria-hidden="true" hidden></span>
 </aside>
 <style>
-  .contents .sub { padding-inline-start: 1.55em; }
+  .contents nav a { padding-inline-start: calc(.65em + var(--level) * .72em); }
   .chapter-hint {
     position: fixed;
     z-index: 2;
@@ -28,13 +28,15 @@ const { headings } = Astro.props;
     .contents { position: sticky; top: 0; z-index: 1; background: var(--paper); padding-block: .35rem; margin-bottom: var(--s3); }
     .contents nav { display: flex; overflow-x: auto; overflow-y: hidden; margin-block: 0; }
     .contents nav a { flex: none; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    :global(html:not([data-mini-toc])) .contents ~ :global(.prose :is(h2,h3)) { scroll-margin-block-start: 5rem; }
+    :global(html:not([data-mini-toc])) .contents ~ :global(.prose :is(h2,h3,h4,h5,h6)) { scroll-margin-block-start: 5rem; }
   }
   :global(html[data-mini-toc]) .contents {
-    --node-width: 2rem;
+    --node-width: 40px;
+    --indent: 4px;
+    --mark: 16px;
+    --step: 16px;
     width: var(--node-width);
     margin-inline-start: auto;
-    top: 32dvh;
     z-index: 1;
     padding: 0;
     background: transparent;
@@ -43,7 +45,7 @@ const { headings } = Astro.props;
   :global(html[data-mini-toc]) .contents nav {
     display: grid;
     grid-template-columns: 1fr;
-    max-height: 56dvh;
+    max-height: calc(100dvh - var(--s4) * 2);
     overflow: hidden auto;
     scrollbar-width: none;
     margin: 0;
@@ -52,13 +54,13 @@ const { headings } = Astro.props;
   :global(html[data-mini-toc]) .contents nav a {
     position: relative;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    min-height: 24px;
-    padding: 0 4px;
+    height: var(--step);
+    padding: 0;
+    padding-inline-start: calc(3px + var(--level) * var(--indent));
     outline-offset: -2px;
     -webkit-tap-highlight-color: transparent;
-    color: var(--scroll-thumb);
+    color: var(--outline-idle);
   }
   :global(html[data-mini-toc]) .contents a span {
     position: absolute;
@@ -69,24 +71,26 @@ const { headings } = Astro.props;
   }
   :global(html[data-mini-toc]) .contents a::before {
     content: '';
-    width: 1rem;
-    height: 2px;
+    width: var(--mark);
+    height: 3px;
     border-radius: var(--radius);
     background: currentColor;
   }
-  :global(html[data-mini-toc]) .contents a.sub::before { width: .625rem; }
-  :global(html[data-mini-toc]) .contents nav a:is(:hover, :focus-visible, :active) { color: var(--ink); }
-  :global(html[data-mini-toc]) .contents nav a[aria-current] { color: var(--accent); }
-  :global(html[data-mini-toc]) .contents a[aria-current]::before { height: 4px; }
+  :global(html[data-mini-toc]) .contents nav a:is(:hover, :focus-visible) { color: var(--muted); }
+  :global(html[data-mini-toc]) .contents nav a[aria-current] { color: var(--outline-current); }
   @media (max-width: 959px) {
     :global(html[data-mini-toc]) .contents {
       --node-width: 24px;
+      --indent: 2px;
+      --mark: 12px;
+      top: var(--s2);
       height: 0;
       margin: 0 0 0 calc(100% + var(--gutter) - var(--node-width));
     }
+    :global(html[data-mini-toc]) .contents nav { max-height: 60dvh; }
   }
   @media (pointer: coarse) {
-    :global(html[data-mini-toc]) .contents nav a { min-height: 32px; }
+    :global(html[data-mini-toc]) .contents { --step: 24px; }
   }
 </style>
 <script>
@@ -104,6 +108,7 @@ const { headings } = Astro.props;
     let frame = 0;
     let preview: HTMLAnchorElement | null = null;
     let touch = false;
+    let fragmentIndex = -1;
 
     function showHint(link: HTMLAnchorElement | null) {
       preview = root.hasAttribute('data-mini-toc') ? link : null;
@@ -132,14 +137,20 @@ const { headings } = Astro.props;
 
     function update() {
       frame = 0;
-      const guide = Math.min(120, innerHeight * .2);
+      const guide = parseFloat(getComputedStyle(headings[0]).scrollMarginTop) + 1;
       let current = 0;
       for (let i = 1; i < headings.length; i++) {
         if (headings[i].getBoundingClientRect().top > guide) break;
         current = i;
       }
-      const bounds = prose.getBoundingClientRect();
-      if (bounds.bottom <= innerHeight && bounds.top < guide) current = links.length - 1;
+      if (Math.ceil(scrollY + root.clientHeight) >= root.scrollHeight) {
+        // Several short closing sections can share the same final scroll position.
+        if (scrollY > 0) current = links.length - 1;
+        const top = headings[fragmentIndex]?.getBoundingClientRect().top;
+        if (top !== undefined && top >= guide - 3 && top < root.clientHeight) current = fragmentIndex;
+      } else {
+        fragmentIndex = -1;
+      }
       if (current !== active) {
         links[active]?.removeAttribute('aria-current');
         active = current;
@@ -149,6 +160,10 @@ const { headings } = Astro.props;
       if (preview) showHint(preview);
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(update); }
+    function followFragment() {
+      fragmentIndex = links.findIndex(link => link.hash === location.hash);
+      schedule();
+    }
     function linkAt(target: EventTarget | null) {
       return target instanceof Element ? target.closest<HTMLAnchorElement>('a[data-heading]') : null;
     }
@@ -173,12 +188,13 @@ const { headings } = Astro.props;
     });
     nav.addEventListener('click', event => {
       const link = linkAt(event.target);
-      if (!link || !root.hasAttribute('data-mini-toc')) return;
-      if (touch && preview !== link) {
+      if (!link) return;
+      if (root.hasAttribute('data-mini-toc') && touch && preview !== link) {
         event.preventDefault();
         showHint(link);
       } else {
         showHint(null);
+        requestAnimationFrame(followFragment);
       }
     });
     nav.addEventListener('scroll', () => { if (preview) showHint(preview); }, { passive: true });
@@ -189,7 +205,8 @@ const { headings } = Astro.props;
     }).observe(root, { attributes: true, attributeFilter: ['data-mini-toc'] });
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
-    window.addEventListener('pageshow', schedule);
+    window.addEventListener('pageshow', followFragment);
+    window.addEventListener('hashchange', followFragment);
     new ResizeObserver(schedule).observe(prose);
     document.fonts.ready.then(schedule);
     schedule();

@@ -10,6 +10,7 @@ export default defineConfig({
   site: 'https://qians.day',
   output: 'static',
   markdown: {
+    remarkRehype: { footnoteLabel: '脚注', footnoteBackLabel: '返回正文中的引用', footnoteLabelProperties: {} },
     shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' }, defaultColor: false },
     rehypePlugins: [rehypeFigureCaptions, rehypeScrollTables],
     remarkPlugins: [[remarkCdnMedia, { base: mediaBase }]],

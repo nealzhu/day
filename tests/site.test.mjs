@@ -23,6 +23,7 @@ test('production build and browser behaviour', async t => {
     '`![example](./assets/ignored.webp)`', '## Notes', '![first][ref]',
     ['| Key | Value |', '| --- | --- |', `| Asset | ${'0123456789abcdef'.repeat(10)} |`].join('\n'),
     `![second](./assets/${second})`, '段落中的文字。'.repeat(160), '### Notes', '| 甲 | 乙 |\n| --- | --- |\n| 一 | 二 |', '下一节的正文。'.repeat(160), `[ref]: ./assets/${file} "图注"`,
+    '#### Afterword', '##### Imprint', '###### Credits', 'End.',
   ].join('\n\n'));
   await mkdir(join(directory, 'assets'));
   for (const name of [file, second]) await writeFile(join(directory, 'assets', name), bytes);
@@ -192,6 +193,16 @@ test('production build and browser behaviour', async t => {
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));
         assert.equal((await page.goto(new URL('/posts/secret-draft/', page.url()).href)).status(), 404);
+        await t.test('deep closing headings keep distinct destinations at the bottom of the page', async () => {
+          await page.goto(new URL('/posts/pictured/', page.url()).href);
+          await choose(mini);
+          for (const id of ['afterword', 'imprint', 'credits', 'afterword']) {
+            await page.locator(`[data-heading="${id}"]`).click();
+            await page.waitForFunction(slug => document.querySelector('.contents [aria-current]')?.dataset.heading === slug, id);
+          }
+          await page.evaluate(() => scrollTo(0, 200));
+          await page.waitForFunction(() => Math.abs(document.querySelector('.library').getBoundingClientRect().top - document.querySelector('.contents').getBoundingClientRect().top) < 1);
+        });
         await t.test('a saved mini outline previews then follows a chapter on touch', async () => {
           const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
           await phone.goto(new URL('/posts/text-only/', page.url()).href);

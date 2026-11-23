@@ -14,6 +14,7 @@ const samples = 'labs/typography/src/samples';
 
 try {
   await copySiteFixture(project);
+  await cp('docs/m4.2/samples', posts, { recursive: true, dereference: true });
   await article(posts, 'lab-essay', {
     title: '街角的钟表店', category: undefined, publishedAt: '2026-11-18',
     description: '一条街的清晨，从卷帘门下的两声轻响开始。',

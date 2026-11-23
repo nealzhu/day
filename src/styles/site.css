@@ -33,6 +33,8 @@
   --line: light-dark(#cfc9b9, #5e5e52);
   --inset: light-dark(#f0ede5, #2b2d28);
   --scroll-thumb: light-dark(#969082, #79796d);
+  --outline-idle: light-dark(#908b80, #6c6f63);
+  --outline-current: light-dark(#502616, #ffdab5);
   color-scheme: light;
 }
 :root[data-theme="dark"] { color-scheme: dark; }

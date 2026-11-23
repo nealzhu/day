@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 const { post, archive } = Astro.props;
 const { title, description, publishedAt, category, tags } = post.data;
 const { Content, headings } = await render(post);
-const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 3);
+const toc = headings.filter(heading => heading.depth >= 2);
 ---
 <Site title={title} description={description}>
   <div class="columns">

@@ -34,6 +34,19 @@ function measure() {
   };
 }
 
+function outlineMarks() {
+  return [...document.querySelectorAll('.contents a')].map(a => {
+    const mark = getComputedStyle(a, '::before');
+    const row = getComputedStyle(a);
+    return {
+      width: parseFloat(mark.width), height: parseFloat(mark.height),
+      alignment: row.justifyContent,
+      end: a.getBoundingClientRect().right - parseFloat(row.paddingInlineEnd),
+      target: document.getElementById(a.dataset.heading)?.tagName,
+    };
+  });
+}
+
 export async function audit(page, base = 'http://localhost:4632') {
   const rows = [];
   for (const [width, height] of sizes) {
@@ -74,15 +87,19 @@ export async function audit(page, base = 'http://localhost:4632') {
         if (scene === 'cards') assert.equal(result.images.length, 8);
         if (scene === 'life') assert.equal(result.images.length, 2);
         if (scene === 'depth') {
-          const marks = await page.evaluate(() => [...document.querySelectorAll('.contents a')].map(a => ({
-            width: getComputedStyle(a, '::before').width,
-            height: getComputedStyle(a, '::before').height,
-            indent: parseFloat(getComputedStyle(a).paddingInlineStart),
-            target: document.getElementById(a.dataset.heading)?.tagName,
-          })));
-          assert.deepEqual(marks.slice(0, 5).map(m => m.target), ['H2','H3','H4','H5','H6']);
-          assert.ok(marks.every(m => m.target && m.width === marks[0].width && m.height === '3px'));
-          assert.ok(marks.slice(1, 5).every((m, i) => m.indent > marks[i].indent));
+          await page.mouse.move(width / 2, 100);
+          const resting = await page.evaluate(outlineMarks);
+          assert.deepEqual(resting.slice(0, 5).map(m => m.target), ['H2','H3','H4','H5','H6']);
+          assert.ok(resting.every(m => m.target && m.height === 2 && m.width === resting[0].width && m.alignment === 'flex-end' && m.end === resting[0].end));
+          await page.hover('.contents a:nth-child(3)');
+          const expanded = await page.evaluate(outlineMarks);
+          assert.ok(expanded.every(m => m.height === 2 && m.end === resting[0].end && m.alignment === 'flex-end'));
+          assert.ok(expanded.slice(1, 5).every((m, i) => m.width < expanded[i].width));
+          if (width === 1440 && theme === 'light') {
+            await page.screenshot({ path: fileURLToPath(new URL('screenshots/depth-hover-1440-light.png', import.meta.url)) });
+          }
+          await page.mouse.move(width / 2, 100);
+          assert.deepEqual(await page.evaluate(outlineMarks), resting);
           if (width >= 1180) assert.ok(await page.evaluate(() => Math.abs(document.querySelector('.library').getBoundingClientRect().top - document.querySelector('.contents').getBoundingClientRect().top) <= 1));
         }
         if (scene === 'code') assert.deepEqual(await page.evaluate(() => [...document.querySelectorAll('pre')].map(p => p.dataset.language)), ['json','python','bash','sql','typescript','html','css','yaml']);
@@ -116,5 +133,5 @@ export async function audit(page, base = 'http://localhost:4632') {
     }
   }
   await writeFile(new URL('matrix.json', import.meta.url), JSON.stringify(rows, null, 2) + '\n');
-  console.log({ passed: rows.length, screenshots: captures.size });
+  console.log({ passed: rows.length });
 }

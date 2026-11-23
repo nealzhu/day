@@ -32,8 +32,9 @@ const { headings } = Astro.props;
   }
   :global(html[data-mini-toc]) .contents {
     --node-width: 40px;
-    --indent: 4px;
-    --mark: 16px;
+    --rest-mark: 20px;
+    --chapter-mark: 32px;
+    --level-step: 5px;
     --step: 16px;
     width: var(--node-width);
     margin-inline-start: auto;
@@ -52,12 +53,14 @@ const { headings } = Astro.props;
     padding: 0;
   }
   :global(html[data-mini-toc]) .contents nav a {
+    --level-mark: calc(var(--chapter-mark) - var(--level) * var(--level-step));
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     height: var(--step);
     padding: 0;
-    padding-inline-start: calc(3px + var(--level) * var(--indent));
+    padding-inline-end: 3px;
     outline-offset: -2px;
     -webkit-tap-highlight-color: transparent;
     color: var(--outline-idle);
@@ -71,18 +74,23 @@ const { headings } = Astro.props;
   }
   :global(html[data-mini-toc]) .contents a::before {
     content: '';
-    width: var(--mark);
-    height: 3px;
+    width: var(--rest-mark);
+    height: 2px;
     border-radius: var(--radius);
     background: currentColor;
   }
-  :global(html[data-mini-toc]) .contents nav a:is(:hover, :focus-visible) { color: var(--muted); }
+  :global(html[data-mini-toc]) .contents:has(a:focus-visible, .chapter-hint:not([hidden])) a::before { width: var(--level-mark); }
+  @media (hover: hover) {
+    :global(html[data-mini-toc]) .contents:hover a::before { width: var(--level-mark); }
+  }
+  :global(html[data-mini-toc]) .contents nav a:is(:hover, :focus-visible) { color: var(--outline-hover); }
   :global(html[data-mini-toc]) .contents nav a[aria-current] { color: var(--outline-current); }
   @media (max-width: 959px) {
     :global(html[data-mini-toc]) .contents {
       --node-width: 24px;
-      --indent: 2px;
-      --mark: 12px;
+      --rest-mark: 14px;
+      --chapter-mark: 20px;
+      --level-step: 3px;
       top: var(--s2);
       height: 0;
       margin: 0 0 0 calc(100% + var(--gutter) - var(--node-width));

@@ -33,8 +33,9 @@
   --line: light-dark(#cfc9b9, #5e5e52);
   --inset: light-dark(#f0ede5, #2b2d28);
   --scroll-thumb: light-dark(#969082, #79796d);
-  --outline-idle: light-dark(#908b80, #6c6f63);
-  --outline-current: light-dark(#502616, #ffdab5);
+  --outline-idle: light-dark(#b6b6b0, #6c6f63);
+  --outline-hover: light-dark(#9a9992, #b6b3a6);
+  --outline-current: light-dark(#650e08, #ffdab5);
   color-scheme: light;
 }
 :root[data-theme="dark"] { color-scheme: dark; }

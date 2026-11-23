@@ -139,6 +139,9 @@ test('production build and browser behaviour', async t => {
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
         const mini = page.getByRole('button', { name: '迷你', exact: true });
         const full = page.getByRole('button', { name: '完整', exact: true });
+        function markWidths() {
+          return [...document.querySelectorAll('.contents a')].map(a => parseFloat(getComputedStyle(a, '::before').width));
+        }
         await choose(mini);
         await page.reload();
         assert.equal(await page.locator('[data-outline="mini"]').getAttribute('aria-pressed'), 'true');
@@ -151,9 +154,11 @@ test('production build and browser behaviour', async t => {
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes');
         assert.notEqual(await first.evaluate(a => getComputedStyle(a).color), await section.evaluate(a => getComputedStyle(a).color));
         await first.focus();
+        await page.mouse.move(10, 100);
         await page.keyboard.press('Tab');
         await hint.waitFor();
         assert.equal(await section.evaluate(a => a === document.activeElement), true);
+        assert.deepEqual(await page.evaluate(markWidths), [20, 17, 14, 11, 8]);
         await page.keyboard.press('Escape');
         assert.equal(await hint.isVisible(), false);
         await page.keyboard.press('Enter');
@@ -212,14 +217,18 @@ test('production build and browser behaviour', async t => {
           await phone.goto(new URL('/posts/pictured/', phone.url()).href);
           const target = phone.locator('[data-heading="notes-1"]');
           const hint = phone.locator('.chapter-hint');
+          const resting = await phone.evaluate(markWidths);
+          assert.equal(new Set(resting).size, 1);
           await target.tap();
           assert.equal(new URL(phone.url()).hash, '');
           assert.equal(await hint.innerText(), 'Notes');
           assert.ok(await hint.isVisible());
+          assert.deepEqual(await phone.evaluate(markWidths), [20, 17, 14, 11, 8]);
           await target.tap();
           await phone.waitForURL('**/#notes-1');
           await phone.waitForFunction(() => document.querySelector('[data-heading="notes-1"]').hasAttribute('aria-current'));
           assert.equal(await hint.isVisible(), false);
+          assert.deepEqual(await phone.evaluate(markWidths), resting);
           await phone.close();
         });
       } finally {

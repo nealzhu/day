@@ -75,7 +75,7 @@ test('production build and browser behaviour', async t => {
     assert.match(await html('404.html'), /content="noindex"/);
   });
 
-  await t.test('list, cards, restored preference and mobile navigation', async () => {
+  await t.test('list, cards, restored preference and mobile navigation', async t => {
     const server = await preview({ root: project, server: { host: '127.0.0.1', port: 0 }, logLevel: 'silent' });
     try {
       const browser = await chromium.launch({ channel: 'chrome' });
@@ -136,13 +136,29 @@ test('production build and browser behaviour', async t => {
         const section = page.locator('[data-heading="notes-1"]');
         await section.click();
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
-        await page.getByRole('button', { name: '切换到迷你目录' }).click();
-        await page.locator('#notes-1').evaluate(h => h.scrollIntoView());
-        const mini = page.getByRole('button', { name: /已读.*显示完整目录/ });
-        await mini.waitFor();
-        assert.ok(await mini.evaluate(b => b.getBoundingClientRect().right <= innerWidth));
+        const mini = page.getByRole('button', { name: '迷你', exact: true });
+        const full = page.getByRole('button', { name: '完整', exact: true });
+        await choose(mini);
         await page.reload();
-        await mini.click();
+        assert.equal(await page.locator('[data-outline="mini"]').getAttribute('aria-pressed'), 'true');
+        const first = page.locator('[data-heading="notes"]');
+        await first.hover();
+        const hint = page.locator('.chapter-hint');
+        await hint.waitFor();
+        assert.equal(await hint.innerText(), 'Notes');
+        await first.click();
+        await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes');
+        assert.notEqual(await first.evaluate(a => getComputedStyle(a).color), await section.evaluate(a => getComputedStyle(a).color));
+        await first.focus();
+        await page.keyboard.press('Tab');
+        await hint.waitFor();
+        assert.equal(await section.evaluate(a => a === document.activeElement), true);
+        await page.keyboard.press('Escape');
+        assert.equal(await hint.isVisible(), false);
+        await page.keyboard.press('Enter');
+        await page.waitForURL('**/#notes-1');
+        await choose(full);
+        await section.click();
         await page.waitForFunction(() => {
           const nav = document.querySelector('.contents nav');
           const active = nav.querySelector('[aria-current="location"]');
@@ -176,6 +192,25 @@ test('production build and browser behaviour', async t => {
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));
         assert.equal((await page.goto(new URL('/posts/secret-draft/', page.url()).href)).status(), 404);
+        await t.test('a saved mini outline previews then follows a chapter on touch', async () => {
+          const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+          await phone.goto(new URL('/posts/text-only/', page.url()).href);
+          assert.equal(await phone.locator('.contents').count(), 0);
+          await phone.getByRole('button', { name: '阅读设置' }).tap();
+          await phone.getByRole('button', { name: '迷你', exact: true }).tap();
+          await phone.goto(new URL('/posts/pictured/', phone.url()).href);
+          const target = phone.locator('[data-heading="notes-1"]');
+          const hint = phone.locator('.chapter-hint');
+          await target.tap();
+          assert.equal(new URL(phone.url()).hash, '');
+          assert.equal(await hint.innerText(), 'Notes');
+          assert.ok(await hint.isVisible());
+          await target.tap();
+          await phone.waitForURL('**/#notes-1');
+          await phone.waitForFunction(() => document.querySelector('[data-heading="notes-1"]').hasAttribute('aria-current'));
+          assert.equal(await hint.isVisible(), false);
+          await phone.close();
+        });
       } finally {
         await browser.close();
       }

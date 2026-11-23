@@ -17,6 +17,7 @@ const pathname = Astro.url.pathname;
       try {
         const theme = localStorage.getItem('qians.day:theme');
         if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+        if (localStorage.getItem('qians.day:mini-toc') === 'true') document.documentElement.setAttribute('data-mini-toc', '');
       } catch {}
     </script>
     <title>{title} · 骞言碎语</title>

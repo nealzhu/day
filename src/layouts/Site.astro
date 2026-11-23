@@ -1,5 +1,6 @@
 ---
 import '../styles/site.css';
+import ReadingSettings from '../components/ReadingSettings.astro';
 import { categories, categoryKeys } from '../lib/content-model';
 import { categoryPath } from '../lib/posts';
 
@@ -12,6 +13,12 @@ const pathname = Astro.url.pathname;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('qians.day:theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
     <title>{title} · 骞言碎语</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={new URL(pathname, Astro.site)} />}
@@ -21,16 +28,17 @@ const pathname = Astro.url.pathname;
   <body>
     <a class="skip" href="#main">跳到正文</a>
     <header class="mast shell">
-      <a class="brand" href="/">骞言碎语 <span lang="en">qians.day</span></a>
+      <a class="brand" href="/">骞言碎语</a>
       <nav aria-label="文章分类">
         <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>全部</a>
         {categoryKeys.map(key => <a href={categoryPath(key)} aria-current={pathname === categoryPath(key) ? 'page' : undefined}>{categories[key]}</a>)}
       </nav>
+      <ReadingSettings />
     </header>
     <main id="main" class="shell"><slot /></main>
     <footer class="shell colophon">
-      <span>骞言碎语 · qians.day</span>
-      <nav aria-label="页脚导航"><a href="/categories/">分类索引</a><a href="/rss.xml" lang="en">RSS</a></nav>
+      <span>© {new Date().getUTCFullYear()} 骞言碎语</span>
+      <nav aria-label="页脚导航"><a href="https://github.com/nealzhu/day" lang="en">GitHub</a><a href="/categories/">分类索引</a><a href="/rss.xml" lang="en">RSS</a></nav>
     </footer>
   </body>
 </html>

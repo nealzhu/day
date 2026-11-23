@@ -8,43 +8,7 @@ const posts = await publishedPosts();
   <div class="archive">
     <div class="archive-head">
       <h1>文章目录</h1>
-      <div id="views" role="group" aria-label="文章显示方式" hidden>
-        <button data-mode="list" aria-pressed="true">列表</button>
-        <button data-mode="cards" aria-pressed="false">图文卡片</button>
-      </div>
     </div>
-    <PostList posts={posts} switchable />
+    <PostList posts={posts} />
   </div>
 </Site>
-<script>
-  const key = 'qians.day:post-view';
-  const controls = document.querySelector<HTMLElement>('#views')!;
-  const list = document.querySelector<HTMLElement>('.posts')!;
-  const buttons = controls.querySelectorAll<HTMLButtonElement>('button');
-
-  function show(mode: string | null) {
-    const view = mode === 'cards' ? 'cards' : 'list';
-    if (view === 'cards') {
-      for (const template of list.querySelectorAll('template')) {
-        template.replaceWith(template.content.cloneNode(true));
-      }
-    }
-    list.dataset.view = view;
-    for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.mode === view));
-  }
-
-  try { show(localStorage.getItem(key)); } catch { show('list'); }
-  for (const button of buttons) {
-    button.addEventListener('click', () => {
-      const mode = button.dataset.mode!;
-      show(mode);
-      try { localStorage.setItem(key, mode); } catch { /* Storage is optional. */ }
-    });
-  }
-  controls.hidden = false;
-</script>
-<style>
-  #views { display: inline-flex; align-items: center; padding: 3px; background: var(--inset); border-radius: var(--radius); }
-  button { border: 0; font-size: var(--small); padding: .2em .8em; background: transparent; color: var(--muted); border-radius: var(--radius); }
-  button[aria-pressed="true"] { background: var(--paper); color: var(--accent); }
-</style>

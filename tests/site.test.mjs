@@ -22,7 +22,7 @@ test('production build and browser behaviour', async t => {
   const directory = await article(posts, 'pictured', {}, [
     '`![example](./assets/ignored.webp)`', '## Notes', '![first][ref]',
     ['| Key | Value |', '| --- | --- |', `| Asset | ${'0123456789abcdef'.repeat(10)} |`].join('\n'),
-    `![second](./assets/${second})`, '### Notes', `[ref]: ./assets/${file} "图注"`,
+    `![second](./assets/${second})`, '段落中的文字。'.repeat(160), '### Notes', '| 甲 | 乙 |\n| --- | --- |\n| 一 | 二 |', '下一节的正文。'.repeat(160), `[ref]: ./assets/${file} "图注"`,
   ].join('\n\n'));
   await mkdir(join(directory, 'assets'));
   for (const name of [file, second]) await writeFile(join(directory, 'assets', name), bytes);
@@ -86,11 +86,17 @@ test('production build and browser behaviour', async t => {
           body: route.request().url() === placeholderUrl ? placeholder : bytes,
         }));
         await page.goto(`http://127.0.0.1:${server.server.address().port}/`);
-        const list = page.getByRole('button', { name: '列表' });
-        const cards = page.getByRole('button', { name: '图文卡片' });
+        const settings = page.getByRole('button', { name: '阅读设置' });
+        const list = page.locator('button[data-mode="list"]');
+        const cards = page.locator('button[data-mode="cards"]');
+        async function choose(button) {
+          await settings.click();
+          await button.click();
+        }
+        await settings.waitFor();
         assert.equal(await list.getAttribute('aria-pressed'), 'true');
         assert.equal(await page.locator('img').count(), 0);
-        await cards.click();
+        await choose(cards);
         assert.equal(await page.locator('img:visible').count(), older.length + 2);
         const imageFor = title => page.getByRole('listitem')
           .filter({ has: page.getByRole('link', { name: title, exact: true }) })
@@ -108,18 +114,51 @@ test('production build and browser behaviour', async t => {
         assert.equal(await cards.getAttribute('aria-pressed'), 'true');
         assert.equal(await imageFor('pictured').getAttribute('src'), cover);
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true);
-        await list.click();
+        await choose(list);
         assert.equal(await page.locator('img:visible').count(), 0);
         await page.reload();
         assert.equal(await list.getAttribute('aria-pressed'), 'true');
         await page.getByRole('link', { name: '工程' }).click();
+        await choose(cards);
+        await page.emulateMedia({ colorScheme: 'light' });
+        await choose(page.getByRole('button', { name: '深色', exact: true }));
         await page.getByRole('link', { name: 'pictured' }).click();
-        const table = page.locator('.prose table');
+        await page.waitForURL('**/posts/pictured/');
+        await page.waitForLoadState('load');
+        const scheme = () => page.evaluate(() => getComputedStyle(document.documentElement).colorScheme);
+        assert.equal(await scheme(), 'dark');
+        await page.goBack();
+        assert.equal(await cards.getAttribute('aria-pressed'), 'true');
+        assert.equal(await page.locator('.posts').getAttribute('data-view'), 'cards');
+        await page.getByRole('link', { name: 'pictured' }).click();
+        await choose(page.getByRole('button', { name: '随系统' }));
+        assert.equal(await scheme(), 'light');
+        const section = page.locator('[data-heading="notes-1"]');
+        await section.click();
+        await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
+        await page.getByRole('button', { name: '切换到迷你目录' }).click();
+        await page.locator('#notes-1').evaluate(h => h.scrollIntoView());
+        const mini = page.getByRole('button', { name: /已读.*显示完整目录/ });
+        await mini.waitFor();
+        assert.ok(await mini.evaluate(b => b.getBoundingClientRect().right <= innerWidth));
+        await page.reload();
+        await mini.click();
+        await page.waitForFunction(() => {
+          const nav = document.querySelector('.contents nav');
+          const active = nav.querySelector('[aria-current="location"]');
+          if (!active) return false;
+          const link = active.getBoundingClientRect();
+          const box = nav.getBoundingClientRect();
+          return link.left >= box.left - 1 && link.right <= box.right + 1;
+        });
+        const tables = page.locator('.prose .table-scroll');
+        const shortTable = await tables.last().locator('table').boundingBox();
+        assert.equal(shortTable.width, (await page.locator('.prose').boundingBox()).width);
+        const table = tables.first();
         assert.ok(await table.evaluate(el => {
           el.scrollLeft = el.scrollWidth;
           return el.scrollLeft > 0 && document.documentElement.scrollWidth === innerWidth;
         }));
-        await page.locator('.library summary').click();
         const nav = page.getByRole('navigation', { name: '全部已发布文章' });
         assert.deepEqual(await nav.locator('a').allTextContents(), ['pictured', 'text-only', ...older]);
         assert.equal(await nav.locator('[aria-current]').innerText(), 'pictured');

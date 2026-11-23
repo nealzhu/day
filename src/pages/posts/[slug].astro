@@ -1,5 +1,6 @@
 ---
 import { render } from 'astro:content';
+import ArticleContents from '../../components/ArticleContents.astro';
 import Site from '../../layouts/Site.astro';
 import { categories } from '../../lib/content-model';
 import { categoryPath, postPath, publishedPosts } from '../../lib/posts';
@@ -18,18 +19,6 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
 ---
 <Site title={title} description={description}>
   <div class="columns">
-    <details class="rail library">
-      <summary>全部文章 <small>{archive.length}</small></summary>
-      <nav aria-label="全部已发布文章" id="library">
-        {archive.map(entry => <a href={postPath(entry.slug)} aria-current={entry.slug === post.data.slug ? 'page' : undefined}>{entry.title}</a>)}
-      </nav>
-    </details>
-    {toc.length > 0 && <details class="rail contents">
-      <summary>本文目录</summary>
-      <nav aria-label="本文目录">
-        {toc.map(({ depth, slug, text }) => <a class:list={[{ sub: depth === 3 }]} href={`#${slug}`}>{text}</a>)}
-      </nav>
-    </details>}
     <article>
       <header class="intro">
         <div class="meta"><time datetime={publishedAt}>{publishedAt}</time>
@@ -39,78 +28,62 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
         <p>{description}</p>
         {tags.length > 0 && <div class="tags">{tags.join(' · ')}</div>}
       </header>
+      {toc.length > 0 && <ArticleContents headings={toc} />}
       <div class="prose"><Content /></div>
     </article>
+    <aside class="rail library">
+      <h2>全部文章 <small>{archive.length}</small></h2>
+      <nav aria-label="全部已发布文章" id="library">
+        {archive.map(entry => <a href={postPath(entry.slug)} aria-current={entry.slug === post.data.slug ? 'page' : undefined}>{entry.title}</a>)}
+      </nav>
+    </aside>
   </div>
 </Site>
-<style>
-  .columns { display: grid; grid-template-columns: minmax(0, var(--reading-measure)); gap: var(--s1); justify-content: center; align-items: start; }
-  article { min-width: 0; }
-  .intro { border-bottom: var(--rule); padding-block: var(--s3); margin-bottom: var(--s4); }
-  .meta, .tags { color: var(--muted); font-size: var(--small); }
-  .meta { display: flex; gap: var(--s2); }
-  .intro h1 { margin-block: .35em; }
+<style is:global>
+  .columns { max-width: var(--reading-measure); margin-inline: auto; }
+  .columns article, .prose { min-width: 0; }
+  .intro { padding-block-end: var(--s4); }
+  .intro .meta, .intro .tags { color: var(--muted); font-size: var(--small); }
+  .intro .meta { display: flex; gap: var(--s2); }
+  .intro h1 { position: relative; margin-block: .35em; }
+  .intro h1::before { content: ''; position: absolute; left: -.45em; top: .54em; width: 2px; height: .36em; transform: skew(-12deg); background: var(--accent); }
   .intro p { margin: 0; color: var(--muted); }
-  .tags { margin-top: var(--s1); }
-  .rail { min-width: 0; font-size: var(--small); color: var(--muted); border-bottom: var(--rule); }
-  .rail summary { color: var(--ink); padding-block: var(--s1); }
-  .rail small { margin-inline-start: .3em; color: var(--muted); font-size: inherit; }
-  .rail nav { display: grid; align-content: start; max-height: min(42vh, 24rem); overflow-y: auto; overscroll-behavior: contain; padding: 3px; margin-bottom: var(--s2); }
-  .rail a { display: block; padding: .4em .6em; border-inline-start: 2px solid transparent; color: inherit; text-decoration: none; line-height: 1.55; }
+  .intro .tags { margin-top: var(--s1); }
+  .rail { min-width: 0; align-self: start; color: var(--muted); font-size: var(--small); }
+  .rail h2 { color: var(--ink); font-size: 1rem; }
+  .rail small { margin-inline-start: .4em; color: var(--muted); }
+  .rail nav { display: grid; max-height: min(40vh, 20rem); overflow: auto; overscroll-behavior: contain; padding: 4px; margin: .5rem 0 0 -4px; }
+  .rail a { position: relative; display: block; padding: .42em .65em; color: inherit; text-decoration: none; line-height: 1.55; }
   .rail a:hover { text-decoration: underline; color: var(--accent); }
-  .rail a[aria-current="page"] { color: var(--accent); border-color: var(--accent); background: var(--inset); }
-  .rail .sub { padding-inline-start: 1.5em; }
-  /* Pair the closed indexes above the text; an expanded index gets a full row. */
-  @media (max-width: 959px) {
-    .columns { max-width: var(--reading-measure); margin-inline: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s2); }
-    article, .rail[open], .rail:only-of-type { grid-column: 1 / -1; }
-  }
+  .rail a[aria-current] { color: var(--accent); }
+  .rail a[aria-current]::before { content: ''; position: absolute; left: 0; top: .78em; width: 2px; height: .7em; transform: skew(-12deg); background: currentColor; }
+  .library { margin-top: var(--page-gap); }
   @media (min-width: 960px) {
-    .columns { grid-template-columns: minmax(0, var(--reading-measure)) minmax(9rem, 12rem); column-gap: var(--s4); }
-    .library { grid-column: 1; }
-    article { grid-column: 1; grid-row: 2; }
-    .contents { grid-column: 2; grid-row: 2; --pinned: 1; position: sticky; top: var(--s2); }
-    .rail nav { max-height: calc(100dvh - 6rem); }
-    .library nav { max-height: min(42vh, 24rem); }
-    .intro { padding-top: 0; }
+    .columns { max-width: none; display: grid; grid-template-columns: minmax(0, var(--reading-measure)) minmax(9rem, 12rem); gap: var(--s4); justify-content: center; }
+    .columns article { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-content: start; }
+    .intro, .prose { grid-column: 1; }
+    .prose { grid-row: 2; }
+    .contents { grid-column: 2; grid-row: 1 / 3; position: sticky; top: var(--s4); }
+    .rail nav { max-height: calc(100dvh - 7rem); }
+    .library { grid-column: 1; margin-top: var(--s4); }
   }
   @media (min-width: 960px) and (max-width: 1179px) {
     .columns:not(:has(.contents)) { grid-template-columns: minmax(0, var(--reading-measure)); }
   }
   @media (min-width: 1180px) {
     .columns { grid-template-columns: minmax(0, 1fr) minmax(0, var(--reading-measure)) minmax(0, 1fr); }
-    .library { --pinned: 1; grid-column: 1; position: sticky; top: var(--s2); }
-    .library nav { max-height: calc(100dvh - 6rem); }
-    article { grid-column: 2; grid-row: 1; }
-    .contents { grid-column: 3; grid-row: 1; }
+    .columns article { grid-column: 2 / -1; grid-row: 1; }
+    .library { grid-column: 1; grid-row: 1; position: sticky; top: var(--s4); margin: 0; }
   }
 </style>
 <script>
-  const rails = document.querySelectorAll<HTMLDetailsElement>('.rail');
   const library = document.querySelector<HTMLElement>('#library')!;
   const key = 'qians.day:archive-scroll';
-  let saved = 0;
-  try { saved = Number(sessionStorage.getItem(key)) || 0; } catch { /* Optional storage. */ }
-  for (const rail of rails) {
-    let pinned: boolean | undefined;
-    function sync() {
-      const next = getComputedStyle(rail).getPropertyValue('--pinned').trim() === '1';
-      if (next !== pinned) rail.open = next;
-      pinned = next;
-    }
-    sync();
-    new ResizeObserver(sync).observe(document.documentElement);
-  }
-  function restore() {
-    if (library.clientHeight) library.scrollTop = saved;
-  }
-  library.closest('details')!.addEventListener('toggle', restore);
-  restore();
-  document.fonts.ready.then(restore);
-  library.addEventListener('scroll', () => {
-    if (library.clientHeight) saved = library.scrollTop;
-  });
+  let offset = 0;
+  try { offset = Number(sessionStorage.getItem(key)) || 0; } catch {}
+  library.scrollTop = offset;
+  document.fonts.ready.then(() => { library.scrollTop = offset; });
   window.addEventListener('pagehide', () => {
-    try { sessionStorage.setItem(key, String(library.clientHeight ? library.scrollTop : saved)); } catch { /* Optional storage. */ }
+    try { sessionStorage.setItem(key, String(library.scrollTop)); } catch {}
   });
 </script>

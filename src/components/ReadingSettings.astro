@@ -1,0 +1,95 @@
+<button id="settings-trigger" class="settings-trigger" popovertarget="reading-settings" aria-label="阅读设置" title="阅读设置" hidden>
+  <span class="book-icon" aria-hidden="true"></span><span><span class="settings-prefix">阅读</span>设置</span>
+</button>
+<div popover="auto" id="reading-settings" aria-label="阅读设置">
+  <fieldset>
+    <legend>文章视图</legend>
+    <button data-mode="list" aria-pressed="true"><i class="list-icon" aria-hidden="true"></i>列表</button>
+    <button data-mode="cards" aria-pressed="false"><i class="card-icon" aria-hidden="true"></i>图文卡片</button>
+  </fieldset>
+  <fieldset>
+    <legend>主题</legend>
+    <button data-theme-choice="system" aria-pressed="true">随系统</button>
+    <button data-theme-choice="light" aria-pressed="false">浅色</button>
+    <button data-theme-choice="dark" aria-pressed="false">深色</button>
+  </fieldset>
+</div>
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>('#settings-trigger')!;
+  const panel = document.querySelector<HTMLElement>('#reading-settings')!;
+  const root = document.documentElement;
+  const viewKey = 'qians.day:post-view';
+  const themeKey = 'qians.day:theme';
+
+  function view(choice: string | null) {
+    const mode = choice === 'cards' ? 'cards' : 'list';
+    for (const list of document.querySelectorAll<HTMLElement>('.posts')) {
+      if (mode === 'cards') {
+        for (const t of list.querySelectorAll('template')) t.replaceWith(t.content.cloneNode(true));
+      }
+      list.dataset.view = mode;
+    }
+    for (const b of panel.querySelectorAll<HTMLButtonElement>('[data-mode]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.mode === mode));
+    }
+  }
+
+  function theme(choice: string | null) {
+    const mode = choice === 'dark' || choice === 'light' ? choice : 'system';
+    root.dataset.theme = mode;
+    for (const b of panel.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeChoice === mode));
+    }
+  }
+
+  function restore() {
+    try {
+      view(localStorage.getItem(viewKey));
+      theme(localStorage.getItem(themeKey));
+    } catch { /* The page also works with in-memory preferences. */ }
+  }
+  panel.addEventListener('click', event => {
+    if (!(event.target instanceof Element)) return;
+    const b = event.target.closest('button');
+    if (!b) return;
+    const mode = b.dataset.mode || b.dataset.themeChoice;
+    if (!mode) return;
+    if (b.dataset.mode) view(mode);
+    else theme(mode);
+    try { localStorage.setItem(b.dataset.mode ? viewKey : themeKey, mode); } catch {}
+    panel.hidePopover();
+    trigger.focus({ preventScroll: true });
+  });
+  function positionPanel() {
+    panel.style.top = `${trigger.getBoundingClientRect().bottom + 6}px`;
+    panel.style.right = `${Math.max(12, document.documentElement.clientWidth - trigger.getBoundingClientRect().right)}px`;
+  }
+  panel.addEventListener('beforetoggle', positionPanel);
+  for (const event of ['scroll', 'resize']) {
+    window.addEventListener(event, () => { if (panel.matches(':popover-open')) positionPanel(); }, { passive: true });
+  }
+  restore();
+  window.addEventListener('pageshow', restore);
+  window.addEventListener('storage', restore);
+  trigger.hidden = false;
+</script>
+<style>
+  button { border: 0; background: transparent; }
+  .settings-trigger { display: inline-flex; gap: .55em; align-items: center; min-height: 44px; padding-inline: .5em; font-size: var(--small); }
+  .settings-trigger:hover { color: var(--accent); }
+  .book-icon { position: relative; width: 1.25em; height: .95em; }
+  .book-icon::before, .book-icon::after { content: ''; position: absolute; inset: 0 50% 0 0; border: 1.5px solid currentColor; border-radius: 1px 3px 0 1px; transform: skewY(9deg); }
+  .book-icon::after { inset: 0 0 0 50%; transform: skewY(-9deg); border-radius: 3px 1px 1px 0; }
+  #reading-settings { position: fixed; inset: auto; margin: 0; padding: 1.15rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--ink); max-width: calc(100vw - 24px); }
+  fieldset { border: 0; margin: 0; padding: 0; }
+  fieldset + fieldset { margin-top: .85rem; }
+  legend { font-size: var(--small); color: var(--muted); margin-bottom: .3rem; }
+  fieldset button { padding: .3rem .65rem; min-height: 40px; font-size: 1rem; border-radius: var(--radius); }
+  button[aria-pressed="true"] { background: var(--inset); color: var(--accent); }
+  i { display: inline-block; width: .8em; height: .72em; margin-right: .45em; position: relative; }
+  .list-icon { border-block: 1px solid currentColor; }
+  .list-icon::before { content: ''; position: absolute; left: 0; top: 45%; width: 70%; border-top: 1px solid currentColor; }
+  .card-icon { border: 1px solid currentColor; }
+  .card-icon::after { content: ''; position: absolute; inset: 60% 0 0; border-top: 1px solid currentColor; }
+  @media (max-width: 600px) { .settings-prefix { display: none; } }
+</style>

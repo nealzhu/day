@@ -3,12 +3,13 @@
 .prose > h2 { margin-block-start: var(--section-gap); }
 .prose > h3 { margin-block-start: var(--subsection-gap); }
 .prose > :is(h2,h3) + p { margin-block-start: 0.55em; }
-.prose > :is(figure,pre,blockquote,table), .prose > :is(figure,pre,blockquote,table) + p { margin-block-start: var(--block-gap); }
+.prose > :is(figure,pre,blockquote,.table-scroll), .prose > :is(figure,pre,blockquote,.table-scroll) + p { margin-block-start: var(--block-gap); }
 .prose blockquote { padding: 0.3em 1em; border-inline-start: 2px solid var(--accent); color: var(--muted); }
 .prose blockquote p { margin: 0; }
 .prose :is(pre,code) { font-family: var(--code-font); }
 .prose pre { max-width: 100%; overflow-x: auto; padding: 1em; font-size: 0.85em; line-height: 1.65; background: var(--inset); }
-.prose table { display: block; overflow-x: auto; border-collapse: collapse; font-size: 0.93em; }
+.prose .table-scroll { max-width: 100%; overflow-x: auto; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 0.93em; }
 .prose :is(th,td) { padding: 0.45em 0.75em; border-bottom: var(--rule); text-align: start; }
 .prose :is(th,td):first-child { min-width: 5.5em; }
 .prose th { font-weight: var(--regular); background: var(--inset); }
@@ -20,9 +21,11 @@
 .prose > :is(h2,h3) { scroll-margin-block-start: var(--s3); }
 .prose img { display: block; margin-inline: auto; }
 .prose pre { overflow-wrap: normal; border-radius: var(--radius); }
-.prose pre span { color: var(--shiki-light); }
-@media (prefers-color-scheme: dark) {
-  .prose pre span { color: var(--shiki-dark); }
-}
+.prose pre span { color: light-dark(var(--shiki-light, var(--ink)), var(--shiki-dark, var(--ink))); }
 .prose :not(pre) > code { background: var(--inset); padding: .1em .25em; font-size: .85em; }
 .prose td, .prose th { overflow-wrap: normal; }
+
+.prose :is(ul, ol) { padding-inline-start: 1.5em; }
+.prose li + li, .prose blockquote p + p { margin-block-start: .35em; }
+.prose :is(ul, ol) :is(ul, ol) { margin-block: .25em; }
+.prose hr { border: 0; width: 2em; height: 2px; background: var(--line); margin: var(--section-gap) auto; }

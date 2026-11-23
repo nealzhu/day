@@ -26,29 +26,23 @@
   --section-gap: calc(var(--reading-size) * 2.1);
   --subsection-gap: calc(var(--reading-size) * 1.55);
   --block-gap: calc(var(--reading-size) * 1.35);
-  --paper: #faf8f3;
-  --ink: #292923;
-  --muted: #615e53;
-  --accent: #82503c;
-  --line: #cfc9b9;
-  --inset: #f0ede5;
+  --paper: light-dark(#faf8f3, #20211e);
+  --ink: light-dark(#292923, #e8e3d7);
+  --muted: light-dark(#615e53, #b6b3a6);
+  --accent: light-dark(#82503c, #e2ac91);
+  --line: light-dark(#cfc9b9, #5e5e52);
+  --inset: light-dark(#f0ede5, #2b2d28);
+  --scroll-thumb: light-dark(#969082, #79796d);
   color-scheme: light;
 }
+:root[data-theme="dark"] { color-scheme: dark; }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #20211e;
-    --ink: #e8e3d7;
-    --muted: #b6b3a6;
-    --accent: #e2ac91;
-    --line: #5e5e52;
-    --inset: #2b2d28;
-    color-scheme: dark;
-  }
+  :root:not([data-theme="light"]) { color-scheme: dark; }
 }
 @media (max-width: 600px) {
   :root { --reading-size: 17px; --h1: 29px; --h2: 24px; --h3: 20px; }
 }
-* { box-sizing: border-box; }
+* { box-sizing: border-box; scrollbar-width: thin; scrollbar-color: var(--scroll-thumb) transparent; }
 body {
   margin: 0;
   min-height: 100svh;
@@ -78,18 +72,19 @@ img { max-width: 100%; height: auto; }
 .skip:focus { transform: none; }
 .mast, .colophon, .mast nav, .colophon nav { display: flex; flex-wrap: wrap; align-items: center; }
 .mast, .colophon { justify-content: space-between; gap: var(--s2); }
-.mast { border-bottom: var(--rule); padding-block: var(--s3); }
+.mast { padding-block: var(--s3); }
+.mast nav { margin-inline-start: auto; }
 .brand { font-size: var(--h2); letter-spacing: .08em; display: inline-flex; align-items: baseline; gap: .45em; }
-.brand span { color: var(--muted); font-size: var(--small); letter-spacing: .025em; }
 .mast nav, .colophon nav { gap: var(--s3); }
 .mast a, .colophon a { color: inherit; text-decoration: none; }
 .mast nav a { padding-block: var(--s1); }
 .mast nav a[aria-current], .mast a:hover, .colophon a:hover {
   color: var(--accent); text-decoration: underline; text-underline-offset: .4em;
 }
-.colophon { border-top: var(--rule); font-size: var(--small); color: var(--muted); padding-block: var(--s3); }
+.colophon { font-size: var(--small); color: var(--muted); padding-block: var(--s3); }
 .archive { max-width: var(--archive-measure); margin-inline: auto; }
-.archive-head { display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: space-between; align-items: baseline; margin-bottom: var(--s4); }
+.archive-head { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: baseline; margin-bottom: var(--s4); }
+.scope { color: var(--muted); font-size: var(--small); }
 .archive-head h1 { font-size: var(--display); }
 @media (max-width: 600px) {
   .mast { padding-block: var(--s2); }

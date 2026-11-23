@@ -1,0 +1,116 @@
+---
+import type { MarkdownHeading } from 'astro';
+interface Props { headings: MarkdownHeading[] }
+const { headings } = Astro.props;
+---
+<aside class="contents rail" aria-label="章节导航">
+  <div class="toc-head">
+    <h2>本文目录</h2>
+    <button class="toc-mode" type="button" aria-label="切换到迷你目录" hidden>迷你模式</button>
+  </div>
+  <nav aria-label="本文目录">
+    {headings.map(({ depth, slug, text }) => <a data-heading={slug} title={text} class:list={[{ sub: depth === 3 }]} href={`#${slug}`}>{text}</a>)}
+  </nav>
+  <button class="mini-progress" aria-label="显示完整目录" hidden>
+    <span class="track" aria-hidden="true"></span><span class="percent" aria-hidden="true"></span>
+  </button>
+</aside>
+<style>
+  .toc-head { display: flex; align-items: center; gap: .8rem; }
+  .contents button { border: 0; padding: .25rem .4rem; color: var(--muted); background: transparent; font-size: var(--small); }
+  .contents button:hover { color: var(--accent); }
+  .toc-mode { text-decoration: underline; text-underline-offset: .25em; }
+  .contents .sub { padding-inline-start: 1.55em; }
+  .contents[data-mini] :is(.toc-head, nav) { display: none; }
+  .mini-progress { display: inline-flex; align-items: center; gap: .6em; min-height: 5rem; min-width: 44px; }
+  .track { display: block; width: 3px; height: 4rem; background: var(--line); }
+  .track::after { content: ''; display: block; background: var(--accent); height: 100%; transform-origin: top; transform: scaleY(var(--read, 0)); }
+  .percent { font-variant-numeric: tabular-nums; }
+  @media (max-width: 959px) {
+    .contents { position: sticky; top: 0; z-index: 1; background: var(--paper); padding-block: .35rem; margin-bottom: var(--s3); }
+    .contents:not([data-mini]) nav { display: flex; overflow-x: auto; overflow-y: hidden; margin-block: 0; }
+    .contents nav a { flex: none; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .contents[data-mini] { padding: 0; }
+    .contents:not([data-mini]) ~ :global(.prose) :global(:is(h2,h3)) { scroll-margin-block-start: 6rem; }
+    .contents[data-mini] { width: var(--gutter); height: 0; position: sticky; top: 40vh; margin: 0 0 0 100%; z-index: 1; }
+    .contents .mini-progress { justify-content: center; min-width: 0; width: 100%; height: 5rem; padding: 0; }
+    .percent { display: none; }
+  }
+</style>
+<script>
+  const toc = document.querySelector<HTMLElement>('.contents');
+  if (toc) setup(toc);
+
+  function setup(toc: HTMLElement) {
+    const prose = document.querySelector<HTMLElement>('.prose')!;
+    const nav = toc.querySelector('nav')!;
+    const links = Array.from(nav.querySelectorAll('a'));
+    const headings = links.map(a => document.getElementById(a.dataset.heading!)!);
+    const compact = toc.querySelector<HTMLButtonElement>('.toc-mode')!;
+    const expand = toc.querySelector<HTMLButtonElement>('.mini-progress')!;
+    const percent = expand.querySelector('.percent')!;
+    const key = 'qians.day:mini-toc';
+    let active = -1;
+    let frame = 0;
+    function update() {
+      frame = 0;
+      const bounds = prose.getBoundingClientRect();
+      const guide = Math.min(120, innerHeight * .2);
+      const endVisible = bounds.bottom <= innerHeight;
+      const progress = endVisible ? 1 : Math.min(1, Math.max(0, (guide - bounds.top) / Math.max(1, bounds.height - innerHeight + guide)));
+      let current = -1;
+      for (let i = 0; i < headings.length; i++) {
+        if (headings[i].getBoundingClientRect().top > guide) break;
+        current = i;
+      }
+      if (endVisible && bounds.top < guide) current = links.length - 1;
+      if (current !== active) {
+        links[active]?.removeAttribute('aria-current');
+        const link = links[current];
+        if (link) {
+          link.setAttribute('aria-current', 'location');
+          if (nav.clientHeight) {
+            const box = link.getBoundingClientRect();
+            const area = nav.getBoundingClientRect();
+            if (box.top < area.top) nav.scrollTop += box.top - area.top;
+            if (box.bottom > area.bottom) nav.scrollTop += box.bottom - area.bottom;
+            if (box.left < area.left) nav.scrollLeft += box.left - area.left;
+            if (box.right > area.right) nav.scrollLeft += box.right - area.right;
+          }
+        }
+        active = current;
+      }
+      const label = `已读 ${Math.round(progress * 100)}%${links[active] ? ' · ' + links[active].textContent : ''}，显示完整目录`;
+      expand.setAttribute('aria-label', label);
+      expand.title = label;
+      percent.textContent = `${Math.round(progress * 100)}%`;
+      toc.style.setProperty('--read', String(progress));
+    }
+    function schedule() { if (!frame) frame = requestAnimationFrame(update); }
+    function setMini(mini: boolean) {
+      // The active link may have changed while its scroll container was hidden.
+      links[active]?.removeAttribute('aria-current');
+      active = -1;
+      toc.toggleAttribute('data-mini', mini);
+      compact.hidden = mini;
+      expand.hidden = !mini;
+      schedule();
+    }
+    function choose(mini: boolean) {
+      setMini(mini);
+      try { localStorage.setItem(key, String(mini)); } catch {}
+      (mini ? expand : compact).focus({ preventScroll: true });
+      if (!mini && toc.getBoundingClientRect().bottom < 0) toc.scrollIntoView({ block: 'start' });
+    }
+    compact.addEventListener('click', () => choose(true));
+    expand.addEventListener('click', () => choose(false));
+    let mini = false;
+    try { mini = localStorage.getItem(key) === 'true'; } catch {}
+    setMini(mini);
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    window.addEventListener('pageshow', schedule);
+    new ResizeObserver(schedule).observe(prose);
+    document.fonts.ready.then(schedule);
+  }
+</script>

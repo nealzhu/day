@@ -8,7 +8,7 @@
 
 字标只保留「骞言碎语」。页首基线标出站点导航的结束位置。跨年时用浅线分组，同一年内，文本列表在发布日期变化时沿篇目列画线，同日文章靠留白分开。页脚列出当年版权、站名、作者的 GitHub 个人主页、分类索引与 RSS。
 
-文章标题在列表、卡片和详情页均自然换行。详情页先列日期与可选分类，再排题名，直接落在页面纸色上，与正文左边缘对齐。摘要紧随题名，以次级墨色排成一句导语，字号略大于正文，桌面行宽最多 32em。标签用 15px 强调色小字另排一行，词间留白，空间不足时逐项换行。篇首末尾的一道细线标出正文阅读区的起点。
+文章标题在列表、卡片和详情页均自然换行。详情页以一行小字排出日期、可选分类和标签。有标签时，用一个线描标签图标引出整组词，字号和墨色与日期一致。题名在下一行，与正文左边缘对齐。篇首末尾的一道细线标出正文阅读区的起点。摘要用于篇目列表、图文卡片、RSS 和网页元描述，进入文章后由作者的首段开篇。
 
 两侧导航用文字颜色与下划线提示当前项。完整目录跟踪 H2/H3，迷你模式显示正文进度，点刻度回到完整目录时会把当前章节移入视野。短表格填满正文宽度，超宽表格保留列宽，在可键盘聚焦的容器里横向浏览。表格、代码、目录和页面滚动条均采用细滑块与透明轨道。
 
@@ -19,7 +19,7 @@
 | 首页篇目 | [正式内容 · 1440 浅色](screenshots/published-1440-light.png) · [含样稿 · 1440 浅色](screenshots/list-1440-light.png) | [390 浅色](screenshots/list-390-light.png) |
 | 首图与默认占位图 | [1440 浅色](screenshots/cards-1440-light.png) · [1024 深色](screenshots/cards-1024-dark.png) | [375 深色](screenshots/cards-375-dark.png) |
 | 技术长标题与目录 | [1440 三栏](screenshots/tech-1440-light.png) · [1024 双栏](screenshots/tech-1024-light.png) · [768 单栏](screenshots/tech-768-dark.png) | [390 首屏](screenshots/tech-390-light.png) · [375 代码与表格](screenshots/tech-375-dark.png) |
-| 正式文章的摘要与标签 | [1440 浅色](screenshots/intro-1440-light.png) | [390 深色](screenshots/intro-390-dark.png) |
+| 正式文章的日期、分类与标签 | [1440 浅色](screenshots/intro-1440-light.png) | [390 深色](screenshots/intro-390-dark.png) |
 | 章节定位 | [1440 当前章节与全宽表格](screenshots/chapter-1440-light.png) · [页边进度](screenshots/mini-1440-light.png) | [390 横向目录](screenshots/chapter-390-light.png) · [迷你刻度](screenshots/mini-390-light.png) |
 | 连续阅读与图注 | [长篇随笔 · 1440 深色](screenshots/essay-1440-dark.png) | [生活图文 · 390 深色](screenshots/life-390-dark.png) |
 
@@ -75,4 +75,4 @@ design-taste-frontend 的候选中选用了 The split stage（seed 2000682799）
 
 同一组五篇文章覆盖三个发布日期。首页有一条页首基线，篇目列有两处日期分隔。1440px 下第一篇标题距视口顶部从约 326px 提前至 191px，390px 下从约 281px 提前至 195px。两次测量使用相同的文楷、样稿和列表视图。
 
-375px 技术稿的题名自然排成两行，390px 正式文章的摘要续行与首行文字对齐。两者的标题与正文起笔都距左侧 20px。横向目录及页边刻度的触感仍可在 iOS Safari 和 Android 实机复核。
+375px 技术稿的题名自然排成两行，390px 正式文章的日期、分类和两个标签在同一行。两者的标题与正文起笔都距左侧 20px。横向目录及页边刻度的触感仍可在 iOS Safari 和 Android 实机复核。

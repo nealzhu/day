@@ -24,14 +24,19 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
         <div class="meta">
           <time datetime={publishedAt}>{publishedAt}</time>
           {category && <a href={categoryPath(category)}>{categories[category]}</a>}
+          {tags.length > 0 && (
+            <div class="tag-group">
+              <svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.2">
+                <path stroke-linejoin="round" d="M2 2h6l6 6-6 6-6-6z" />
+                <circle cx="5.4" cy="5.4" r="1" />
+              </svg>
+              <ul class="post-tags" role="list" aria-label="文章标签">
+                {tags.map(tag => <li>{tag}</li>)}
+              </ul>
+            </div>
+          )}
         </div>
         <h1>{title}</h1>
-        <p class="standfirst"><span class="visually-hidden">摘要：</span>{description}</p>
-        {tags.length > 0 && (
-          <ul class="post-tags" role="list" aria-label="文章标签">
-            {tags.map(tag => <li>{tag}</li>)}
-          </ul>
-        )}
       </header>
       {toc.length > 0 && <ArticleContents headings={toc} />}
       <div class="prose"><Content /></div>
@@ -48,25 +53,17 @@ const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 
   .columns { max-width: var(--reading-measure); margin-inline: auto; }
   .columns article, .prose { min-width: 0; }
   .intro { margin-block-end: var(--s3); padding-block-end: var(--s3); border-bottom: var(--group-rule); }
-  .intro .meta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); font-size: var(--small); color: var(--muted); }
-  .intro h1 { margin-block: var(--s1) var(--s2); }
-  .standfirst {
-    margin: 0;
-    max-inline-size: 32em;
-    color: var(--muted);
-    font-size: 1.08em;
-    line-height: 1.7;
-  }
+  .intro .meta { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 var(--s2); font-size: var(--small); color: var(--muted); }
+  .intro h1 { margin-block-start: var(--s1); }
+  .tag-group { display: flex; align-items: flex-start; gap: .35em; max-inline-size: 100%; }
+  .tag-group svg { flex: none; height: 1lh; }
   .post-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: .25em var(--s2);
-    margin: var(--s2) 0 0;
+    gap: 0 var(--s1);
+    margin: 0;
     padding: 0;
     list-style: none;
-    font-size: var(--small);
-    line-height: 1.5;
-    color: var(--accent);
   }
   .post-tags li { max-inline-size: 100%; }
   .rail { min-width: 0; align-self: start; color: var(--muted); font-size: var(--small); }

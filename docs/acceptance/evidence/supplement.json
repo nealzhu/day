@@ -1,0 +1,201 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "codeFonts": [
+    {
+      "familyName": "Menlo",
+      "postScriptName": "Menlo-Regular",
+      "isCustomFont": false,
+      "glyphCount": 131
+    }
+  ],
+  "coldList": {
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          200,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    },
+    "state": {
+      "url": "/",
+      "viewport": [
+        390,
+        844
+      ],
+      "clientWidth": 390,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 538300,
+      "fontTransferBytes": 543700,
+      "domLoadedMs": 45,
+      "loadMs": 74,
+      "sampleUntilMs": 211,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    }
+  },
+  "notFound": {
+    "title": "页面未找到 · 骞言碎语",
+    "h1": "404 · 页面未找到",
+    "status": 404
+  }
+}

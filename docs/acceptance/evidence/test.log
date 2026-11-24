@@ -1,0 +1,32 @@
+
+> qians-day@0.1.0 test /private/tmp/qians-accept-WMeMC5/repo
+> node --test tests/*.test.mjs
+
+✔ duplicate ID (7.981208ms)
+✔ duplicate slug (2.164375ms)
+✔ ID differs from folder (1.966625ms)
+✔ unknown category (1.93ms)
+✔ invalid publication state (2.021542ms)
+✔ invalid date (1.449ms)
+✔ empty description (1.309875ms)
+✔ missing referenced WebP identifies the article and filename (2.016958ms)
+✔ category may be omitted (1.112291ms)
+▶ production build and browser behaviour
+  ✔ drafts and WebPs are absent from the entire output (6.606917ms)
+  ✔ routes, CDN cover, headings, canonical, RSS and sitemap (1.378209ms)
+  ▶ list, cards, restored preference and mobile navigation
+    ✔ hover and keyboard allow consecutive changes in the reading settings (575.295458ms)
+    ✔ the full outline can be scrolled to its last link without scrolling the article (526.184792ms)
+    ✔ deep closing headings keep distinct destinations at the bottom of the page (616.6165ms)
+    ✔ a saved mini outline previews then follows a chapter on touch (676.538834ms)
+  ✔ list, cards, restored preference and mobile navigation (6561.439875ms)
+✔ production build and browser behaviour (7747.720541ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8189.2795
+exit=0

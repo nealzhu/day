@@ -14,6 +14,8 @@ export async function getStaticPaths() {
 const { label, posts } = Astro.props;
 ---
 <Site title={`${label}分类`} description={`qians.day「${label}」分类下的已发布文章。`}>
-  <h1>{label}</h1>
-  <PostList posts={posts} />
+  <div class="archive">
+    <h1 class="visually-hidden">{label}分类的文章</h1>
+    <PostList posts={posts} />
+  </div>
 </Site>

@@ -10,28 +10,34 @@ concurrency:
   cancel-in-progress: false
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/main' && vars.R2_BUCKET != ''
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v5
         with:
           run_install: false
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: '24'
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm run verify:media
-      - name: Sync immutable assets to R2
+      - name: Check production bucket
+        run: test "$R2_BUCKET" = website
+        env:
+          R2_BUCKET: ${{ vars.R2_BUCKET }}
+      - name: Sync missing media and versioned fonts to R2
         run: pnpm run sync:media
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET: ${{ vars.R2_BUCKET }}
+      - name: Verify every CDN font asset with the production Origin
+        run: pnpm run verify:cdn-fonts
       - run: pnpm run build
         env:
           MEDIA_BASE_URL: https://site-cdn.qians.day

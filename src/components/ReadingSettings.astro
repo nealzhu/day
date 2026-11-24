@@ -1,0 +1,165 @@
+---
+import SiteIcon from './SiteIcon.astro';
+---
+<button id="settings-trigger" class="settings-trigger" popovertarget="reading-settings" aria-label="阅读设置" hidden>
+  <span class="settings-face"><SiteIcon name="book" size={22} /></span>
+</button>
+<div popover="auto" id="reading-settings" aria-label="阅读设置">
+  <fieldset>
+    <legend>文章视图</legend>
+    <button data-mode="cards" aria-pressed="true"><SiteIcon name="cards" />图文卡片</button>
+    <button data-mode="list" aria-pressed="false"><SiteIcon name="list" />列表</button>
+  </fieldset>
+  <fieldset>
+    <legend>主题</legend>
+    <button data-theme-choice="system" aria-pressed="true">随系统</button>
+    <button data-theme-choice="light" aria-pressed="false">浅色</button>
+    <button data-theme-choice="dark" aria-pressed="false">深色</button>
+  </fieldset>
+  <fieldset>
+    <legend>文章大纲</legend>
+    <button data-outline="full" aria-pressed="true">完整</button>
+    <button data-outline="mini" aria-pressed="false">迷你</button>
+  </fieldset>
+</div>
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>('#settings-trigger')!;
+  const panel = document.querySelector<HTMLElement>('#reading-settings')!;
+  const root = document.documentElement;
+  const viewKey = 'qians.day:post-view';
+  const themeKey = 'qians.day:theme';
+  const outlineKey = 'qians.day:mini-toc';
+
+  function view(choice: string | null, fromSettings = false) {
+    const mode = choice === 'list' ? 'list' : 'cards';
+    if (root.dataset.view !== mode) {
+      root.toggleAttribute('data-reveal-covers', fromSettings && mode === 'cards');
+      root.dataset.view = mode;
+    }
+    for (const b of panel.querySelectorAll<HTMLButtonElement>('[data-mode]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.mode === mode));
+    }
+  }
+
+  function theme(choice: string | null) {
+    const mode = choice === 'dark' || choice === 'light' ? choice : 'system';
+    root.dataset.theme = mode;
+    for (const b of panel.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeChoice === mode));
+    }
+  }
+
+  function restore() {
+    try {
+      view(localStorage.getItem(viewKey));
+      theme(localStorage.getItem(themeKey));
+      outline(localStorage.getItem(outlineKey) === 'true');
+    } catch { /* The page also works with in-memory preferences. */ }
+  }
+  function outline(mini: boolean) {
+    root.toggleAttribute('data-mini-toc', mini);
+    for (const b of panel.querySelectorAll<HTMLButtonElement>('[data-outline]')) {
+      b.setAttribute('aria-pressed', String(b.dataset.outline === (mini ? 'mini' : 'full')));
+    }
+  }
+  panel.addEventListener('click', event => {
+    if (!(event.target instanceof Element)) return;
+    const b = event.target.closest('button');
+    if (!b) return;
+    let key: string, value: string;
+    if (b.dataset.mode) {
+      key = viewKey;
+      value = b.dataset.mode;
+      view(value, true);
+    } else if (b.dataset.themeChoice) {
+      key = themeKey;
+      value = b.dataset.themeChoice;
+      theme(value);
+    } else if (b.dataset.outline) {
+      key = outlineKey;
+      const mini = b.dataset.outline === 'mini';
+      value = String(mini);
+      outline(mini);
+    } else return;
+    try { localStorage.setItem(key, value); } catch {}
+  });
+  // Allow the pointer to cross the gap between the trigger and the floating panel.
+  let closeTimer = 0;
+  for (const area of [trigger, panel]) {
+    area.addEventListener('pointerenter', event => {
+      if (event.pointerType !== 'mouse') return;
+      clearTimeout(closeTimer);
+      if (area === trigger) panel.showPopover();
+    });
+    area.addEventListener('pointerleave', event => {
+      if (event.pointerType !== 'mouse') return;
+      closeTimer = window.setTimeout(() => {
+        if (!panel.querySelector(':focus-visible') && !trigger.matches(':focus-visible')) panel.hidePopover();
+      }, 180);
+    });
+  }
+  trigger.addEventListener('click', event => {
+    // A mouse click follows pointerenter. Touch and keyboard use the native toggle.
+    if (event.pointerType === 'mouse' && panel.matches(':popover-open')) event.preventDefault();
+  });
+  panel.addEventListener('focusout', event => {
+    const next = event.relatedTarget;
+    if (next instanceof Element && next !== trigger && !panel.contains(next)) panel.hidePopover();
+  });
+  function positionPanel() {
+    const anchor = trigger.getBoundingClientRect();
+    panel.style.top = `${anchor.bottom}px`;
+    panel.style.right = `${Math.max(12, root.clientWidth - anchor.right)}px`;
+  }
+  panel.addEventListener('beforetoggle', positionPanel);
+  for (const event of ['scroll', 'resize']) {
+    window.addEventListener(event, () => { if (panel.matches(':popover-open')) positionPanel(); }, { passive: true });
+  }
+  restore();
+  window.addEventListener('pageshow', restore);
+  window.addEventListener('storage', restore);
+  trigger.hidden = false;
+</script>
+<style>
+  button { border: 0; background: transparent; }
+  .settings-trigger, #reading-settings { --settings-gap: 6px; }
+  .settings-trigger { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: calc(2 * var(--radius)); }
+  .settings-face {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: var(--rule);
+    border-radius: inherit;
+    color: var(--muted);
+    /* Match the optical centre of the WenKai navigation text. */
+    transform: translateY(-.5px);
+  }
+  .settings-trigger:is(:hover, :focus-visible, :has(+ :popover-open)) .settings-face {
+    color: var(--accent);
+    border-color: color-mix(in srgb, currentColor 55%, var(--line));
+    background: var(--inset);
+  }
+  .settings-trigger:has(+ :popover-open)::after { content: ''; position: absolute; inset: 100% 0 auto; height: var(--settings-gap); }
+  #reading-settings { position: fixed; inset: auto; margin: var(--settings-gap) 0 0; padding: 1.15rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--ink); max-width: calc(100vw - 24px); }
+  fieldset { border: 0; margin: 0; padding: 0; }
+  fieldset + fieldset { margin-top: .85rem; }
+  legend { font-size: var(--small); color: var(--muted); margin-bottom: .3rem; }
+  fieldset button { padding: .3rem .65rem; min-height: 40px; font-size: 1rem; border-radius: var(--radius); }
+  button[data-mode] { display: inline-flex; align-items: center; gap: .4em; vertical-align: middle; }
+  button[aria-pressed="true"] { background: var(--inset); color: var(--accent); }
+  @media (prefers-reduced-motion: no-preference) {
+    .settings-face { transition: color var(--motion-ink), border-color var(--motion-ink), background-color var(--motion-ink); }
+    #reading-settings {
+      opacity: 0;
+      transform: translateY(-3px);
+      pointer-events: none;
+      transition: opacity var(--motion-ink) ease-out, transform var(--motion-ink) var(--ease-settle),
+        display var(--motion-ink) allow-discrete, overlay var(--motion-ink) allow-discrete;
+    }
+    #reading-settings:popover-open { opacity: 1; transform: none; pointer-events: auto; transition-duration: var(--motion-settle); }
+    @starting-style {
+      #reading-settings:popover-open { opacity: 0; transform: translateY(-3px); }
+    }
+  }
+</style>

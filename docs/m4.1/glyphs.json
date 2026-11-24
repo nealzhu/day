@@ -1,0 +1,20 @@
+{
+  "tech": {
+    "nodes": 33,
+    "fonts": {
+      "LXGWWenKai-Regular/true": 1771
+    }
+  },
+  "essay": {
+    "nodes": 14,
+    "fonts": {
+      "LXGWWenKai-Regular/true": 1819
+    }
+  },
+  "life": {
+    "nodes": 6,
+    "fonts": {
+      "LXGWWenKai-Regular/true": 233
+    }
+  }
+}

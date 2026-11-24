@@ -5,10 +5,16 @@ import { categoryPath, publishedPosts } from '../../lib/posts';
 const posts = await publishedPosts();
 ---
 <Site title="文章分类" description="浏览 qians.day 的文章分类及各分类的已发布文章数量。">
-  <h1>文章分类</h1>
-  <ul>
-    {categoryKeys.map(key => (
-      <li><a href={categoryPath(key)}>{categories[key]}</a> · {posts.filter(post => post.data.category === key).length} 篇</li>
-    ))}
-  </ul>
+  <div class="archive">
+    <header class="archive-head"><h1>分类索引</h1></header>
+    <ul>
+      {categoryKeys.map(key => (
+        <li><a href={categoryPath(key)}>{categories[key]}</a> · {posts.filter(post => post.data.category === key).length} 篇</li>
+      ))}
+    </ul>
+  </div>
 </Site>
+<style>
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { padding-block: var(--s2); color: var(--muted); }
+</style>

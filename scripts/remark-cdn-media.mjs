@@ -1,3 +1,6 @@
+import { readFile } from 'node:fs/promises';
+import { dirname, join } from 'node:path';
+import { imageMetadata } from 'astro/assets/utils';
 import { visit } from 'unist-util-visit';
 
 export const mediaBase = (process.env.MEDIA_BASE_URL ?? 'https://site-cdn.qians.day').replace(/\/$/, '');
@@ -13,7 +16,7 @@ export function rewriteImages(tree, articleId, source, base = mediaBase) {
     if (!definitions.has(node.identifier)) definitions.set(node.identifier, node);
   });
 
-  const filenames = [];
+  const images = [];
   let cover = null;
   visit(tree, ['image', 'imageReference'], (node, index, parent) => {
     const image = node.type === 'image' ? node : definitions.get(node.identifier);
@@ -24,18 +27,24 @@ export function rewriteImages(tree, articleId, source, base = mediaBase) {
     }
     const url = `${base}/${mediaKey(articleId, encodeURIComponent(filename))}`;
     cover ??= { src: url, alt: node.alt ?? '' };
-    filenames.push(filename);
-    parent.children[index] = { type: 'image', url, alt: node.alt, title: image.title, position: node.position };
+    const rewritten = { type: 'image', url, alt: node.alt, title: image.title, position: node.position };
+    parent.children[index] = rewritten;
+    images.push({ filename, node: rewritten });
   });
-  return { cover, filenames };
+  return { cover, images };
 }
 
 export function remarkCdnMedia({ base = mediaBase } = {}) {
-  return (tree, file) => {
+  return async (tree, file) => {
     const source = (file.path ?? '').replaceAll('\\', '/');
     const id = source.match(/(?:^|\/)src\/content\/posts\/([^/]+)\/index\.md$/)?.[1];
     if (!id) return;
-    const { cover } = rewriteImages(tree, id, source, base);
+    const { cover, images } = rewriteImages(tree, id, source, base);
+    for (const { filename, node } of images) {
+      const path = join(dirname(source), 'assets', filename);
+      const { width, height } = await imageMetadata(await readFile(path), path);
+      node.data = { hProperties: { width, height } };
+    }
     file.data.astro.frontmatter.firstImage = cover;
   };
 }

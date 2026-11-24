@@ -1,0 +1,14 @@
+
+> qians-day@0.1.0 check /Users/neal/code/creative/blog/day
+> astro check
+
+00:02:40 [content] Syncing content
+00:02:40 [content] Synced content
+00:02:40 [types] Generated 169ms
+00:02:40 [check] Getting diagnostics for Astro files in /Users/neal/code/creative/blog/day...
+Result (38 files):
+- 0 errors
+- 0 warnings
+- 0 hints
+
+exit=0

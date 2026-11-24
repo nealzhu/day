@@ -14,7 +14,7 @@ export const articleSchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, 'Use a lowercase, hyphen-separated slug'),
   description: text,
   publishedAt: z.union([z.string().date(), z.date().transform(date => date.toISOString().slice(0, 10))]),
-  category: z.enum(categoryKeys),
+  category: z.enum(categoryKeys).optional(),
   tags: z.array(text).default([]),
   status: z.enum(['draft', 'published']).default('draft'),
 }).strict();

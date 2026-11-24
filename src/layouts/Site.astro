@@ -1,58 +1,56 @@
 ---
+import '../styles/site.css';
+import { fontCdn, fontDirectory, fontPrefix } from '../../scripts/font-assets.mjs';
+import ReadingSettings from '../components/ReadingSettings.astro';
+import SiteIcon from '../components/SiteIcon.astro';
 import { categories, categoryKeys } from '../lib/content-model';
 import { categoryPath } from '../lib/posts';
 
 interface Props { title: string; description: string; noindex?: boolean }
 const { title, description, noindex } = Astro.props;
 const pathname = Astro.url.pathname;
+const fontBase = import.meta.env.MODE === 'preview' ? '' : fontCdn;
+const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontBase}/${fontPrefix}/faces.css`;
 ---
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-view="cards">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} · qians.day</title>
+    <script is:inline>
+      try {
+        if (localStorage.getItem('qians.day:post-view') === 'list') document.documentElement.dataset.view = 'list';
+        const theme = localStorage.getItem('qians.day:theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+        if (localStorage.getItem('qians.day:mini-toc') === 'true') document.documentElement.setAttribute('data-mini-toc', '');
+      } catch {}
+    </script>
+    <title>{title} · 骞言碎语</title>
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={new URL(pathname, Astro.site)} />}
-    <link rel="alternate" type="application/rss+xml" title="qians.day" href="/rss.xml" />
+    <link rel="alternate" type="application/rss+xml" title="骞言碎语" href="/rss.xml" />
+    <link rel="stylesheet" crossorigin="anonymous" href={fontStyle} />
   </head>
   <body>
     <a class="skip" href="#main">跳到正文</a>
-    <header class="mast">
-      <a class="brand" href="/">qians.day</a>
-      <nav aria-label="网站导航">
-        <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>首页</a>
-        <a href="/categories/" aria-current={pathname === '/categories/' ? 'page' : undefined}>分类</a>
-        {categoryKeys.map(key => {
-          const path = categoryPath(key);
-          return <a href={path} aria-current={pathname === path ? 'page' : undefined}>{categories[key]}</a>;
-        })}
+    <header class="mast shell">
+      <a class="brand" href="/">骞言碎语</a>
+      <nav aria-label="文章分类">
+        <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>全部</a>
+        {categoryKeys.map(key => <a href={categoryPath(key)} aria-current={pathname === categoryPath(key) ? 'page' : undefined}>{categories[key]}</a>)}
       </nav>
+      <ReadingSettings />
     </header>
-    <main id="main"><slot /></main>
-    <footer><a href="/rss.xml">RSS 订阅</a></footer>
+    <main id="main" class="shell"><slot /></main>
+    <footer class="shell colophon">
+      <span>© {new Date().getUTCFullYear()} 骞言碎语</span>
+      <nav aria-label="页脚导航">
+        <a href="/categories/" aria-label="分类索引" title="分类索引"><SiteIcon name="categories" size={21} /></a>
+        <a href="https://github.com/nealzhu" aria-label="GitHub 个人主页" title="GitHub 个人主页"><SiteIcon name="github" /></a>
+        <a href="/rss.xml" aria-label="RSS 订阅" title="RSS 订阅"><SiteIcon name="rss" size={21} /></a>
+      </nav>
+    </footer>
   </body>
 </html>
-
-<style is:global>
-  * { box-sizing: border-box; }
-  body { max-width: 66rem; margin: auto; padding: 0 clamp(1rem, 5vw, 3rem); color: #242a27; background: #fafaf8; font: 1rem/1.65 system-ui, sans-serif; overflow-wrap: anywhere; }
-  a { color: #245944; text-underline-offset: .2em; }
-  :focus-visible { outline: 2px solid #246d50; outline-offset: 3px; }
-  .skip { position: absolute; top: -4em; background: white; }
-  .skip:focus { top: .5em; }
-  .mast, .mast nav, .section-head { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.2rem; }
-  .mast, .section-head { justify-content: space-between; }
-  .mast { min-height: 4.5rem; padding: 1rem 0; border-bottom: 1px solid #cdd4cd; }
-  .brand { font-size: 1.4rem; font-weight: 700; color: inherit; text-decoration: none; }
-  [aria-current="page"] { font-weight: 700; }
-  main { padding: clamp(2rem, 6vw, 4rem) 0; min-height: 55vh; }
-  h1, h2, h3 { line-height: 1.35; }
-  h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); margin: 0 0 1.1rem; }
-  .section-head h1 { margin: 0; }
-  .quiet, time { color: #545e57; }
-  footer { border-top: 1px solid #cdd4cd; padding: 1rem 0 2rem; }
-  img { max-width: 100%; height: auto; }
-  pre { overflow-x: auto; padding: 1rem; }
-  [hidden] { display: none !important; }
-</style>

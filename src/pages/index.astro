@@ -5,43 +5,8 @@ import { publishedPosts } from '../lib/posts';
 const posts = await publishedPosts();
 ---
 <Site title="文章" description="按发布日期浏览 qians.day 的文章，或从分类查找感兴趣的内容。">
-  <div class="section-head">
-    <h1>文章</h1>
-    <div id="views" role="group" aria-label="文章显示方式" hidden>
-      <button data-mode="list" aria-pressed="true">列表</button>
-      <button data-mode="cards" aria-pressed="false">图文卡片</button>
-    </div>
+  <div class="archive">
+    <h1 class="visually-hidden">全部文章</h1>
+    <PostList posts={posts} />
   </div>
-  <PostList posts={posts} switchable />
 </Site>
-<script>
-  const key = 'qians.day:post-view';
-  const controls = document.querySelector<HTMLElement>('#views')!;
-  const list = document.querySelector<HTMLElement>('.posts')!;
-  const buttons = controls.querySelectorAll<HTMLButtonElement>('button');
-
-  function show(mode: string | null) {
-    const view = mode === 'cards' ? 'cards' : 'list';
-    if (view === 'cards') {
-      for (const template of list.querySelectorAll('template')) {
-        template.replaceWith(template.content.cloneNode(true));
-      }
-    }
-    list.dataset.view = view;
-    for (const button of buttons) button.setAttribute('aria-pressed', String(button.dataset.mode === view));
-  }
-
-  try { show(localStorage.getItem(key)); } catch { show('list'); }
-  for (const button of buttons) {
-    button.addEventListener('click', () => {
-      const mode = button.dataset.mode!;
-      show(mode);
-      try { localStorage.setItem(key, mode); } catch { /* Storage is optional. */ }
-    });
-  }
-  controls.hidden = false;
-</script>
-<style>
-  button { font: inherit; cursor: pointer; padding: .35rem .8rem; border: 1px solid #bbc5bc; border-radius: .2rem; color: #304a3d; background: transparent; }
-  button[aria-pressed="true"] { background: #304a3d; color: white; }
-</style>

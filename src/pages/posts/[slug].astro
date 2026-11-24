@@ -1,47 +1,120 @@
 ---
 import { render } from 'astro:content';
+import ArticleContents from '../../components/ArticleContents.astro';
+import SiteIcon from '../../components/SiteIcon.astro';
 import Site from '../../layouts/Site.astro';
 import { categories } from '../../lib/content-model';
-import { categoryPath, publishedPosts } from '../../lib/posts';
+import { categoryPath, postPath, publishedPosts } from '../../lib/posts';
+import '../../styles/prose.css';
 
 export async function getStaticPaths() {
-  return (await publishedPosts()).map(post => ({ params: { slug: post.data.slug }, props: { post } }));
+  const posts = await publishedPosts();
+  const archive = posts.map(({ data }) => ({ title: data.title, slug: data.slug }));
+  return posts.map(post => ({ params: { slug: post.data.slug }, props: { post, archive } }));
 }
 
-const { post } = Astro.props;
+const { post, archive } = Astro.props;
 const { title, description, publishedAt, category, tags } = post.data;
 const { Content, headings } = await render(post);
-const toc = headings.filter(heading => heading.depth === 2 || heading.depth === 3);
+const toc = headings.filter(heading => heading.depth >= 2);
 ---
 <Site title={title} description={description}>
   <div class="columns">
     <article>
-      <header>
+      <header class="intro">
+        <div class="meta">
+          <time datetime={publishedAt}>{publishedAt}</time>
+          {category && <a href={categoryPath(category)}>{categories[category]}</a>}
+          {tags.length > 0 && (
+            <div class="tag-group">
+              <SiteIcon name="tag" size={16} />
+              <ul class="post-tags" role="list" aria-label="文章标签">
+                {tags.map(tag => <li>{tag}</li>)}
+              </ul>
+            </div>
+          )}
+        </div>
         <h1>{title}</h1>
-        <time datetime={publishedAt}>{publishedAt}</time>
-        <p>{description}</p>
       </header>
-      <Content />
+      {toc.length > 0 && <ArticleContents headings={toc} />}
+      <div class="prose"><Content /></div>
     </article>
-    <aside aria-label="文章信息">
-      <a href={categoryPath(category)}>{categories[category]}</a>
-      {tags.length > 0 && <p class="quiet">{tags.join(' · ')}</p>}
-      {toc.length > 0 && <nav aria-label="文章目录">
-        <h2>文章目录</h2>
-        <ul>
-          {toc.map(({ depth, slug, text }) => <li class:list={[{ sub: depth === 3 }]}><a href={`#${slug}`}>{text}</a></li>)}
-        </ul>
-      </nav>}
+    <aside class="rail library">
+      <h2>全部文章 <small>{archive.length}</small></h2>
+      <nav aria-label="全部已发布文章" id="library">
+        {archive.map(entry => <a href={postPath(entry.slug)} aria-current={entry.slug === post.data.slug ? 'page' : undefined}>{entry.title}</a>)}
+      </nav>
     </aside>
   </div>
 </Site>
-<style>
-  .columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(10rem, 14rem); gap: clamp(2rem, 5vw, 4rem); }
-  article header { padding-bottom: .6rem; border-bottom: 1px solid #d5dad4; }
-  aside { align-self: start; border-left: 1px solid #cdd4cd; padding-left: 1rem; }
-  aside h2 { font-size: 1.1rem; }
-  aside ul { list-style: none; padding: 0; }
-  aside li { margin: .35rem 0; }
-  .sub { padding-left: 1rem; }
-  @media(max-width: 42rem) { .columns { grid-template-columns: minmax(0, 1fr); } }
+<style is:global>
+  .columns { max-width: var(--reading-measure); margin-inline: auto; }
+  .columns article, .prose { min-width: 0; }
+  .intro { margin-block-end: var(--s3); padding-block-end: var(--s3); border-bottom: var(--group-rule); }
+  .intro .meta { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 var(--s2); font-size: var(--small); color: var(--muted); }
+  .intro h1 { margin-block-start: var(--s1); }
+  .tag-group { display: flex; align-items: flex-start; gap: .35em; max-inline-size: 100%; }
+  .tag-group svg { flex: none; height: 1lh; }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--s1);
+    margin: 1px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .post-tags li { max-inline-size: 100%; }
+  .rail { min-width: 0; align-self: start; color: var(--muted); font-size: var(--small); }
+  .rail h2 { color: var(--ink); font-size: 1rem; }
+  .rail small { margin-inline-start: .4em; color: var(--muted); }
+  .rail nav { display: grid; max-height: min(40vh, 20rem); overflow: auto; overscroll-behavior: contain; padding: 4px; margin: .5rem 0 0 -4px; }
+  .rail a { display: block; padding: .42em .65em; color: inherit; text-decoration: none; line-height: 1.55; }
+  .rail a:hover { text-decoration: underline; color: var(--accent); }
+  .rail a[aria-current] { color: var(--accent); text-decoration: underline; text-underline-offset: .24em; }
+  .library { margin-top: var(--page-gap); }
+  @media (min-width: 960px) {
+    .columns { max-width: none; display: grid; grid-template-columns: minmax(0, var(--reading-measure)) minmax(9rem, 12rem); gap: var(--s4); justify-content: center; }
+    .columns article { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-content: start; }
+    .intro, .prose { grid-column: 1; }
+    .prose { grid-row: 2; }
+    .contents { grid-column: 2; grid-row: 1 / 3; position: sticky; top: var(--s4); }
+    .rail nav { max-height: calc(100dvh - 7rem); }
+    .library { grid-column: 1; margin-top: var(--s4); }
+  }
+  @media (min-width: 960px) and (max-width: 1179px) {
+    .columns:not(:has(.contents)) { grid-template-columns: minmax(0, var(--reading-measure)); }
+  }
+  @media (min-width: 1180px) {
+    .columns { grid-template-columns: minmax(0, 1fr) minmax(0, var(--reading-measure)) minmax(0, 1fr); }
+    .columns article { grid-column: 2 / -1; grid-row: 1; }
+    .library {
+      grid-column: 1; grid-row: 1; position: sticky; top: var(--s4); margin: 0;
+      display: flex; flex-direction: column;
+      max-height: calc(100dvh - max(var(--article-top, 50dvh), var(--s4)));
+    }
+    .library h2 { flex: none; }
+    .library nav { max-height: none; }
+  }
 </style>
+<script>
+  const library = document.querySelector<HTMLElement>('#library')!;
+  // Both sticky rails share the same top edge, even on articles without an outline.
+  const columns = library.closest<HTMLElement>('.columns')!;
+  const desktop = matchMedia('(min-width: 960px)');
+  function fitRails() {
+    if (desktop.matches) columns.style.setProperty('--article-top', `${Math.max(0, columns.getBoundingClientRect().top)}px`);
+  }
+  fitRails();
+  window.addEventListener('scroll', fitRails, { passive: true });
+  window.addEventListener('resize', fitRails);
+  new ResizeObserver(fitRails).observe(document.querySelector('.mast')!);
+
+  const key = 'qians.day:archive-scroll';
+  let offset = 0;
+  try { offset = Number(sessionStorage.getItem(key)) || 0; } catch {}
+  library.scrollTop = offset;
+  document.fonts.ready.then(() => { library.scrollTop = offset; });
+  window.addEventListener('pagehide', () => {
+    try { sessionStorage.setItem(key, String(library.scrollTop)); } catch {}
+  });
+</script>

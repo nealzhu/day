@@ -1,0 +1,3789 @@
+[
+  {
+    "width": 1440,
+    "scene": "tech",
+    "mode": "cold",
+    "resources": [
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 2.5999999940395355
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 2.5999999940395355
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 5.200000002980232
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 5.300000011920929
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 5.5
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 5.600000008940697
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 5.700000002980232
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 5.800000011920929
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 7
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 6.299999997019768
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 5.800000011920929
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 5.800000011920929
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 6.300000011920929
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 6.800000011920929
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 7.600000008940697
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 7.299999997019768
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 6.800000011920929
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 6.9000000059604645
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 7.200000002980232
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 5.799999997019768
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 4.5
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 3.2999999970197678
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 3.5
+      }
+    ],
+    "count": 23,
+    "transfer": 812460,
+    "body": 805560,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 43.400000005960464,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 44.400000005960464,
+        "loaded": 10,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 51.29999999701977,
+        "loaded": 23,
+        "height": 2867,
+        "first": 100
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 2867,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "code": [
+      {
+        "familyName": "Menlo",
+        "postScriptName": "Menlo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 131
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "tech",
+    "mode": "repeat",
+    "resources": [
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 0,
+        "ms": 0
+      }
+    ],
+    "count": 23,
+    "transfer": 0,
+    "body": 805560,
+    "cached": 23,
+    "css": {
+      "transfer": 300,
+      "encoded": 0,
+      "decoded": 0
+    },
+    "lastFontEnd": 31.30000001192093,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 37,
+        "loaded": 0,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 43.400000005960464,
+        "loaded": 23,
+        "height": 2867,
+        "first": 100
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 2867,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "code": [
+      {
+        "familyName": "Menlo",
+        "postScriptName": "Menlo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 131
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "tech",
+    "mode": "delay",
+    "resources": [
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 245.20000000298023
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 295.20000000298023
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 280.29999999701977
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 302.59999999403954
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 313
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 325.29999999701977
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 430.09999999403954
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 709.3999999910593
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 745.3999999910593
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 672.5
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 711.0999999940395
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 749.2000000029802
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 790.0999999940395
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 1031.800000011921
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 1214.5
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 1198.5
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 1021.3999999910593
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 883.5999999940395
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 1232.7999999970198
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 1342.2000000029802
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 1429.9000000059605
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 1444.2999999970198
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 1489
+      }
+    ],
+    "count": 23,
+    "transfer": 812460,
+    "body": 805560,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 1858.300000011921,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 369.80000001192093,
+        "loaded": 0,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 620,
+        "loaded": 1,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 656.2000000029802,
+        "loaded": 2,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 664.6000000089407,
+        "loaded": 3,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 673.8000000119209,
+        "loaded": 4,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 683.5,
+        "loaded": 5,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 693.2000000029802,
+        "loaded": 6,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 1716.2000000029802,
+        "loaded": 20,
+        "height": 2867,
+        "first": 100
+      },
+      {
+        "ms": 2710.300000011921,
+        "loaded": 23,
+        "height": 2867,
+        "first": 100
+      }
+    ],
+    "shifts": [
+      {
+        "ms": 621,
+        "value": 0.00020070449027051059
+      }
+    ],
+    "finalHeight": 2867,
+    "cls": 0.00020070449027051059,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "code": [
+      {
+        "familyName": "Menlo",
+        "postScriptName": "Menlo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 131
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "essay",
+    "mode": "cold",
+    "resources": [
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 1.6000000089406967
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 1.5
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 1.5999999940395355
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 2.8999999910593033
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 4.899999991059303
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 4.0999999940395355
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 4.200000002980232
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 4.4000000059604645
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 4.4000000059604645
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 4.4000000059604645
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 7.300000011920929
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 7.200000002980232
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 7.800000011920929
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 7.600000008940697
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 7.800000011920929
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 7.5
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 10.100000008940697
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 10.200000002980232
+      },
+      {
+        "file": "9e1fbf53e1dfc6f56cae.woff2",
+        "body": 61172,
+        "transfer": 61472,
+        "ms": 11.299999997019768
+      },
+      {
+        "file": "1ae3d7086d80b0d11828.woff2",
+        "body": 58628,
+        "transfer": 58928,
+        "ms": 11.799999997019768
+      },
+      {
+        "file": "b085108facfcaa66bdad.woff2",
+        "body": 54516,
+        "transfer": 54816,
+        "ms": 11
+      },
+      {
+        "file": "3e2b50643bdf60e82d06.woff2",
+        "body": 66036,
+        "transfer": 66336,
+        "ms": 11.900000005960464
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 12.900000005960464
+      },
+      {
+        "file": "a17faadaa76f5f9198b8.woff2",
+        "body": 64808,
+        "transfer": 65108,
+        "ms": 13.099999994039536
+      },
+      {
+        "file": "e4bf267f9649542a4f9c.woff2",
+        "body": 57780,
+        "transfer": 58080,
+        "ms": 14.299999997019768
+      },
+      {
+        "file": "e0e4b6bc459607b0cb26.woff2",
+        "body": 60908,
+        "transfer": 61208,
+        "ms": 14.299999997019768
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 13.799999997019768
+      },
+      {
+        "file": "38db952e5ee91ff07150.woff2",
+        "body": 65136,
+        "transfer": 65436,
+        "ms": 13.900000005960464
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 14.199999988079071
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 13.200000002980232
+      }
+    ],
+    "count": 30,
+    "transfer": 1341212,
+    "body": 1332212,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 52.599999994039536,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 42,
+        "loaded": 0,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 49.5,
+        "loaded": 16,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 57.70000000298023,
+        "loaded": 30,
+        "height": 2193,
+        "first": 133
+      }
+    ],
+    "shifts": [
+      {
+        "ms": 52.70000000298023,
+        "value": 0.00007047638589651516
+      }
+    ],
+    "finalHeight": 2193,
+    "cls": 0.00007047638589651516,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "essay",
+    "mode": "repeat",
+    "resources": [
+      {
+        "file": "38db952e5ee91ff07150.woff2",
+        "body": 65136,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "3e2b50643bdf60e82d06.woff2",
+        "body": 66036,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a17faadaa76f5f9198b8.woff2",
+        "body": 64808,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9e1fbf53e1dfc6f56cae.woff2",
+        "body": 61172,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "e0e4b6bc459607b0cb26.woff2",
+        "body": 60908,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1ae3d7086d80b0d11828.woff2",
+        "body": 58628,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "e4bf267f9649542a4f9c.woff2",
+        "body": 57780,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b085108facfcaa66bdad.woff2",
+        "body": 54516,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 0,
+        "ms": 0
+      }
+    ],
+    "count": 30,
+    "transfer": 0,
+    "body": 1332212,
+    "cached": 30,
+    "css": {
+      "transfer": 300,
+      "encoded": 0,
+      "decoded": 0
+    },
+    "lastFontEnd": 30.399999991059303,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 36.5,
+        "loaded": 30,
+        "height": 2193,
+        "first": 133
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 2193,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "essay",
+    "mode": "delay",
+    "resources": [
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 244.70000000298023
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 427
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 306.09999999403954
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 366.29999999701977
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 421.59999999403954
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 290.1000000089407
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 465.5
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 532.9000000059605
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 570.3999999910593
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 660.2000000029802
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 781
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 830.2999999970198
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 877.8999999910593
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 982.7000000029802
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 1035.2999999970198
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 1137.7000000029802
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 1285.699999988079
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 1379.5999999940395
+      },
+      {
+        "file": "b085108facfcaa66bdad.woff2",
+        "body": 54516,
+        "transfer": 54816,
+        "ms": 1439.8999999910593
+      },
+      {
+        "file": "1ae3d7086d80b0d11828.woff2",
+        "body": 58628,
+        "transfer": 58928,
+        "ms": 1582.8999999910593
+      },
+      {
+        "file": "9e1fbf53e1dfc6f56cae.woff2",
+        "body": 61172,
+        "transfer": 61472,
+        "ms": 1653.2000000029802
+      },
+      {
+        "file": "3e2b50643bdf60e82d06.woff2",
+        "body": 66036,
+        "transfer": 66336,
+        "ms": 1804.7999999970198
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 1831.7999999970198
+      },
+      {
+        "file": "e4bf267f9649542a4f9c.woff2",
+        "body": 57780,
+        "transfer": 58080,
+        "ms": 1964.4000000059605
+      },
+      {
+        "file": "a17faadaa76f5f9198b8.woff2",
+        "body": 64808,
+        "transfer": 65108,
+        "ms": 2084.300000011921
+      },
+      {
+        "file": "e0e4b6bc459607b0cb26.woff2",
+        "body": 60908,
+        "transfer": 61208,
+        "ms": 2194.3999999910593
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 2176
+      },
+      {
+        "file": "38db952e5ee91ff07150.woff2",
+        "body": 65136,
+        "transfer": 65436,
+        "ms": 2353.4000000059605
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 2349.7000000029802
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 2369
+      }
+    ],
+    "count": 30,
+    "transfer": 1341212,
+    "body": 1332212,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 2734.8999999910593,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 369.3999999910593,
+        "loaded": 0,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 618.1999999880791,
+        "loaded": 1,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 667.6999999880791,
+        "loaded": 2,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 676.1999999880791,
+        "loaded": 3,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 1699.5,
+        "loaded": 17,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 2700.5,
+        "loaded": 27,
+        "height": 2193,
+        "first": 133
+      },
+      {
+        "ms": 3712.0999999940395,
+        "loaded": 30,
+        "height": 2193,
+        "first": 133
+      }
+    ],
+    "shifts": [
+      {
+        "ms": 618.7999999970198,
+        "value": 0.00007047638589651516
+      }
+    ],
+    "finalHeight": 2193,
+    "cls": 0.00007047638589651516,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "life",
+    "mode": "cold",
+    "resources": [
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 2.6000000089406967
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 2.199999988079071
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 2.699999988079071
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 2.5999999940395355
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 2.699999988079071
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 4.5
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 5.700000002980232
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 4.799999997019768
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 5.700000002980232
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 4.9000000059604645
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 5.0999999940395355
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 6.5
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 7
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 7.299999997019768
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 7.600000008940697
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 7.9000000059604645
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 8.100000008940697
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 9.100000008940697
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 9.400000005960464
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 7.5999999940395355
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 8.599999994039536
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 8.700000002980232
+      }
+    ],
+    "count": 22,
+    "transfer": 787280,
+    "body": 780680,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 46.900000005960464,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 38.900000005960464,
+        "loaded": 0,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 42.900000005960464,
+        "loaded": 5,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 50.6000000089407,
+        "loaded": 22,
+        "height": 1328,
+        "first": 67
+      }
+    ],
+    "shifts": [
+      {
+        "ms": 43.29999999701977,
+        "value": 0.00007047638589651516
+      }
+    ],
+    "finalHeight": 1328,
+    "cls": 0.00007047638589651516,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "life",
+    "mode": "repeat",
+    "resources": [
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 0,
+        "ms": 0
+      }
+    ],
+    "count": 22,
+    "transfer": 0,
+    "body": 780680,
+    "cached": 22,
+    "css": {
+      "transfer": 300,
+      "encoded": 0,
+      "decoded": 0
+    },
+    "lastFontEnd": 29,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 31.600000008940697,
+        "loaded": 0,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 36.70000000298023,
+        "loaded": 22,
+        "height": 1328,
+        "first": 67
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 1328,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ]
+  },
+  {
+    "width": 1440,
+    "scene": "life",
+    "mode": "delay",
+    "resources": [
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 371.5
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 442.90000000596046
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 303.29999999701977
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 306.19999998807907
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 358.29999999701977
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 254.40000000596046
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 595
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 627.9000000059605
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 632.9000000059605
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 722.5999999940395
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 638.7000000029802
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 678.8000000119209
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 891.7000000029802
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 1053.9000000059605
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 1099.2999999970198
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 1118.5999999940395
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 1159.7999999970198
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 1216.7000000029802
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 1353.7999999970198
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 1178
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 1429.9000000059605
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 1440
+      }
+    ],
+    "count": 22,
+    "transfer": 787280,
+    "body": 780680,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 1925.7999999970198,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 486.6000000089407,
+        "loaded": 0,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 747.1000000089407,
+        "loaded": 1,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 794.9000000059605,
+        "loaded": 3,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 856.6000000089407,
+        "loaded": 4,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 864.6000000089407,
+        "loaded": 5,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 1877.7000000029802,
+        "loaded": 20,
+        "height": 1328,
+        "first": 67
+      },
+      {
+        "ms": 2873.9000000059605,
+        "loaded": 22,
+        "height": 1328,
+        "first": 67
+      }
+    ],
+    "shifts": [
+      {
+        "ms": 747.7000000029802,
+        "value": 0.00007047638589651516
+      }
+    ],
+    "finalHeight": 1328,
+    "cls": 0.00007047638589651516,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "tech",
+    "mode": "cold",
+    "resources": [
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 2
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 2.0999999940395355
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 2.8999999910593033
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 2
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 2.4000000059604645
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 2.4000000059604645
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 3
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 3.5
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 3.9000000059604645
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 3.8999999910593033
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 4.0999999940395355
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 5
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 5.299999997019768
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 6.399999991059303
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 6.4000000059604645
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 5.4000000059604645
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 5.399999991059303
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 5.5
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 5.5999999940395355
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 5.0999999940395355
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 2.8999999910593033
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 1.9000000059604645
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 1.9000000059604645
+      }
+    ],
+    "count": 23,
+    "transfer": 812460,
+    "body": 805560,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 41.6000000089407,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 40.20000000298023,
+        "loaded": 0,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 50.30000001192093,
+        "loaded": 23,
+        "height": 4085,
+        "first": 157
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 4085,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "code": [
+      {
+        "familyName": "Menlo",
+        "postScriptName": "Menlo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 131
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "tech",
+    "mode": "repeat",
+    "resources": [
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 0,
+        "ms": 0
+      }
+    ],
+    "count": 23,
+    "transfer": 0,
+    "body": 805560,
+    "cached": 23,
+    "css": {
+      "transfer": 300,
+      "encoded": 0,
+      "decoded": 0
+    },
+    "lastFontEnd": 27.200000002980232,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 36.80000001192093,
+        "loaded": 23,
+        "height": 4085,
+        "first": 157
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 4085,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "code": [
+      {
+        "familyName": "Menlo",
+        "postScriptName": "Menlo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 131
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "tech",
+    "mode": "delay",
+    "resources": [
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 247
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 295.70000000298023
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 287
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 304.79999999701977
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 317.5
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 329.69999998807907
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 439.79999999701977
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 720.5
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 752.5999999940395
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 657.9000000059605
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 726.6000000089407
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 756.1000000089407
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 817.5
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 1016.1999999880791
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 1221.5
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 1207.2999999970198
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 1024.7000000029802
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 892.4000000059605
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 1252.300000011921
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 1353.4000000059605
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 1433.7000000029802
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 1450.5
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 1494.8999999910593
+      }
+    ],
+    "count": 23,
+    "transfer": 812460,
+    "body": 805560,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 1860,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 365.6000000089407,
+        "loaded": 0,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 616.5,
+        "loaded": 1,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 652.4000000059605,
+        "loaded": 2,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 661.4000000059605,
+        "loaded": 3,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 680.6000000089407,
+        "loaded": 5,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 689.5,
+        "loaded": 6,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 800.8000000119209,
+        "loaded": 7,
+        "height": 4085,
+        "first": 157
+      },
+      {
+        "ms": 1997.4000000059605,
+        "loaded": 23,
+        "height": 4085,
+        "first": 157
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 4085,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "code": [
+      {
+        "familyName": "Menlo",
+        "postScriptName": "Menlo-Regular",
+        "isCustomFont": false,
+        "glyphCount": 131
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "essay",
+    "mode": "cold",
+    "resources": [
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 1.7000000029802322
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 1.7000000029802322
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 3.7000000029802322
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 3.5999999940395355
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 3.7000000029802322
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 3.9000000059604645
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 3.1000000089406967
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 3.6000000089406967
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 7.200000002980232
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 7.399999991059303
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 7.5999999940395355
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 7.700000002980232
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 7.600000008940697
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 8.5
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 10.400000005960464
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 11.600000008940697
+      },
+      {
+        "file": "b085108facfcaa66bdad.woff2",
+        "body": 54516,
+        "transfer": 54816,
+        "ms": 11
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 12.200000002980232
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 12.700000002980232
+      },
+      {
+        "file": "9e1fbf53e1dfc6f56cae.woff2",
+        "body": 61172,
+        "transfer": 61472,
+        "ms": 13.900000005960464
+      },
+      {
+        "file": "1ae3d7086d80b0d11828.woff2",
+        "body": 58628,
+        "transfer": 58928,
+        "ms": 14.100000008940697
+      },
+      {
+        "file": "3e2b50643bdf60e82d06.woff2",
+        "body": 66036,
+        "transfer": 66336,
+        "ms": 10.199999988079071
+      },
+      {
+        "file": "e4bf267f9649542a4f9c.woff2",
+        "body": 57780,
+        "transfer": 58080,
+        "ms": 10.599999994039536
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 10.899999991059303
+      },
+      {
+        "file": "a17faadaa76f5f9198b8.woff2",
+        "body": 64808,
+        "transfer": 65108,
+        "ms": 14.400000005960464
+      },
+      {
+        "file": "e0e4b6bc459607b0cb26.woff2",
+        "body": 60908,
+        "transfer": 61208,
+        "ms": 14
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 12.899999991059303
+      },
+      {
+        "file": "38db952e5ee91ff07150.woff2",
+        "body": 65136,
+        "transfer": 65436,
+        "ms": 13.599999994039536
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 13.599999994039536
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 13.100000008940697
+      }
+    ],
+    "count": 30,
+    "transfer": 1341212,
+    "body": 1332212,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 50.1000000089407,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 39.80000001192093,
+        "loaded": 0,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 47.6000000089407,
+        "loaded": 14,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 55.5,
+        "loaded": 30,
+        "height": 3643,
+        "first": 252
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 3643,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "essay",
+    "mode": "repeat",
+    "resources": [
+      {
+        "file": "38db952e5ee91ff07150.woff2",
+        "body": 65136,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "3e2b50643bdf60e82d06.woff2",
+        "body": 66036,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a17faadaa76f5f9198b8.woff2",
+        "body": 64808,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9e1fbf53e1dfc6f56cae.woff2",
+        "body": 61172,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "e0e4b6bc459607b0cb26.woff2",
+        "body": 60908,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1ae3d7086d80b0d11828.woff2",
+        "body": 58628,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "e4bf267f9649542a4f9c.woff2",
+        "body": 57780,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b085108facfcaa66bdad.woff2",
+        "body": 54516,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 0,
+        "ms": 0
+      }
+    ],
+    "count": 30,
+    "transfer": 0,
+    "body": 1332212,
+    "cached": 30,
+    "css": {
+      "transfer": 300,
+      "encoded": 0,
+      "decoded": 0
+    },
+    "lastFontEnd": 28.5,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 35.900000005960464,
+        "loaded": 30,
+        "height": 3643,
+        "first": 252
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 3643,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "essay",
+    "mode": "delay",
+    "resources": [
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 426.80000001192093
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 244.70000000298023
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 302.5
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 362.40000000596046
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 417.70000000298023
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 286.80000001192093
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 461.80000001192093
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 529.7000000029802
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 567.1000000089407
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 656.7000000029802
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 777.5
+      },
+      {
+        "file": "b1a96e22133e7dce2297.woff2",
+        "body": 37400,
+        "transfer": 37700,
+        "ms": 826.7999999970198
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 875.1000000089407
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 981.7999999970198
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 1031.7000000029802
+      },
+      {
+        "file": "d62eceb5cded8b1b00d1.woff2",
+        "body": 49116,
+        "transfer": 49416,
+        "ms": 1134.7999999970198
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 1281.9000000059605
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 1374.7000000029802
+      },
+      {
+        "file": "b085108facfcaa66bdad.woff2",
+        "body": 54516,
+        "transfer": 54816,
+        "ms": 1434.1000000089407
+      },
+      {
+        "file": "9e1fbf53e1dfc6f56cae.woff2",
+        "body": 61172,
+        "transfer": 61472,
+        "ms": 1599.8999999910593
+      },
+      {
+        "file": "1ae3d7086d80b0d11828.woff2",
+        "body": 58628,
+        "transfer": 58928,
+        "ms": 1639.699999988079
+      },
+      {
+        "file": "3e2b50643bdf60e82d06.woff2",
+        "body": 66036,
+        "transfer": 66336,
+        "ms": 1796.7999999970198
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 1826.800000011921
+      },
+      {
+        "file": "e4bf267f9649542a4f9c.woff2",
+        "body": 57780,
+        "transfer": 58080,
+        "ms": 1953.6000000089407
+      },
+      {
+        "file": "a17faadaa76f5f9198b8.woff2",
+        "body": 64808,
+        "transfer": 65108,
+        "ms": 2081.2000000029802
+      },
+      {
+        "file": "e0e4b6bc459607b0cb26.woff2",
+        "body": 60908,
+        "transfer": 61208,
+        "ms": 2206.4000000059605
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 2164.8999999910593
+      },
+      {
+        "file": "38db952e5ee91ff07150.woff2",
+        "body": 65136,
+        "transfer": 65436,
+        "ms": 2349.3999999910593
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 2354.2000000029802
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 2366.0999999940395
+      }
+    ],
+    "count": 30,
+    "transfer": 1341212,
+    "body": 1332212,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 2730.2999999970198,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 367.90000000596046,
+        "loaded": 0,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 616.6000000089407,
+        "loaded": 1,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 654,
+        "loaded": 2,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 673.6000000089407,
+        "loaded": 3,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 732.6000000089407,
+        "loaded": 4,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 793.7999999970198,
+        "loaded": 6,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 832.7000000029802,
+        "loaded": 7,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 902.6000000089407,
+        "loaded": 8,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 940,
+        "loaded": 9,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 2011.9000000059605,
+        "loaded": 21,
+        "height": 3643,
+        "first": 252
+      },
+      {
+        "ms": 3029.5,
+        "loaded": 30,
+        "height": 3643,
+        "first": 252
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 3643,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "life",
+    "mode": "cold",
+    "resources": [
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 2.7000000029802322
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 2.9000000059604645
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 3
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 3
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 3.0999999940395355
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 2.5
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 2.5999999940395355
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 2.8999999910593033
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 3.5
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 2.9000000059604645
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 5.200000002980232
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 6.0999999940395355
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 7.0999999940395355
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 6.200000002980232
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 7.200000002980232
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 7.100000008940697
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 7.9000000059604645
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 8.800000011920929
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 8.900000005960464
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 7.4000000059604645
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 8.399999991059303
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 8.400000005960464
+      }
+    ],
+    "count": 22,
+    "transfer": 787280,
+    "body": 780680,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 43.1000000089407,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 35.20000000298023,
+        "loaded": 0,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 42.400000005960464,
+        "loaded": 13,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 50.70000000298023,
+        "loaded": 22,
+        "height": 1134,
+        "first": 126
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 1134,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "life",
+    "mode": "repeat",
+    "resources": [
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 0,
+        "ms": 0
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 0,
+        "ms": 0
+      }
+    ],
+    "count": 22,
+    "transfer": 0,
+    "body": 780680,
+    "cached": 22,
+    "css": {
+      "transfer": 300,
+      "encoded": 0,
+      "decoded": 0
+    },
+    "lastFontEnd": 26.5,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 34.599999994039536,
+        "loaded": 22,
+        "height": 1134,
+        "first": 126
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 1134,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ]
+  },
+  {
+    "width": 375,
+    "scene": "life",
+    "mode": "delay",
+    "resources": [
+      {
+        "file": "b0943fb51b9cc959ffbb.woff2",
+        "body": 49812,
+        "transfer": 50112,
+        "ms": 441.90000000596046
+      },
+      {
+        "file": "ef235b49c808a8059faf.woff2",
+        "body": 34004,
+        "transfer": 34304,
+        "ms": 369.6000000089407
+      },
+      {
+        "file": "0b3767c2f245038de676.woff2",
+        "body": 19264,
+        "transfer": 19564,
+        "ms": 301.8999999910593
+      },
+      {
+        "file": "35486952295a4b80fa75.woff2",
+        "body": 20628,
+        "transfer": 20928,
+        "ms": 305.70000000298023
+      },
+      {
+        "file": "dc7eb15dc5e9aabf3009.woff2",
+        "body": 29740,
+        "transfer": 30040,
+        "ms": 356.70000000298023
+      },
+      {
+        "file": "2144dc0f63fcd316fefb.woff2",
+        "body": 13524,
+        "transfer": 13824,
+        "ms": 252.90000000596046
+      },
+      {
+        "file": "06f29a3b4b4b39060b0a.woff2",
+        "body": 25032,
+        "transfer": 25332,
+        "ms": 484
+      },
+      {
+        "file": "ebf0f8e231b7a7040c71.woff2",
+        "body": 28084,
+        "transfer": 28384,
+        "ms": 596.4000000059605
+      },
+      {
+        "file": "a4552d779fe3406d1b34.woff2",
+        "body": 41328,
+        "transfer": 41628,
+        "ms": 698.1999999880791
+      },
+      {
+        "file": "ff7afc3c0e541d0328c4.woff2",
+        "body": 50372,
+        "transfer": 50672,
+        "ms": 815.5
+      },
+      {
+        "file": "bda54f0809cd72c7ba96.woff2",
+        "body": 18412,
+        "transfer": 18712,
+        "ms": 619.6999999880791
+      },
+      {
+        "file": "f04adb351d6acdd092ad.woff2",
+        "body": 21656,
+        "transfer": 21956,
+        "ms": 709.5999999940395
+      },
+      {
+        "file": "8271abf90b98e642ce85.woff2",
+        "body": 32204,
+        "transfer": 32504,
+        "ms": 807.2999999970198
+      },
+      {
+        "file": "1053336749035455c181.woff2",
+        "body": 39836,
+        "transfer": 40136,
+        "ms": 992.5999999940395
+      },
+      {
+        "file": "eb086cb9e156d5c42190.woff2",
+        "body": 42612,
+        "transfer": 42912,
+        "ms": 1052.0999999940395
+      },
+      {
+        "file": "9a60c54a71fa95a9d5bf.woff2",
+        "body": 43520,
+        "transfer": 43820,
+        "ms": 1149.9000000059605
+      },
+      {
+        "file": "492a5fcab08798e79e03.woff2",
+        "body": 45776,
+        "transfer": 46076,
+        "ms": 1167.2000000029802
+      },
+      {
+        "file": "48b4b965da161052736e.woff2",
+        "body": 53104,
+        "transfer": 53404,
+        "ms": 1294.6000000089407
+      },
+      {
+        "file": "6402bb361bea9a670829.woff2",
+        "body": 61636,
+        "transfer": 61936,
+        "ms": 1346.9000000059605
+      },
+      {
+        "file": "9e7dd55208c6ef20e5ca.woff2",
+        "body": 3340,
+        "transfer": 3640,
+        "ms": 1129.2000000029802
+      },
+      {
+        "file": "1b2966c46235a36a8534.woff2",
+        "body": 52744,
+        "transfer": 53044,
+        "ms": 1408.3999999910593
+      },
+      {
+        "file": "6c67818a4454fe56b552.woff2",
+        "body": 54052,
+        "transfer": 54352,
+        "ms": 1438.5999999940395
+      }
+    ],
+    "count": 22,
+    "transfer": 787280,
+    "body": 780680,
+    "cached": 0,
+    "css": {
+      "transfer": 73317,
+      "encoded": 73017,
+      "decoded": 218815
+    },
+    "lastFontEnd": 1928.2999999970198,
+    "protocol": "http/1.1",
+    "bounds": [
+      {
+        "ms": 490.59999999403954,
+        "loaded": 0,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 754.2000000029802,
+        "loaded": 1,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 801.7999999970198,
+        "loaded": 3,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 850.7999999970198,
+        "loaded": 4,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 861.2999999970198,
+        "loaded": 5,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 931.2000000029802,
+        "loaded": 6,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 983.4000000059605,
+        "loaded": 7,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 1092.7000000029802,
+        "loaded": 8,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 1110.7000000029802,
+        "loaded": 9,
+        "height": 1134,
+        "first": 126
+      },
+      {
+        "ms": 2120.7999999970198,
+        "loaded": 22,
+        "height": 1134,
+        "first": 126
+      }
+    ],
+    "shifts": [],
+    "finalHeight": 1134,
+    "cls": 0,
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ]
+  }
+]

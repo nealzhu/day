@@ -1,0 +1,86 @@
+[
+  {
+    "scene": "home",
+    "selector": ".brand",
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ]
+  },
+  {
+    "scene": "engineering",
+    "selector": ".brand",
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ]
+  },
+  {
+    "scene": "article",
+    "selector": ".prose p",
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 44
+      }
+    ]
+  },
+  {
+    "scene": "text",
+    "selector": ".prose p",
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 44
+      }
+    ]
+  },
+  {
+    "scene": "tech",
+    "selector": ".prose p",
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ]
+  },
+  {
+    "scene": "life",
+    "selector": ".prose p",
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ]
+  },
+  {
+    "scene": "essay",
+    "selector": ".prose p",
+    "fonts": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ]
+  }
+]

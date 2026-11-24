@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "404.html",
+    "categories/engineering/index.html",
+    "categories/index.html",
+    "index.html",
+    "posts/m2-smoke-no-image-test/index.html",
+    "posts/m2-smoke-test/index.html"
+  ],
+  "fontStyle": "/fonts/lxgw-wenkai/v1.530/faces.css",
+  "woff2Files": 321,
+  "fontStyleFiles": 1,
+  "licenseFiles": 1,
+  "favicon": [
+    "svg",
+    "ico"
+  ]
+}

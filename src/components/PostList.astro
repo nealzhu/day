@@ -1,36 +1,76 @@
 ---
 import { cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
 import { mediaBase } from '../../scripts/remark-cdn-media.mjs';
+import { categories } from '../lib/content-model';
 import { firstImage, postPath, type Post } from '../lib/posts';
-interface Props { posts: Post[]; switchable?: boolean }
+
+interface Props { posts: Post[] }
+const { posts } = Astro.props;
 const placeholder = { src: `${mediaBase}/${cardPlaceholderKey}`, alt: '' };
-const { posts, switchable } = Astro.props;
+
+// Preserve the order supplied by publishedPosts, including its same-day tie break.
+const years = new Map<string, Post[]>();
+for (const post of posts) {
+  const year = post.data.publishedAt.slice(0, 4);
+  if (!years.has(year)) years.set(year, []);
+  years.get(year)!.push(post);
+}
 ---
-{posts.length === 0 && <p>暂无已发布文章。</p>}
-<ul class="posts" data-view="list">
-  {posts.map(post => {
-    const cover = switchable ? (firstImage(post) ?? placeholder) : null;
-    return <li>
-      {cover && <template><img src={cover.src} alt={cover.alt} loading="lazy" /></template>}
-      <div class="entry">
-        <a href={postPath(post.data.slug)}>{post.data.title}</a>
-        <time datetime={post.data.publishedAt}>{post.data.publishedAt}</time>
-        {switchable && <p class="summary">{post.data.description}</p>}
-      </div>
-    </li>;
-  })}
-</ul>
+<div class="posts">
+  {posts.length === 0 && <p>暂无已发布文章。</p>}
+  {Array.from(years, ([year, entries]) => <section class="year">
+    <header><h2>{year}</h2><span>{entries.length} 篇</span></header>
+    <ul>
+      {entries.map((post, index) => {
+        const { title, publishedAt, description, slug, category } = post.data;
+        const cover = firstImage(post) ?? placeholder;
+        const newDay = index > 0 && entries[index - 1].data.publishedAt !== publishedAt;
+        return <li class:list={[{ 'new-day': newDay }]}>
+          <img src={cover.src} alt={cover.alt} loading="lazy" />
+          <div class="meta"><time datetime={publishedAt}>{publishedAt.slice(5).replace('-', ' 月 ')} 日</time>{category && <span>{categories[category]}</span>}</div>
+          <h3><a href={postPath(slug)}>{title}</a></h3>
+          <p>{description}</p>
+        </li>;
+      })}
+    </ul>
+  </section>)}
+</div>
 <style>
-  .posts { list-style: none; margin: 1.5rem 0 0; padding: 0; }
-  li { border-top: 1px solid #d5dad4; }
-  .entry { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem 1rem; padding: 1rem 0; }
-  .entry a { font-size: 1.1rem; font-weight: 600; }
-  time { font-size: .9rem; white-space: nowrap; }
-  .summary, [data-view="list"] img { display: none; }
-  [data-view="cards"] { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: 1.2rem; }
-  [data-view="cards"] li { background: white; border: 1px solid #d5dad4; }
-  [data-view="cards"] .entry { display: grid; padding: 1.2rem; }
-  [data-view="cards"] .summary { display: block; margin: .4rem 0 0; }
-  img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
-  @media(max-width: 32rem) { .entry { display: grid; } }
+  .year { display: grid; grid-template-columns: minmax(7rem, 1fr) minmax(0, 4fr); gap: var(--s3); }
+  .year > header { padding-block: var(--s2); color: var(--muted); }
+  .year h2 { font-size: var(--h1); color: var(--accent); font-variant-numeric: lining-nums; }
+  .year header span, .meta { font-size: var(--small); color: var(--muted); }
+  ul { padding: 0; margin: 0; list-style: none; }
+  li { position: relative; padding-block: var(--s2) var(--s3); }
+  .year + .year { margin-top: var(--s4); padding-top: var(--s2); border-top: var(--group-rule); }
+  :global([data-view="list"]) .new-day { border-top: var(--group-rule); }
+  h3 { font-size: var(--h2); margin-block: .18em; }
+  h3 a { color: inherit; text-decoration: underline; text-decoration-color: transparent; }
+  h3 a::after { content: ''; position: absolute; inset: 0; }
+  li:hover a, h3 a:focus-visible { color: var(--accent); text-decoration-color: var(--accent); }
+  .meta { display: flex; align-items: center; gap: .7em; }
+  .meta span { color: var(--muted); }
+  .meta span::before { content: '·'; margin-right: .7em; }
+  p { margin: 0; color: var(--muted); }
+  :global([data-view="list"]) img { display: none; }
+  :global([data-view="cards"]) ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
+  :global([data-view="cards"]) li { border: 0; padding: 0; display: flex; flex-direction: column; align-items: start; }
+  :global([data-view="cards"]) img {
+    display: block; object-fit: cover;
+    width: 100%; aspect-ratio: 5 / 3; background: var(--inset); border-radius: var(--radius);
+  }
+  :global([data-view="cards"]) .meta { margin-top: var(--s2); }
+  :global([data-view="cards"]) h3 { font-size: var(--h3); }
+  :global([data-view="cards"]) p { font-size: 1rem; }
+  @media (prefers-reduced-motion: no-preference) {
+    h3 a { transition: color var(--motion-ink) ease-out, text-decoration-color var(--motion-ink) ease-out; }
+    :global([data-view="cards"][data-reveal-covers]) img { animation: cover-in var(--motion-settle) ease-out; }
+    @keyframes cover-in { from { opacity: .65; } to { opacity: 1; } }
+  }
+  @media (max-width: 600px) {
+    .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }
+    .year h2 { font-size: var(--h3); }
+    li { padding-block: var(--s2) var(--s3); }
+  }
 </style>

@@ -1,0 +1,37 @@
+{
+  "retry": [
+    {
+      "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+      "status": 200,
+      "bytes": 18412,
+      "sha256": "bda54f0809cd72c7ba96abb319ebb6587c846b9d4315dd706bd3421069908b6a"
+    },
+    {
+      "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+      "status": 200,
+      "bytes": 18412,
+      "sha256": "bda54f0809cd72c7ba96abb319ebb6587c846b9d4315dd706bd3421069908b6a"
+    },
+    {
+      "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+      "status": 200,
+      "bytes": 18412,
+      "sha256": "bda54f0809cd72c7ba96abb319ebb6587c846b9d4315dd706bd3421069908b6a"
+    }
+  ],
+  "rendered": [
+    {
+      "familyName": "LXGW WenKai",
+      "postScriptName": "LXGWWenKai-Regular",
+      "isCustomFont": true,
+      "glyphCount": 44
+    }
+  ],
+  "network": {
+    "http": {
+      "200": 27
+    },
+    "failures": [],
+    "logs": []
+  }
+}

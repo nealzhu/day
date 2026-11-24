@@ -1,6 +1,7 @@
 import { cp, mkdir, readdir, symlink, mkdtemp, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
+import { fontDirectory } from '../scripts/font-assets.mjs';
 
 export async function temporaryDirectory(t) {
   const path = await mkdtemp(join(tmpdir(), 'qians-m3-'));
@@ -22,7 +23,7 @@ export async function article(root, id, overrides = {}, body = 'Text only.') {
 }
 
 export async function copySiteFixture(project) {
-  for (const path of ['src', 'scripts', 'media', 'public', 'astro.config.mjs', 'package.json', 'tsconfig.json']) {
+  for (const path of ['src', 'scripts', 'media', 'public', fontDirectory, 'astro.config.mjs', 'package.json', 'tsconfig.json']) {
     await cp(path, join(project, path), { recursive: true, dereference: true });
   }
   // Link packages individually so Astro and Vite write caches only inside the fixture.

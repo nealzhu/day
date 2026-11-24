@@ -1,5 +1,6 @@
 ---
 import '../styles/site.css';
+import { fontCdn, fontDirectory, fontPrefix } from '../../scripts/font-assets.mjs';
 import ReadingSettings from '../components/ReadingSettings.astro';
 import SiteIcon from '../components/SiteIcon.astro';
 import { categories, categoryKeys } from '../lib/content-model';
@@ -8,6 +9,8 @@ import { categoryPath } from '../lib/posts';
 interface Props { title: string; description: string; noindex?: boolean }
 const { title, description, noindex } = Astro.props;
 const pathname = Astro.url.pathname;
+const fontBase = import.meta.env.MODE === 'preview' ? '' : fontCdn;
+const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontBase}/${fontPrefix}/faces.css`;
 ---
 <!doctype html>
 <html lang="zh-CN" data-view="cards">
@@ -28,7 +31,7 @@ const pathname = Astro.url.pathname;
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={new URL(pathname, Astro.site)} />}
     <link rel="alternate" type="application/rss+xml" title="骞言碎语" href="/rss.xml" />
-    <link rel="stylesheet" href="/fonts/v1.530/faces.css" />
+    <link rel="stylesheet" crossorigin="anonymous" href={fontStyle} />
   </head>
   <body>
     <a class="skip" href="#main">跳到正文</a>

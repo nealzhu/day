@@ -37,10 +37,22 @@ test('production build and browser behaviour', async t => {
   await article(posts, 'implicit-draft', { status: undefined });
 
   const cdn = 'https://fixture.invalid';
-  execFileSync(process.execPath, [resolve('node_modules/astro/astro.js'), 'build', '--force'], {
+  const dist = join(project, 'dist');
+  await t.test('production pages reference CDN fonts without bundling a second copy', async () => {
+    execFileSync(process.execPath, [resolve('node_modules/astro/astro.js'), 'build', '--force'], {
+      cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
+    });
+    const files = await readdir(dist, { recursive: true });
+    assert.ok(!files.some(path => /\.woff2$|faces\.css$|^fonts[\/\\]/.test(path)));
+    for (const path of files.filter(path => path.endsWith('.html'))) {
+      assert.ok((await readFile(join(dist, path), 'utf8')).includes(
+        'href="https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css"'), path);
+    }
+  });
+
+  execFileSync(process.execPath, [join(project, 'scripts/build-preview.mjs')], {
     cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
   });
-  const dist = join(project, 'dist');
   const placeholder = await readFile(join(project, cardPlaceholderFile));
   const placeholderUrl = `${cdn}/${cardPlaceholderKey}`;
   const cover = `${cdn}/posts/pictured/${file}`;
@@ -58,6 +70,8 @@ test('production build and browser behaviour', async t => {
 
   await t.test('routes, CDN cover, headings, canonical, RSS and sitemap', async () => {
     const home = await html('index.html');
+    assert.ok(home.includes('href="/fonts/lxgw-wenkai/v1.530/faces.css"'));
+    assert.equal((await readdir(join(dist, 'fonts/lxgw-wenkai/v1.530'))).filter(name => name.endsWith('.woff2')).length, 321);
     assert.ok(home.includes(cover));
     assert.ok(!home.includes(second));
     const detail = await html('posts/pictured/index.html');

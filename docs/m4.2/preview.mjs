@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { copyFile, cp, mkdir, mkdtemp, readFile, readdir, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { join } from 'node:path';
 import { preview } from 'astro';
 import { cardPlaceholderFile, cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
 import { article, copySiteFixture } from '../../tests/fixtures.mjs';
@@ -40,7 +40,7 @@ try {
     description: '午后的两张照片，记下杯沿的白光与猫眼里的倒影。',
   }, life.replaceAll('<p>', '\n').replaceAll('</p>', '\n'));
 
-  execFileSync(process.execPath, [resolve('node_modules/astro/astro.js'), 'build', '--force'], {
+  execFileSync(process.execPath, [join(project, 'scripts/build-preview.mjs')], {
     cwd: project, env: { ...process.env, MEDIA_BASE_URL: '/' }, stdio: 'inherit',
   });
   for (const id of await readdir(posts)) {

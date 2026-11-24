@@ -1,0 +1,6 @@
+
+> qians-day@0.1.0 verify:media /private/tmp/qians-accept-WMeMC5/repo
+> node scripts/verify-media.mjs
+
+Verified 2 articles and 1 media files.
+exit=0

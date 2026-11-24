@@ -1,0 +1,508 @@
+[
+  {
+    "tag": "M4-01",
+    "w": 390,
+    "color": "light",
+    "before": [
+      {
+        "natural": 0,
+        "w": 350,
+        "h": 233,
+        "attrs": [
+          "600",
+          "400"
+        ],
+        "caption": 597.015625
+      },
+      {
+        "natural": 0,
+        "w": 350,
+        "h": 233,
+        "attrs": [
+          "451",
+          "300"
+        ],
+        "caption": 1005.40625
+      }
+    ],
+    "after": [
+      {
+        "natural": 600,
+        "w": 350,
+        "h": 233,
+        "attrs": [
+          "600",
+          "400"
+        ],
+        "caption": 597.015625
+      },
+      {
+        "natural": 451,
+        "w": 350,
+        "h": 233,
+        "attrs": [
+          "451",
+          "300"
+        ],
+        "caption": 1005.40625
+      }
+    ],
+    "page": {
+      "path": "/posts/lab-life/",
+      "viewport": [
+        390,
+        844
+      ],
+      "theme": "light",
+      "view": "cards",
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "articleActive": "/posts/lab-life/",
+      "category": null,
+      "archive": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "list": [],
+      "headings": [],
+      "imgs": [
+        [
+          "600",
+          "400",
+          600,
+          400
+        ],
+        [
+          "451",
+          "300",
+          451,
+          300
+        ]
+      ],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontBody": 889988,
+      "fontTransfer": 897488,
+      "size": "17px",
+      "cls": 0,
+      "shifts": []
+    },
+    "network": {
+      "http": {
+        "200": 31
+      },
+      "failures": [],
+      "logs": []
+    }
+  },
+  {
+    "tag": "M4-01",
+    "w": 1440,
+    "color": "dark",
+    "before": [
+      {
+        "natural": 0,
+        "w": 600,
+        "h": 400,
+        "attrs": [
+          "600",
+          "400"
+        ],
+        "caption": 806.140625
+      },
+      {
+        "natural": 0,
+        "w": 451,
+        "h": 300,
+        "attrs": [
+          "451",
+          "300"
+        ],
+        "caption": 1258.796875
+      }
+    ],
+    "after": [
+      {
+        "natural": 600,
+        "w": 600,
+        "h": 400,
+        "attrs": [
+          "600",
+          "400"
+        ],
+        "caption": 806.140625
+      },
+      {
+        "natural": 451,
+        "w": 451,
+        "h": 300,
+        "attrs": [
+          "451",
+          "300"
+        ],
+        "caption": 1258.796875
+      }
+    ],
+    "page": {
+      "path": "/posts/lab-life/",
+      "viewport": [
+        1440,
+        900
+      ],
+      "theme": "dark",
+      "view": "cards",
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "articleActive": "/posts/lab-life/",
+      "category": null,
+      "archive": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "list": [],
+      "headings": [],
+      "imgs": [
+        [
+          "600",
+          "400",
+          600,
+          400
+        ],
+        [
+          "451",
+          "300",
+          451,
+          300
+        ]
+      ],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontBody": 889988,
+      "fontTransfer": 897488,
+      "size": "18px",
+      "cls": 0,
+      "shifts": []
+    },
+    "network": {
+      "http": {
+        "200": 31
+      },
+      "failures": [],
+      "logs": []
+    }
+  },
+  {
+    "tag": "M4-02",
+    "rail": {
+      "count": 34,
+      "last": "archive-31",
+      "y": 0,
+      "scroll": 528,
+      "bottom": 896.015625,
+      "viewport": 900,
+      "hit": true
+    },
+    "after": {
+      "path": "/posts/archive-31/",
+      "y": 0,
+      "scroll": 528,
+      "active": "archive-31"
+    }
+  },
+  {
+    "tag": "M4-03",
+    "w": 768,
+    "headingTop": 96.109375,
+    "barBottom": 88.421875,
+    "hash": "#为什么从内容计算摘要",
+    "current": "为什么从内容计算摘要"
+  },
+  {
+    "tag": "M4-03",
+    "w": 375,
+    "headingTop": 84.609375,
+    "barBottom": 77.421875,
+    "hash": "#为什么从内容计算摘要",
+    "current": "为什么从内容计算摘要"
+  },
+  {
+    "tag": "375 cold 120ms 600000 B/s",
+    "scene": "life",
+    "page": {
+      "path": "/posts/lab-life/",
+      "viewport": [
+        375,
+        812
+      ],
+      "theme": "dark",
+      "view": "cards",
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "articleActive": "/posts/lab-life/",
+      "category": null,
+      "archive": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "list": [],
+      "headings": [],
+      "imgs": [
+        [
+          "600",
+          "400",
+          600,
+          400
+        ],
+        [
+          "451",
+          "300",
+          451,
+          300
+        ]
+      ],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontBody": 889988,
+      "fontTransfer": 897488,
+      "size": "17px",
+      "cls": 0,
+      "shifts": []
+    },
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 60
+      }
+    ],
+    "loadMs": 2173.0999999940395,
+    "network": {
+      "http": {
+        "200": 86,
+        "304": 45
+      },
+      "failures": [],
+      "logs": []
+    }
+  },
+  {
+    "tag": "375 cold 120ms 600000 B/s",
+    "scene": "tech",
+    "page": {
+      "path": "/posts/lab-tech/",
+      "viewport": [
+        375,
+        812
+      ],
+      "theme": "dark",
+      "view": "cards",
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "articleActive": "/posts/lab-tech/",
+      "category": "工程",
+      "archive": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "list": [],
+      "headings": [
+        "H2",
+        "H3",
+        "H2",
+        "H3",
+        "H2",
+        "H3"
+      ],
+      "imgs": [],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontBody": 877468,
+      "fontTransfer": 884968,
+      "size": "17px",
+      "cls": 0,
+      "shifts": []
+    },
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "loadMs": 2043.2000000029802,
+    "network": {
+      "http": {
+        "200": 29
+      },
+      "failures": [],
+      "logs": []
+    }
+  },
+  {
+    "tag": "375 cold 120ms 600000 B/s",
+    "scene": "essay",
+    "page": {
+      "path": "/posts/lab-essay/",
+      "viewport": [
+        375,
+        812
+      ],
+      "theme": "dark",
+      "view": "cards",
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "articleActive": "/posts/lab-essay/",
+      "category": null,
+      "archive": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "list": [],
+      "headings": [],
+      "imgs": [],
+      "fontFaces": 33,
+      "fontRequests": 33,
+      "fontBody": 1362052,
+      "fontTransfer": 1371952,
+      "size": "17px",
+      "cls": 0,
+      "shifts": []
+    },
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 147
+      }
+    ],
+    "loadMs": 2863.2999999970198,
+    "network": {
+      "http": {
+        "200": 37
+      },
+      "failures": [],
+      "logs": []
+    }
+  },
+  {
+    "tag": "list persistence",
+    "w": 1440,
+    "color": "light",
+    "mode": "list",
+    "overflow": 0,
+    "size": "18px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 1440,
+    "color": "dark",
+    "mode": "list",
+    "overflow": 0,
+    "size": "18px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 1024,
+    "color": "light",
+    "mode": "list",
+    "overflow": 0,
+    "size": "18px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 1024,
+    "color": "dark",
+    "mode": "list",
+    "overflow": 0,
+    "size": "18px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 768,
+    "color": "light",
+    "mode": "list",
+    "overflow": 0,
+    "size": "18px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 768,
+    "color": "dark",
+    "mode": "list",
+    "overflow": 0,
+    "size": "18px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 390,
+    "color": "light",
+    "mode": "list",
+    "overflow": 0,
+    "size": "17px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 390,
+    "color": "dark",
+    "mode": "list",
+    "overflow": 0,
+    "size": "17px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 375,
+    "color": "light",
+    "mode": "list",
+    "overflow": 0,
+    "size": "17px"
+  },
+  {
+    "tag": "list persistence",
+    "w": 375,
+    "color": "dark",
+    "mode": "list",
+    "overflow": 0,
+    "size": "17px"
+  },
+  {
+    "tag": "reduced motion",
+    "settings": {
+      "reduced": true,
+      "cover": "none",
+      "settings": "0s"
+    }
+  }
+]

@@ -1,0 +1,35 @@
+
+> qians-day@0.1.0 test /Users/neal/code/creative/blog/day
+> node --test tests/*.test.mjs
+
+✔ duplicate ID (9.653834ms)
+✔ duplicate slug (2.396709ms)
+✔ ID differs from folder (2.836791ms)
+✔ unknown category (4.637834ms)
+✔ invalid publication state (3.025458ms)
+✔ invalid date (2.339375ms)
+✔ empty description (2.656875ms)
+✔ missing referenced WebP identifies the article and filename (3.735ms)
+✔ category may be omitted (1.315042ms)
+▶ production build and browser behaviour
+  ✔ drafts and WebPs are absent from the entire output (9.176709ms)
+  ✔ routes, CDN cover, headings, canonical, RSS and sitemap (1.697666ms)
+  ▶ list, cards, restored preference and mobile navigation
+    ✔ hover and keyboard allow consecutive changes in the reading settings (596.753ms)
+    ✔ the tablet outline leaves the target heading fully visible (95.482ms)
+    ✔ Markdown and reference images reserve their intrinsic size (4.207417ms)
+    ✔ the last archive entry is clickable while the article stays at its start (3.965375ms)
+    ✔ the full outline can be scrolled to its last link without scrolling the article (577.412917ms)
+    ✔ deep closing headings keep distinct destinations at the bottom of the page (660.47925ms)
+    ✔ a saved mini outline previews then follows a chapter on touch (716.193667ms)
+  ✔ list, cards, restored preference and mobile navigation (7650.520292ms)
+✔ production build and browser behaviour (9416.966125ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10135.863375
+exit=0

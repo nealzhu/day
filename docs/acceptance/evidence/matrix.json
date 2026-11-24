@@ -1,0 +1,5606 @@
+[
+  {
+    "scene": "home",
+    "w": 1440,
+    "h": 900,
+    "mode": "light",
+    "url": "/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          378,
+          227
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          378,
+          227
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 538300,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 25,
+    "loadMs": 59,
+    "sampleUntilMs": 3119,
+    "cls": 0.00003023904347779492,
+    "shifts": [
+      {
+        "t": 42.6000000089407,
+        "v": 0.000019225823045267488,
+        "n": [
+          "#text"
+        ]
+      },
+      {
+        "t": 45.80000001192093,
+        "v": 0.000011013220432527433,
+        "n": [
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 1440,
+    "h": 900,
+    "mode": "light",
+    "url": "/categories/engineering/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          378,
+          227
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          378,
+          227
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 17,
+    "loadMs": 41,
+    "sampleUntilMs": 3087,
+    "cls": 0.00004338169595014574,
+    "shifts": [
+      {
+        "t": 31,
+        "v": 0.00004338169595014574,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 1440,
+    "h": 900,
+    "mode": "light",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      370,
+      307,
+      700,
+      416
+    ],
+    "library": [
+      140,
+      171,
+      198,
+      110
+    ],
+    "toc": [
+      1102,
+      171,
+      198,
+      74
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "sticky",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 83120,
+    "fontTransferBytes": 88820,
+    "domLoadedMs": 29,
+    "loadMs": 47,
+    "sampleUntilMs": 3088,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 1440,
+    "h": 900,
+    "mode": "light",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      370,
+      307,
+      700,
+      33
+    ],
+    "library": [
+      140,
+      171,
+      198,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "sticky",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 28,
+    "loadMs": 38,
+    "sampleUntilMs": 191,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 1440,
+    "h": 900,
+    "mode": "light",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1429,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      365,
+      356,
+      700,
+      2556
+    ],
+    "library": [
+      135,
+      171,
+      198,
+      372
+    ],
+    "toc": [
+      1097,
+      171,
+      198,
+      277
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "sticky",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        700,
+        1237,
+        0
+      ],
+      [
+        "DIV",
+        700,
+        700,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 877468,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 38,
+    "loadMs": 65,
+    "sampleUntilMs": 3113,
+    "cls": 0.0001995824547869291,
+    "shifts": [
+      {
+        "t": 51.29999999701977,
+        "v": 0.0001995824547869291,
+        "n": [
+          "#text",
+          "#text"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 1440,
+    "h": 900,
+    "mode": "light",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1429,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      365,
+      306,
+      700,
+      1072
+    ],
+    "library": [
+      135,
+      171,
+      198,
+      372
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "sticky",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          600,
+          400
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          451,
+          300
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 61636,
+    "fontTransferBytes": 69136,
+    "domLoadedMs": 24,
+    "loadMs": 94,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 1440,
+    "h": 900,
+    "mode": "light",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1429,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      365,
+      306,
+      700,
+      1937
+    ],
+    "library": [
+      135,
+      171,
+      198,
+      372
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "sticky",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 422948,
+    "fontTransferBytes": 432848,
+    "domLoadedMs": 29,
+    "loadMs": 67,
+    "sampleUntilMs": 189,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 1440,
+    "h": 900,
+    "mode": "dark",
+    "url": "/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          378,
+          227
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          378,
+          227
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 10,
+    "loadMs": 37,
+    "sampleUntilMs": 205,
+    "cls": 0.00004338169595014574,
+    "shifts": [
+      {
+        "t": 33.19999998807907,
+        "v": 0.00004338169595014574,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 1440,
+    "h": 900,
+    "mode": "dark",
+    "url": "/categories/engineering/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          378,
+          227
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          378,
+          227
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 9,
+    "loadMs": 30,
+    "sampleUntilMs": 189,
+    "cls": 0.000010609065554269547,
+    "shifts": [
+      {
+        "t": 27.600000008940697,
+        "v": 0.000010609065554269547,
+        "n": [
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 1440,
+    "h": 900,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      370,
+      307,
+      700,
+      416
+    ],
+    "library": [
+      140,
+      171,
+      198,
+      110
+    ],
+    "toc": [
+      1102,
+      171,
+      198,
+      74
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "sticky",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 24,
+    "loadMs": 36,
+    "sampleUntilMs": 3111,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 1440,
+    "h": 900,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1440,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      370,
+      307,
+      700,
+      33
+    ],
+    "library": [
+      140,
+      171,
+      198,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "sticky",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 19,
+    "loadMs": 34,
+    "sampleUntilMs": 3081,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 1440,
+    "h": 900,
+    "mode": "dark",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1429,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      365,
+      356,
+      700,
+      2556
+    ],
+    "library": [
+      135,
+      171,
+      198,
+      372
+    ],
+    "toc": [
+      1097,
+      171,
+      198,
+      277
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "sticky",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        700,
+        1237,
+        0
+      ],
+      [
+        "DIV",
+        700,
+        700,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 36,
+    "loadMs": 49,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 1440,
+    "h": 900,
+    "mode": "dark",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1429,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      365,
+      306,
+      700,
+      1072
+    ],
+    "library": [
+      135,
+      171,
+      198,
+      372
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "sticky",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          600,
+          400
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          451,
+          300
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 21,
+    "loadMs": 44,
+    "sampleUntilMs": 3079,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 1440,
+    "h": 900,
+    "mode": "dark",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      1440,
+      900
+    ],
+    "clientWidth": 1429,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      365,
+      306,
+      700,
+      1937
+    ],
+    "library": [
+      135,
+      171,
+      198,
+      372
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "sticky",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 34,
+    "loadMs": 67,
+    "sampleUntilMs": 3129,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 1024,
+    "h": 768,
+    "mode": "light",
+    "url": "/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1024,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          372,
+          223
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          372,
+          223
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 13,
+    "loadMs": 35,
+    "sampleUntilMs": 3075,
+    "cls": 0.00009914580732584,
+    "shifts": [
+      {
+        "t": 26.900000005960464,
+        "v": 0.00009914580732584,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 1024,
+    "h": 768,
+    "mode": "light",
+    "url": "/categories/engineering/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1024,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          372,
+          223
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          372,
+          223
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 12,
+    "loadMs": 32,
+    "sampleUntilMs": 207,
+    "cls": 0.00009820920725663503,
+    "shifts": [
+      {
+        "t": 30.599999994039536,
+        "v": 0.00009820920725663503,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 1024,
+    "h": 768,
+    "mode": "light",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      45,
+      286,
+      700,
+      416
+    ],
+    "library": [
+      45,
+      766,
+      700,
+      110
+    ],
+    "toc": [
+      777,
+      150,
+      192,
+      74
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 30,
+    "loadMs": 48,
+    "sampleUntilMs": 206,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 1024,
+    "h": 768,
+    "mode": "light",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1024,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      162,
+      286,
+      700,
+      33
+    ],
+    "library": [
+      162,
+      384,
+      700,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 35,
+    "loadMs": 50,
+    "sampleUntilMs": 204,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 1024,
+    "h": 768,
+    "mode": "light",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      45,
+      336,
+      700,
+      2556
+    ],
+    "library": [
+      45,
+      2956,
+      700,
+      325
+    ],
+    "toc": [
+      777,
+      150,
+      192,
+      277
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        700,
+        1237,
+        0
+      ],
+      [
+        "DIV",
+        700,
+        700,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 33,
+    "loadMs": 47,
+    "sampleUntilMs": 194,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 1024,
+    "h": 768,
+    "mode": "light",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      157,
+      285,
+      700,
+      1072
+    ],
+    "library": [
+      157,
+      1421,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          600,
+          400
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          451,
+          300
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 26,
+    "loadMs": 31,
+    "sampleUntilMs": 191,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 1024,
+    "h": 768,
+    "mode": "light",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      157,
+      285,
+      700,
+      1937
+    ],
+    "library": [
+      157,
+      2286,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 28,
+    "loadMs": 48,
+    "sampleUntilMs": 3098,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 1024,
+    "h": 768,
+    "mode": "dark",
+    "url": "/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1024,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          372,
+          223
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          372,
+          223
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 12,
+    "loadMs": 35,
+    "sampleUntilMs": 188,
+    "cls": 0.00009914580732584,
+    "shifts": [
+      {
+        "t": 30.099999994039536,
+        "v": 0.00009914580732584,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 1024,
+    "h": 768,
+    "mode": "dark",
+    "url": "/categories/engineering/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1024,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          372,
+          223
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          372,
+          223
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 9,
+    "loadMs": 35,
+    "sampleUntilMs": 3145,
+    "cls": 0.00009914580732584,
+    "shifts": [
+      {
+        "t": 24.200000002980232,
+        "v": 0.00009914580732584,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 1024,
+    "h": 768,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      45,
+      286,
+      700,
+      416
+    ],
+    "library": [
+      45,
+      766,
+      700,
+      110
+    ],
+    "toc": [
+      777,
+      150,
+      192,
+      74
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 27,
+    "loadMs": 34,
+    "sampleUntilMs": 191,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 1024,
+    "h": 768,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1024,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      162,
+      286,
+      700,
+      33
+    ],
+    "library": [
+      162,
+      384,
+      700,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 26,
+    "loadMs": 39,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 1024,
+    "h": 768,
+    "mode": "dark",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      45,
+      336,
+      700,
+      2556
+    ],
+    "library": [
+      45,
+      2956,
+      700,
+      325
+    ],
+    "toc": [
+      777,
+      150,
+      192,
+      277
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        700,
+        1237,
+        0
+      ],
+      [
+        "DIV",
+        700,
+        700,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 35,
+    "loadMs": 45,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 1024,
+    "h": 768,
+    "mode": "dark",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      157,
+      285,
+      700,
+      1072
+    ],
+    "library": [
+      157,
+      1421,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          600,
+          400
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          451,
+          300
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 20,
+    "loadMs": 38,
+    "sampleUntilMs": 189,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 1024,
+    "h": 768,
+    "mode": "dark",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      1024,
+      768
+    ],
+    "clientWidth": 1013,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      157,
+      285,
+      700,
+      1937
+    ],
+    "library": [
+      157,
+      2286,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 27,
+    "loadMs": 44,
+    "sampleUntilMs": 186,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 768,
+    "h": 1024,
+    "mode": "light",
+    "url": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 768,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          270,
+          162
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          270,
+          162
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 11,
+    "loadMs": 18,
+    "sampleUntilMs": 191,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 768,
+    "h": 1024,
+    "mode": "light",
+    "url": "/categories/engineering/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 768,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          270,
+          162
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          270,
+          162
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 11,
+    "loadMs": 32,
+    "sampleUntilMs": 3078,
+    "cls": 0.00007907580584287643,
+    "shifts": [
+      {
+        "t": 26.5,
+        "v": 0.00007907580584287643,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 768,
+    "h": 1024,
+    "mode": "light",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      29,
+      375,
+      700,
+      416
+    ],
+    "library": [
+      29,
+      829,
+      700,
+      110
+    ],
+    "toc": [
+      29,
+      273,
+      700,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 27,
+    "loadMs": 33,
+    "sampleUntilMs": 193,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 768,
+    "h": 1024,
+    "mode": "light",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 768,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      34,
+      273,
+      700,
+      33
+    ],
+    "library": [
+      34,
+      345,
+      700,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 25,
+    "loadMs": 40,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 768,
+    "h": 1024,
+    "mode": "light",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      29,
+      435,
+      700,
+      2556
+    ],
+    "library": [
+      29,
+      3030,
+      700,
+      325
+    ],
+    "toc": [
+      29,
+      323,
+      700,
+      88
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        700,
+        1237,
+        0
+      ],
+      [
+        "DIV",
+        700,
+        700,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 37,
+    "loadMs": 58,
+    "sampleUntilMs": 195,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 768,
+    "h": 1024,
+    "mode": "light",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      29,
+      272,
+      700,
+      1072
+    ],
+    "library": [
+      29,
+      1383,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          600,
+          400
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          451,
+          300
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 50,
+    "loadMs": 72,
+    "sampleUntilMs": 3173,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 768,
+    "h": 1024,
+    "mode": "light",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      29,
+      272,
+      700,
+      1937
+    ],
+    "library": [
+      29,
+      2247,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 32,
+    "loadMs": 41,
+    "sampleUntilMs": 193,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 768,
+    "h": 1024,
+    "mode": "dark",
+    "url": "/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 768,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          270,
+          162
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          270,
+          162
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 12,
+    "loadMs": 18,
+    "sampleUntilMs": 202,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 768,
+    "h": 1024,
+    "mode": "dark",
+    "url": "/categories/engineering/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 768,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          270,
+          162
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          270,
+          162
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 12,
+    "loadMs": 34,
+    "sampleUntilMs": 3099,
+    "cls": 0.00007794686825945973,
+    "shifts": [
+      {
+        "t": 27.80000001192093,
+        "v": 0.00007794686825945973,
+        "n": [
+          "#text",
+          "SPAN",
+          "SPAN"
+        ]
+      }
+    ],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 768,
+    "h": 1024,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      29,
+      375,
+      700,
+      416
+    ],
+    "library": [
+      29,
+      829,
+      700,
+      110
+    ],
+    "toc": [
+      29,
+      273,
+      700,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 21,
+    "loadMs": 26,
+    "sampleUntilMs": 186,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 768,
+    "h": 1024,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 768,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      34,
+      273,
+      700,
+      33
+    ],
+    "library": [
+      34,
+      345,
+      700,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 40,
+    "loadMs": 56,
+    "sampleUntilMs": 3100,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 768,
+    "h": 1024,
+    "mode": "dark",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      29,
+      435,
+      700,
+      2556
+    ],
+    "library": [
+      29,
+      3030,
+      700,
+      325
+    ],
+    "toc": [
+      29,
+      323,
+      700,
+      88
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        700,
+        1237,
+        0
+      ],
+      [
+        "DIV",
+        700,
+        700,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 33,
+    "loadMs": 43,
+    "sampleUntilMs": 199,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 768,
+    "h": 1024,
+    "mode": "dark",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": null,
+    "prose": [
+      29,
+      272,
+      700,
+      1072
+    ],
+    "library": [
+      29,
+      1383,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          600,
+          400
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          451,
+          300
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 18,
+    "loadMs": 29,
+    "sampleUntilMs": 184,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 768,
+    "h": 1024,
+    "mode": "dark",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      768,
+      1024
+    ],
+    "clientWidth": 757,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "18px",
+    "leading": "33.3px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "36px",
+    "pGap": "17.1px",
+    "prose": [
+      29,
+      272,
+      700,
+      1937
+    ],
+    "library": [
+      29,
+      2247,
+      700,
+      325
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 35,
+    "loadMs": 51,
+    "sampleUntilMs": 3102,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 390,
+    "h": 844,
+    "mode": "light",
+    "url": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          350,
+          210
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          350,
+          210
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 11,
+    "loadMs": 33,
+    "sampleUntilMs": 1145,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 390,
+    "h": 844,
+    "mode": "light",
+    "url": "/categories/engineering/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          350,
+          210
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          350,
+          210
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 11,
+    "loadMs": 29,
+    "sampleUntilMs": 1151,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 390,
+    "h": 844,
+    "mode": "light",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      340,
+      350,
+      463
+    ],
+    "library": [
+      20,
+      836,
+      350,
+      110
+    ],
+    "toc": [
+      20,
+      239,
+      350,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 25,
+    "loadMs": 38,
+    "sampleUntilMs": 202,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 390,
+    "h": 844,
+    "mode": "light",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      239,
+      350,
+      63
+    ],
+    "library": [
+      20,
+      334,
+      350,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 25,
+    "loadMs": 33,
+    "sampleUntilMs": 197,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 390,
+    "h": 844,
+    "mode": "light",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      380,
+      350,
+      3739
+    ],
+    "library": [
+      20,
+      4151,
+      350,
+      348
+    ],
+    "toc": [
+      20,
+      278,
+      350,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        350,
+        1169,
+        0
+      ],
+      [
+        "DIV",
+        350,
+        350,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 41,
+    "loadMs": 51,
+    "sampleUntilMs": 203,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 390,
+    "h": 844,
+    "mode": "light",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      238,
+      350,
+      912
+    ],
+    "library": [
+      20,
+      1181,
+      350,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          350,
+          233
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          350,
+          233
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 22,
+    "loadMs": 34,
+    "sampleUntilMs": 188,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 390,
+    "h": 844,
+    "mode": "light",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      238,
+      350,
+      3212
+    ],
+    "library": [
+      20,
+      3481,
+      350,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 28,
+    "loadMs": 48,
+    "sampleUntilMs": 1163,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 390,
+    "h": 844,
+    "mode": "dark",
+    "url": "/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          350,
+          210
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          350,
+          210
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 15,
+    "loadMs": 37,
+    "sampleUntilMs": 205,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 390,
+    "h": 844,
+    "mode": "dark",
+    "url": "/categories/engineering/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          350,
+          210
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          350,
+          210
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 11,
+    "loadMs": 25,
+    "sampleUntilMs": 188,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 390,
+    "h": 844,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      340,
+      350,
+      463
+    ],
+    "library": [
+      20,
+      836,
+      350,
+      110
+    ],
+    "toc": [
+      20,
+      239,
+      350,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 24,
+    "loadMs": 31,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 390,
+    "h": 844,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      239,
+      350,
+      63
+    ],
+    "library": [
+      20,
+      334,
+      350,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 23,
+    "loadMs": 29,
+    "sampleUntilMs": 197,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 390,
+    "h": 844,
+    "mode": "dark",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      380,
+      350,
+      3739
+    ],
+    "library": [
+      20,
+      4151,
+      350,
+      348
+    ],
+    "toc": [
+      20,
+      278,
+      350,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        350,
+        1169,
+        0
+      ],
+      [
+        "DIV",
+        350,
+        350,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 31,
+    "loadMs": 41,
+    "sampleUntilMs": 195,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 390,
+    "h": 844,
+    "mode": "dark",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      238,
+      350,
+      912
+    ],
+    "library": [
+      20,
+      1181,
+      350,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          350,
+          233
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          350,
+          233
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 19,
+    "loadMs": 31,
+    "sampleUntilMs": 188,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 390,
+    "h": 844,
+    "mode": "dark",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      390,
+      844
+    ],
+    "clientWidth": 390,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      238,
+      350,
+      3212
+    ],
+    "library": [
+      20,
+      3481,
+      350,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 22,
+    "loadMs": 36,
+    "sampleUntilMs": 190,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 375,
+    "h": 812,
+    "mode": "light",
+    "url": "/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          335,
+          201
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          335,
+          201
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 12,
+    "loadMs": 18,
+    "sampleUntilMs": 202,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 375,
+    "h": 812,
+    "mode": "light",
+    "url": "/categories/engineering/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          335,
+          201
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          335,
+          201
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 21,
+    "loadMs": 44,
+    "sampleUntilMs": 1160,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 375,
+    "h": 812,
+    "mode": "light",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      340,
+      335,
+      463
+    ],
+    "library": [
+      20,
+      836,
+      335,
+      110
+    ],
+    "toc": [
+      20,
+      239,
+      335,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 27,
+    "loadMs": 39,
+    "sampleUntilMs": 201,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 375,
+    "h": 812,
+    "mode": "light",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      239,
+      335,
+      63
+    ],
+    "library": [
+      20,
+      334,
+      335,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 25,
+    "loadMs": 33,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 375,
+    "h": 812,
+    "mode": "light",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      380,
+      335,
+      3834
+    ],
+    "library": [
+      20,
+      4246,
+      335,
+      348
+    ],
+    "toc": [
+      20,
+      278,
+      335,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        335,
+        1169,
+        0
+      ],
+      [
+        "DIV",
+        335,
+        335,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 37,
+    "loadMs": 48,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 375,
+    "h": 812,
+    "mode": "light",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      238,
+      335,
+      923
+    ],
+    "library": [
+      20,
+      1193,
+      335,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          335,
+          223
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          335,
+          223
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 23,
+    "loadMs": 33,
+    "sampleUntilMs": 190,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 375,
+    "h": 812,
+    "mode": "light",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "light",
+    "bg": "rgb(250, 248, 243)",
+    "ink": "rgb(41, 41, 35)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      238,
+      335,
+      3432
+    ],
+    "library": [
+      20,
+      3702,
+      335,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 28,
+    "loadMs": 40,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "home",
+    "w": 375,
+    "h": 812,
+    "mode": "dark",
+    "url": "/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "文章 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          335,
+          201
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          335,
+          201
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 11,
+    "loadMs": 17,
+    "sampleUntilMs": 191,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "engineering",
+    "w": 375,
+    "h": 812,
+    "mode": "dark",
+    "url": "/categories/engineering/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "工程分类 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": null,
+    "pGap": null,
+    "prose": null,
+    "library": null,
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": null,
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "navCurrent": "/categories/engineering/",
+    "category": null,
+    "listImages": "block",
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          335,
+          201
+        ]
+      },
+      {
+        "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+        "alt": "",
+        "pixels": [
+          768,
+          432
+        ],
+        "box": [
+          335,
+          201
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 18,
+    "fontRequests": 18,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5400,
+    "domLoadedMs": 10,
+    "loadMs": 28,
+    "sampleUntilMs": 190,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "article",
+    "w": 375,
+    "h": 812,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-test/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      340,
+      335,
+      463
+    ],
+    "library": [
+      20,
+      836,
+      335,
+      110
+    ],
+    "toc": [
+      20,
+      239,
+      335,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 1,
+    "chapterTargets": [
+      "H2"
+    ],
+    "currentChapter": "媒体同步验证",
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "alt": "部署链路示意图",
+        "pixels": [
+          320,
+          180
+        ],
+        "box": [
+          320,
+          180
+        ]
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 19,
+    "fontRequests": 19,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5700,
+    "domLoadedMs": 62,
+    "loadMs": 72,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "text",
+    "w": 375,
+    "h": 812,
+    "mode": "dark",
+    "url": "/posts/m2-smoke-no-image-test/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "M2 发布链路无图测试 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      239,
+      335,
+      63
+    ],
+    "library": [
+      20,
+      334,
+      335,
+      110
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/"
+    ],
+    "current": "/posts/m2-smoke-no-image-test/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 17,
+    "fontRequests": 17,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 5100,
+    "domLoadedMs": 18,
+    "loadMs": 25,
+    "sampleUntilMs": 187,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "tech",
+    "w": 375,
+    "h": 812,
+    "mode": "dark",
+    "url": "/posts/lab-tech/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      380,
+      335,
+      3834
+    ],
+    "library": [
+      20,
+      4246,
+      335,
+      348
+    ],
+    "toc": [
+      20,
+      278,
+      335,
+      77
+    ],
+    "tocPos": "sticky",
+    "libraryPos": "static",
+    "sectionCount": 6,
+    "chapterTargets": [
+      "H2",
+      "H3",
+      "H2",
+      "H3",
+      "H2",
+      "H3"
+    ],
+    "currentChapter": "一张图片从草稿到读者的屏幕",
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-tech/",
+    "category": "工程",
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [
+      [
+        "PRE",
+        335,
+        1169,
+        0
+      ],
+      [
+        "DIV",
+        335,
+        335,
+        0
+      ]
+    ],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 32,
+    "loadMs": 46,
+    "sampleUntilMs": 195,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "life",
+    "w": 375,
+    "h": 812,
+    "mode": "dark",
+    "url": "/posts/lab-life/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "杯沿与猫眼里的光 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": null,
+    "prose": [
+      20,
+      238,
+      335,
+      923
+    ],
+    "library": [
+      20,
+      1193,
+      335,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-life/",
+    "category": null,
+    "listImages": null,
+    "imgs": [
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+        "pixels": [
+          600,
+          400
+        ],
+        "box": [
+          335,
+          223
+        ],
+        "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+      },
+      {
+        "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+        "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+        "pixels": [
+          451,
+          300
+        ],
+        "box": [
+          335,
+          223
+        ],
+        "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+      }
+    ],
+    "scrollBoxes": [],
+    "fontFaces": 25,
+    "fontRequests": 25,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 7500,
+    "domLoadedMs": 20,
+    "loadMs": 35,
+    "sampleUntilMs": 190,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  },
+  {
+    "scene": "essay",
+    "w": 375,
+    "h": 812,
+    "mode": "dark",
+    "url": "/posts/lab-essay/",
+    "viewport": [
+      375,
+      812
+    ],
+    "clientWidth": 375,
+    "overflow": 0,
+    "brand": "骞言碎语",
+    "title": "街角的钟表店 · 骞言碎语",
+    "view": "cards",
+    "theme": "dark",
+    "bg": "rgb(32, 33, 30)",
+    "ink": "rgb(232, 227, 215)",
+    "size": "17px",
+    "leading": "31.45px",
+    "weight": "400",
+    "break": "strict",
+    "h1": "29px",
+    "pGap": "16.15px",
+    "prose": [
+      20,
+      238,
+      335,
+      3432
+    ],
+    "library": [
+      20,
+      3702,
+      335,
+      348
+    ],
+    "toc": null,
+    "tocPos": null,
+    "libraryPos": "static",
+    "sectionCount": 0,
+    "chapterTargets": [],
+    "list": [
+      "/posts/lab-code/",
+      "/posts/lab-depth/",
+      "/posts/lab-life/",
+      "/posts/lab-markdown/",
+      "/posts/lab-tech/",
+      "/posts/m2-smoke-test/",
+      "/posts/m2-smoke-no-image-test/",
+      "/posts/lab-essay/"
+    ],
+    "current": "/posts/lab-essay/",
+    "category": null,
+    "listImages": null,
+    "imgs": [],
+    "scrollBoxes": [],
+    "fontFaces": 33,
+    "fontRequests": 33,
+    "fontEncodedBytes": 0,
+    "fontTransferBytes": 9900,
+    "domLoadedMs": 26,
+    "loadMs": 39,
+    "sampleUntilMs": 196,
+    "cls": 0,
+    "shifts": [],
+    "observer": true
+  }
+]

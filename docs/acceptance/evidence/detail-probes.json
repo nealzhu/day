@@ -1,0 +1,194 @@
+[
+  {
+    "tag": "photos delayed 2 s",
+    "width": 390,
+    "shifts": [
+      {
+        "t": 2674.0999999940395,
+        "v": 0.24223248100129502,
+        "input": false,
+        "n": [
+          "P",
+          "ASIDE",
+          "FIGURE",
+          "P",
+          "FIGCAPTION"
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "ms": 26,
+        "imgHeight": 0,
+        "width": 0,
+        "decoded": 0,
+        "capTop": 363.6875
+      },
+      {
+        "ms": 2673,
+        "imgHeight": 233,
+        "width": 350,
+        "decoded": 600,
+        "capTop": 597.015625
+      }
+    ],
+    "attrs": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ],
+    "paints": [
+      [
+        "first-paint",
+        60
+      ],
+      [
+        "first-contentful-paint",
+        60
+      ]
+    ]
+  },
+  {
+    "tag": "photos delayed 2 s",
+    "width": 1440,
+    "shifts": [
+      {
+        "t": 2026.0999999940395,
+        "v": 0.3993553508475099,
+        "input": false,
+        "n": [
+          "MAIN",
+          "HEADER",
+          "FOOTER",
+          "P",
+          "FIGURE"
+        ]
+      }
+    ],
+    "frames": [
+      {
+        "ms": 31,
+        "imgHeight": 0,
+        "width": 0,
+        "decoded": 0,
+        "capTop": 406.140625
+      },
+      {
+        "ms": 2026,
+        "imgHeight": 400,
+        "width": 600,
+        "decoded": 600,
+        "capTop": 806.140625
+      }
+    ],
+    "attrs": [
+      [
+        null,
+        null
+      ],
+      [
+        null,
+        null
+      ]
+    ],
+    "paints": [
+      [
+        "first-paint",
+        80
+      ],
+      [
+        "first-contentful-paint",
+        80
+      ]
+    ]
+  },
+  {
+    "tag": "full outline H3 landing",
+    "width": 768,
+    "hash": "#为什么从内容计算摘要",
+    "current": "为什么从内容计算摘要",
+    "headingTop": 80.109375,
+    "textTop": 82.109375,
+    "stickyBottom": 88.421875,
+    "scrollY": 770,
+    "scrollMargin": "80px"
+  },
+  {
+    "tag": "full outline H3 landing",
+    "width": 375,
+    "hash": "#为什么从内容计算摘要",
+    "current": "为什么从内容计算摘要",
+    "headingTop": 79.609375,
+    "textTop": 81.609375,
+    "stickyBottom": 77.421875,
+    "scrollY": 912,
+    "scrollMargin": "80px"
+  },
+  {
+    "tag": "actual heading depths",
+    "map": [
+      [
+        "书衣",
+        "H2"
+      ],
+      [
+        "封面",
+        "H3"
+      ],
+      [
+        "题签",
+        "H4"
+      ],
+      [
+        "墨色",
+        "H5"
+      ],
+      [
+        "笔锋与纸纹",
+        "H6"
+      ],
+      [
+        "落款",
+        "H5"
+      ],
+      [
+        "纸角",
+        "H4"
+      ],
+      [
+        "书脊",
+        "H3"
+      ]
+    ]
+  },
+  {
+    "tag": "mini touch targets",
+    "coords": {
+      "x": 363,
+      "y": 293.375
+    },
+    "center": {
+      "preview": "为什么从内容计算摘要",
+      "hidden": false,
+      "hash": "",
+      "current": "一张图片，从草稿到读者的屏幕"
+    },
+    "sixPixelsLower": {
+      "preview": "把下载与复用分开记录",
+      "hidden": false,
+      "hash": "",
+      "current": "一张图片，从草稿到读者的屏幕"
+    },
+    "secondTapSame": {
+      "preview": "把下载与复用分开记录",
+      "hidden": true,
+      "hash": "#把下载与复用分开记录",
+      "current": "把下载与复用分开记录"
+    }
+  }
+]

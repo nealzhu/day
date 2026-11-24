@@ -1,0 +1,525 @@
+[
+  {
+    "test": "skip link Tab",
+    "state": {
+      "path": "/",
+      "hash": "",
+      "view": "cards",
+      "theme": "light",
+      "panel": false,
+      "focus": "跳到正文",
+      "focusVisible": true,
+      "outline": "rgb(130, 80, 60) solid 2px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "完整"
+      ],
+      "covers": 8,
+      "activeNav": "全部",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ]
+    }
+  },
+  {
+    "test": "skip link Enter",
+    "state": {
+      "path": "/",
+      "hash": "#main",
+      "view": "cards",
+      "theme": "light",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(41, 41, 35) none 3px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "完整"
+      ],
+      "covers": 8,
+      "activeNav": "全部",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ]
+    }
+  },
+  {
+    "test": "pointer opens settings",
+    "state": {
+      "path": "/",
+      "hash": "",
+      "view": "cards",
+      "theme": "light",
+      "panel": true,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(41, 41, 35) none 3px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "完整"
+      ],
+      "covers": 8,
+      "activeNav": "全部",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ]
+    }
+  },
+  {
+    "test": "choose list and dark",
+    "state": {
+      "path": "/",
+      "hash": "",
+      "view": "list",
+      "theme": "dark",
+      "panel": true,
+      "focus": "深色",
+      "focusVisible": false,
+      "outline": "rgb(226, 172, 145) none 3px",
+      "selected": [
+        "列表",
+        "深色",
+        "完整"
+      ],
+      "covers": 0,
+      "activeNav": "全部",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ]
+    }
+  },
+  {
+    "test": "reload preferences",
+    "state": {
+      "path": "/",
+      "hash": "",
+      "view": "list",
+      "theme": "dark",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(232, 227, 215) none 3px",
+      "selected": [
+        "列表",
+        "深色",
+        "完整"
+      ],
+      "covers": 0,
+      "activeNav": "全部",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ]
+    },
+    "webp": 4
+  },
+  {
+    "test": "navigate engineering from home",
+    "state": {
+      "path": "/categories/engineering/",
+      "hash": "",
+      "view": "list",
+      "theme": "dark",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(232, 227, 215) none 3px",
+      "selected": [
+        "列表",
+        "深色",
+        "完整"
+      ],
+      "covers": 0,
+      "activeNav": "工程",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ]
+    }
+  },
+  {
+    "test": "open category index",
+    "state": {
+      "path": "/categories/",
+      "hash": "",
+      "view": "list",
+      "theme": "dark",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(232, 227, 215) none 3px",
+      "selected": [
+        "列表",
+        "深色",
+        "完整"
+      ],
+      "covers": 0,
+      "posts": []
+    },
+    "entries": "工程 · 5 篇"
+  },
+  {
+    "test": "index to category",
+    "state": {
+      "path": "/categories/engineering/",
+      "hash": "",
+      "view": "list",
+      "theme": "dark",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(232, 227, 215) none 3px",
+      "selected": [
+        "列表",
+        "深色",
+        "完整"
+      ],
+      "covers": 0,
+      "activeNav": "工程",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ]
+    }
+  },
+  {
+    "test": "keyboard first choice",
+    "state": {
+      "path": "/categories/engineering/",
+      "hash": "",
+      "view": "list",
+      "theme": "dark",
+      "panel": true,
+      "focus": "图文卡片",
+      "focusVisible": true,
+      "outline": "rgb(226, 172, 145) solid 2px",
+      "selected": [
+        "列表",
+        "深色",
+        "完整"
+      ],
+      "covers": 0,
+      "activeNav": "工程",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ]
+    }
+  },
+  {
+    "test": "keyboard activates cards",
+    "state": {
+      "path": "/categories/engineering/",
+      "hash": "",
+      "view": "cards",
+      "theme": "dark",
+      "panel": true,
+      "focus": "图文卡片",
+      "focusVisible": true,
+      "outline": "rgb(226, 172, 145) solid 2px",
+      "selected": [
+        "图文卡片",
+        "深色",
+        "完整"
+      ],
+      "covers": 5,
+      "activeNav": "工程",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ]
+    }
+  },
+  {
+    "test": "Escape closes and restores focus",
+    "state": {
+      "path": "/categories/engineering/",
+      "hash": "",
+      "view": "cards",
+      "theme": "dark",
+      "panel": false,
+      "focus": "settings-trigger",
+      "focusVisible": true,
+      "outline": "rgb(226, 172, 145) solid 2px",
+      "selected": [
+        "图文卡片",
+        "深色",
+        "完整"
+      ],
+      "covers": 5,
+      "activeNav": "工程",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ]
+    }
+  },
+  {
+    "test": "reduced motion cards",
+    "state": {
+      "path": "/",
+      "hash": "",
+      "view": "cards",
+      "theme": "light",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(41, 41, 35) none 3px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "完整"
+      ],
+      "covers": 8,
+      "activeNav": "全部",
+      "posts": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ]
+    },
+    "css": {
+      "reduce": true,
+      "cover": "none",
+      "title": "0s",
+      "settings": "0s"
+    }
+  },
+  {
+    "test": "title hover",
+    "css": {
+      "hover": true,
+      "color": "rgb(130, 80, 60)",
+      "underline": "rgb(130, 80, 60)"
+    }
+  },
+  {
+    "test": "mobile H3 jump",
+    "state": {
+      "path": "/posts/lab-tech/",
+      "hash": "#为什么从内容计算摘要",
+      "view": "cards",
+      "theme": "light",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(41, 41, 35) none 3px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "完整"
+      ],
+      "covers": 0,
+      "current": "为什么从内容计算摘要",
+      "posts": []
+    },
+    "target": {
+      "top": 79.609375,
+      "barBottom": 77.421875
+    }
+  },
+  {
+    "test": "mobile pre keyboard scroll",
+    "css": {
+      "focus": "PRE",
+      "x": 29,
+      "docX": 0
+    }
+  },
+  {
+    "test": "mobile table keyboard scroll",
+    "css": {
+      "focus": "table-scroll",
+      "boxes": [
+        [
+          335,
+          335,
+          0
+        ]
+      ],
+      "docX": 0
+    }
+  },
+  {
+    "test": "mini focus and reduced motion",
+    "state": {
+      "path": "/posts/lab-depth/",
+      "hash": "",
+      "view": "cards",
+      "theme": "light",
+      "panel": false,
+      "focus": "封面",
+      "focusVisible": true,
+      "outline": "rgb(130, 80, 60) solid 2px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "迷你"
+      ],
+      "covers": 0,
+      "current": "书衣",
+      "posts": []
+    },
+    "css": {
+      "hint": "封面",
+      "hidden": false,
+      "marks": [
+        [
+          351,
+          238.78125,
+          24,
+          10,
+          "0s"
+        ],
+        [
+          351,
+          248.78125,
+          24,
+          10,
+          "0s"
+        ],
+        [
+          351,
+          258.78125,
+          24,
+          10,
+          "0s"
+        ],
+        [
+          351,
+          268.78125,
+          24,
+          10,
+          "0s"
+        ],
+        [
+          351,
+          278.78125,
+          24,
+          10,
+          "0s"
+        ]
+      ],
+      "animation": "none"
+    }
+  },
+  {
+    "test": "mini Enter follows focused chapter",
+    "state": {
+      "path": "/posts/lab-depth/",
+      "hash": "#封面",
+      "view": "cards",
+      "theme": "light",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(41, 41, 35) none 3px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "迷你"
+      ],
+      "covers": 0,
+      "current": "封面",
+      "posts": []
+    }
+  },
+  {
+    "test": "archive scroll restored across posts, short viewport",
+    "before": {
+      "top": 150,
+      "max": 150
+    },
+    "after": {
+      "top": 150,
+      "current": "/posts/lab-essay/",
+      "key": "150"
+    }
+  },
+  {
+    "test": "404 recovery page",
+    "title": "页面未找到 · 骞言碎语",
+    "link": "/"
+  },
+  {
+    "test": "404 return home",
+    "state": {
+      "path": "/",
+      "hash": "",
+      "view": "cards",
+      "theme": "light",
+      "panel": false,
+      "focus": "跳到正文  骞言碎语  全部 工程                   文章视图",
+      "focusVisible": false,
+      "outline": "rgb(41, 41, 35) none 3px",
+      "selected": [
+        "图文卡片",
+        "随系统",
+        "完整"
+      ],
+      "covers": 2,
+      "activeNav": "全部",
+      "posts": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ]
+    }
+  }
+]

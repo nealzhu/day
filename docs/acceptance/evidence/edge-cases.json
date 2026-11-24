@@ -1,0 +1,2332 @@
+[
+  {
+    "tag": "long left rail initial",
+    "links": 34,
+    "scrollTop": 0,
+    "maxScroll": 439,
+    "pageY": 0,
+    "viewport": 900,
+    "navTop": 201.328125,
+    "navBottom": 989.328125,
+    "last": "archive-31",
+    "lastTop": 1388.171875,
+    "lastBottom": 1424.015625,
+    "hitLast": false
+  },
+  {
+    "tag": "long left rail at end, body at top",
+    "links": 34,
+    "scrollTop": 439,
+    "maxScroll": 439,
+    "pageY": 0,
+    "viewport": 900,
+    "navTop": 201.328125,
+    "navBottom": 989.328125,
+    "last": "archive-31",
+    "lastTop": 949.171875,
+    "lastBottom": 985.015625,
+    "hitLast": false
+  },
+  {
+    "tag": "body scrolled, last link reachable",
+    "links": 34,
+    "scrollTop": 439,
+    "maxScroll": 439,
+    "pageY": 320,
+    "viewport": 900,
+    "navTop": 62.390625,
+    "navBottom": 850.390625,
+    "last": "archive-31",
+    "lastTop": 810.234375,
+    "lastBottom": 846.078125,
+    "hitLast": true
+  },
+  {
+    "tag": "wide table keyboard",
+    "value": {
+      "focus": true,
+      "width": 335,
+      "content": 1850,
+      "scrollLeft": 28,
+      "docX": 0,
+      "pageOverflow": 0
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 1440,
+    "theme": "light",
+    "state": {
+      "url": "/",
+      "viewport": [
+        1440,
+        900
+      ],
+      "clientWidth": 1440,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "18px",
+      "leading": "33.3px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 13,
+      "loadMs": 33,
+      "sampleUntilMs": 3096,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 1440,
+    "theme": "dark",
+    "state": {
+      "url": "/",
+      "viewport": [
+        1440,
+        900
+      ],
+      "clientWidth": 1440,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "dark",
+      "bg": "rgb(32, 33, 30)",
+      "ink": "rgb(232, 227, 215)",
+      "size": "18px",
+      "leading": "33.3px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 15,
+      "loadMs": 36,
+      "sampleUntilMs": 195,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 1024,
+    "theme": "light",
+    "state": {
+      "url": "/",
+      "viewport": [
+        1024,
+        768
+      ],
+      "clientWidth": 1024,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "18px",
+      "leading": "33.3px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 13,
+      "loadMs": 30,
+      "sampleUntilMs": 3100,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 1024,
+    "theme": "dark",
+    "state": {
+      "url": "/",
+      "viewport": [
+        1024,
+        768
+      ],
+      "clientWidth": 1024,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "dark",
+      "bg": "rgb(32, 33, 30)",
+      "ink": "rgb(232, 227, 215)",
+      "size": "18px",
+      "leading": "33.3px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 13,
+      "loadMs": 30,
+      "sampleUntilMs": 3089,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 768,
+    "theme": "light",
+    "state": {
+      "url": "/",
+      "viewport": [
+        768,
+        1024
+      ],
+      "clientWidth": 768,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "18px",
+      "leading": "33.3px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 14,
+      "loadMs": 32,
+      "sampleUntilMs": 3097,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 768,
+    "theme": "dark",
+    "state": {
+      "url": "/",
+      "viewport": [
+        768,
+        1024
+      ],
+      "clientWidth": 768,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "dark",
+      "bg": "rgb(32, 33, 30)",
+      "ink": "rgb(232, 227, 215)",
+      "size": "18px",
+      "leading": "33.3px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 16,
+      "loadMs": 37,
+      "sampleUntilMs": 3096,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 390,
+    "theme": "light",
+    "state": {
+      "url": "/",
+      "viewport": [
+        390,
+        844
+      ],
+      "clientWidth": 390,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 11,
+      "loadMs": 17,
+      "sampleUntilMs": 191,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 390,
+    "theme": "dark",
+    "state": {
+      "url": "/",
+      "viewport": [
+        390,
+        844
+      ],
+      "clientWidth": 390,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "dark",
+      "bg": "rgb(32, 33, 30)",
+      "ink": "rgb(232, 227, 215)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 12,
+      "loadMs": 29,
+      "sampleUntilMs": 191,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 375,
+    "theme": "light",
+    "state": {
+      "url": "/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 12,
+      "loadMs": 18,
+      "sampleUntilMs": 191,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "list persisted on fresh navigation",
+    "width": 375,
+    "theme": "dark",
+    "state": {
+      "url": "/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "dark",
+      "bg": "rgb(32, 33, 30)",
+      "ink": "rgb(232, 227, 215)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            320,
+            180
+          ],
+          "box": [
+            320,
+            180
+          ]
+        },
+        {
+          "src": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            768,
+            432
+          ],
+          "box": [
+            768,
+            432
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 18,
+      "fontRequests": 18,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 5400,
+      "domLoadedMs": 17,
+      "loadMs": 36,
+      "sampleUntilMs": 3085,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:39451/",
+          200,
+          "Document"
+        ],
+        [
+          "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          200,
+          "Image"
+        ],
+        [
+          "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:39451/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "saved list, sample, cache bypass",
+    "state": {
+      "url": "/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "文章 · 骞言碎语",
+      "view": "list",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": null,
+      "pGap": null,
+      "prose": null,
+      "library": null,
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": null,
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "navCurrent": "/",
+      "category": null,
+      "listImages": "none",
+      "imgs": [
+        {
+          "src": "http://127.0.0.1:4633/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "http://127.0.0.1:4633/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+          "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-markdown/coffee-f5b9cdcf1726.webp",
+          "alt": "桌上的杯碟",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "http://127.0.0.1:4633/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "http://127.0.0.1:4633/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+          "alt": "部署链路示意图",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "http://127.0.0.1:4633/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        },
+        {
+          "src": "http://127.0.0.1:4633/site/card-placeholder-ffdf4a3ffd68.webp",
+          "alt": "",
+          "pixels": [
+            0,
+            0
+          ],
+          "box": [
+            0,
+            0
+          ]
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 23,
+      "fontRequests": 23,
+      "fontEncodedBytes": 780184,
+      "fontTransferBytes": 787084,
+      "domLoadedMs": 30,
+      "loadMs": 57,
+      "sampleUntilMs": 1144,
+      "cls": null,
+      "shifts": null,
+      "observer": false
+    },
+    "resources": [],
+    "network": {
+      "responses": [
+        [
+          "http://127.0.0.1:4633/",
+          200,
+          "Document"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_category_.CllHTusS.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/faces.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/0b3767c2f245038de676.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/35486952295a4b80fa75.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1053336749035455c181.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/492a5fcab08798e79e03.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ef235b49c808a8059faf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/48b4b965da161052736e.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1ae3d7086d80b0d11828.woff2",
+          200,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "tag": "skip next tab",
+    "focus": {
+      "link": "/posts/m2-smoke-test/",
+      "inMain": true
+    }
+  }
+]

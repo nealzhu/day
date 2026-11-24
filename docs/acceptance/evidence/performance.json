@@ -1,0 +1,2511 @@
+[
+  {
+    "profile": "cold-slow",
+    "path": "lab-life",
+    "page": {
+      "url": "/posts/lab-life/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "杯沿与猫眼里的光 · 骞言碎语",
+      "view": "cards",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": "29px",
+      "pGap": null,
+      "prose": [
+        20,
+        238,
+        335,
+        923
+      ],
+      "library": [
+        20,
+        1193,
+        335,
+        348
+      ],
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": "static",
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "current": "/posts/lab-life/",
+      "category": null,
+      "listImages": null,
+      "imgs": [
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+          "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+          "pixels": [
+            600,
+            400
+          ],
+          "box": [
+            335,
+            223
+          ],
+          "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+        },
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+          "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+          "pixels": [
+            451,
+            300
+          ],
+          "box": [
+            335,
+            223
+          ],
+          "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontEncodedBytes": 889988,
+      "fontTransferBytes": 897488,
+      "domLoadedMs": 535,
+      "loadMs": 2180,
+      "sampleUntilMs": 4247,
+      "cls": 0,
+      "shifts": [],
+      "observer": true
+    },
+    "resources": [
+      {
+        "path": "/fonts/v1.530/faces.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 73317,
+        "encoded": 73017,
+        "end": 515
+      },
+      {
+        "path": "/_astro/_slug_.BpHqUdjs.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 2496,
+        "encoded": 2196,
+        "end": 273
+      },
+      {
+        "path": "/_astro/_category_.CllHTusS.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 2474,
+        "encoded": 2174,
+        "end": 278
+      },
+      {
+        "path": "/posts/lab-life/chelsea-93411e1e1563.webp",
+        "type": "img",
+        "status": 200,
+        "transfer": 23126,
+        "encoded": 22826,
+        "end": 386
+      },
+      {
+        "path": "/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "type": "img",
+        "status": 200,
+        "transfer": 50428,
+        "encoded": 50128,
+        "end": 475
+      },
+      {
+        "path": "/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 43820,
+        "encoded": 43520,
+        "end": 930
+      },
+      {
+        "path": "/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 13824,
+        "encoded": 13524,
+        "end": 788
+      },
+      {
+        "path": "/fonts/v1.530/0b3767c2f245038de676.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 19564,
+        "encoded": 19264,
+        "end": 842
+      },
+      {
+        "path": "/fonts/v1.530/35486952295a4b80fa75.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 20928,
+        "encoded": 20628,
+        "end": 846
+      },
+      {
+        "path": "/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 28384,
+        "encoded": 28084,
+        "end": 886
+      },
+      {
+        "path": "/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 30040,
+        "encoded": 29740,
+        "end": 897
+      },
+      {
+        "path": "/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 50112,
+        "encoded": 49812,
+        "end": 1135
+      },
+      {
+        "path": "/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 66336,
+        "encoded": 66036,
+        "end": 1458
+      },
+      {
+        "path": "/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 25332,
+        "encoded": 25032,
+        "end": 1161
+      },
+      {
+        "path": "/fonts/v1.530/ef235b49c808a8059faf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 34304,
+        "encoded": 34004,
+        "end": 1276
+      },
+      {
+        "path": "/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 41628,
+        "encoded": 41328,
+        "end": 1358
+      },
+      {
+        "path": "/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 50672,
+        "encoded": 50372,
+        "end": 1446
+      },
+      {
+        "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 18712,
+        "encoded": 18412,
+        "end": 1405
+      },
+      {
+        "path": "/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 21956,
+        "encoded": 21656,
+        "end": 1450
+      },
+      {
+        "path": "/fonts/v1.530/8271abf90b98e642ce85.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 32504,
+        "encoded": 32204,
+        "end": 1515
+      },
+      {
+        "path": "/fonts/v1.530/1053336749035455c181.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 40136,
+        "encoded": 39836,
+        "end": 1648
+      },
+      {
+        "path": "/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 42912,
+        "encoded": 42612,
+        "end": 1790
+      },
+      {
+        "path": "/fonts/v1.530/492a5fcab08798e79e03.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 46076,
+        "encoded": 45776,
+        "end": 1928
+      },
+      {
+        "path": "/fonts/v1.530/48b4b965da161052736e.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 53404,
+        "encoded": 53104,
+        "end": 2000
+      },
+      {
+        "path": "/fonts/v1.530/6402bb361bea9a670829.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 61936,
+        "encoded": 61636,
+        "end": 2070
+      },
+      {
+        "path": "/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 3640,
+        "encoded": 3340,
+        "end": 1676
+      },
+      {
+        "path": "/fonts/v1.530/1b2966c46235a36a8534.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 53044,
+        "encoded": 52744,
+        "end": 2163
+      },
+      {
+        "path": "/fonts/v1.530/6c67818a4454fe56b552.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 54352,
+        "encoded": 54052,
+        "end": 2177
+      },
+      {
+        "path": "/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 37700,
+        "encoded": 37400,
+        "end": 2172
+      },
+      {
+        "path": "/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 6172,
+        "encoded": 5872,
+        "end": 2102
+      }
+    ],
+    "events": {
+      "responses": [
+        [
+          "http://127.0.0.1:4633/posts/lab-life/",
+          200,
+          "Document"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_slug_.BpHqUdjs.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_category_.CllHTusS.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/faces.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/0b3767c2f245038de676.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/35486952295a4b80fa75.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ef235b49c808a8059faf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1053336749035455c181.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/492a5fcab08798e79e03.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/48b4b965da161052736e.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6402bb361bea9a670829.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1b2966c46235a36a8534.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6c67818a4454fe56b552.woff2",
+          200,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "profile": "cold-slow",
+    "path": "lab-essay",
+    "page": {
+      "url": "/posts/lab-essay/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "街角的钟表店 · 骞言碎语",
+      "view": "cards",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": "29px",
+      "pGap": "16.15px",
+      "prose": [
+        20,
+        238,
+        335,
+        3432
+      ],
+      "library": [
+        20,
+        3702,
+        335,
+        348
+      ],
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": "static",
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "current": "/posts/lab-essay/",
+      "category": null,
+      "listImages": null,
+      "imgs": [],
+      "scrollBoxes": [],
+      "fontFaces": 33,
+      "fontRequests": 33,
+      "fontEncodedBytes": 1362052,
+      "fontTransferBytes": 1371952,
+      "domLoadedMs": 410,
+      "loadMs": 2851,
+      "sampleUntilMs": 3134,
+      "cls": 0,
+      "shifts": [],
+      "observer": true
+    },
+    "resources": [
+      {
+        "path": "/fonts/v1.530/faces.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 73317,
+        "encoded": 73017,
+        "end": 391
+      },
+      {
+        "path": "/_astro/_slug_.BpHqUdjs.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 2496,
+        "encoded": 2196,
+        "end": 269
+      },
+      {
+        "path": "/_astro/_category_.CllHTusS.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 2474,
+        "encoded": 2174,
+        "end": 271
+      },
+      {
+        "path": "/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 13824,
+        "encoded": 13524,
+        "end": 663
+      },
+      {
+        "path": "/fonts/v1.530/0b3767c2f245038de676.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 19564,
+        "encoded": 19264,
+        "end": 716
+      },
+      {
+        "path": "/fonts/v1.530/35486952295a4b80fa75.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 20928,
+        "encoded": 20628,
+        "end": 719
+      },
+      {
+        "path": "/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 43820,
+        "encoded": 43520,
+        "end": 801
+      },
+      {
+        "path": "/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 28384,
+        "encoded": 28084,
+        "end": 759
+      },
+      {
+        "path": "/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 30040,
+        "encoded": 29740,
+        "end": 770
+      },
+      {
+        "path": "/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 50112,
+        "encoded": 49812,
+        "end": 1016
+      },
+      {
+        "path": "/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 66336,
+        "encoded": 66036,
+        "end": 1313
+      },
+      {
+        "path": "/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 21956,
+        "encoded": 21656,
+        "end": 1005
+      },
+      {
+        "path": "/fonts/v1.530/8271abf90b98e642ce85.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 32504,
+        "encoded": 32204,
+        "end": 1136
+      },
+      {
+        "path": "/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 41628,
+        "encoded": 41328,
+        "end": 1229
+      },
+      {
+        "path": "/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 42912,
+        "encoded": 42612,
+        "end": 1263
+      },
+      {
+        "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 18712,
+        "encoded": 18412,
+        "end": 1281
+      },
+      {
+        "path": "/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 25332,
+        "encoded": 25032,
+        "end": 1317
+      },
+      {
+        "path": "/fonts/v1.530/ef235b49c808a8059faf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 34304,
+        "encoded": 34004,
+        "end": 1366
+      },
+      {
+        "path": "/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 37700,
+        "encoded": 37400,
+        "end": 1526
+      },
+      {
+        "path": "/fonts/v1.530/1053336749035455c181.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 40136,
+        "encoded": 39836,
+        "end": 1676
+      },
+      {
+        "path": "/fonts/v1.530/492a5fcab08798e79e03.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 46076,
+        "encoded": 45776,
+        "end": 1776
+      },
+      {
+        "path": "/fonts/v1.530/d62eceb5cded8b1b00d1.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 49416,
+        "encoded": 49116,
+        "end": 1852
+      },
+      {
+        "path": "/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 50672,
+        "encoded": 50372,
+        "end": 1864
+      },
+      {
+        "path": "/fonts/v1.530/48b4b965da161052736e.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 53404,
+        "encoded": 53104,
+        "end": 1913
+      },
+      {
+        "path": "/fonts/v1.530/b085108facfcaa66bdad.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 54816,
+        "encoded": 54516,
+        "end": 2043
+      },
+      {
+        "path": "/fonts/v1.530/1ae3d7086d80b0d11828.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 58928,
+        "encoded": 58628,
+        "end": 2241
+      },
+      {
+        "path": "/fonts/v1.530/9e1fbf53e1dfc6f56cae.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 61472,
+        "encoded": 61172,
+        "end": 2378
+      },
+      {
+        "path": "/fonts/v1.530/1b2966c46235a36a8534.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 53044,
+        "encoded": 52744,
+        "end": 2434
+      },
+      {
+        "path": "/fonts/v1.530/e4bf267f9649542a4f9c.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 58080,
+        "encoded": 57780,
+        "end": 2476
+      },
+      {
+        "path": "/fonts/v1.530/a17faadaa76f5f9198b8.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 65108,
+        "encoded": 64808,
+        "end": 2791
+      },
+      {
+        "path": "/fonts/v1.530/e0e4b6bc459607b0cb26.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 61208,
+        "encoded": 60908,
+        "end": 2531
+      },
+      {
+        "path": "/fonts/v1.530/38db952e5ee91ff07150.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 65436,
+        "encoded": 65136,
+        "end": 2668
+      },
+      {
+        "path": "/fonts/v1.530/6402bb361bea9a670829.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 61936,
+        "encoded": 61636,
+        "end": 2843
+      },
+      {
+        "path": "/fonts/v1.530/6c67818a4454fe56b552.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 54352,
+        "encoded": 54052,
+        "end": 2848
+      },
+      {
+        "path": "/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 3640,
+        "encoded": 3340,
+        "end": 2634
+      },
+      {
+        "path": "/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 6172,
+        "encoded": 5872,
+        "end": 2706
+      }
+    ],
+    "events": {
+      "responses": [
+        [
+          "http://127.0.0.1:4633/posts/lab-essay/",
+          200,
+          "Document"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_slug_.BpHqUdjs.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_category_.CllHTusS.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/faces.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/0b3767c2f245038de676.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/35486952295a4b80fa75.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ef235b49c808a8059faf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1053336749035455c181.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/492a5fcab08798e79e03.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/d62eceb5cded8b1b00d1.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/48b4b965da161052736e.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b085108facfcaa66bdad.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1ae3d7086d80b0d11828.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9e1fbf53e1dfc6f56cae.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1b2966c46235a36a8534.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/e4bf267f9649542a4f9c.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/e0e4b6bc459607b0cb26.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/38db952e5ee91ff07150.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/a17faadaa76f5f9198b8.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6402bb361bea9a670829.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6c67818a4454fe56b552.woff2",
+          200,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "profile": "cold-slow",
+    "path": "lab-tech",
+    "page": {
+      "url": "/posts/lab-tech/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "从一张照片说起：静态文章里的资源、地址与缓存 · 骞言碎语",
+      "view": "cards",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": "29px",
+      "pGap": "16.15px",
+      "prose": [
+        20,
+        380,
+        335,
+        3834
+      ],
+      "library": [
+        20,
+        4246,
+        335,
+        348
+      ],
+      "toc": [
+        20,
+        278,
+        335,
+        77
+      ],
+      "tocPos": "sticky",
+      "libraryPos": "static",
+      "sectionCount": 6,
+      "chapterTargets": [
+        "H2",
+        "H3",
+        "H2",
+        "H3",
+        "H2",
+        "H3"
+      ],
+      "currentChapter": "一张图片从草稿到读者的屏幕",
+      "list": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "current": "/posts/lab-tech/",
+      "category": "工程",
+      "listImages": null,
+      "imgs": [],
+      "scrollBoxes": [
+        [
+          "PRE",
+          335,
+          1169,
+          0
+        ],
+        [
+          "DIV",
+          335,
+          335,
+          0
+        ]
+      ],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontEncodedBytes": 877468,
+      "fontTransferBytes": 884968,
+      "domLoadedMs": 426,
+      "loadMs": 2038,
+      "sampleUntilMs": 4180,
+      "cls": 0,
+      "shifts": [],
+      "observer": true
+    },
+    "resources": [
+      {
+        "path": "/fonts/v1.530/faces.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 73317,
+        "encoded": 73017,
+        "end": 396
+      },
+      {
+        "path": "/_astro/_slug_.BpHqUdjs.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 2496,
+        "encoded": 2196,
+        "end": 274
+      },
+      {
+        "path": "/_astro/_category_.CllHTusS.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 2474,
+        "encoded": 2174,
+        "end": 276
+      },
+      {
+        "path": "/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 43820,
+        "encoded": 43520,
+        "end": 806
+      },
+      {
+        "path": "/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 13824,
+        "encoded": 13524,
+        "end": 669
+      },
+      {
+        "path": "/fonts/v1.530/0b3767c2f245038de676.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 19564,
+        "encoded": 19264,
+        "end": 719
+      },
+      {
+        "path": "/fonts/v1.530/35486952295a4b80fa75.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 20928,
+        "encoded": 20628,
+        "end": 724
+      },
+      {
+        "path": "/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 28384,
+        "encoded": 28084,
+        "end": 764
+      },
+      {
+        "path": "/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 30040,
+        "encoded": 29740,
+        "end": 776
+      },
+      {
+        "path": "/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 50112,
+        "encoded": 49812,
+        "end": 1026
+      },
+      {
+        "path": "/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 66336,
+        "encoded": 66036,
+        "end": 1216
+      },
+      {
+        "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 18712,
+        "encoded": 18412,
+        "end": 1089
+      },
+      {
+        "path": "/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 21956,
+        "encoded": 21656,
+        "end": 1011
+      },
+      {
+        "path": "/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 25332,
+        "encoded": 25032,
+        "end": 1092
+      },
+      {
+        "path": "/fonts/v1.530/8271abf90b98e642ce85.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 32504,
+        "encoded": 32204,
+        "end": 1126
+      },
+      {
+        "path": "/fonts/v1.530/1053336749035455c181.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 40136,
+        "encoded": 39836,
+        "end": 1399
+      },
+      {
+        "path": "/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 42912,
+        "encoded": 42612,
+        "end": 1466
+      },
+      {
+        "path": "/fonts/v1.530/ef235b49c808a8059faf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 34304,
+        "encoded": 34004,
+        "end": 1491
+      },
+      {
+        "path": "/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 37700,
+        "encoded": 37400,
+        "end": 1519
+      },
+      {
+        "path": "/fonts/v1.530/492a5fcab08798e79e03.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 46076,
+        "encoded": 45776,
+        "end": 1581
+      },
+      {
+        "path": "/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 41628,
+        "encoded": 41328,
+        "end": 1612
+      },
+      {
+        "path": "/fonts/v1.530/48b4b965da161052736e.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 53404,
+        "encoded": 53104,
+        "end": 1821
+      },
+      {
+        "path": "/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 3640,
+        "encoded": 3340,
+        "end": 1609
+      },
+      {
+        "path": "/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 50672,
+        "encoded": 50372,
+        "end": 1927
+      },
+      {
+        "path": "/fonts/v1.530/d62eceb5cded8b1b00d1.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 49416,
+        "encoded": 49116,
+        "end": 1965
+      },
+      {
+        "path": "/fonts/v1.530/1b2966c46235a36a8534.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 53044,
+        "encoded": 52744,
+        "end": 2024
+      },
+      {
+        "path": "/fonts/v1.530/6c67818a4454fe56b552.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 54352,
+        "encoded": 54052,
+        "end": 2033
+      },
+      {
+        "path": "/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 6172,
+        "encoded": 5872,
+        "end": 1807
+      }
+    ],
+    "events": {
+      "responses": [
+        [
+          "http://127.0.0.1:4633/posts/lab-tech/",
+          200,
+          "Document"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_slug_.BpHqUdjs.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_category_.CllHTusS.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/faces.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/0b3767c2f245038de676.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/35486952295a4b80fa75.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1053336749035455c181.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ef235b49c808a8059faf.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/492a5fcab08798e79e03.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/48b4b965da161052736e.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/d62eceb5cded8b1b00d1.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1b2966c46235a36a8534.woff2",
+          200,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6c67818a4454fe56b552.woff2",
+          200,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "profile": "warmup",
+    "path": "lab-life",
+    "page": {
+      "url": "/posts/lab-life/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "杯沿与猫眼里的光 · 骞言碎语",
+      "view": "cards",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": "29px",
+      "pGap": null,
+      "prose": [
+        20,
+        238,
+        335,
+        923
+      ],
+      "library": [
+        20,
+        1193,
+        335,
+        348
+      ],
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": "static",
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "current": "/posts/lab-life/",
+      "category": null,
+      "listImages": null,
+      "imgs": [
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+          "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+          "pixels": [
+            600,
+            400
+          ],
+          "box": [
+            335,
+            223
+          ],
+          "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+        },
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+          "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+          "pixels": [
+            451,
+            300
+          ],
+          "box": [
+            335,
+            223
+          ],
+          "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontEncodedBytes": 61636,
+      "fontTransferBytes": 7500,
+      "domLoadedMs": 27,
+      "loadMs": 50,
+      "sampleUntilMs": 1207,
+      "cls": 0,
+      "shifts": [],
+      "observer": true
+    },
+    "resources": [
+      {
+        "path": "/fonts/v1.530/faces.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 73017,
+        "end": 15
+      },
+      {
+        "path": "/_astro/_slug_.BpHqUdjs.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 2196,
+        "end": 15
+      },
+      {
+        "path": "/_astro/_category_.CllHTusS.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 2174,
+        "end": 15
+      },
+      {
+        "path": "/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "type": "img",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 50128,
+        "end": 16
+      },
+      {
+        "path": "/posts/lab-life/chelsea-93411e1e1563.webp",
+        "type": "img",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 22826,
+        "end": 16
+      },
+      {
+        "path": "/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 22
+      },
+      {
+        "path": "/fonts/v1.530/0b3767c2f245038de676.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 23
+      },
+      {
+        "path": "/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 24
+      },
+      {
+        "path": "/fonts/v1.530/35486952295a4b80fa75.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 24
+      },
+      {
+        "path": "/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 25
+      },
+      {
+        "path": "/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 26
+      },
+      {
+        "path": "/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 27
+      },
+      {
+        "path": "/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 30
+      },
+      {
+        "path": "/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 28
+      },
+      {
+        "path": "/fonts/v1.530/ef235b49c808a8059faf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 28
+      },
+      {
+        "path": "/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 29
+      },
+      {
+        "path": "/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 34
+      },
+      {
+        "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 31
+      },
+      {
+        "path": "/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 31
+      },
+      {
+        "path": "/fonts/v1.530/8271abf90b98e642ce85.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 32
+      },
+      {
+        "path": "/fonts/v1.530/1053336749035455c181.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 33
+      },
+      {
+        "path": "/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 39
+      },
+      {
+        "path": "/fonts/v1.530/492a5fcab08798e79e03.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 36
+      },
+      {
+        "path": "/fonts/v1.530/48b4b965da161052736e.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 37
+      },
+      {
+        "path": "/fonts/v1.530/6402bb361bea9a670829.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 61636,
+        "end": 41
+      },
+      {
+        "path": "/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 37
+      },
+      {
+        "path": "/fonts/v1.530/1b2966c46235a36a8534.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 38
+      },
+      {
+        "path": "/fonts/v1.530/6c67818a4454fe56b552.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 38
+      },
+      {
+        "path": "/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 40
+      },
+      {
+        "path": "/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 40
+      }
+    ],
+    "events": {
+      "responses": [
+        [
+          "http://127.0.0.1:4633/posts/lab-life/",
+          200,
+          "Document"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/faces.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_slug_.BpHqUdjs.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_category_.CllHTusS.css",
+          200,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+          200,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ef235b49c808a8059faf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/492a5fcab08798e79e03.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/48b4b965da161052736e.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1b2966c46235a36a8534.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6c67818a4454fe56b552.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6402bb361bea9a670829.woff2",
+          200,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  },
+  {
+    "profile": "repeat",
+    "path": "lab-life",
+    "page": {
+      "url": "/posts/lab-life/",
+      "viewport": [
+        375,
+        812
+      ],
+      "clientWidth": 375,
+      "overflow": 0,
+      "brand": "骞言碎语",
+      "title": "杯沿与猫眼里的光 · 骞言碎语",
+      "view": "cards",
+      "theme": "light",
+      "bg": "rgb(250, 248, 243)",
+      "ink": "rgb(41, 41, 35)",
+      "size": "17px",
+      "leading": "31.45px",
+      "weight": "400",
+      "break": "strict",
+      "h1": "29px",
+      "pGap": null,
+      "prose": [
+        20,
+        238,
+        335,
+        923
+      ],
+      "library": [
+        20,
+        1193,
+        335,
+        348
+      ],
+      "toc": null,
+      "tocPos": null,
+      "libraryPos": "static",
+      "sectionCount": 0,
+      "chapterTargets": [],
+      "list": [
+        "/posts/lab-code/",
+        "/posts/lab-depth/",
+        "/posts/lab-life/",
+        "/posts/lab-markdown/",
+        "/posts/lab-tech/",
+        "/posts/m2-smoke-test/",
+        "/posts/m2-smoke-no-image-test/",
+        "/posts/lab-essay/"
+      ],
+      "current": "/posts/lab-life/",
+      "category": null,
+      "listImages": null,
+      "imgs": [
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+          "alt": "木桌上的红棕色杯碟，白色杯沿围着金色咖啡",
+          "pixels": [
+            600,
+            400
+          ],
+          "box": [
+            335,
+            223
+          ],
+          "caption": "白色杯沿与桌上的木纹。摄影 Rachel Michetti"
+        },
+        {
+          "src": "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+          "alt": "虎斑猫 Chelsea 的眼睛与脸部毛发近景",
+          "pixels": [
+            451,
+            300
+          ],
+          "box": [
+            335,
+            223
+          ],
+          "caption": "Chelsea 的午后肖像。摄影 Stefan van der Walt"
+        }
+      ],
+      "scrollBoxes": [],
+      "fontFaces": 25,
+      "fontRequests": 25,
+      "fontEncodedBytes": 0,
+      "fontTransferBytes": 7500,
+      "domLoadedMs": 23,
+      "loadMs": 27,
+      "sampleUntilMs": 191,
+      "cls": 0,
+      "shifts": [],
+      "observer": true
+    },
+    "resources": [
+      {
+        "path": "/fonts/v1.530/faces.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 11
+      },
+      {
+        "path": "/_astro/_slug_.BpHqUdjs.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 11
+      },
+      {
+        "path": "/_astro/_category_.CllHTusS.css",
+        "type": "link",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 11
+      },
+      {
+        "path": "/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "type": "img",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 11
+      },
+      {
+        "path": "/posts/lab-life/chelsea-93411e1e1563.webp",
+        "type": "img",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 11
+      },
+      {
+        "path": "/fonts/v1.530/0b3767c2f245038de676.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 18
+      },
+      {
+        "path": "/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 18
+      },
+      {
+        "path": "/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 18
+      },
+      {
+        "path": "/fonts/v1.530/35486952295a4b80fa75.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 19
+      },
+      {
+        "path": "/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 19
+      },
+      {
+        "path": "/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 19
+      },
+      {
+        "path": "/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 20
+      },
+      {
+        "path": "/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 20
+      },
+      {
+        "path": "/fonts/v1.530/ef235b49c808a8059faf.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 20
+      },
+      {
+        "path": "/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 21
+      },
+      {
+        "path": "/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 22
+      },
+      {
+        "path": "/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 22
+      },
+      {
+        "path": "/fonts/v1.530/8271abf90b98e642ce85.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 21
+      },
+      {
+        "path": "/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 22
+      },
+      {
+        "path": "/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 23
+      },
+      {
+        "path": "/fonts/v1.530/1053336749035455c181.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 24
+      },
+      {
+        "path": "/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 23
+      },
+      {
+        "path": "/fonts/v1.530/492a5fcab08798e79e03.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 24
+      },
+      {
+        "path": "/fonts/v1.530/48b4b965da161052736e.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 24
+      },
+      {
+        "path": "/fonts/v1.530/6402bb361bea9a670829.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 24
+      },
+      {
+        "path": "/fonts/v1.530/1b2966c46235a36a8534.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 25
+      },
+      {
+        "path": "/fonts/v1.530/6c67818a4454fe56b552.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 25
+      },
+      {
+        "path": "/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 26
+      },
+      {
+        "path": "/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 25
+      },
+      {
+        "path": "/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+        "type": "css",
+        "status": 200,
+        "transfer": 300,
+        "encoded": 0,
+        "end": 26
+      }
+    ],
+    "events": {
+      "responses": [
+        [
+          "http://127.0.0.1:4633/posts/lab-life/",
+          200,
+          "Document"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/faces.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_slug_.BpHqUdjs.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/_astro/_category_.CllHTusS.css",
+          304,
+          "Stylesheet"
+        ],
+        [
+          "http://127.0.0.1:4633/posts/lab-life/coffee-f5b9cdcf1726.webp",
+          304,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:4633/posts/lab-life/chelsea-93411e1e1563.webp",
+          304,
+          "Image"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/0b3767c2f245038de676.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/2144dc0f63fcd316fefb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/35486952295a4b80fa75.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/3e2b50643bdf60e82d06.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ebf0f8e231b7a7040c71.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/dc7eb15dc5e9aabf3009.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b0943fb51b9cc959ffbb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ef235b49c808a8059faf.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/06f29a3b4b4b39060b0a.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/8271abf90b98e642ce85.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/a4552d779fe3406d1b34.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/ff7afc3c0e541d0328c4.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/bda54f0809cd72c7ba96.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/f04adb351d6acdd092ad.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/eb086cb9e156d5c42190.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/492a5fcab08798e79e03.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/48b4b965da161052736e.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6402bb361bea9a670829.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1053336749035455c181.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/1b2966c46235a36a8534.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/6c67818a4454fe56b552.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/b1a96e22133e7dce2297.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/29f90b435ad3c38f0ffb.woff2",
+          304,
+          "Font"
+        ],
+        [
+          "http://127.0.0.1:4633/fonts/v1.530/9e7dd55208c6ef20e5ca.woff2",
+          304,
+          "Font"
+        ]
+      ],
+      "failures": [],
+      "messages": []
+    }
+  }
+]

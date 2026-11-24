@@ -1,0 +1,14 @@
+
+> qians-day@0.1.0 check /private/tmp/qians-accept-WMeMC5/repo
+> astro check
+
+23:26:56 [content] Syncing content
+23:26:56 [content] Synced content
+23:26:56 [types] Generated 288ms
+23:26:56 [check] Getting diagnostics for Astro files in /private/tmp/qians-accept-WMeMC5/repo...
+Result (38 files):
+- 0 errors
+- 0 warnings
+- 0 hints
+
+exit=0

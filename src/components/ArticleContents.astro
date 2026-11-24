@@ -37,7 +37,7 @@ const { headings } = Astro.props;
     .contents { position: sticky; top: 0; z-index: 1; background: var(--paper); padding-block: .35rem; margin-bottom: var(--s3); }
     .contents nav { display: flex; overflow-x: auto; overflow-y: hidden; margin-block: 0; }
     .contents nav a { flex: none; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    :global(html:not([data-mini-toc])) .contents ~ :global(.prose :is(h2,h3,h4,h5,h6)) { scroll-margin-block-start: 5rem; }
+    :global(html:not([data-mini-toc])) .contents ~ :global(.prose :is(h2,h3,h4,h5,h6)) { scroll-margin-block-start: calc(var(--outline-height, 5rem) + var(--s1)); }
   }
   :global(html[data-mini-toc]) .contents {
     --node-width: 40px;
@@ -118,8 +118,6 @@ const { headings } = Astro.props;
 
   function setup(toc: HTMLElement) {
     const root = document.documentElement;
-    const article = toc.closest('article')!;
-    const sidebar = matchMedia('(min-width: 960px)');
     const prose = document.querySelector<HTMLElement>('.prose')!;
     const nav = toc.querySelector('nav')!;
     const links = Array.from(nav.querySelectorAll('a'));
@@ -158,11 +156,6 @@ const { headings } = Astro.props;
 
     function update() {
       frame = 0;
-      if (sidebar.matches && !root.hasAttribute('data-mini-toc')) {
-        // The article's top stays independent of the sticky outline's own height.
-        const top = Math.max(0, article.getBoundingClientRect().top);
-        toc.style.setProperty('--article-top', `${top}px`);
-      }
       const guide = parseFloat(getComputedStyle(headings[0]).scrollMarginTop) + 1;
       let current = 0;
       for (let i = 1; i < headings.length; i++) {
@@ -233,6 +226,10 @@ const { headings } = Astro.props;
     window.addEventListener('resize', schedule);
     window.addEventListener('pageshow', followFragment);
     window.addEventListener('hashchange', followFragment);
+    new ResizeObserver(() => {
+      prose.style.setProperty('--outline-height', `${toc.offsetHeight}px`);
+      schedule();
+    }).observe(toc, { box: 'border-box' });
     new ResizeObserver(schedule).observe(prose);
     document.fonts.ready.then(schedule);
     schedule();

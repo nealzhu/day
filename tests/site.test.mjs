@@ -179,6 +179,20 @@ test('production build and browser behaviour', async t => {
         const section = page.locator('[data-heading="notes-1"]');
         await section.click();
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
+        await t.test('the tablet outline leaves the target heading fully visible', async () => {
+          await page.setViewportSize({ width: 768, height: 1024 });
+          await page.locator('[data-heading="notes"]').click();
+          await section.click();
+          const heading = await page.locator('#notes-1').boundingBox();
+          const outline = await page.locator('.contents').boundingBox();
+          assert.ok(heading.y >= outline.y + outline.height + 7);
+          await page.setViewportSize({ width: 375, height: 812 });
+        });
+        await t.test('Markdown and reference images reserve their intrinsic size', async () => {
+          const sizes = await page.locator('.prose img').evaluateAll(images =>
+            images.map(img => [img.getAttribute('width'), img.getAttribute('height')]));
+          assert.deepEqual(sizes, [['1', '1'], ['1', '1']]);
+        });
         const mini = page.getByRole('button', { name: '迷你', exact: true });
         const full = page.getByRole('button', { name: '完整', exact: true });
         function marksAtWidths(expected) {
@@ -237,6 +251,14 @@ test('production build and browser behaviour', async t => {
           return el.scrollTop;
         });
         assert.ok(previous > 0);
+        await t.test('the last archive entry is clickable while the article stays at its start', async () => {
+          const last = nav.getByRole('link').last();
+          assert.ok(await last.evaluate(a => {
+            const box = a.getBoundingClientRect();
+            return scrollY === 0 && box.bottom <= innerHeight &&
+              a.contains(document.elementFromPoint(box.x + box.width / 2, box.bottom - 1));
+          }));
+        });
         await nav.getByRole('link', { name: older.at(-1) }).click();
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));

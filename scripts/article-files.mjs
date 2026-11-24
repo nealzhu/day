@@ -42,10 +42,10 @@ export async function verifyArticles(root = resolve('src/content/posts')) {
     ids.add(data.articleId);
     slugs.add(data.slug);
 
-    const { filenames } = rewriteImages(parser.parse(parsed.content), data.articleId, source);
+    const { images } = rewriteImages(parser.parse(parsed.content), data.articleId, source);
     const assets = await assetFiles(join(directory, 'assets'));
     const names = new Set(assets.map(file => file.name));
-    for (const filename of filenames) {
+    for (const { filename } of images) {
       if (!names.has(filename)) throw new Error(`${source}: missing image ./assets/${filename}`);
     }
     for (const file of assets) {

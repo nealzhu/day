@@ -87,11 +87,28 @@ const toc = headings.filter(heading => heading.depth >= 2);
   @media (min-width: 1180px) {
     .columns { grid-template-columns: minmax(0, 1fr) minmax(0, var(--reading-measure)) minmax(0, 1fr); }
     .columns article { grid-column: 2 / -1; grid-row: 1; }
-    .library { grid-column: 1; grid-row: 1; position: sticky; top: var(--s4); margin: 0; }
+    .library {
+      grid-column: 1; grid-row: 1; position: sticky; top: var(--s4); margin: 0;
+      display: flex; flex-direction: column;
+      max-height: calc(100dvh - max(var(--article-top, 50dvh), var(--s4)));
+    }
+    .library h2 { flex: none; }
+    .library nav { max-height: none; }
   }
 </style>
 <script>
   const library = document.querySelector<HTMLElement>('#library')!;
+  // Both sticky rails share the same top edge, even on articles without an outline.
+  const columns = library.closest<HTMLElement>('.columns')!;
+  const desktop = matchMedia('(min-width: 960px)');
+  function fitRails() {
+    if (desktop.matches) columns.style.setProperty('--article-top', `${Math.max(0, columns.getBoundingClientRect().top)}px`);
+  }
+  fitRails();
+  window.addEventListener('scroll', fitRails, { passive: true });
+  window.addEventListener('resize', fitRails);
+  new ResizeObserver(fitRails).observe(document.querySelector('.mast')!);
+
   const key = 'qians.day:archive-scroll';
   let offset = 0;
   try { offset = Number(sessionStorage.getItem(key)) || 0; } catch {}

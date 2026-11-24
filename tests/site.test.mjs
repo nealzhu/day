@@ -15,7 +15,7 @@ test('production build and browser behaviour', async t => {
 
   const posts = join(project, 'src/content/posts');
   await rm(posts, { recursive: true });
-  const bytes = Buffer.from('UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==', 'base64');
+  const bytes = Buffer.from('UklGRh4AAABXRUJQVlA4TBEAAAAvAYAAAAdQmkrUqv+BiOh/AAA=', 'base64');
   const digest = createHash('sha256').update(bytes).digest('hex').slice(0, 12);
   const file = `first-${digest}.webp`;
   const second = `second-${digest}.webp`;
@@ -191,7 +191,7 @@ test('production build and browser behaviour', async t => {
         await t.test('Markdown and reference images reserve their intrinsic size', async () => {
           const sizes = await page.locator('.prose img').evaluateAll(images =>
             images.map(img => [img.getAttribute('width'), img.getAttribute('height')]));
-          assert.deepEqual(sizes, [['1', '1'], ['1', '1']]);
+          assert.deepEqual(sizes, [['2', '3'], ['2', '3']]);
         });
         const mini = page.getByRole('button', { name: '迷你', exact: true });
         const full = page.getByRole('button', { name: '完整', exact: true });

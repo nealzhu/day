@@ -101,6 +101,7 @@ test('production build and browser behaviour', async t => {
           await page.keyboard.press('Escape');
         }
         await settings.waitFor();
+        assert.equal((await settings.innerText()).trim(), '');
         const choices = await page.locator('#reading-settings button[aria-pressed="true"]').allTextContents();
         assert.deepEqual(choices.map(label => label.trim()), ['图文卡片', '随系统', '完整']);
         const views = await page.locator('button[data-mode]').allTextContents();

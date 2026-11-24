@@ -2,7 +2,7 @@
 import SiteIcon from './SiteIcon.astro';
 ---
 <button id="settings-trigger" class="settings-trigger" popovertarget="reading-settings" aria-label="阅读设置" hidden>
-  <SiteIcon name="book" size={22} /><span><span class="settings-prefix">阅读</span>设置</span>
+  <span class="settings-face"><SiteIcon name="book" size={22} /></span>
 </button>
 <div popover="auto" id="reading-settings" aria-label="阅读设置">
   <fieldset>
@@ -123,9 +123,24 @@ import SiteIcon from './SiteIcon.astro';
 <style>
   button { border: 0; background: transparent; }
   .settings-trigger, #reading-settings { --settings-gap: 6px; }
-  .settings-trigger { position: relative; display: inline-flex; gap: .55em; align-items: center; min-height: 44px; padding-inline: .5em; font-size: var(--small); }
+  .settings-trigger { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: calc(2 * var(--radius)); }
+  .settings-face {
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    border: var(--rule);
+    border-radius: inherit;
+    color: var(--muted);
+    /* Match the optical centre of the WenKai navigation text. */
+    transform: translateY(-.5px);
+  }
+  .settings-trigger:is(:hover, :focus-visible, :has(+ :popover-open)) .settings-face {
+    color: var(--accent);
+    border-color: color-mix(in srgb, currentColor 55%, var(--line));
+    background: var(--inset);
+  }
   .settings-trigger:has(+ :popover-open)::after { content: ''; position: absolute; inset: 100% 0 auto; height: var(--settings-gap); }
-  .settings-trigger:hover { color: var(--accent); }
   #reading-settings { position: fixed; inset: auto; margin: var(--settings-gap) 0 0; padding: 1.15rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--ink); max-width: calc(100vw - 24px); }
   fieldset { border: 0; margin: 0; padding: 0; }
   fieldset + fieldset { margin-top: .85rem; }
@@ -134,6 +149,7 @@ import SiteIcon from './SiteIcon.astro';
   button[data-mode] { display: inline-flex; align-items: center; gap: .4em; vertical-align: middle; }
   button[aria-pressed="true"] { background: var(--inset); color: var(--accent); }
   @media (prefers-reduced-motion: no-preference) {
+    .settings-face { transition: color var(--motion-ink), border-color var(--motion-ink), background-color var(--motion-ink); }
     #reading-settings {
       opacity: 0;
       transform: translateY(-3px);
@@ -146,5 +162,4 @@ import SiteIcon from './SiteIcon.astro';
       #reading-settings:popover-open { opacity: 0; transform: translateY(-3px); }
     }
   }
-  @media (max-width: 600px) { .settings-prefix { display: none; } }
 </style>

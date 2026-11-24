@@ -1,0 +1,13 @@
+{
+  "page": "http://127.0.0.1:4601/tech/",
+  "css": "http://127.0.0.1:4602/fonts/v1.530/faces.css",
+  "subsets": 23,
+  "rendered": [
+    {
+      "familyName": "LXGW WenKai",
+      "postScriptName": "LXGWWenKai-Regular",
+      "isCustomFont": true,
+      "glyphCount": 97
+    }
+  ]
+}

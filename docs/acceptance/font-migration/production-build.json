@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "404.html",
+    "categories/engineering/index.html",
+    "categories/index.html",
+    "index.html",
+    "posts/m2-smoke-no-image-test/index.html",
+    "posts/m2-smoke-test/index.html"
+  ],
+  "fontStyle": "https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css",
+  "woff2Files": 0,
+  "fontStyleFiles": 0,
+  "licenseFiles": 0,
+  "favicon": [
+    "svg",
+    "ico"
+  ]
+}

@@ -1,0 +1,13 @@
+> qians-day@0.1.0 check <repo>
+> astro check
+
+02:54:07 [vite] Re-optimizing dependencies because vite config has changed
+02:54:07 [content] Syncing content
+02:54:07 [content] Synced content
+02:54:07 [types] Generated 203ms
+02:54:07 [check] Getting diagnostics for Astro files in <repo>...
+Result (44 files):
+- 0 errors
+- 0 warnings
+- 0 hints
+exit=0

@@ -1,0 +1,195 @@
+{
+  "date": "2026-11-25",
+  "bucket": "website",
+  "cdn": "https://site-cdn.qians.day",
+  "corsRead": {
+    "command": "wrangler r2 bucket cors list website",
+    "result": "rules for bucket 'website'...\nallowed_origins:  https://qians.day, https://qians-day.pages.dev, http://localhost:4632\nallowed_methods:  GET, HEAD\nallowed_headers:  (no headers)\nexposed_headers:  (no exposed headers)\nmax_age_seconds:  86400"
+  },
+  "requests": [
+    {
+      "origin": "https://qians.day",
+      "path": "site/card-placeholder-ffdf4a3ffd68.webp",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "content-type": "image/webp",
+        "cache-control": "public, max-age=31536000, immutable",
+        "access-control-allow-origin": "https://qians.day",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://qians.day",
+      "path": "fonts/lxgw-wenkai/v1.530/faces.css",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": "https://qians.day",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://qians.day",
+      "path": "fonts/lxgw-wenkai/v1.530/003f130a020fc600a7fa.woff2",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": "https://qians.day",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://qians-day.pages.dev",
+      "path": "site/card-placeholder-ffdf4a3ffd68.webp",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "content-type": "image/webp",
+        "cache-control": "public, max-age=31536000, immutable",
+        "access-control-allow-origin": "https://qians-day.pages.dev",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://qians-day.pages.dev",
+      "path": "fonts/lxgw-wenkai/v1.530/faces.css",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": "https://qians-day.pages.dev",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://qians-day.pages.dev",
+      "path": "fonts/lxgw-wenkai/v1.530/003f130a020fc600a7fa.woff2",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": "https://qians-day.pages.dev",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "http://localhost:4632",
+      "path": "site/card-placeholder-ffdf4a3ffd68.webp",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "content-type": "image/webp",
+        "cache-control": "public, max-age=31536000, immutable",
+        "access-control-allow-origin": "http://localhost:4632",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "http://localhost:4632",
+      "path": "fonts/lxgw-wenkai/v1.530/faces.css",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": "http://localhost:4632",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "http://localhost:4632",
+      "path": "fonts/lxgw-wenkai/v1.530/003f130a020fc600a7fa.woff2",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": "http://localhost:4632",
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://m4-acceptance-preview.qians-day.pages.dev",
+      "path": "site/card-placeholder-ffdf4a3ffd68.webp",
+      "method": "GET",
+      "status": 200,
+      "headers": {
+        "content-type": "image/webp",
+        "cache-control": "public, max-age=31536000, immutable",
+        "access-control-allow-origin": null,
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://m4-acceptance-preview.qians-day.pages.dev",
+      "path": "fonts/lxgw-wenkai/v1.530/faces.css",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": null,
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    },
+    {
+      "origin": "https://m4-acceptance-preview.qians-day.pages.dev",
+      "path": "fonts/lxgw-wenkai/v1.530/003f130a020fc600a7fa.woff2",
+      "method": "GET",
+      "status": 404,
+      "headers": {
+        "content-type": "text/html",
+        "cache-control": "max-age=14400",
+        "access-control-allow-origin": null,
+        "vary": "Origin",
+        "cf-cache-status": "MISS"
+      }
+    }
+  ],
+  "client": "Node.js 24 fetch, same HTTP client as the release gate",
+  "headControl": {
+    "origin": "https://qians.day",
+    "path": "site/card-placeholder-ffdf4a3ffd68.webp",
+    "client": "curl HEAD",
+    "status": 200,
+    "allowOrigin": "https://qians.day",
+    "vary": "Origin"
+  },
+  "gateBeforeSync": {
+    "command": "pnpm run verify:cdn-fonts",
+    "exit": 1,
+    "error": "Error: https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/9762430d0c9d0fd39870.woff2: HTTP 404"
+  },
+  "csp": {
+    "request": "HEAD https://qians.day/",
+    "status": 200,
+    "Content-Security-Policy": null
+  },
+  "additionalProbe": {
+    "client": "Python urllib HEAD",
+    "observed": "HTTP 403 on both image and font URLs for this client. The Node GET and curl HEAD observations above were collected separately."
+  },
+  "beforeUserConfiguredCors": {
+    "tool": "wrangler r2 bucket cors list website",
+    "code": 10059,
+    "message": "The CORS configuration does not exist."
+  }
+}

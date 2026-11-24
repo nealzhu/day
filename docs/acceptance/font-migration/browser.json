@@ -1,0 +1,733 @@
+[
+  {
+    "scene": "cards",
+    "width": 1440,
+    "height": 900,
+    "theme": "light",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "cards",
+    "viewImages": 2,
+    "overflow": 0,
+    "cls": 0.00004338169595014574,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/0b3767c2f245038de676.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "cards",
+    "width": 1440,
+    "height": 900,
+    "theme": "dark",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "cards",
+    "viewImages": 2,
+    "overflow": 0,
+    "cls": 0.00003023904347779492,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "cards",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "cards",
+    "viewImages": 2,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "cards",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "cards",
+    "viewImages": 2,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "list",
+    "width": 1440,
+    "height": 900,
+    "theme": "light",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0.00004297754107188786,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "list",
+    "width": 1440,
+    "height": 900,
+    "theme": "dark",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0.00024036389679248113,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 23
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/0b3767c2f245038de676.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "list",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 23
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/0b3767c2f245038de676.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "list",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 4
+      }
+    ],
+    "http": {
+      "200": 23
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/0b3767c2f245038de676.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 589033,
+    "errors": []
+  },
+  {
+    "scene": "article",
+    "width": 1440,
+    "height": 900,
+    "theme": "light",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 1,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 44
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 583765,
+    "errors": []
+  },
+  {
+    "scene": "article",
+    "width": 1440,
+    "height": 900,
+    "theme": "dark",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 1,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 44
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 583765,
+    "errors": []
+  },
+  {
+    "scene": "article",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 1,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 43
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/2144dc0f63fcd316fefb.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 583765,
+    "errors": []
+  },
+  {
+    "scene": "article",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "css": "http://127.0.0.1:39782/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39782"
+    ],
+    "fontFaces": 19,
+    "view": "list",
+    "viewImages": 1,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 43
+      }
+    ],
+    "http": {
+      "200": 25
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "public, no-cache",
+        "http://127.0.0.1:39781"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/0b3767c2f245038de676.woff2",
+        "font/woff2",
+        "public, max-age=31536000, immutable",
+        "http://127.0.0.1:39781"
+      ]
+    ],
+    "fontNetworkBytes": 583765,
+    "errors": []
+  },
+  {
+    "scene": "preview-tech",
+    "width": 1440,
+    "height": 900,
+    "theme": "light",
+    "css": "http://127.0.0.1:4633/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 25,
+    "fontOrigins": [
+      "http://127.0.0.1:4633"
+    ],
+    "fontFaces": 25,
+    "view": "cards",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "http": {
+      "200": 30
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/0b3767c2f245038de676.woff2",
+        "font/woff2",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ]
+    ],
+    "fontNetworkBytes": 885464,
+    "errors": []
+  },
+  {
+    "scene": "preview-tech",
+    "width": 1440,
+    "height": 900,
+    "theme": "dark",
+    "css": "http://127.0.0.1:4633/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 25,
+    "fontOrigins": [
+      "http://127.0.0.1:4633"
+    ],
+    "fontFaces": 25,
+    "view": "cards",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "http": {
+      "200": 29
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ]
+    ],
+    "fontNetworkBytes": 885464,
+    "errors": []
+  },
+  {
+    "scene": "preview-tech",
+    "width": 390,
+    "height": 844,
+    "theme": "light",
+    "css": "http://127.0.0.1:4633/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 25,
+    "fontOrigins": [
+      "http://127.0.0.1:4633"
+    ],
+    "fontFaces": 25,
+    "view": "cards",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "http": {
+      "200": 29
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/2144dc0f63fcd316fefb.woff2",
+        "font/woff2",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ]
+    ],
+    "fontNetworkBytes": 885464,
+    "errors": []
+  },
+  {
+    "scene": "preview-tech",
+    "width": 390,
+    "height": 844,
+    "theme": "dark",
+    "css": "http://127.0.0.1:4633/fonts/lxgw-wenkai/v1.530/faces.css",
+    "subsets": 25,
+    "fontOrigins": [
+      "http://127.0.0.1:4633"
+    ],
+    "fontFaces": 25,
+    "view": "cards",
+    "viewImages": 0,
+    "overflow": 0,
+    "cls": 0,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 97
+      }
+    ],
+    "http": {
+      "200": 29
+    },
+    "headers": [
+      [
+        "/fonts/lxgw-wenkai/v1.530/faces.css",
+        "text/css",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ],
+      [
+        "/fonts/lxgw-wenkai/v1.530/0b3767c2f245038de676.woff2",
+        "font/woff2",
+        "no-cache",
+        "http://127.0.0.1:4633"
+      ]
+    ],
+    "fontNetworkBytes": 885464,
+    "errors": []
+  },
+  {
+    "scene": "dev",
+    "width": 1440,
+    "height": 900,
+    "theme": "light",
+    "css": "http://127.0.0.1:39783/labs/typography/fonts/v1.530/faces.css",
+    "subsets": 19,
+    "fontOrigins": [
+      "http://127.0.0.1:39783"
+    ],
+    "fontFaces": 19,
+    "view": "cards",
+    "viewImages": 1,
+    "overflow": 0,
+    "cls": 0.00037229938271604937,
+    "rendered": [
+      {
+        "familyName": "LXGW WenKai",
+        "postScriptName": "LXGWWenKai-Regular",
+        "isCustomFont": true,
+        "glyphCount": 44
+      }
+    ],
+    "http": {
+      "200": 69
+    },
+    "headers": [
+      [
+        "/labs/typography/fonts/v1.530/faces.css",
+        "text/css",
+        "no-cache",
+        "http://127.0.0.1:39783"
+      ],
+      [
+        "/labs/typography/fonts/v1.530/9a60c54a71fa95a9d5bf.woff2",
+        "font/woff2",
+        "no-cache",
+        "http://127.0.0.1:39783"
+      ]
+    ],
+    "fontNetworkBytes": 584903,
+    "errors": []
+  }
+]

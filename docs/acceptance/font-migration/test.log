@@ -1,0 +1,37 @@
+> qians-day@0.1.0 test <repo>
+> node --test tests/*.test.mjs
+
+✔ duplicate ID (8.823917ms)
+✔ duplicate slug (2.763791ms)
+✔ ID differs from folder (2.492833ms)
+✔ unknown category (2.27225ms)
+✔ invalid publication state (2.551708ms)
+✔ invalid date (2.946292ms)
+✔ empty description (1.916458ms)
+✔ missing referenced WebP identifies the article and filename (2.760208ms)
+✔ category may be omitted (2.426334ms)
+✔ CDN release gate checks every stylesheet dependency and blocks invalid responses (187.601458ms)
+✔ R2 sync publishes the stylesheet last and reuses existing objects on retry (285.907125ms)
+▶ production build and browser behaviour
+  ✔ production pages reference CDN fonts without bundling a second copy (1194.164209ms)
+  ✔ drafts and WebPs are absent from the entire output (6.865792ms)
+  ✔ routes, CDN cover, headings, canonical, RSS and sitemap (1.520875ms)
+  ▶ list, cards, restored preference and mobile navigation
+    ✔ hover and keyboard allow consecutive changes in the reading settings (491.71775ms)
+    ✔ the tablet outline leaves the target heading fully visible (81.905333ms)
+    ✔ Markdown and reference images reserve their intrinsic size (6.310875ms)
+    ✔ the last archive entry is clickable while the article stays at its start (3.031667ms)
+    ✔ the full outline can be scrolled to its last link without scrolling the article (544.913958ms)
+    ✔ deep closing headings keep distinct destinations at the bottom of the page (666.630583ms)
+    ✔ a saved mini outline previews then follows a chapter on touch (669.403916ms)
+  ✔ list, cards, restored preference and mobile navigation (7239.733791ms)
+✔ production build and browser behaviour (9803.520208ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10339.517917
+exit=0

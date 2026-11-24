@@ -11,7 +11,7 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-开发服务器默认使用生产 CDN，与 `pnpm build && pnpm preview` 的图片地址一致。编辑尚未上传的图片时，可用 `MEDIA_BASE_URL=/ pnpm dev --force`。此时开发服务器从文章目录读取图片，浏览器使用与 R2 相同的 `/posts/<articleId>/<filename>` 路径。
+开发服务器默认从生产 CDN 读取图片，字体直接取自仓库。编辑尚未上传的图片时，可用 `MEDIA_BASE_URL=/ pnpm dev --force`。此时开发服务器从文章目录读取图片，浏览器使用与 R2 相同的 `/posts/<articleId>/<filename>` 路径。
 
 ## Markdown 文章
 
@@ -51,6 +51,19 @@ Remark 在 Astro 收集静态资源前将图片地址改写为 `https://site-cdn
 
 无图文章使用共享占位图 `media/site/card-placeholder.webp`。所有图文卡片按 5∶3 展示封面，日期、标题和摘要排列在封面下方。独占一段的 Markdown 图片可用可选 title 写图注，例如 `![画面说明](./assets/<name>-<hash>.webp "摄影署名")`。
 
+## 字体托管与构建
+
+霞鹜文楷 Regular v1.530 的原始发布材料保存在 `labs/typography/fonts/v1.530/`。321 个 WOFF2 合计 13,333,240 字节。版本化的 `faces.css` 使用相对 URL、原有的 `unicode-range` 和 `font-display: swap`。校验器锁定样式表和 OFL 许可的 SHA-256，逐一检查分包文件签名、内容哈希和引用完整性。[字体清单校验](scripts/font-assets.mjs)
+
+| 场景 | 命令 | 浏览器的字体来源 |
+| --- | --- | --- |
+| 本地开发 | `pnpm dev` | Vite 提供仓库内的实验室字体 |
+| 本地静态预览、PR 浏览器测试、Pages 分支预览 | `pnpm run build:preview` | 将同一组文件复制到预览产物的 `fonts/lxgw-wenkai/v1.530/`。运行 `pnpm preview` 会重新生成并启动这种预览 |
+| 正式 Pages | `pnpm run build` | 六个页面共用 CDN 样式表，生产 `dist/` 只保存站点文件。[字体样式表](https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css) |
+| 排版实验室 | `pnpm run lab:typography` | 本机 4601 端口提供页面、4602 端口提供字体，可独立复现跨域加载 |
+
+两种静态构建都生成 `dist/`。部署时从对应命令的全新产物上传。哈希 WOFF2 的媒体类型为 `font/woff2`，缓存为 `public, max-age=31536000, immutable`。版本化 CSS 为 `text/css`，CSS 和 OFL 均设置 `public, no-cache` 以便重新校验。
+
 ## 检查与发布
 
 ```sh
@@ -63,9 +76,18 @@ pnpm run preview
 
 浏览器回归测试使用本机 Google Chrome 稳定版。无 Chrome 的开发机可先执行 `pnpm exec playwright-core install chrome`。测试在临时目录构造文章、构建站点并打开移动端尺寸的浏览器，结束后自动清理。
 
-PR 的 `validate` 作业执行内容校验、类型检查、测试与构建。合并到 `main` 后，生产工作流先将已发布文章的 WebP 同步到 R2，再构建并将 `dist/` 上传至 Cloudflare Pages 项目 `qians-day`。已存在的对象按键跳过，历史对象保留。字体同步继续使用 `media/fonts/*.woff2`。
+PR 的 `validate` 使用 Node.js 24 LTS 和只读仓库权限执行媒体校验、类型检查、测试与生产构建。浏览器测试使用独立预览字体，上传和 CDN 校验由生产作业执行。
 
-生产配置沿用仓库变量 `R2_BUCKET`（当前为 `website`）及 Actions secrets `CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。PR 检查只需仓库读取权限。
+正式发布在 `main` 的 `production` 环境按以下顺序执行。[部署工作流](.github/workflows/deploy.yml)
+
+1. `verify:media` 校验文章、图片和全部字体，确认目标桶为 `website`。
+2. `sync:media` 按对象键检查 WebP、共享占位图和字体。仅创建缺失对象，条件写入保护并发上传。字体样式表最后上传。重跑可从上次已成功的对象继续。
+3. `verify:cdn-fonts` 带正式 Origin 从公网 CDN GET 全部 323 个对象并逐个比对内容哈希、MIME、缓存策略和 CORS 响应头。
+4. 前序步骤全部成功后，Astro 构建生产站点，Wrangler 发布到 `qians-day` 的 `main`。
+
+生产配置沿用仓库变量 `R2_BUCKET=website` 及 Actions secrets `CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。
+
+**Cloudflare 跨域配置。** 已在 R2 → `website` → Settings → CORS Policy 核实允许 `https://qians.day`、`https://qians-day.pages.dev` 和 `http://localhost:4632` 发起 `GET` 和 `HEAD`。Pages 分支预览自带字体。以后若新增直接读取 CDN 的固定入口，将其精确 Origin 加入允许列表。若改规则后 CDN 仍返回旧响应，可刷新受影响的字体 URL 再验证。项目目前没有配置 CSP；若由边缘规则另行下发 CSP，有效的 `style-src`（或 `style-src-elem`）和 `font-src` 均需允许 `https://site-cdn.qians.day`。[本次响应头实测](docs/acceptance/font-migration/cloudflare.json) · [Cloudflare R2 CORS 文档](https://developers.cloudflare.com/r2/buckets/cors/)
 
 ## M4.1 阅读排版实验
 

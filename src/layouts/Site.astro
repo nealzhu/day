@@ -1,6 +1,7 @@
 ---
 import '../styles/site.css';
 import ReadingSettings from '../components/ReadingSettings.astro';
+import SiteIcon from '../components/SiteIcon.astro';
 import { categories, categoryKeys } from '../lib/content-model';
 import { categoryPath } from '../lib/posts';
 
@@ -40,7 +41,11 @@ const pathname = Astro.url.pathname;
     <main id="main" class="shell"><slot /></main>
     <footer class="shell colophon">
       <span>© {new Date().getUTCFullYear()} 骞言碎语</span>
-      <nav aria-label="页脚导航"><a href="https://github.com/nealzhu" lang="en">GitHub</a><a href="/categories/">分类索引</a><a href="/rss.xml" lang="en">RSS</a></nav>
+      <nav aria-label="页脚导航">
+        <a href="https://github.com/nealzhu" aria-label="GitHub 个人主页" title="GitHub 个人主页"><SiteIcon name="github" /></a>
+        <a href="/categories/" aria-label="分类索引" title="分类索引"><SiteIcon name="categories" size={21} /></a>
+        <a href="/rss.xml" aria-label="RSS 订阅" title="RSS 订阅"><SiteIcon name="rss" size={21} /></a>
+      </nav>
     </footer>
   </body>
 </html>

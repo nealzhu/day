@@ -1,11 +1,14 @@
+---
+import SiteIcon from './SiteIcon.astro';
+---
 <button id="settings-trigger" class="settings-trigger" popovertarget="reading-settings" aria-label="阅读设置" hidden>
-  <span class="book-icon" aria-hidden="true"></span><span><span class="settings-prefix">阅读</span>设置</span>
+  <SiteIcon name="book" size={22} /><span><span class="settings-prefix">阅读</span>设置</span>
 </button>
 <div popover="auto" id="reading-settings" aria-label="阅读设置">
   <fieldset>
     <legend>文章视图</legend>
-    <button data-mode="cards" aria-pressed="true"><i class="card-icon" aria-hidden="true"></i>图文卡片</button>
-    <button data-mode="list" aria-pressed="false"><i class="list-icon" aria-hidden="true"></i>列表</button>
+    <button data-mode="cards" aria-pressed="true"><SiteIcon name="cards" />图文卡片</button>
+    <button data-mode="list" aria-pressed="false"><SiteIcon name="list" />列表</button>
   </fieldset>
   <fieldset>
     <legend>主题</legend>
@@ -123,14 +126,12 @@
   .settings-trigger { position: relative; display: inline-flex; gap: .55em; align-items: center; min-height: 44px; padding-inline: .5em; font-size: var(--small); }
   .settings-trigger:has(+ :popover-open)::after { content: ''; position: absolute; inset: 100% 0 auto; height: var(--settings-gap); }
   .settings-trigger:hover { color: var(--accent); }
-  .book-icon { position: relative; width: 1.25em; height: .95em; }
-  .book-icon::before, .book-icon::after { content: ''; position: absolute; inset: 0 50% 0 0; border: 1.5px solid currentColor; border-radius: 1px 3px 0 1px; transform: skewY(9deg); }
-  .book-icon::after { inset: 0 0 0 50%; transform: skewY(-9deg); border-radius: 3px 1px 1px 0; }
   #reading-settings { position: fixed; inset: auto; margin: var(--settings-gap) 0 0; padding: 1.15rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--ink); max-width: calc(100vw - 24px); }
   fieldset { border: 0; margin: 0; padding: 0; }
   fieldset + fieldset { margin-top: .85rem; }
   legend { font-size: var(--small); color: var(--muted); margin-bottom: .3rem; }
   fieldset button { padding: .3rem .65rem; min-height: 40px; font-size: 1rem; border-radius: var(--radius); }
+  button[data-mode] { display: inline-flex; align-items: center; gap: .4em; vertical-align: middle; }
   button[aria-pressed="true"] { background: var(--inset); color: var(--accent); }
   @media (prefers-reduced-motion: no-preference) {
     #reading-settings {
@@ -145,10 +146,5 @@
       #reading-settings:popover-open { opacity: 0; transform: translateY(-3px); }
     }
   }
-  i { display: inline-block; width: .8em; height: .72em; margin-right: .45em; position: relative; }
-  .list-icon { border-block: 1px solid currentColor; }
-  .list-icon::before { content: ''; position: absolute; left: 0; top: 45%; width: 70%; border-top: 1px solid currentColor; }
-  .card-icon { border: 1px solid currentColor; }
-  .card-icon::after { content: ''; position: absolute; inset: 60% 0 0; border-top: 1px solid currentColor; }
   @media (max-width: 600px) { .settings-prefix { display: none; } }
 </style>

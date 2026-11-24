@@ -101,8 +101,10 @@ test('production build and browser behaviour', async t => {
           await page.keyboard.press('Escape');
         }
         await settings.waitFor();
-        assert.deepEqual(await page.locator('#reading-settings button[aria-pressed="true"]').allTextContents(), ['图文卡片', '随系统', '完整']);
-        assert.deepEqual(await page.locator('button[data-mode]').allTextContents(), ['图文卡片', '列表']);
+        const choices = await page.locator('#reading-settings button[aria-pressed="true"]').allTextContents();
+        assert.deepEqual(choices.map(label => label.trim()), ['图文卡片', '随系统', '完整']);
+        const views = await page.locator('button[data-mode]').allTextContents();
+        assert.deepEqual(views.map(label => label.trim()), ['图文卡片', '列表']);
         assert.equal(await page.locator('img:visible').count(), older.length + 2);
         await t.test('hover and keyboard allow consecutive changes in the reading settings', async () => {
           await settings.hover();

@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import ArticleContents from '../../components/ArticleContents.astro';
+import SiteIcon from '../../components/SiteIcon.astro';
 import Site from '../../layouts/Site.astro';
 import { categories } from '../../lib/content-model';
 import { categoryPath, postPath, publishedPosts } from '../../lib/posts';
@@ -26,10 +27,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
           {category && <a href={categoryPath(category)}>{categories[category]}</a>}
           {tags.length > 0 && (
             <div class="tag-group">
-              <svg aria-hidden="true" viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.2">
-                <path stroke-linejoin="round" d="M2 2h6l6 6-6 6-6-6z" />
-                <circle cx="5.4" cy="5.4" r="1" />
-              </svg>
+              <SiteIcon name="tag" size={16} />
               <ul class="post-tags" role="list" aria-label="文章标签">
                 {tags.map(tag => <li>{tag}</li>)}
               </ul>

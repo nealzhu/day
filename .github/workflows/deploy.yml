@@ -3,6 +3,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      full_cdn_font_check:
+        description: Force a full CDN font verification
+        type: boolean
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -29,15 +34,14 @@ jobs:
         run: test "$R2_BUCKET" = website
         env:
           R2_BUCKET: ${{ vars.R2_BUCKET }}
-      - name: Sync missing media and versioned fonts to R2
-        run: pnpm run sync:media
+      - name: Sync R2 media and verify CDN font delivery
+        run: pnpm run sync:media --verify-fonts
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           R2_BUCKET: ${{ vars.R2_BUCKET }}
-      - name: Verify every CDN font asset with the production Origin
-        run: pnpm run verify:cdn-fonts
+          FORCE_FULL_CDN_FONT_CHECK: ${{ inputs.full_cdn_font_check }}
       - run: pnpm run build
         env:
           MEDIA_BASE_URL: https://site-cdn.qians.day

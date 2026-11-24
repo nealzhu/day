@@ -81,11 +81,14 @@ PR 的 `validate` 使用 Node.js 24 LTS 和只读仓库权限执行媒体校验�
 正式发布在 `main` 的 `production` 环境按以下顺序执行。[部署工作流](.github/workflows/deploy.yml)
 
 1. `verify:media` 校验文章、图片和全部字体，确认目标桶为 `website`。
-2. `sync:media` 按对象键检查 WebP、共享占位图和字体。仅创建缺失对象，条件写入保护并发上传。字体样式表最后上传。重跑可从上次已成功的对象继续。
-3. `verify:cdn-fonts` 带正式 Origin 从公网 CDN GET 全部 323 个对象并逐个比对内容哈希、MIME、缓存策略和 CORS 响应头。
-4. 前序步骤全部成功后，Astro 构建生产站点，Wrangler 发布到 `qians-day` 的 `main`。
+2. `sync:media --verify-fonts` 按前缀分页列出 R2 对象，仅以条件写入补齐缺失资源。每个字体版本的样式表最后上传，重跑复用已成功上传的对象。
+3. 首次验收、字体清单或策略变化、R2 字体对象缺失或变化、冒烟失败时，从公网 CDN 逐个 GET 全部 323 个字体对象。校验使用正式 Origin，并比对 SHA-256、MIME、缓存策略和 CORS。全量通过且 R2 字体清单在校验期间保持一致后，才写入验收标记。同一清单和策略的标记失效后，全量校验失败会阻止发布，重跑会再次全量校验。
+4. 验收标记匹配且 R2 字体对象完整时，校验样式表和三个 WOFF2 子集。阶段日志记录分页请求、CDN GET 尝试次数和耗时。
+5. 前序步骤全部成功后，Astro 构建生产站点，Wrangler 发布到 `qians-day` 的 `main`。
 
-生产配置沿用仓库变量 `R2_BUCKET=website` 及 Actions secrets `CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。
+在 GitHub Actions 手动运行 **Production Deploy** 时，可勾选 `full_cdn_font_check` 强制全量验收。单独运行 `pnpm run verify:cdn-fonts` 可对生产 CDN 执行全量检查。变更 CDN 校验规则或抽样规则时，更新 `scripts/verify-font-delivery.mjs` 中的 `fontVerificationPolicy`。
+
+生产配置沿用仓库变量 `R2_BUCKET=website` 及 Actions secrets `CLOUDFLARE_ACCOUNT_ID`、`CLOUDFLARE_API_TOKEN`、`R2_ACCESS_KEY_ID`、`R2_SECRET_ACCESS_KEY`。R2 凭据需能列出对象、条件创建缺失对象，以及在全量重验前删除对应清单的旧验收标记。标记位于字体版本目录的 `_cdn-acceptance/` 下。
 
 **Cloudflare 跨域配置。** 已在 R2 → `website` → Settings → CORS Policy 核实允许 `https://qians.day`、`https://qians-day.pages.dev` 和 `http://localhost:4632` 发起 `GET` 和 `HEAD`。Pages 分支预览自带字体。以后若新增直接读取 CDN 的固定入口，将其精确 Origin 加入允许列表。若改规则后 CDN 仍返回旧响应，可刷新受影响的字体 URL 再验证。项目目前没有配置 CSP；若由边缘规则另行下发 CSP，有效的 `style-src`（或 `style-src-elem`）和 `font-src` 均需允许 `https://site-cdn.qians.day`。[本次响应头实测](docs/acceptance/font-migration/cloudflare.json) · [Cloudflare R2 CORS 文档](https://developers.cloudflare.com/r2/buckets/cors/)
 

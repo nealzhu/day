@@ -1,6 +1,6 @@
 # 骞言碎语 · M4.1–M4.4 最终工程验收
 
-**2026-11-25 工程验收通过。** 首轮发现的三项 P2 已按原条件复验通过，作者文档已更正。现有记录中没有开放的 P0、P1 或 P2。手机迷你大纲的选章热区待人工决策，预览站标签页图标延期处理。[问题清单](ISSUES.md) · [首轮逐项报告](M4-BASELINE.md)
+**2026-11-25 工程验收通过。** 首轮发现的三项 P2 已按原条件复验通过，作者文档已更正。现有记录中没有开放的 P0、P1 或 P2。手机迷你大纲的选章热区待人工决策，已确认的「言」字书签图标已接入全站并通过本地验证。[问题清单](ISSUES.md) · [首轮逐项报告](M4-BASELINE.md)
 
 分支为 `feat/m4-2-visual-system`。首轮基线为 `996b6b2`，应用修复及预览构建对应 `4c7b6c7`，竖图测试样本在 `fb11ec9` 补强。正式内容为两篇工程文章；长文、生活图文、无分类随笔、长归档均在临时夹具中验收。[Pages 独立预览](https://ddeaab12.qians-day.pages.dev) · [部署环境与来源](regression/evidence/preview.json) · [夹具启动方法](evidence/复现环境.md)
 
@@ -44,6 +44,6 @@ ego-lite 以 DPR 1 实测 1440 × 900、1024 × 768、768 × 1024、390 × 844�
 | `pnpm test` | 20 项通过、0 失败、0 跳过。新增竖图固有尺寸、长归档末项命中、平板标题完整可见三项回归。[日志](regression/evidence/test.log) |
 | `pnpm run build` | 6 个静态页面及 RSS、sitemap、robots 输出构建成功。[日志](regression/evidence/build.log) |
 
-Cloudflare Pages 将 `m4-acceptance-preview` 识别为 **Preview**。在该部署上用 ego-lite 打开首页并点击进入有图文章，两张卡片封面和正文图片均能解码。首次记录到一个字体分包 HTTP 500 和浏览器隐式请求 favicon 的 404；同一字体随后三次绕过缓存均为 200，18,412 B，SHA-256 与本地构建一致。再次加载详情页时 27 条响应均为 200，Console 无错误。favicon 记入 M4-06。[预览地址](https://ddeaab12.qians-day.pages.dev) · [首次访问](regression/evidence/preview-smoke.json) · [字体重取与刷新](regression/evidence/preview-retry.json)
+Cloudflare Pages 将 `m4-acceptance-preview` 识别为 **Preview**。在该部署上用 ego-lite 打开首页并点击进入有图文章，两张卡片封面和正文图片均能解码。首次记录到一个字体分包 HTTP 500 和浏览器隐式请求 favicon 的 404；同一字体随后三次绕过缓存均为 200，18,412 B，SHA-256 与本地构建一致。再次加载详情页时 27 条响应均为 200，Console 无错误。该部署中的 favicon 404 记入 M4-06，修复与本地验证结果见[问题清单](ISSUES.md)。[预览地址](https://ddeaab12.qians-day.pages.dev) · [首次访问](regression/evidence/preview-smoke.json) · [字体重取与刷新](regression/evidence/preview-retry.json)
 
 **验证边界。** 本轮移动覆盖使用 Chromium 视口和媒体特性模拟。iOS Safari、Android 物理触屏、读屏体验、生产站以及真实用户的性能分位数尚未验证。生产部署工作流和 R2 同步均未触发。

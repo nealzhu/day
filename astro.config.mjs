@@ -5,6 +5,7 @@ import { rehypeFigureCaptions } from './scripts/rehype-figure-captions.mjs';
 import { rehypeScrollTables } from './scripts/rehype-scroll-tables.mjs';
 import { serveLocalMedia } from './scripts/local-media.mjs';
 import { verifyArticles } from './scripts/article-files.mjs';
+import { searchIndex } from './scripts/search-index.mjs';
 
 export default defineConfig({
   site: 'https://qians.day',
@@ -25,5 +26,5 @@ export default defineConfig({
         if (mediaBase === '') serveLocalMedia(server);
       },
     },
-  }],
+  }, searchIndex],
 });

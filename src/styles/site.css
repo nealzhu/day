@@ -83,6 +83,7 @@ img { max-width: 100%; height: auto; }
 .mast, .colophon, .mast nav, .colophon nav { display: flex; flex-wrap: wrap; align-items: center; }
 .mast, .colophon { justify-content: space-between; gap: var(--s2); }
 .mast { padding-block: var(--s3); border-bottom: var(--rule); }
+.mast-actions { display: flex; align-items: center; }
 .mast nav { margin-inline-start: auto; gap: var(--s3); }
 .brand { font-size: var(--h2); letter-spacing: .08em; display: inline-flex; align-items: baseline; gap: .45em; }
 .mast a, .colophon a { color: inherit; text-decoration: none; }
@@ -102,6 +103,9 @@ main:has(.posts) { padding-block-start: clamp(1.25rem, 3vw, 2.75rem); }
   .mast { padding-block: var(--s2); }
   .mast nav { gap: var(--s2); }
   .archive-head { margin-bottom: var(--s3); }
+}
+@media (max-width: 350px) {
+  .mast-actions { margin-inline-start: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; }

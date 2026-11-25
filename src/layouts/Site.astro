@@ -2,6 +2,7 @@
 import '../styles/site.css';
 import { fontCdn, fontDirectory, fontPrefix } from '../../scripts/font-assets.mjs';
 import ReadingSettings from '../components/ReadingSettings.astro';
+import SiteSearch from '../components/SiteSearch.astro';
 import SiteIcon from '../components/SiteIcon.astro';
 import { categories, categoryKeys } from '../lib/content-model';
 import { categoryPath } from '../lib/posts';
@@ -41,7 +42,10 @@ const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontB
         <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>全部</a>
         {categoryKeys.map(key => <a href={categoryPath(key)} aria-current={pathname === categoryPath(key) ? 'page' : undefined}>{categories[key]}</a>)}
       </nav>
-      <ReadingSettings />
+      <div class="mast-actions">
+        <SiteSearch />
+        <ReadingSettings />
+      </div>
     </header>
     <main id="main" class="shell"><slot /></main>
     <footer class="shell colophon">

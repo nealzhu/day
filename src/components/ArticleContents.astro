@@ -3,7 +3,7 @@ import type { MarkdownHeading } from 'astro';
 interface Props { headings: MarkdownHeading[] }
 const { headings } = Astro.props;
 ---
-<aside class="contents rail" aria-label="章节导航">
+<aside class="contents rail" data-pagefind-ignore aria-label="章节导航">
   <h2>本文目录</h2>
   <nav aria-label="本文目录">
     {headings.map(({ depth, slug, text }) => <a data-heading={slug} style={`--level: ${depth - 2}`} href={`#${slug}`}><span title={text}>{text}</span></a>)}

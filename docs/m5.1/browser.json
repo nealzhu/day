@@ -1,0 +1,346 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/156.0.8078.96",
+    "revision": "@51e156b200f4f325d67eda658d660bc02fade8f",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+    "jsVersion": "15.6.75.50"
+  },
+  "cases": [
+    {
+      "query": "媒体同步",
+      "status": "找到 1 篇文章",
+      "results": [
+        {
+          "path": "/posts/m2-smoke-test/",
+          "title": "M2 发布链路测试",
+          "meta": "2026-11-22 · 工程",
+          "marks": [
+            "媒体",
+            "同步"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "Cloudflare 部署",
+      "status": "找到 2 篇文章",
+      "results": [
+        {
+          "path": "/posts/m2-smoke-no-image-test/",
+          "title": "M2 发布链路无图测试",
+          "meta": "2026-11-22 · 工程",
+          "marks": [
+            "Cloudflare ",
+            "部署"
+          ]
+        },
+        {
+          "path": "/posts/m2-smoke-test/",
+          "title": "M2 发布链路测试",
+          "meta": "2026-11-22 · 工程",
+          "marks": [
+            "Cloudflare ",
+            "部署"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "发布链路无图",
+      "status": "找到 1 篇文章",
+      "results": [
+        {
+          "path": "/posts/m2-smoke-no-image-test/",
+          "title": "M2 发布链路无图测试",
+          "meta": "2026-11-22 · 工程",
+          "marks": [
+            "发布",
+            "链",
+            "路",
+            "无",
+            "图",
+            "发布",
+            "链",
+            "路",
+            "无",
+            "图"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "发布链路",
+      "status": "找到 2 篇文章",
+      "results": [
+        {
+          "path": "/posts/m2-smoke-no-image-test/",
+          "title": "M2 发布链路无图测试",
+          "meta": "2026-11-22 · 工程",
+          "marks": [
+            "发布",
+            "链",
+            "路",
+            "发布",
+            "链",
+            "路"
+          ]
+        },
+        {
+          "path": "/posts/m2-smoke-test/",
+          "title": "M2 发布链路测试",
+          "meta": "2026-11-22 · 工程",
+          "marks": [
+            "发布",
+            "链",
+            "路"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "Cloudflare 归档",
+      "status": "找到 1 篇文章",
+      "results": [
+        {
+          "path": "/posts/search-notes/",
+          "title": "街角的钟表店",
+          "meta": "2026-11-18",
+          "marks": [
+            "Cloudflare ",
+            "归档"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "深海鲸鱼",
+      "status": "没有找到匹配的文章。",
+      "results": []
+    },
+    {
+      "query": "排版沙盒样例",
+      "status": "没有找到匹配的文章。",
+      "results": []
+    },
+    {
+      "query": "\"全部文章\"",
+      "status": "没有找到匹配的文章。",
+      "results": []
+    },
+    {
+      "query": "骞言碎语",
+      "status": "没有找到匹配的文章。",
+      "results": []
+    },
+    {
+      "query": "媒体同步",
+      "status": "找到 1 篇文章",
+      "results": [
+        {
+          "path": "/posts/m2-smoke-test/",
+          "title": "M2 发布链路测试",
+          "meta": "2026-11-22 · 工程",
+          "marks": [
+            "媒体",
+            "同步"
+          ]
+        }
+      ]
+    },
+    {
+      "query": "qzxunmatched",
+      "status": "没有找到匹配的文章。",
+      "results": []
+    }
+  ],
+  "visuals": [
+    {
+      "file": "desktop-light.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dialog": [
+        408,
+        96,
+        624,
+        436.96875
+      ],
+      "overflow": false,
+      "loadedFont": true,
+      "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
+      "weight": "400",
+      "theme": "light"
+    },
+    {
+      "file": "desktop-dark.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "dialog": [
+        408,
+        96,
+        624,
+        311.984375
+      ],
+      "overflow": false,
+      "loadedFont": true,
+      "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
+      "weight": "400",
+      "theme": "dark"
+    },
+    {
+      "file": "mobile-light.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "dialog": [
+        8,
+        8,
+        374,
+        347.171875
+      ],
+      "overflow": false,
+      "loadedFont": true,
+      "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
+      "weight": "400",
+      "theme": "light"
+    },
+    {
+      "file": "mobile-dark.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "dialog": [
+        8,
+        8,
+        374,
+        172
+      ],
+      "overflow": false,
+      "loadedFont": true,
+      "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
+      "weight": "400",
+      "theme": "dark"
+    },
+    {
+      "file": "tablet-empty-dark.png",
+      "viewport": [
+        768,
+        1024
+      ],
+      "dialog": [
+        72,
+        96,
+        624,
+        188
+      ],
+      "overflow": false,
+      "loadedFont": true,
+      "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
+      "weight": "400",
+      "theme": "dark"
+    }
+  ],
+  "beforeOpen": [],
+  "openIdle": [
+    {
+      "path": "/pagefind/pagefind.js",
+      "status": 200,
+      "encoding": "gzip",
+      "bytes": 13385
+    },
+    {
+      "path": "/pagefind/pagefind-worker.js",
+      "status": 200,
+      "encoding": "gzip",
+      "bytes": 12435
+    },
+    {
+      "path": "/pagefind/pagefind-entry.json?ts=1795622220258",
+      "status": 200,
+      "encoding": "identity",
+      "bytes": 180
+    },
+    {
+      "path": "/pagefind/pagefind.zh-cn_ed44c37c246cc.pf_meta",
+      "status": 200,
+      "encoding": "identity",
+      "bytes": 135
+    },
+    {
+      "path": "/pagefind/wasm.unknown.pagefind",
+      "status": 200,
+      "encoding": "gzip",
+      "bytes": 55438
+    }
+  ],
+  "firstQuery": [
+    {
+      "path": "/pagefind/index/zh-cn_f83388f.pf_index",
+      "status": 200,
+      "encoding": "gzip",
+      "bytes": 1122
+    },
+    {
+      "path": "/pagefind/fragment/zh-cn_446a1ff.pf_fragment",
+      "status": 200,
+      "encoding": "identity",
+      "bytes": 605
+    }
+  ],
+  "reopenNewRequests": 0,
+  "keyboard": {
+    "open": "/",
+    "focus": true,
+    "escapeRestoresFocus": true,
+    "resultNavigation": true
+  },
+  "ime": [
+    [
+      "compositionstart",
+      "",
+      null
+    ],
+    [
+      "compositionupdate",
+      "meititongbu",
+      null
+    ],
+    [
+      "input",
+      "meititongbu",
+      true
+    ],
+    [
+      "compositionupdate",
+      "媒体同步",
+      null
+    ],
+    [
+      "input",
+      "媒体同步",
+      true
+    ],
+    [
+      "compositionupdate",
+      "媒体同步",
+      null
+    ],
+    [
+      "input",
+      "媒体同步",
+      true
+    ],
+    [
+      "compositionend",
+      "媒体同步",
+      null
+    ]
+  ],
+  "blockedModule": true
+}

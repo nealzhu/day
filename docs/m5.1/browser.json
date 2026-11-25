@@ -171,7 +171,10 @@
       "loadedFont": true,
       "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
       "weight": "400",
-      "theme": "light"
+      "theme": "light",
+      "backdropFilter": "blur(3px)",
+      "dialogFilter": "none",
+      "modal": true
     },
     {
       "file": "desktop-dark.png",
@@ -189,7 +192,10 @@
       "loadedFont": true,
       "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
       "weight": "400",
-      "theme": "dark"
+      "theme": "dark",
+      "backdropFilter": "blur(3px)",
+      "dialogFilter": "none",
+      "modal": true
     },
     {
       "file": "mobile-light.png",
@@ -207,7 +213,10 @@
       "loadedFont": true,
       "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
       "weight": "400",
-      "theme": "light"
+      "theme": "light",
+      "backdropFilter": "blur(3px)",
+      "dialogFilter": "none",
+      "modal": true
     },
     {
       "file": "mobile-dark.png",
@@ -225,7 +234,10 @@
       "loadedFont": true,
       "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
       "weight": "400",
-      "theme": "dark"
+      "theme": "dark",
+      "backdropFilter": "blur(3px)",
+      "dialogFilter": "none",
+      "modal": true
     },
     {
       "file": "tablet-empty-dark.png",
@@ -243,7 +255,10 @@
       "loadedFont": true,
       "font": "\"Day Reading\", \"PingFang SC\", \"Microsoft YaHei\", serif",
       "weight": "400",
-      "theme": "dark"
+      "theme": "dark",
+      "backdropFilter": "blur(3px)",
+      "dialogFilter": "none",
+      "modal": true
     }
   ],
   "beforeOpen": [],

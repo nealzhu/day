@@ -5,7 +5,7 @@
 ## 实现决策
 
 - 锁定 Pagefind 1.6.0。npm 包使用支持简体中文分词的 Extended 版本，浏览器端使用 Pagefind 的查询分词与 Worker。 [发布说明](https://github.com/Pagefind/pagefind/releases/tag/v1.6.0) · [安装说明](https://pagefind.app/docs/installation/)
-- Component UI 提供 Web Components、键盘导航及模板。本站只需要一套搜索弹窗，因此使用 Pagefind JavaScript API、原生 `<dialog>` 和 Astro 客户端脚本。弹窗沿用 M4 的主题、霞鹜文楷 Regular、边框、间距、焦点及动效变量。 [Component UI](https://pagefind.app/docs/search-ui/) · [JavaScript API](https://pagefind.app/docs/api/)
+- Component UI 提供 Web Components、键盘导航及模板。本站只需要一套搜索弹窗，因此使用 Pagefind JavaScript API、原生 `<dialog>` 和 Astro 客户端脚本。弹窗沿用 M4 的主题、霞鹜文楷 Regular、边框、间距、焦点及动效变量。遮罩以 3 px 高斯模糊柔化背景内容。 [Component UI](https://pagefind.app/docs/search-ui/) · [JavaScript API](https://pagefind.app/docs/api/)
 - Astro 静态构建结束后从 `posts/*/index.html` 生成 `dist/pagefind/`。路由只生成已发布文章，`data-pagefind-body` 限定文章内容，目录和标签组从正文索引中剔除。日期和可选分类从文章元数据读取。Cloudflare Pages 继续部署整个 `dist`，沿用现有工作流。 [索引范围](https://pagefind.app/docs/indexing/) · [元数据](https://pagefind.app/docs/metadata/)
 - 标题使用 Pagefind 默认的 H1 权重 7 和标题元数据加成，摘要权重为 2，正文段落为 1，正文小节标题保留 Pagefind 的默认权重。回归测试验证同一个词出现在另一篇正文时，标题命中的文章在前。 [权重](https://pagefind.app/docs/weighting/) · [排序](https://pagefind.app/docs/ranking/)
 - 首次打开才会初始化 Pagefind。同一页面的后续打开复用初始化结果。查询防抖 150 ms，每次请求只读取 10 条结果片段，返回的片段和错误都受当前查询版本约束。

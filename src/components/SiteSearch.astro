@@ -284,7 +284,10 @@ import SiteIcon from './SiteIcon.astro';
     font: var(--regular) 1rem/1.6 var(--reading-font);
   }
   dialog[open] { display: flex; flex-direction: column; }
-  dialog::backdrop { background: color-mix(in srgb, #151510 52%, transparent); }
+  dialog::backdrop {
+    background: color-mix(in srgb, #151510 52%, transparent);
+    backdrop-filter: blur(3px);
+  }
   :global(html:has(#site-search[open])) { overflow: hidden; }
   .search-header, .search-field { display: flex; align-items: center; flex: none; }
   .search-header { justify-content: space-between; margin: calc(-1 * var(--s1)) calc(-1 * var(--s1)) var(--s1) 0; }

@@ -21,13 +21,5 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm run verify:media
       - run: pnpm run check
-      - run: |
-          set -o pipefail
-          if pnpm test 2>&1 | tee "$RUNNER_TEMP/day-tests.log"; then
-            exit 0
-          fi
-          awk '/^✖ failing tests:/ { report = 1 } report && (/^✖/ || /Error:|tests\/.*\.mjs:[0-9]+|^test at /) { print substr($0, 1, 200) }' "$RUNNER_TEMP/day-tests.log" | head -20 | while IFS= read -r line; do
-            printf '::error::%s\n' "${line//%/%25}"
-          done
-          exit 1
+      - run: pnpm test
       - run: pnpm run build

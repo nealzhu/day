@@ -232,7 +232,7 @@ import SiteIcon from './SiteIcon.astro';
 
   document.addEventListener('keydown', event => {
     if (event.key !== '/' || event.repeat || event.defaultPrevented || event.isComposing ||
-        event.keyCode === 229 || event.ctrlKey || event.metaKey || event.altKey || dialog.open) return;
+        event.keyCode === 229 || event.ctrlKey || event.metaKey || event.altKey || document.querySelector(':modal')) return;
     const target = event.target;
     if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select'))) return;
     event.preventDefault();

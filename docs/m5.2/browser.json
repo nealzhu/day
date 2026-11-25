@@ -1,0 +1,285 @@
+{
+  "browser": "Chrome/156.0.8078.96",
+  "network": {
+    "textArticle": [],
+    "singleArticleBeforeOpen": [
+      {
+        "path": "/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+        "status": 200,
+        "bytes": 436,
+        "encoding": "identity"
+      },
+      {
+        "path": "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.AFx5XDXI.js",
+        "status": 200,
+        "bytes": 889,
+        "encoding": "gzip"
+      }
+    ],
+    "singleFirstOpen": [
+      {
+        "path": "/_astro/image-viewer.jmSpsuro.js",
+        "status": 200,
+        "bytes": 20523,
+        "encoding": "gzip"
+      }
+    ],
+    "reopen": [],
+    "multiArticleBeforeOpen": [
+      {
+        "path": "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.AFx5XDXI.js",
+        "status": 200,
+        "bytes": 889,
+        "encoding": "gzip"
+      },
+      {
+        "path": "/posts/m52-viewer/coffee-f5b9cdcf1726.webp",
+        "status": 200,
+        "bytes": 50128,
+        "encoding": "identity"
+      },
+      {
+        "path": "/posts/m52-viewer/portrait-6753338ed417.webp",
+        "status": 200,
+        "bytes": 11656,
+        "encoding": "identity"
+      },
+      {
+        "path": "/posts/m52-viewer/search-90041ebc8fea.webp",
+        "status": 200,
+        "bytes": 24470,
+        "encoding": "identity"
+      }
+    ],
+    "multiFirstOpen": [
+      {
+        "path": "/_astro/image-viewer.jmSpsuro.js",
+        "status": 200,
+        "bytes": 20523,
+        "encoding": "gzip"
+      }
+    ]
+  },
+  "images": [
+    {
+      "file": "desktop-single.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "theme": "light",
+      "position": "1 / 1",
+      "nativeModal": true,
+      "picture": {
+        "alt": "部署链路示意图",
+        "natural": [
+          320,
+          180
+        ],
+        "rect": [
+          560,
+          350,
+          320,
+          180
+        ],
+        "radius": "0px"
+      }
+    },
+    {
+      "file": "desktop-landscape.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "theme": "light",
+      "position": "1 / 5",
+      "nativeModal": true,
+      "picture": {
+        "alt": "窗边的咖啡",
+        "natural": [
+          600,
+          400
+        ],
+        "rect": [
+          420,
+          240,
+          600,
+          400
+        ],
+        "radius": "0px"
+      }
+    },
+    {
+      "file": "desktop-technical.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "theme": "dark",
+      "position": "3 / 5",
+      "nativeModal": true,
+      "error": "图片无法加载。请检查网络后重新打开。",
+      "picture": {
+        "alt": "搜索界面截图",
+        "natural": [
+          1440,
+          900
+        ],
+        "rect": [
+          112,
+          60,
+          1216,
+          760
+        ],
+        "radius": "0px"
+      }
+    },
+    {
+      "file": "tablet-portrait.png",
+      "viewport": [
+        768,
+        1024
+      ],
+      "theme": "dark",
+      "position": "2 / 5",
+      "nativeModal": true,
+      "picture": {
+        "alt": "竖幅照片",
+        "natural": [
+          310,
+          400
+        ],
+        "rect": [
+          229,
+          302,
+          310,
+          400
+        ],
+        "radius": "0px"
+      }
+    },
+    {
+      "file": "mobile-pinch.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "theme": "light",
+      "position": "2 / 5",
+      "nativeModal": true,
+      "picture": {
+        "alt": "竖幅照片",
+        "natural": [
+          310,
+          400
+        ],
+        "rect": [
+          -376.27117919921875,
+          -179.57627868652344,
+          1103,
+          1424
+        ],
+        "radius": "0px"
+      }
+    },
+    {
+      "file": "mobile-error.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "theme": "dark",
+      "position": "4 / 5",
+      "nativeModal": true,
+      "error": "图片无法加载。请检查网络后重新打开。",
+      "picture": null
+    }
+  ],
+  "cssBytes": 6922,
+  "thumbnailAnimation": {
+    "origin": [
+      414.5,
+      249.640625,
+      600,
+      366,
+      "0px"
+    ],
+    "transitions": [
+      {
+        "phase": "close",
+        "positions": [
+          [
+            420,
+            240,
+            1
+          ],
+          [
+            414.5,
+            249.64100646972656,
+            1
+          ]
+        ]
+      }
+    ],
+    "afterCloseScrollY": 366,
+    "focus": "0"
+  },
+  "searchKeyCoexistence": true,
+  "desktopPan": {
+    "before": -10,
+    "after": -89
+  },
+  "mobileGesture": {
+    "pinch": true,
+    "swipeTo": "3 / 5"
+  },
+  "reducedMotion": true,
+  "desktopAnimation": {
+    "viewport": [
+      1000,
+      700
+    ],
+    "browser": "158.0.8127.38",
+    "origin": {
+      "x": 88,
+      "y": 149.640625,
+      "scrollY": 444,
+      "radius": "0px"
+    },
+    "transforms": [
+      [
+        [
+          88,
+          149.64100646972656,
+          1
+        ],
+        [
+          200,
+          140,
+          1
+        ]
+      ],
+      [
+        [
+          200,
+          140,
+          1
+        ],
+        [
+          88,
+          149.64100646972656,
+          1
+        ]
+      ]
+    ],
+    "restoredY": 444
+  },
+  "bundle": {
+    "ENTRY_RAW": 1699,
+    "ENTRY_GZIP": 889,
+    "CORE_RAW": 69985,
+    "CORE_GZIP": 20523,
+    "CORE_KIB": "20.0",
+    "CSS": 6922
+  }
+}

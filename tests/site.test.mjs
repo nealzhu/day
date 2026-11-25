@@ -37,8 +37,23 @@ import Site from '../layouts/Site.astro';
 </Site>`);
   const older = Array.from({ length: 30 }, (_, i) => `archive-${String(i).padStart(2, '0')}`);
   const chapters = Array.from({ length: 30 }, (_, i) => `## Chapter ${i + 1}\n\nChapter text.`).join('\n\n');
-  for (const id of older) {
+  const viewerPost = older[1];
+  const landscape = await readFile('labs/typography/public/photos/coffee.webp');
+  const landscapeFile = `landscape-${createHash('sha256').update(landscape).digest('hex').slice(0, 12)}.webp`;
+  const portraitFile = `portrait-${digest}.webp`;
+  const failedFile = `unavailable-${digest}.webp`;
+  for (const id of older.filter(id => id !== viewerPost)) {
     await article(posts, id, { category: undefined, publishedAt: '2025-01-01' }, id === older[0] ? chapters : 'Searchpagination.');
+  }
+  const viewerDirectory = await article(posts, viewerPost, { category: undefined, publishedAt: '2025-01-01' }, [
+    'Searchpagination.', '## 说明', '图片在以下段落按文章顺序展示。'.repeat(25),
+    `![横向照片](./assets/${landscapeFile} "咖啡照片")`,
+    `[![竖向图片](./assets/${portraitFile})](#说明)`,
+    `![网络错误例图](./assets/${failedFile})`,
+  ].join('\n\n'));
+  await mkdir(join(viewerDirectory, 'assets'));
+  for (const [name, data] of [[landscapeFile, landscape], [portraitFile, bytes], [failedFile, bytes]]) {
+    await writeFile(join(viewerDirectory, 'assets', name), data);
   }
   await article(posts, 'secret-draft', { status: 'draft' }, '草稿独有内容');
   await article(posts, 'implicit-draft', { status: undefined });
@@ -93,7 +108,10 @@ import Site from '../layouts/Site.astro';
     assert.doesNotMatch(await html('posts/text-only/index.html'), /<img\b/);
     assert.doesNotMatch(await html('posts/text-only/index.html'), /categories\/undefined|未分类/);
     assert.match(detail, /<figcaption>图注<\/figcaption>/);
-    assert.equal(detail.split(cover).length - 1, 1);
+    assert.equal(detail.split(`<img src="${cover}"`).length - 1, 1);
+    assert.match(detail, /data-gallery-open="0"/);
+    assert.doesNotMatch(await html('posts/text-only/index.html'), /ImageGallery|data-image-gallery|image-viewer\./);
+    assert.doesNotMatch(detail, /<(?:link|script)[^>]+(?:href|src)="[^"]*image-viewer\./);
     assert.match(home, /href="\/posts\/text-only\/"/);
     assert.match(await html('categories/index.html'), /1 篇/);
     assert.doesNotMatch(await html('categories/engineering/index.html'), /href="\/posts\/text-only\/"/);
@@ -231,6 +249,114 @@ import Site from '../layouts/Site.astro';
           await reader.getByText('搜索暂时无法加载，请刷新页面后重试。', { exact: true }).waitFor();
           await reader.getByRole('button', { name: '关闭搜索' }).click();
           await reader.waitForFunction(() => document.activeElement?.id === 'search-trigger');
+        });
+
+        await t.test('article image gallery is lazy, preserves links, and restores focus and scroll', async t => {
+          const reader = await browser.newPage({ viewport: { width: 1000, height: 700 }, reducedMotion: 'reduce' });
+          t.after(() => reader.close());
+          reader.setDefaultTimeout(5000);
+          const imagesUrl = new URL(`posts/${viewerPost}/`, homeUrl).href;
+          const requests = [];
+          reader.on('request', request => {
+            if (request.url().includes('/_astro/')) requests.push(request.url());
+          });
+          await reader.route(cdn + '/**', route => {
+            const url = route.request().url();
+            return url.endsWith(failedFile)
+              ? route.fulfill({ status: 404 })
+              : route.fulfill({ contentType: 'image/webp', body: url.endsWith(landscapeFile) ? landscape : bytes });
+          });
+          await reader.goto(new URL('posts/text-only/', homeUrl).href);
+          assert.ok(!requests.some(url => /ImageGallery|image-viewer\./.test(url)));
+          requests.length = 0;
+          await reader.goto(imagesUrl);
+          assert.ok(requests.some(url => url.includes('ImageGallery')));
+          assert.ok(!requests.some(url => url.includes('image-viewer.')));
+
+          const linked = reader.locator('.prose a').filter({ has: reader.getByAltText('竖向图片', { exact: true }) });
+          assert.equal(await linked.getAttribute('href'), '#%E8%AF%B4%E6%98%8E');
+          assert.equal(await linked.locator('a').count(), 0);
+          await linked.click();
+          assert.equal(decodeURIComponent(new URL(reader.url()).hash), '#说明');
+          assert.equal(await reader.locator('.image-viewer').count(), 0);
+
+          const opener = reader.getByRole('link', { name: '查看大图：横向照片' });
+          await opener.evaluate(el => el.scrollIntoView({ block: 'center' }));
+          const scroll = await reader.evaluate(() => scrollY);
+          await opener.focus();
+          await reader.keyboard.press('Enter');
+          const modal = reader.getByRole('dialog', { name: '文章图片' });
+          const counter = modal.locator('.pswp__counter');
+          const current = modal.locator('.pswp__item[aria-hidden="false"] img.pswp__img:not(.pswp__img--placeholder)');
+          await modal.locator('.pswp--ui-visible').waitFor();
+          assert.equal(await counter.innerText(), '1 / 3');
+          assert.equal(await modal.locator('.pswp__caption').innerText(), '咖啡照片');
+          assert.equal(await current.getAttribute('alt'), '横向照片');
+          assert.equal(await current.evaluate(img => img.naturalWidth), 600);
+          await reader.keyboard.press('/');
+          assert.equal(await reader.getByRole('dialog', { name: '搜索文章' }).count(), 0);
+
+          await current.dblclick();
+          await modal.locator('.pswp--zoomed-in').waitFor();
+          await current.dblclick();
+          await modal.locator('.pswp--zoomed-in').waitFor({ state: 'detached' });
+          await reader.keyboard.press('ArrowRight');
+          assert.equal(await counter.innerText(), '2 / 3');
+          await reader.getByRole('button', { name: '下一张' }).click();
+          await modal.getByText('图片无法加载。请检查网络后重新打开。').waitFor();
+          assert.equal(await counter.innerText(), '3 / 3');
+          await reader.keyboard.press('Escape');
+          await modal.waitFor({ state: 'detached' });
+          assert.equal(await reader.evaluate(() => scrollY), scroll);
+          assert.equal(await opener.evaluate(link => link === document.activeElement), true);
+
+          await reader.keyboard.press('/');
+          const search = reader.getByRole('dialog', { name: '搜索文章' });
+          await search.waitFor();
+          await reader.keyboard.press('Escape');
+          await search.waitFor({ state: 'hidden' });
+          await reader.getByRole('link', { name: '查看大图：竖向图片' }).click();
+          await modal.locator('.pswp--ui-visible').waitFor();
+          assert.equal(await counter.innerText(), '2 / 3');
+          assert.equal(requests.filter(url => url.includes('image-viewer.')).length, 1);
+          await reader.keyboard.press('Escape');
+          await modal.waitFor({ state: 'detached' });
+
+          await reader.emulateMedia({ reducedMotion: 'no-preference' });
+          const origin = await opener.evaluate(link => {
+            link.scrollIntoView({ block: 'center' });
+            const thumbnail = link.querySelector('img').getBoundingClientRect();
+            window.photoTransitions = [];
+            document.addEventListener('transitionrun', event => {
+              if (event.propertyName !== 'transform' || !event.target.matches('.pswp__zoom-wrap')) return;
+              const transition = event.target.getAnimations().find(a => a.transitionProperty === 'transform');
+              if (!transition) return;
+              window.photoTransitions.push(transition.effect.getKeyframes().map(frame => {
+                const point = new DOMMatrixReadOnly(frame.transform);
+                return [point.e, point.f];
+              }));
+            });
+            return [thumbnail.left, thumbnail.top];
+          });
+          await opener.click();
+          await reader.waitForFunction(() => window.photoTransitions.length === 1 &&
+            document.querySelector('.pswp__item:first-child')?.style.display === 'block');
+          await reader.keyboard.press('Escape');
+          await modal.waitFor({ state: 'detached' });
+          const [open, close] = await reader.evaluate(() => window.photoTransitions);
+          for (const point of [open[0], close.at(-1)]) {
+            assert.ok(Math.abs(point[0] - origin[0]) <= 2 && Math.abs(point[1] - origin[1]) <= 2,
+              JSON.stringify({ origin, point, open, close }));
+          }
+        });
+
+        await t.test('gallery images link directly to their source with JavaScript disabled', async t => {
+          const reader = await browser.newPage({ javaScriptEnabled: false });
+          t.after(() => reader.close());
+          await reader.route(cdn + '/**', route => route.fulfill({ contentType: 'image/webp', body: landscape }));
+          await reader.goto(new URL(`posts/${viewerPost}/`, homeUrl).href);
+          await reader.getByRole('link', { name: '查看大图：横向照片' }).click();
+          await reader.waitForURL(`${cdn}/posts/${viewerPost}/${landscapeFile}`);
         });
 
         const page = await browser.newPage({ viewport: { width: 375, height: 812 }, reducedMotion: 'no-preference' });

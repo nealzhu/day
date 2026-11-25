@@ -24,6 +24,18 @@
 .prose { font-synthesis: none; }
 .prose :is(strong,b) { font-synthesis: weight; }
 .prose :is(h2,h3,h4,h5,h6) { text-wrap: balance; scroll-margin-block-start: var(--s3); }
+.prose [data-gallery-open]:has(> img) {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  cursor: zoom-in;
+}
+.prose [data-gallery-open]:not(:has(> img)) {
+  display: inline-block;
+  margin-inline-end: var(--s1);
+  font-size: var(--small);
+}
 .prose img { display: block; margin-inline: auto; }
 .prose pre { overflow-wrap: normal; border-radius: var(--radius); }
 .prose pre span { color: light-dark(var(--shiki-light, var(--ink)), var(--shiki-dark, var(--ink))); }

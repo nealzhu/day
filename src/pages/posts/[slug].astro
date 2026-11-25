@@ -1,10 +1,11 @@
 ---
 import { render } from 'astro:content';
+import ImageGallery from '../../components/ImageGallery.astro';
 import ArticleContents from '../../components/ArticleContents.astro';
 import SiteIcon from '../../components/SiteIcon.astro';
 import Site from '../../layouts/Site.astro';
 import { categories } from '../../lib/content-model';
-import { categoryPath, postPath, publishedPosts } from '../../lib/posts';
+import { categoryPath, firstImage, postPath, publishedPosts } from '../../lib/posts';
 import '../../styles/prose.css';
 
 export async function getStaticPaths() {
@@ -38,7 +39,8 @@ const toc = headings.filter(heading => heading.depth >= 2);
         <p hidden data-pagefind-weight="2">{description}</p>
       </header>
       {toc.length > 0 && <ArticleContents headings={toc} />}
-      <div class="prose"><Content /></div>
+      <div class="prose" data-image-gallery={firstImage(post) ? true : undefined}><Content /></div>
+      {firstImage(post) && <ImageGallery />}
     </article>
     <aside class="rail library">
       <h2>全部文章 <small>{archive.length}</small></h2>

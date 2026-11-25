@@ -21,6 +21,7 @@
     "@astrojs/markdown-remark": "6.3.11",
     "@aws-sdk/client-s3": "^3.0.0",
     "astro": "^5.16.0",
+    "photoswipe": "5.4.4",
     "remark-gfm": "4.0.1",
     "remark-parse": "^11.0.0",
     "unified": "^11.0.5",

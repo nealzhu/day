@@ -40,10 +40,10 @@ export function remarkCdnMedia({ base = mediaBase } = {}) {
     const id = source.match(/(?:^|\/)src\/content\/posts\/([^/]+)\/index\.md$/)?.[1];
     if (!id) return;
     const { cover, images } = rewriteImages(tree, id, source, base);
-    for (const { filename, node } of images) {
+    for (const [index, { filename, node }] of images.entries()) {
       const path = join(dirname(source), 'assets', filename);
       const { width, height } = await imageMetadata(await readFile(path), path);
-      node.data = { hProperties: { width, height } };
+      node.data = { hProperties: { width, height, dataGalleryImage: '', loading: index > 0 ? 'lazy' : undefined } };
     }
     file.data.astro.frontmatter.firstImage = cover;
   };

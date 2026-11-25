@@ -1,0 +1,23 @@
+<script>
+  const gallery = document.querySelector<HTMLElement>('[data-image-gallery]');
+  let opening = false;
+
+  gallery?.addEventListener('click', async event => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey ||
+        event.altKey || event.shiftKey || !(event.target instanceof Element)) return;
+    const trigger = event.target.closest<HTMLAnchorElement>('a[data-gallery-open]');
+    if (!trigger) return;
+
+    event.preventDefault();
+    if (opening || document.querySelector(':modal')) return;
+    opening = true;
+    try {
+      const { openImageViewer } = await import('../lib/image-viewer');
+      if (!document.querySelector(':modal')) openImageViewer(gallery, trigger);
+    } catch {
+      if (!document.querySelector(':modal')) location.assign(trigger.href);
+    } finally {
+      opening = false;
+    }
+  });
+</script>

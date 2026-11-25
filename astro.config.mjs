@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import { mediaBase, remarkCdnMedia } from './scripts/remark-cdn-media.mjs';
 import { rehypeFigureCaptions } from './scripts/rehype-figure-captions.mjs';
+import { rehypeImageGallery } from './scripts/rehype-image-gallery.mjs';
 import { rehypeScrollTables } from './scripts/rehype-scroll-tables.mjs';
 import { serveLocalMedia } from './scripts/local-media.mjs';
 import { verifyArticles } from './scripts/article-files.mjs';
@@ -13,7 +14,7 @@ export default defineConfig({
   markdown: {
     remarkRehype: { footnoteLabel: '脚注', footnoteBackLabel: '返回正文中的引用', footnoteLabelProperties: {} },
     shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' }, defaultColor: false },
-    rehypePlugins: [rehypeFigureCaptions, rehypeScrollTables],
+    rehypePlugins: [rehypeFigureCaptions, rehypeImageGallery, rehypeScrollTables],
     remarkPlugins: [[remarkCdnMedia, { base: mediaBase }]],
   },
   integrations: [{

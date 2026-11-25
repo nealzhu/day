@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import ImageGallery from '../../components/ImageGallery.astro';
+import ParagraphShare from '../../components/ParagraphShare.astro';
 import ArticleContents from '../../components/ArticleContents.astro';
 import SiteIcon from '../../components/SiteIcon.astro';
 import Site from '../../layouts/Site.astro';
@@ -19,7 +20,7 @@ const { title, description, publishedAt, category, tags } = post.data;
 const { Content, headings } = await render(post);
 const toc = headings.filter(heading => heading.depth >= 2);
 ---
-<Site title={title} description={description}>
+<Site title={title} description={description} article>
   <div class="columns">
     <article data-pagefind-body>
       <header class="intro">
@@ -34,6 +35,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
               </ul>
             </div>
           )}
+          <button id="reading-mode" type="button" aria-pressed="false" hidden>沉浸阅读</button>
         </div>
         <h1 data-pagefind-meta="title">{title}</h1>
         <p hidden data-pagefind-weight="2">{description}</p>
@@ -41,6 +43,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
       {toc.length > 0 && <ArticleContents headings={toc} />}
       <div class="prose" data-image-gallery={firstImage(post) ? true : undefined}><Content /></div>
       {firstImage(post) && <ImageGallery />}
+      <ParagraphShare />
     </article>
     <aside class="rail library">
       <h2>全部文章 <small>{archive.length}</small></h2>
@@ -75,6 +78,35 @@ const toc = headings.filter(heading => heading.depth >= 2);
   .rail a:hover { text-decoration: underline; color: var(--accent); }
   .rail a[aria-current] { color: var(--accent); text-decoration: underline; text-underline-offset: .24em; }
   .library { margin-top: var(--page-gap); }
+  #reading-mode {
+    margin-inline-start: auto;
+    padding: 0 .25em;
+    background: transparent;
+    border: 0;
+    border-radius: var(--radius);
+    white-space: nowrap;
+  }
+  html[data-reading] :is(.mast, .mast-actions) { display: contents; }
+  html[data-reading] :is(.mast > .brand, .mast > nav, #settings-trigger, #search-trigger, .colophon, .columns > .library, .columns article .contents) { display: none; }
+  html[data-reading] .columns { display: block; max-width: var(--reading-measure); }
+  html[data-reading] .columns article { display: block; }
+  html[data-reading] #reading-mode {
+    position: fixed;
+    inset: auto max(var(--s1), env(safe-area-inset-right)) max(var(--s1), env(safe-area-inset-bottom)) auto;
+    z-index: 2;
+    padding: .35em .75em;
+    min-height: 44px;
+    border: var(--rule);
+    background: var(--paper);
+  }
+  @media (min-width: 960px) {
+    html[data-reading] #reading-mode {
+      inset: var(--s2) var(--s2) auto auto;
+    }
+  }
+  @media (any-pointer: coarse) {
+    #reading-mode { min-height: 44px; }
+  }
   @media (min-width: 960px) {
     .columns { max-width: none; display: grid; grid-template-columns: minmax(0, var(--reading-measure)) minmax(9rem, 12rem); gap: var(--s4); justify-content: center; }
     .columns article { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-content: start; }
@@ -100,24 +132,67 @@ const toc = headings.filter(heading => heading.depth >= 2);
   }
 </style>
 <script>
+  const root = document.documentElement;
   const library = document.querySelector<HTMLElement>('#library')!;
-  // Both sticky rails share the same top edge, even on articles without an outline.
   const columns = library.closest<HTMLElement>('.columns')!;
+  const prose = document.querySelector<HTMLElement>('.prose')!;
+  const intro = document.querySelector<HTMLElement>('.intro')!;
+  const button = document.querySelector<HTMLButtonElement>('#reading-mode')!;
   const desktop = matchMedia('(min-width: 960px)');
+  const storageKey = 'qians.day:archive-scroll';
+  const readingKey = 'qians.day:reading-mode';
+  let offset = 0;
+
+  function reading() { return root.hasAttribute('data-reading'); }
   function fitRails() {
-    if (desktop.matches) columns.style.setProperty('--article-top', `${Math.max(0, columns.getBoundingClientRect().top)}px`);
+    if (desktop.matches && !reading()) columns.style.setProperty('--article-top', `${Math.max(0, columns.getBoundingClientRect().top)}px`);
   }
+
+  function restoreArchive() {
+    try { offset = Number(sessionStorage.getItem(storageKey)) || 0; } catch {}
+    if (!reading()) library.scrollTop = offset;
+  }
+  function saveArchive() {
+    if (!reading()) offset = library.scrollTop;
+    try { sessionStorage.setItem(storageKey, String(offset)); } catch {}
+  }
+
+  function updateControl() {
+    button.setAttribute('aria-pressed', String(reading()));
+    button.textContent = reading() ? '退出沉浸阅读' : '沉浸阅读';
+  }
+
+  function toggleReading(enabled: boolean) {
+    if (reading() === enabled) return;
+    saveArchive();
+    const guide = Math.min(innerHeight * .33, 200);
+    const anchor = scrollY > 0 ? [intro, ...prose.children].find(block => block.getBoundingClientRect().bottom > guide) : undefined;
+    const top = anchor?.getBoundingClientRect().top;
+    root.toggleAttribute('data-reading', enabled);
+    updateControl();
+    if (anchor && top !== undefined) scrollBy({ top: anchor.getBoundingClientRect().top - top, behavior: 'instant' });
+    if (!enabled) library.scrollTop = offset;
+    fitRails();
+  }
+
+  button.addEventListener('click', () => {
+    if (document.querySelector(':modal')) return;
+    toggleReading(!reading());
+    try { localStorage.setItem(readingKey, String(reading())); } catch {}
+  });
+  window.addEventListener('pageshow', event => {
+    if (!event.persisted) return;
+    try { toggleReading(localStorage.getItem(readingKey) === 'true'); } catch {}
+  });
+
+  updateControl();
+  button.hidden = false;
   fitRails();
+  restoreArchive();
+  const originalOffset = library.scrollTop;
+  document.fonts.ready.then(() => { if (!reading() && library.scrollTop === originalOffset) library.scrollTop = offset; });
   window.addEventListener('scroll', fitRails, { passive: true });
   window.addEventListener('resize', fitRails);
   new ResizeObserver(fitRails).observe(document.querySelector('.mast')!);
-
-  const key = 'qians.day:archive-scroll';
-  let offset = 0;
-  try { offset = Number(sessionStorage.getItem(key)) || 0; } catch {}
-  library.scrollTop = offset;
-  document.fonts.ready.then(() => { library.scrollTop = offset; });
-  window.addEventListener('pagehide', () => {
-    try { sessionStorage.setItem(key, String(library.scrollTop)); } catch {}
-  });
+  window.addEventListener('pagehide', saveArchive);
 </script>

@@ -96,10 +96,18 @@ export function openImageViewer(gallery: HTMLElement, trigger: HTMLAnchorElement
       slide.toggleZoom({ x: event.clientX, y: event.clientY });
     }
   });
+  let closeRequested = false;
+  viewer.on('openingAnimationEnd', () => {
+    if (closeRequested) queueMicrotask(() => viewer.close());
+  });
   dialog.addEventListener('cancel', event => {
     event.preventDefault();
     if (viewer.opener.isOpen) viewer.close();
-    else if (viewer.opener.isOpening) viewer.on('openingAnimationEnd', () => queueMicrotask(() => viewer.close()));
+    else if (viewer.opener.isOpening) closeRequested = true;
+  });
+  dialog.addEventListener('click', event => {
+    if (viewer.opener.isOpening && event.target instanceof Element &&
+        event.target.closest('.pswp__button--close')) closeRequested = true;
   });
 
   function restore() {

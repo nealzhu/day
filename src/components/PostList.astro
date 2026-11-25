@@ -1,4 +1,5 @@
 ---
+import ArchivePosition from './ArchivePosition.astro';
 import { cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
 import { mediaBase } from '../../scripts/remark-cdn-media.mjs';
 import { categories } from '../lib/content-model';
@@ -25,7 +26,7 @@ for (const post of posts) {
         const { title, publishedAt, description, slug, category } = post.data;
         const cover = firstImage(post) ?? placeholder;
         const newDay = index > 0 && entries[index - 1].data.publishedAt !== publishedAt;
-        return <li class:list={[{ 'new-day': newDay }]}>
+        return <li data-archive-entry={post.data.articleId} class:list={[{ 'new-day': newDay }]}>
           <img src={cover.src} alt={cover.alt} loading="lazy" />
           <div class="meta"><time datetime={publishedAt}>{publishedAt.slice(5).replace('-', ' 月 ')} 日</time>{category && <span>{categories[category]}</span>}</div>
           <h3><a href={postPath(slug)}>{title}</a></h3>
@@ -35,6 +36,7 @@ for (const post of posts) {
     </ul>
   </section>)}
 </div>
+<ArchivePosition />
 <style>
   .year { display: grid; grid-template-columns: minmax(7rem, 1fr) minmax(0, 4fr); gap: var(--s3); }
   .year > header { padding-block: var(--s2); color: var(--muted); }

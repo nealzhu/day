@@ -29,6 +29,8 @@ import SiteIcon from './SiteIcon.astro';
   const viewKey = 'qians.day:post-view';
   const themeKey = 'qians.day:theme';
   const outlineKey = 'qians.day:mini-toc';
+  const miniAvailable = matchMedia('(min-width: 960px) and (hover: hover) and (not (any-pointer: coarse))');
+  let prefersMini = false;
 
   function view(choice: string | null, fromSettings = false) {
     const mode = choice === 'list' ? 'list' : 'cards';
@@ -57,9 +59,13 @@ import SiteIcon from './SiteIcon.astro';
     } catch { /* The page also works with in-memory preferences. */ }
   }
   function outline(mini: boolean) {
-    root.toggleAttribute('data-mini-toc', mini);
+    prefersMini = mini;
+    const effectiveMini = mini && miniAvailable.matches;
+    root.toggleAttribute('data-mini-toc', effectiveMini);
     for (const b of panel.querySelectorAll<HTMLButtonElement>('[data-outline]')) {
-      b.setAttribute('aria-pressed', String(b.dataset.outline === (mini ? 'mini' : 'full')));
+      b.disabled = b.dataset.outline === 'mini' && !miniAvailable.matches;
+      b.title = b.disabled ? '触屏及窄屏使用完整目录' : '';
+      b.setAttribute('aria-pressed', String(b.dataset.outline === (effectiveMini ? 'mini' : 'full')));
     }
   }
   panel.addEventListener('click', event => {
@@ -115,13 +121,16 @@ import SiteIcon from './SiteIcon.astro';
   for (const event of ['scroll', 'resize']) {
     window.addEventListener(event, () => { if (panel.matches(':popover-open')) positionPanel(); }, { passive: true });
   }
+  outline(false);
   restore();
+  miniAvailable.addEventListener('change', () => outline(prefersMini));
   window.addEventListener('pageshow', restore);
   window.addEventListener('storage', restore);
   trigger.hidden = false;
 </script>
 <style>
   button { border: 0; background: transparent; }
+  button:disabled { opacity: .55; cursor: default; }
   .settings-trigger, #reading-settings { --settings-gap: 6px; }
   .settings-trigger { position: relative; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border-radius: calc(2 * var(--radius)); }
   .settings-face {

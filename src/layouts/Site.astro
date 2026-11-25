@@ -7,8 +7,8 @@ import SiteIcon from '../components/SiteIcon.astro';
 import { categories, categoryKeys } from '../lib/content-model';
 import { categoryPath } from '../lib/posts';
 
-interface Props { title: string; description: string; noindex?: boolean }
-const { title, description, noindex } = Astro.props;
+interface Props { title: string; description: string; noindex?: boolean; article?: boolean }
+const { title, description, noindex, article } = Astro.props;
 const pathname = Astro.url.pathname;
 const fontBase = import.meta.env.MODE === 'preview' ? '' : fontCdn;
 const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontBase}/${fontPrefix}/faces.css`;
@@ -23,9 +23,15 @@ const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontB
         if (localStorage.getItem('qians.day:post-view') === 'list') document.documentElement.dataset.view = 'list';
         const theme = localStorage.getItem('qians.day:theme');
         if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
-        if (localStorage.getItem('qians.day:mini-toc') === 'true') document.documentElement.setAttribute('data-mini-toc', '');
+        if (localStorage.getItem('qians.day:mini-toc') === 'true' &&
+            matchMedia('(min-width: 960px) and (hover: hover) and (not (any-pointer: coarse))').matches) document.documentElement.setAttribute('data-mini-toc', '');
       } catch {}
     </script>
+    {article && <script is:inline>
+      try {
+        if (localStorage.getItem('qians.day:reading-mode') === 'true') document.documentElement.setAttribute('data-reading', '');
+      } catch {}
+    </script>}
     <title>{title} · 骞言碎语</title>
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />

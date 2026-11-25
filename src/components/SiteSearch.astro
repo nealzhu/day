@@ -236,7 +236,8 @@ import SiteIcon from './SiteIcon.astro';
     const target = event.target;
     if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select'))) return;
     event.preventDefault();
-    openSearch(target instanceof HTMLElement && target !== document.body ? target : trigger);
+    const fallback = document.querySelector<HTMLElement>('html[data-reading] #reading-mode') ?? trigger;
+    openSearch(target instanceof HTMLElement && target !== document.body ? target : fallback);
   });
   trigger.hidden = false;
 </script>

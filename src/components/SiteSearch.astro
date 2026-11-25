@@ -1,0 +1,360 @@
+---
+import SiteIcon from './SiteIcon.astro';
+---
+<button type="button" id="search-trigger" class="search-icon" aria-label="搜索文章" aria-haspopup="dialog"
+  aria-controls="site-search" aria-keyshortcuts="/" hidden>
+  <span class="search-face"><SiteIcon name="search" size={22} /></span>
+</button>
+<dialog id="site-search" aria-labelledby="search-heading" data-ui>
+  <div class="search-header">
+    <h2 id="search-heading">搜索文章</h2>
+    <button type="button" id="search-close" class="search-icon" aria-label="关闭搜索"><SiteIcon name="close" /></button>
+  </div>
+  <div class="search-field">
+    <SiteIcon name="search" />
+    <input id="search-input" type="search" aria-label="搜索关键词" placeholder="输入关键词" autocomplete="off" autofocus />
+  </div>
+  <div class="search-content">
+    <p id="search-status" role="status"></p>
+    <ol id="search-results" role="list" aria-label="搜索结果"></ol>
+    <button type="button" id="search-more" hidden>查看更多结果</button>
+  </div>
+</dialog>
+
+<script>
+  interface SearchFragment {
+    url: string;
+    excerpt: string;
+    meta: { title: string; date: string; category?: string };
+  }
+
+  interface SearchHit {
+    data(): Promise<SearchFragment>;
+  }
+
+  interface Pagefind {
+    init(): Promise<void>;
+    search(query: string): Promise<{ results: SearchHit[] }>;
+  }
+
+  const trigger = document.querySelector<HTMLButtonElement>('#search-trigger')!;
+  const dialog = document.querySelector<HTMLDialogElement>('#site-search')!;
+  const input = document.querySelector<HTMLInputElement>('#search-input')!;
+  const status = document.querySelector<HTMLElement>('#search-status')!;
+  const results = document.querySelector<HTMLOListElement>('#search-results')!;
+  const more = document.querySelector<HTMLButtonElement>('#search-more')!;
+  const content = dialog.querySelector<HTMLElement>('.search-content')!;
+  const viewport = window.visualViewport;
+  const pageSize = 10;
+  const idleMessage = '按标题、摘要或正文搜索。';
+  const errorMessage = '搜索暂时无法加载，请刷新页面后重试。';
+  let engine: Promise<Pagefind> | undefined;
+  let opener: HTMLElement = trigger;
+  let composing = false;
+  let revision = 0;
+  let timer = 0;
+  let hits: SearchHit[] = [];
+  let shown = 0;
+
+  function loadPagefind() {
+    const modulePath = '/pagefind/pagefind.js';
+    return engine ??= import(/* @vite-ignore */ modulePath).then(async (pagefind: Pagefind) => {
+      await pagefind.init();
+      return pagefind;
+    });
+  }
+
+  function openSearch(previous: HTMLElement) {
+    if (dialog.open) return;
+    opener = previous;
+    input.value = '';
+    composing = false;
+    clearResults(idleMessage);
+    dialog.showModal();
+    viewport?.addEventListener('resize', fitViewport);
+    fitViewport();
+    input.focus();
+    prepareSearch(revision);
+  }
+
+  function fitViewport() {
+    // Mobile keyboards can shrink the visual viewport without resizing CSS viewport units.
+    if (viewport) dialog.style.setProperty('--search-height', `${viewport.height}px`);
+  }
+
+  function prepareSearch(current: number) {
+    loadPagefind().catch(() => {
+      if (isCurrent(current)) status.textContent = errorMessage;
+    });
+  }
+
+  function isCurrent(current: number) {
+    return dialog.open && current === revision;
+  }
+
+  function clearResults(message: string) {
+    clearTimeout(timer);
+    revision++;
+    hits = [];
+    shown = 0;
+    results.replaceChildren();
+    more.hidden = true;
+    more.disabled = false;
+    status.textContent = message;
+    content.scrollTop = 0;
+  }
+
+  function resultItem({ url, excerpt, meta }: SearchFragment) {
+    const item = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = url;
+    const title = document.createElement('span');
+    title.className = 'search-result-title';
+    title.textContent = meta.title;
+    const details = document.createElement('span');
+    details.className = 'search-result-meta';
+    const date = document.createElement('time');
+    date.dateTime = date.textContent = meta.date;
+    details.append(date);
+    if (meta.category) details.append(' · ', meta.category);
+    const snippet = document.createElement('span');
+    snippet.className = 'search-result-excerpt';
+    // Pagefind escapes excerpt text before adding its <mark> elements.
+    snippet.innerHTML = excerpt;
+    link.append(title, details, snippet);
+    item.append(link);
+    return item;
+  }
+
+  async function appendResults(current: number) {
+    const start = shown;
+    const batch = await Promise.all(hits.slice(start, start + pageSize).map(hit => hit.data()));
+    if (!isCurrent(current)) return;
+    results.append(...batch.map(resultItem));
+    shown += batch.length;
+    more.hidden = shown >= hits.length;
+    status.textContent = more.hidden ? `找到 ${hits.length} 篇文章` : `已显示 ${shown} 篇，共 ${hits.length} 篇`;
+  }
+
+  async function search(query: string, current: number) {
+    try {
+      const pagefind = await loadPagefind();
+      if (!isCurrent(current)) return;
+      const response = await pagefind.search(query);
+      if (!isCurrent(current)) return;
+      hits = response.results;
+      if (hits.length) await appendResults(current);
+      else status.textContent = '没有找到匹配的文章。';
+    } catch {
+      if (isCurrent(current)) status.textContent = errorMessage;
+    }
+  }
+
+  function queueSearch() {
+    const query = input.value.trim();
+    clearResults(query ? '正在搜索…' : idleMessage);
+    const current = revision;
+    if (query) timer = window.setTimeout(() => void search(query, current), 150);
+    else prepareSearch(current);
+  }
+
+  trigger.addEventListener('click', () => openSearch(trigger));
+  document.querySelector('#search-close')!.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => {
+    if (dialog.open) return;
+    composing = false;
+    viewport?.removeEventListener('resize', fitViewport);
+    clearResults(idleMessage);
+    (opener.isConnected ? opener : trigger).focus({ preventScroll: true });
+  });
+  dialog.addEventListener('cancel', event => {
+    if (composing) event.preventDefault();
+  });
+  input.addEventListener('compositionstart', () => {
+    composing = true;
+    clearResults('');
+  });
+  input.addEventListener('compositionend', () => {
+    composing = false;
+    if (dialog.open) queueSearch();
+  });
+  input.addEventListener('input', event => {
+    if (!composing && !(event as InputEvent).isComposing) queueSearch();
+  });
+
+  more.addEventListener('click', async () => {
+    const current = revision;
+    const start = shown;
+    more.disabled = true;
+    try {
+      await appendResults(current);
+      if (isCurrent(current)) results.querySelectorAll('a')[start]?.focus();
+    } catch {
+      if (isCurrent(current)) {
+        status.textContent = errorMessage;
+        more.disabled = false;
+        more.focus();
+      }
+    } finally {
+      if (isCurrent(current)) more.disabled = false;
+    }
+  });
+
+  dialog.addEventListener('keydown', event => {
+    // Some browsers report a composing Enter/Escape as a normal key with code 229.
+    if (composing || event.isComposing || event.keyCode === 229) {
+      if (event.key === 'Escape') event.preventDefault();
+      return;
+    }
+    if (event.key === 'Escape') {
+      // A search input also uses Escape to clear its value.
+      event.preventDefault();
+      dialog.close();
+      return;
+    }
+    if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const links = [...results.querySelectorAll('a')];
+    const target = event.target;
+    const index = links.findIndex(link => link === target);
+    if (!links.length || (target !== input && index === -1)) return;
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault();
+      (links[index + 1] ?? (more.hidden ? links[index] : more)).focus();
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      (target === input ? links.at(-1) : links[index - 1] ?? input)?.focus();
+    } else if (event.key === 'Enter' && target === input) {
+      event.preventDefault();
+      links[0].click();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key !== '/' || event.repeat || event.defaultPrevented || event.isComposing ||
+        event.keyCode === 229 || event.ctrlKey || event.metaKey || event.altKey || dialog.open) return;
+    const target = event.target;
+    if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select'))) return;
+    event.preventDefault();
+    openSearch(target instanceof HTMLElement && target !== document.body ? target : trigger);
+  });
+  trigger.hidden = false;
+</script>
+
+<style>
+  .search-icon {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    flex: none;
+    padding: 0;
+    border: 0;
+    border-radius: calc(2 * var(--radius));
+    background: transparent;
+    color: var(--muted);
+  }
+  .search-icon:is(:hover, :focus-visible) { color: var(--accent); }
+  .search-face {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: var(--rule);
+    border-radius: inherit;
+    transform: translateY(-.5px);
+  }
+  .search-icon:is(:hover, :focus-visible) .search-face {
+    border-color: color-mix(in srgb, currentColor 55%, var(--line));
+    background: var(--inset);
+  }
+  dialog {
+    position: fixed;
+    inset: min(12dvh, 6rem) 0 auto;
+    margin: 0 auto;
+    width: min(calc(100% - 2 * var(--gutter)), 39rem);
+    max-width: none;
+    max-height: min(39rem, 80dvh);
+    padding: var(--s3);
+    overflow: hidden;
+    background: var(--paper);
+    color: var(--ink);
+    border: var(--rule);
+    border-radius: calc(2 * var(--radius));
+    font: var(--regular) 1rem/1.6 var(--reading-font);
+  }
+  dialog[open] { display: flex; flex-direction: column; }
+  dialog::backdrop {
+    background: color-mix(in srgb, #151510 52%, transparent);
+    backdrop-filter: blur(3px);
+  }
+  :global(html:has(#site-search[open])) { overflow: hidden; }
+  .search-header, .search-field { display: flex; align-items: center; flex: none; }
+  .search-header { justify-content: space-between; margin: calc(-1 * var(--s1)) calc(-1 * var(--s1)) var(--s1) 0; }
+  .search-header h2 { font-size: var(--h3); }
+  .search-field {
+    gap: var(--s1);
+    padding-inline: var(--s1);
+    border: var(--rule);
+    border-radius: var(--radius);
+    color: var(--muted);
+    background: var(--inset);
+  }
+  .search-field svg { flex: none; }
+  .search-field:focus-within { outline: var(--focus); }
+  input {
+    min-width: 0;
+    width: 100%;
+    min-height: 44px;
+    padding: .4em .25em;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+  }
+  input:focus { outline: none; }
+  input::placeholder { color: var(--muted); opacity: 1; }
+  .search-content {
+    margin-inline: calc(-1 * var(--s1));
+    padding-inline: var(--s1);
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+  }
+  #search-status { margin: var(--s2) 0 var(--s1); font-size: var(--small); color: var(--muted); }
+  ol { margin: 0; padding: 0; list-style: none; }
+  #search-more {
+    margin-block-start: var(--s1);
+    min-height: 44px;
+    padding-inline: var(--s1);
+    border: var(--rule);
+    border-radius: var(--radius);
+    background: var(--inset);
+  }
+  @media (max-width: 600px) {
+    dialog { inset-block-start: max(var(--s1), env(safe-area-inset-top)); width: calc(100% - 2 * var(--s1)); padding: var(--s2); max-height: min(86dvh, calc(var(--search-height, 100dvh) - 2 * var(--s1))); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    dialog[open] { animation: search-enter var(--motion-settle) var(--ease-settle) both; }
+    @keyframes search-enter { from { opacity: 0; transform: translateY(-3px); } }
+  }
+</style>
+<style is:global>
+  #search-results li + li { border-block-start: var(--group-rule); }
+  #search-results a {
+    display: block;
+    padding: var(--s1);
+    border-radius: var(--radius);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  #search-results a:is(:hover, :focus-visible) { background: var(--inset); }
+  #search-results a:focus-visible { outline-offset: -2px; }
+  #search-results a:is(:hover, :focus-visible) .search-result-title { color: var(--accent); }
+  .search-result-title, .search-result-meta, .search-result-excerpt { display: block; }
+  .search-result-title { font-size: 1.125rem; }
+  .search-result-meta { color: var(--muted); font-size: var(--small); }
+  .search-result-excerpt { margin-block-start: .25em; }
+  #search-results mark { background: var(--inset); color: var(--accent); }
+  #search-results a:is(:hover, :focus-visible) mark { background: var(--paper); }
+</style>

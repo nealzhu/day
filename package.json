@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
+    "pagefind": "1.6.0",
     "playwright-core": "^1.65.1",
     "typescript": "^5.9.0",
     "wrangler": "^4.0.0"

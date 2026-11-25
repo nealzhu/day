@@ -27,13 +27,20 @@ test('production build and browser behaviour', async t => {
   ].join('\n\n'));
   await mkdir(join(directory, 'assets'));
   for (const name of [file, second]) await writeFile(join(directory, 'assets', name), bytes);
-  await article(posts, 'text-only', { category: undefined });
+  await article(posts, 'text-only', { category: undefined, description: '北极星摘要。' },
+    '我用 Cloudflare 存档星图，翻到一张罕见的地图。 pictured');
+  await writeFile(join(project, 'src/pages/typography-check.astro'), `---
+import Site from '../layouts/Site.astro';
+---
+<Site title="排版实验" description="排版实验" noindex>
+  <article data-pagefind-body>排版实验独有内容</article>
+</Site>`);
   const older = Array.from({ length: 30 }, (_, i) => `archive-${String(i).padStart(2, '0')}`);
   const chapters = Array.from({ length: 30 }, (_, i) => `## Chapter ${i + 1}\n\nChapter text.`).join('\n\n');
   for (const id of older) {
-    await article(posts, id, { category: undefined, publishedAt: '2025-01-01' }, id === older[0] ? chapters : undefined);
+    await article(posts, id, { category: undefined, publishedAt: '2025-01-01' }, id === older[0] ? chapters : 'Searchpagination.');
   }
-  await article(posts, 'secret-draft', { status: 'draft' });
+  await article(posts, 'secret-draft', { status: 'draft' }, '草稿独有内容');
   await article(posts, 'implicit-draft', { status: undefined });
 
   const cdn = 'https://fixture.invalid';
@@ -43,6 +50,10 @@ test('production build and browser behaviour', async t => {
       cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
     });
     const files = await readdir(dist, { recursive: true });
+    const pagefind = JSON.parse(await readFile(join(dist, 'pagefind/pagefind-entry.json'), 'utf8'));
+    assert.equal(pagefind.version, '1.6.0');
+    assert.equal(pagefind.languages['zh-cn'].page_count, older.length + 2);
+    assert.ok(!files.some(path => /^pagefind[\/\\]pagefind-(.*ui|highlight)\./.test(path)));
     assert.ok(!files.some(path => /\.woff2$|faces\.css$|^fonts[\/\\]/.test(path)));
     for (const path of files.filter(path => path.endsWith('.html'))) {
       assert.ok((await readFile(join(dist, path), 'utf8')).includes(
@@ -98,12 +109,136 @@ test('production build and browser behaviour', async t => {
     try {
       const browser = await chromium.launch({ channel: 'chrome' });
       try {
+        const homeUrl = `http://127.0.0.1:${server.server.address().port}/`;
+        await t.test('static search scopes and ranks results, loads on demand and supports keyboard and IME', async t => {
+          const reader = await browser.newPage();
+          t.after(() => reader.close());
+          reader.setDefaultTimeout(5000);
+          const requests = [];
+          reader.on('request', request => {
+            if (new URL(request.url()).pathname.startsWith('/pagefind/')) requests.push(request.url());
+          });
+          const trigger = reader.getByRole('button', { name: '搜索文章' });
+          const input = reader.getByRole('searchbox', { name: '搜索关键词' });
+          const modal = reader.getByRole('dialog', { name: '搜索文章' });
+          const status = modal.getByRole('status');
+          const titles = modal.locator('.search-result-title');
+          const resultLinks = modal.locator('#search-results a');
+          async function waitForStatus(text) {
+            await status.getByText(text, { exact: true }).waitFor();
+          }
+          async function find(query, message = '找到 1 篇文章') {
+            await input.fill(query);
+            await waitForStatus(message);
+          }
+
+          await reader.goto(homeUrl);
+          await trigger.waitFor();
+          assert.deepEqual(requests, []);
+          const archiveLink = reader.getByRole('link', { name: '全部', exact: true });
+          await archiveLink.focus();
+          await reader.keyboard.press('/');
+          await waitForStatus('按标题、摘要或正文搜索。');
+          assert.equal(await input.evaluate(el => el === document.activeElement), true);
+
+          await find('Cloudflare 星图');
+          assert.deepEqual(await titles.allTextContents(), ['text-only']);
+          assert.match(await modal.locator('.search-result-meta').innerText(), /^2026-11-22$/);
+          const highlights = await modal.locator('.search-result-excerpt mark').allTextContents();
+          assert.match(highlights.join(''), /Cloudflare.*星图/i);
+          await find('北极星');
+          assert.deepEqual(await titles.allTextContents(), ['text-only']);
+
+          await find('pictured', '找到 2 篇文章');
+          assert.deepEqual(await titles.allTextContents(), ['pictured', 'text-only']);
+          assert.match(await modal.locator('.search-result-meta').first().innerText(), /2026-11-22 · 工程/);
+          await input.press('ArrowDown');
+          assert.equal(await resultLinks.first().evaluate(el => el === document.activeElement), true);
+          await reader.keyboard.press('ArrowDown');
+          assert.equal(await resultLinks.last().evaluate(el => el === document.activeElement), true);
+          await reader.keyboard.press('ArrowUp');
+          assert.equal(await resultLinks.first().evaluate(el => el === document.activeElement), true);
+          await reader.keyboard.press('Escape');
+          await modal.waitFor({ state: 'hidden' });
+          await reader.waitForFunction(() => document.activeElement?.textContent === '全部');
+
+          await trigger.click();
+          for (const query of ['草稿独有内容', '排版实验独有内容', '骞言碎语', '"全部文章"']) {
+            await find(query, '没有找到匹配的文章。');
+            assert.equal(await resultLinks.count(), 0);
+          }
+
+          await reader.keyboard.press('Escape');
+          await modal.waitFor({ state: 'hidden' });
+          await reader.waitForFunction(() => document.activeElement?.id === 'search-trigger');
+          await trigger.click();
+
+          await find('Searchpagination', '已显示 10 篇，共 29 篇');
+          await modal.getByRole('button', { name: '查看更多结果' }).click();
+          await waitForStatus('已显示 20 篇，共 29 篇');
+          assert.equal(await resultLinks.nth(10).evaluate(el => el === document.activeElement), true);
+          assert.equal(new Set(await resultLinks.evaluateAll(links => links.map(link => link.href))).size, 20);
+
+          await input.focus();
+          await input.dispatchEvent('compositionstart');
+          await input.fill('星图');
+          await reader.keyboard.press('Enter');
+          await reader.keyboard.press('Escape');
+          assert.equal(await modal.isVisible(), true);
+          assert.equal(await resultLinks.count(), 0);
+          await input.dispatchEvent('compositionend');
+          await waitForStatus('找到 1 篇文章');
+          assert.deepEqual(await titles.allTextContents(), ['text-only']);
+          await input.press('Enter');
+          await reader.waitForURL('**/posts/text-only/');
+          assert.equal(requests.filter(url => url.endsWith('/pagefind.js')).length, 1);
+        });
+        await t.test('search drops late fragments and displays a failed load', async t => {
+          const reader = await browser.newPage();
+          t.after(() => reader.close());
+          reader.setDefaultTimeout(5000);
+          const input = reader.getByRole('searchbox', { name: '搜索关键词' });
+          const trigger = reader.getByRole('button', { name: '搜索文章' });
+          let release;
+          const held = new Promise(resolve => { release = resolve; });
+          t.after(release);
+          await reader.route('**/pagefind/fragment/**', async route => {
+            await held;
+            await route.continue();
+          });
+          await reader.goto(homeUrl);
+          await trigger.click();
+          const requested = reader.waitForRequest('**/pagefind/fragment/**');
+          await input.fill('星图');
+          await requested;
+
+          await reader.evaluate(() => {
+            const list = document.querySelector('#search-results');
+            window.renderedLinks = [];
+            new MutationObserver(records => {
+              for (const record of records) window.renderedLinks.push(...record.addedNodes);
+            }).observe(list, { childList: true });
+          });
+          await input.fill('xyzzynothingfound');
+          release();
+          const noResults = reader.getByRole('status').getByText('没有找到匹配的文章。', { exact: true });
+          await noResults.waitFor();
+          assert.deepEqual(await reader.evaluate(() => window.renderedLinks.map(node => node.textContent)), []);
+
+          await reader.route('**/pagefind/pagefind.js', route => route.abort());
+          await reader.reload();
+          await trigger.click();
+          await reader.getByText('搜索暂时无法加载，请刷新页面后重试。', { exact: true }).waitFor();
+          await reader.getByRole('button', { name: '关闭搜索' }).click();
+          await reader.waitForFunction(() => document.activeElement?.id === 'search-trigger');
+        });
+
         const page = await browser.newPage({ viewport: { width: 375, height: 812 }, reducedMotion: 'no-preference' });
         await page.route(cdn + '/**', route => route.fulfill({
           contentType: 'image/webp',
           body: route.request().url() === placeholderUrl ? placeholder : bytes,
         }));
-        await page.goto(`http://127.0.0.1:${server.server.address().port}/`);
+        await page.goto(homeUrl);
         const settings = page.getByRole('button', { name: '阅读设置' });
         const panel = page.locator('#reading-settings:popover-open');
         const list = page.locator('button[data-mode="list"]');

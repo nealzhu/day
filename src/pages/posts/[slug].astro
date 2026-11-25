@@ -20,11 +20,11 @@ const toc = headings.filter(heading => heading.depth >= 2);
 ---
 <Site title={title} description={description}>
   <div class="columns">
-    <article>
+    <article data-pagefind-body>
       <header class="intro">
-        <div class="meta">
-          <time datetime={publishedAt}>{publishedAt}</time>
-          {category && <a href={categoryPath(category)}>{categories[category]}</a>}
+        <div class="meta" data-pagefind-ignore>
+          <time datetime={publishedAt} data-pagefind-meta="date[datetime]">{publishedAt}</time>
+          {category && <a href={categoryPath(category)} data-pagefind-meta="category">{categories[category]}</a>}
           {tags.length > 0 && (
             <div class="tag-group">
               <SiteIcon name="tag" size={16} />
@@ -34,7 +34,8 @@ const toc = headings.filter(heading => heading.depth >= 2);
             </div>
           )}
         </div>
-        <h1>{title}</h1>
+        <h1 data-pagefind-meta="title">{title}</h1>
+        <p hidden data-pagefind-weight="2">{description}</p>
       </header>
       {toc.length > 0 && <ArticleContents headings={toc} />}
       <div class="prose"><Content /></div>

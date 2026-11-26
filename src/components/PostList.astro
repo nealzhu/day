@@ -1,4 +1,5 @@
 ---
+import ArchivePosition from './ArchivePosition.astro';
 import { cardPlaceholderKey } from '../../scripts/card-placeholder.mjs';
 import { mediaBase } from '../../scripts/remark-cdn-media.mjs';
 import { categories } from '../lib/content-model';
@@ -25,7 +26,7 @@ for (const post of posts) {
         const { title, publishedAt, description, slug, category } = post.data;
         const cover = firstImage(post) ?? placeholder;
         const newDay = index > 0 && entries[index - 1].data.publishedAt !== publishedAt;
-        return <li class:list={[{ 'new-day': newDay }]}>
+        return <li data-archive-entry={post.data.articleId} class:list={[{ 'new-day': newDay }]}>
           <img src={cover.src} alt={cover.alt} loading="lazy" />
           <div class="meta"><time datetime={publishedAt}>{publishedAt.slice(5).replace('-', ' 月 ')} 日</time>{category && <span>{categories[category]}</span>}</div>
           <h3><a href={postPath(slug)}>{title}</a></h3>
@@ -35,7 +36,9 @@ for (const post of posts) {
     </ul>
   </section>)}
 </div>
+<ArchivePosition />
 <style>
+  :global([data-view="cards"]) .posts { container: archive-posts / inline-size; }
   .year { display: grid; grid-template-columns: minmax(7rem, 1fr) minmax(0, 4fr); gap: var(--s3); }
   .year > header { padding-block: var(--s2); color: var(--muted); }
   .year h2 { font-size: var(--h1); color: var(--accent); font-variant-numeric: lining-nums; }
@@ -53,7 +56,7 @@ for (const post of posts) {
   .meta span::before { content: '·'; margin-right: .7em; }
   p { margin: 0; color: var(--muted); }
   :global([data-view="list"]) img { display: none; }
-  :global([data-view="cards"]) ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
+  :global([data-view="cards"]) ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
   :global([data-view="cards"]) li { border: 0; padding: 0; display: flex; flex-direction: column; align-items: start; }
   :global([data-view="cards"]) img {
     display: block; object-fit: cover;
@@ -68,9 +71,14 @@ for (const post of posts) {
     @keyframes cover-in { from { opacity: .65; } to { opacity: 1; } }
   }
   @media (max-width: 600px) {
-    .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }
-    .year h2 { font-size: var(--h3); }
-    li { padding-block: var(--s2) var(--s3); }
+    :global([data-view="list"]) .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    :global([data-view="list"]) .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }
+    :global([data-view="list"]) .year h2 { font-size: var(--h3); }
+  }
+  /* Reserve 7rem for the year, a 1.5rem gap, and one desktop-size card. */
+  @container archive-posts (width < calc(7rem + 1.5rem + 15.25rem)) {
+    :global([data-view="cards"]) .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    :global([data-view="cards"]) .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }
+    :global([data-view="cards"]) .year h2 { font-size: var(--h3); }
   }
 </style>

@@ -23,7 +23,8 @@ const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontB
         if (localStorage.getItem('qians.day:post-view') === 'list') document.documentElement.dataset.view = 'list';
         const theme = localStorage.getItem('qians.day:theme');
         if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
-        if (localStorage.getItem('qians.day:mini-toc') === 'true') document.documentElement.setAttribute('data-mini-toc', '');
+        if (localStorage.getItem('qians.day:mini-toc') === 'true' &&
+            matchMedia('(min-width: 960px) and (hover: hover) and (not (any-pointer: coarse))').matches) document.documentElement.setAttribute('data-mini-toc', '');
       } catch {}
     </script>
     <title>{title} · 骞言碎语</title>

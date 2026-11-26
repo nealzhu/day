@@ -1,0 +1,384 @@
+{
+  "browser": "Chrome/156.0.8078.96",
+  "cases": {
+    "cold": [
+      {
+        "path": "/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.lIFeMWZo.js",
+        "status": 200,
+        "bytes": 2190,
+        "encoding": "gzip"
+      },
+      {
+        "path": "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+        "status": 200,
+        "bytes": 892,
+        "encoding": "gzip"
+      }
+    ],
+    "quote": {
+      "selected": "中文与 Cloudflare 的阅读摘记",
+      "fragment": "#quote=1&p=2&o=21&q=%E4%B8%AD%E6%96%87%E4%B8%8E+Cloudflare+%E7%9A%84%E9%98%85%E8%AF%BB%E6%91%98%E8%AE%B0&b=%E6%8A%8A%E6%95%A3%E8%90%BD%E5%9C%A8%E7%AC%94%E8%AE%B0%E6%9C%AC%E9%87%8C%E7%9A%84%E7%BA%BF%E7%B4%A2%E9%87%8D%E6%96%B0%E6%94%B6%E6%8B%A2%EF%BC%8C%E5%86%99%E6%88%90%E4%B8%80%E7%AF%87%E3%80%8C&a=%E3%80%8D%EF%BC%8C%E7%95%99%E7%BB%99%E5%B0%86%E6%9D%A5%E7%9A%84%E8%87%AA%E5%B7%B1%E3%80%82%E6%89%93%E5%BC%80%E9%A1%B5%E9%9D%A2%E6%97%B6%EF%BC%8C%E6%88%91%E5%85%88%E6%8A%8A%E6%89%8B%E4%BB%8E%E9%94%AE%E7%9B%98%E7%A7%BB",
+      "refresh": true,
+      "reordered": true,
+      "ambiguousStops": true,
+      "missingStops": true,
+      "crossParagraphRejected": true,
+      "codeRejected": true,
+      "longSelectionRejected": true,
+      "nativeDesktopDrag": {
+        "browser": "158.0.8127.38",
+        "selected": "中文与 Cloudflare 的阅读摘记"
+      }
+    },
+    "reading": {
+      "width": 700,
+      "sidebar": [
+        "none",
+        "none"
+      ],
+      "saved": true,
+      "archiveIsolated": true,
+      "restoredParagraphTop": {
+        "before": 417.09375,
+        "after": 417.03125
+      },
+      "searchAndGallery": true,
+      "resultInImmersive": "/posts/m2-smoke-test/"
+    },
+    "archive": [
+      {
+        "path": "/",
+        "mode": "cards",
+        "before": 242.375,
+        "returned": {
+          "top": 242.375,
+          "scrollY": 2169,
+          "view": "cards",
+          "nativeBFCache": true,
+          "type": "reload"
+        }
+      },
+      {
+        "path": "/categories/engineering/",
+        "mode": "list",
+        "before": 308.78125,
+        "returned": {
+          "top": 308.78125,
+          "scrollY": 2559,
+          "view": "list",
+          "nativeBFCache": true,
+          "type": "reload"
+        }
+      },
+      {
+        "path": "/",
+        "from": "cards",
+        "to": "list",
+        "saved": 242.375,
+        "restored": 242.46875,
+        "scrollY": 3071
+      }
+    ],
+    "touch": {
+      "hit": [
+        60.296875,
+        44
+      ],
+      "offsetY": 6,
+      "selected": "听雨",
+      "share": {
+        "selection": "中文与 Cloudflare 的阅读摘记",
+        "button": [
+          108,
+          44
+        ],
+        "nonOverlap": true
+      },
+      "nativeLongPress": null,
+      "immersive": {
+        "viewport": [
+          390,
+          844
+        ],
+        "mode": "light",
+        "width": 350,
+        "button": {
+          "x": 267.5,
+          "y": 792,
+          "width": 114.5,
+          "height": 44,
+          "top": 792,
+          "right": 382,
+          "bottom": 836,
+          "left": 267.5
+        }
+      }
+    }
+  },
+  "responsiveArticleNavigation": {
+    "browser": "Chrome/156.0.0.0",
+    "phone": {
+      "width": 390,
+      "trigger": [44, 44],
+      "panelHeight": 288,
+      "panelScrollTopDuringSwipe": 180,
+      "articleScrollTopDuringSwipe": 0,
+      "selectedAndHighlightedHeading": "最后一行",
+      "paginationLabels": ["上一篇", "下一篇", "去首页"],
+      "paginationMidpoint": 195
+    },
+    "tablet": { "width": 768, "panelHeight": 288, "focusAfterEscape": "contents-trigger" },
+    "medium": { "width": 1024, "sideOutlineVisible": true, "archiveRailVisible": false },
+    "desktop": { "width": 1440, "archiveRailVisible": true, "proseWidth": 700 }
+  },
+  "views": [
+    {
+      "file": "desktop-selection-light.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "mode": "light",
+      "scrollY": 143,
+      "proseWidth": 700,
+      "overflow": false,
+      "reading": false
+    },
+    {
+      "file": "desktop-highlight-dark.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "mode": "dark",
+      "scrollY": 143,
+      "proseWidth": 700,
+      "overflow": false,
+      "reading": false
+    },
+    {
+      "file": "desktop-immersive-dark.png",
+      "viewport": [
+        1440,
+        900
+      ],
+      "mode": "dark",
+      "scrollY": 44,
+      "proseWidth": 700,
+      "overflow": false,
+      "reading": true
+    },
+    {
+      "file": "archive-return-cards.png",
+      "viewport": [
+        1024,
+        768
+      ],
+      "mode": "light",
+      "scrollY": 2169,
+      "proseWidth": null,
+      "overflow": false,
+      "reading": false
+    },
+    {
+      "file": "mobile-outline-light.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "mode": "light",
+      "scrollY": 0,
+      "proseWidth": 350,
+      "overflow": false,
+      "reading": false
+    },
+    {
+      "file": "mobile-pagination-light.png",
+      "viewport": [390, 844],
+      "mode": "light",
+      "scrollY": 79,
+      "proseWidth": 350,
+      "overflow": false,
+      "reading": false
+    },
+    {
+      "file": "mobile-share-dark.png",
+      "viewport": [
+        390,
+        844
+      ],
+      "mode": "dark",
+      "scrollY": 273,
+      "proseWidth": 350,
+      "overflow": false,
+      "reading": false
+    }
+  ],
+  "probes": [
+    {
+      "label": "article idle",
+      "href": "/posts/reading-notes/",
+      "errors": [],
+      "layoutShifts": [],
+      "navigation": "navigate",
+      "shows": [
+        false
+      ],
+      "js": [
+        "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+        "/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.lIFeMWZo.js"
+      ]
+    },
+    {
+      "label": "immersive search and image",
+      "href": "/posts/reading-notes/",
+      "errors": [],
+      "layoutShifts": [],
+      "navigation": "reload",
+      "shows": [
+        false
+      ],
+      "js": [
+        "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+        "/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.lIFeMWZo.js",
+        "/pagefind/pagefind.js",
+        "/pagefind/pagefind-worker.js",
+        "/_astro/image-viewer.DMdGLzpg.js"
+      ]
+    },
+    {
+      "label": "archive cards",
+      "href": "/",
+      "errors": [],
+      "layoutShifts": [],
+      "navigation": "reload",
+      "shows": [
+        false,
+        true
+      ],
+      "js": []
+    },
+    {
+      "label": "archive list",
+      "href": "/categories/engineering/",
+      "errors": [],
+      "layoutShifts": [
+        0.0005382073193271933
+      ],
+      "navigation": "reload",
+      "shows": [
+        false,
+        true
+      ],
+      "js": []
+    },
+    {
+      "label": "mobile",
+      "href": "/posts/reading-notes/",
+      "errors": [],
+      "layoutShifts": [
+        0.01808512080279459
+      ],
+      "navigation": "navigate",
+      "shows": [
+        false
+      ],
+      "js": [
+        "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+        "/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.lIFeMWZo.js"
+      ]
+    }
+  ],
+  "requestErrors": [],
+  "productionJs": [
+    {
+      "page": "index.html",
+      "before": {
+        "bytes": 6314,
+        "gzip": 2776,
+        "files": []
+      },
+      "after": {
+        "bytes": 8172,
+        "gzip": 3789,
+        "files": []
+      },
+      "delta": {
+        "bytes": 1858,
+        "gzip": 1013,
+        "requests": 0
+      }
+    },
+    {
+      "page": "categories/engineering/index.html",
+      "before": {
+        "bytes": 6314,
+        "gzip": 2776,
+        "files": []
+      },
+      "after": {
+        "bytes": 8172,
+        "gzip": 3789,
+        "files": []
+      },
+      "delta": {
+        "bytes": 1858,
+        "gzip": 1013,
+        "requests": 0
+      }
+    },
+    {
+      "page": "posts/m2-smoke-test/index.html",
+      "before": {
+        "bytes": 11481,
+        "gzip": 5280,
+        "files": [
+          "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.AFx5XDXI.js"
+        ]
+      },
+      "after": {
+        "bytes": 17900,
+        "gzip": 8323,
+        "files": [
+          "/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+          "/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.lIFeMWZo.js"
+        ]
+      },
+      "delta": {
+        "bytes": 6419,
+        "gzip": 3043,
+        "requests": 1
+      }
+    },
+    {
+      "page": "posts/m2-smoke-no-image-test/index.html",
+      "before": {
+        "bytes": 6932,
+        "gzip": 3166,
+        "files": []
+      },
+      "after": {
+        "bytes": 13317,
+        "gzip": 6183,
+        "files": [
+          "/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.lIFeMWZo.js"
+        ]
+      },
+      "delta": {
+        "bytes": 6385,
+        "gzip": 3017,
+        "requests": 1
+      }
+    }
+  ],
+  "photoSwipeJs": {
+    "before": {
+      "bytes": 69985,
+      "gzip": 20523
+    },
+    "after": {
+      "bytes": 70137,
+      "gzip": 20558
+    }
+  }
+}

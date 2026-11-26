@@ -36,6 +36,7 @@ import Site from '../layouts/Site.astro';
   <article data-pagefind-body>排版实验独有内容</article>
 </Site>`);
   const older = Array.from({ length: 30 }, (_, i) => `archive-${String(i).padStart(2, '0')}`);
+  const grouped = older.slice(3, 16);
   const chapters = Array.from({ length: 30 }, (_, i) => `## Chapter ${i + 1}\n\nChapter text.`).join('\n\n');
   const viewerPost = older[1];
   const landscape = await readFile('labs/typography/public/photos/coffee.webp');
@@ -43,10 +44,16 @@ import Site from '../layouts/Site.astro';
   const portraitFile = `portrait-${digest}.webp`;
   const failedFile = `unavailable-${digest}.webp`;
   for (const id of older.filter(id => id !== viewerPost)) {
-    await article(posts, id, { category: undefined, publishedAt: '2025-01-01' }, id === older[0] ? chapters : 'Searchpagination.');
+    await article(posts, id, { category: grouped.includes(id) ? 'engineering' : undefined, publishedAt: '2025-01-01' }, id === older[0] ? chapters : 'Searchpagination.');
   }
+  const quoted = '中文、Cloudflare & 阅读分享';
+  const contextA = '小院的青苔和风吹过玻璃窗，也记录了';
+  const contextB = '深秋的竹影在石墙边慢慢挪动，想起了';
   const viewerDirectory = await article(posts, viewerPost, { category: undefined, publishedAt: '2025-01-01' }, [
     'Searchpagination.', '## 说明', '图片在以下段落按文章顺序展示。'.repeat(25),
+    `${contextA}「${quoted}」，这段话来自第一篇读书笔记的扉页。`,
+    `${contextB}「${quoted}」，这是第二篇笔记的折角所记。`,
+    '```txt\n不应该显示段落分享的代码。\n```',
     `![横向照片](./assets/${landscapeFile} "咖啡照片")`,
     `[![竖向图片](./assets/${portraitFile})](#说明)`,
     `![网络错误例图](./assets/${failedFile})`,
@@ -111,9 +118,11 @@ import Site from '../layouts/Site.astro';
     assert.equal(detail.split(`<img src="${cover}"`).length - 1, 1);
     assert.match(detail, /data-gallery-open="0"/);
     assert.doesNotMatch(await html('posts/text-only/index.html'), /ImageGallery|data-image-gallery|image-viewer\./);
+    assert.doesNotMatch(home, /share-paragraph|qians\.day:reading-mode/);
+    assert.doesNotMatch(detail, /qiansArchivePosition/);
     assert.doesNotMatch(detail, /<(?:link|script)[^>]+(?:href|src)="[^"]*image-viewer\./);
     assert.match(home, /href="\/posts\/text-only\/"/);
-    assert.match(await html('categories/index.html'), /1 篇/);
+    assert.match(await html('categories/index.html'), new RegExp(`${grouped.length + 1} 篇`));
     assert.doesNotMatch(await html('categories/engineering/index.html'), /href="\/posts\/text-only\/"/);
     assert.match(await html('rss.xml'), /posts\/text-only\//);
     assert.match(await html('sitemap.xml'), /posts\/text-only\//);
@@ -128,6 +137,43 @@ import Site from '../layouts/Site.astro';
       const browser = await chromium.launch({ channel: 'chrome' });
       try {
         const homeUrl = `http://127.0.0.1:${server.server.address().port}/`;
+        await t.test('archive cards keep the same column widths across years and categories', async t => {
+          const reader = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+          t.after(() => reader.close());
+          await reader.route(cdn + '/**', route => route.fulfill({ contentType: 'image/webp', body: bytes }));
+          const sizes = () => reader.locator('.posts .year').evaluateAll(groups => groups.map(group => {
+            const grid = group.querySelector('ul');
+            return {
+              count: grid.children.length,
+              columns: getComputedStyle(grid).gridTemplateColumns.split(' ').length,
+              widths: [...grid.children].map(card => card.getBoundingClientRect().width),
+              yearAbove: group.querySelector('header').getBoundingClientRect().bottom <= grid.getBoundingClientRect().top + 1,
+            };
+          }));
+          for (const [width, columns, yearAbove] of [
+            [1440, 3, false], [768, 2, false], [680, 2, false], [640, 1, false],
+            [600, 1, false], [500, 1, false], [440, 1, false], [410, 1, true], [390, 1, true],
+          ]) {
+            await reader.setViewportSize({ width, height: 900 });
+            await reader.goto(homeUrl);
+            const home = await sizes();
+            await reader.goto(new URL('categories/engineering/', homeUrl).href);
+            const category = await sizes();
+            assert.deepEqual(home.map(group => group.count), [2, older.length]);
+            assert.deepEqual(category.map(group => group.count), [1, grouped.length]);
+            const cardWidth = home[1].widths[0];
+            for (const group of [...home, ...category]) {
+              assert.equal(group.columns, columns);
+              assert.equal(group.yearAbove, yearAbove);
+              for (const width of group.widths) assert.ok(Math.abs(width - cardWidth) < 1);
+            }
+          }
+          await reader.evaluate(() => { document.documentElement.dataset.view = 'list'; });
+          for (const [width, yearAbove] of [[640, false], [600, true], [500, true]]) {
+            await reader.setViewportSize({ width, height: 900 });
+            assert.ok((await sizes()).every(group => group.yearAbove === yearAbove));
+          }
+        });
         await t.test('static search scopes and ranks results, loads on demand and supports keyboard and IME', async t => {
           const reader = await browser.newPage();
           t.after(() => reader.close());
@@ -359,6 +405,208 @@ import Site from '../layouts/Site.astro';
           await reader.waitForURL(`${cdn}/posts/${viewerPost}/${landscapeFile}`);
         });
 
+        await t.test('paragraph links preserve selection and refuse ambiguous or missing destinations', async t => {
+          const reader = await browser.newPage({ viewport: { width: 1200, height: 800 } });
+          t.after(() => reader.close());
+          reader.setDefaultTimeout(6000);
+          await reader.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+          const url = new URL(`posts/${viewerPost}/`, homeUrl);
+          const paragraphs = reader.locator('.prose p');
+          const original = paragraphs.filter({ hasText: contextA });
+          const share = reader.getByRole('button', { name: '复制段落链接' });
+          await reader.goto(url.href);
+          await original.evaluate(p => p.scrollIntoView({ block: 'center' }));
+          await reader.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+          await original.evaluate((p, string) => {
+            const text = p.firstChild;
+            const at = text.textContent.indexOf(string);
+            const r = new Range();
+            r.setStart(text, at);
+            r.setEnd(text, at + string.length);
+            getSelection().removeAllRanges();
+            getSelection().addRange(r);
+          }, quoted);
+          await share.click();
+          const copied = await reader.evaluate(async () => ({
+            url: await navigator.clipboard.readText(), selection: getSelection().toString(),
+          }));
+          assert.equal(copied.selection, quoted);
+          assert.equal(new URL(copied.url).pathname, url.pathname);
+          const payload = new URLSearchParams(new URL(copied.url).hash.slice(1));
+          assert.equal(payload.get('q'), quoted);
+          assert.ok(payload.get('b').includes(contextA));
+
+          const highlighted = reader.locator('.prose .shared-paragraph');
+          for (const navigate of [() => reader.goto(copied.url), () => reader.reload()]) {
+            await navigate();
+            await highlighted.waitFor();
+            assert.match(await highlighted.innerText(), new RegExp(contextA));
+            assert.ok(await reader.evaluate(() => scrollY > 0));
+          }
+
+          // Simulate a new paragraph before the original, leaving its source text intact.
+          payload.set('p', '0');
+          await reader.evaluate(hash => { location.hash = hash; }, payload.toString());
+          await reader.waitForFunction(() => location.hash.startsWith('#quote=1&p=0') &&
+            document.querySelector('.shared-paragraph')?.textContent.includes('小院'));
+          await original.evaluate(p => {
+            const duplicate = p.cloneNode(true);
+            duplicate.classList.remove('shared-paragraph');
+            p.after(duplicate);
+          });
+          await reader.evaluate(() => {
+            history.replaceState(history.state, '', location.pathname);
+            scrollTo(0, 0);
+          });
+          await reader.evaluate(hash => { location.hash = hash; }, payload.toString());
+          await reader.getByText('原文已变更，无法定位此段').waitFor();
+          assert.equal(await highlighted.count(), 0);
+          assert.equal(await reader.evaluate(() => scrollY), 0);
+
+          payload.set('q', '完全不存在的引用文本');
+          await reader.goto(url.href + '#' + payload.toString());
+          await reader.getByText('原文已变更，无法定位此段').waitFor();
+          assert.equal(await highlighted.count(), 0);
+          assert.equal(await reader.evaluate(() => scrollY), 0);
+          await reader.locator('.prose pre').evaluate(pre => {
+            pre.scrollIntoView({ block: 'center' });
+            const r = new Range();
+            r.selectNodeContents(pre);
+            getSelection().removeAllRanges();
+            getSelection().addRange(r);
+          });
+          await reader.waitForFunction(() => document.querySelector('#share-paragraph').hidden);
+          assert.equal(await share.count(), 0);
+        });
+
+        await t.test('history returns to the article card or title and direct archive visits start at the top', async t => {
+          const reader = await browser.newPage({ viewport: { width: 850, height: 700 } });
+          t.after(() => reader.close());
+          await reader.route(cdn + '/**', route => route.fulfill({ contentType: 'image/webp', body: placeholder }));
+          reader.setDefaultTimeout(6000);
+          for (const [path, view] of [['/', 'cards'], ['/categories/engineering/', 'list']]) {
+            const url = new URL(path, homeUrl).href;
+            await reader.goto(url);
+            await reader.evaluate(view => localStorage.setItem('qians.day:post-view', view), view);
+            await reader.reload();
+            assert.equal(await reader.locator('html').getAttribute('data-view'), view);
+            const link = reader.getByRole('link', { name: grouped.at(-2), exact: true });
+            const id = await link.evaluate(a => {
+              a.scrollIntoView({ block: 'center' });
+              return a.closest('li').dataset.archiveEntry;
+            });
+            const top = await link.evaluate(a => a.closest('li').getBoundingClientRect().top);
+            assert.ok(await reader.evaluate(() => scrollY > 0));
+            await link.click();
+            await reader.waitForURL(`**/posts/${id}/`);
+            await reader.goBack();
+            await reader.waitForFunction(({ id, top }) => Math.abs(
+              document.querySelector(`[data-archive-entry="${id}"]`).getBoundingClientRect().top - top,
+            ) <= 12, { id, top });
+            await reader.goForward();
+            await reader.waitForURL(`**/posts/${id}/`);
+            await reader.getByRole('navigation', { name: '文章分类' }).getByRole('link', { name: path === '/' ? '全部' : '工程', exact: true }).click();
+            await reader.waitForURL(url);
+            assert.equal(await reader.evaluate(() => scrollY), 0);
+          }
+        });
+
+        await t.test('the immersive reading shortcut respects page visits, screen size and dialogs', async t => {
+          const reader = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+          t.after(() => reader.close());
+          await reader.route(cdn + '/**', route => route.fulfill({ contentType: 'image/webp', body: landscape }));
+          await reader.addInitScript(() => localStorage.setItem('qians.day:reading-mode', 'true'));
+          reader.setDefaultTimeout(6000);
+          const article = new URL(`posts/${viewerPost}/`, homeUrl).href;
+          await reader.goto(article);
+          const button = reader.getByRole('button', { name: '沉浸阅读', exact: true });
+          assert.equal(await button.getAttribute('aria-pressed'), 'false');
+          assert.equal(await button.getAttribute('title'), '进入沉浸阅读（I）');
+          assert.equal(await button.getAttribute('aria-keyshortcuts'), 'I');
+          assert.equal(await button.innerText(), '');
+          const title = reader.locator('.intro h1');
+          const titleBox = await title.boundingBox();
+          const metaBox = await reader.locator('.intro .meta').boundingBox();
+          const buttonBox = await button.boundingBox();
+          assert.equal(buttonBox.y - metaBox.y, 8);
+          assert.ok(buttonBox.y + buttonBox.height <= titleBox.y);
+          const waitForOpacity = opacity => reader.waitForFunction(
+            opacity => getComputedStyle(document.querySelector('#reading-mode')).opacity === opacity, opacity,
+          );
+          await waitForOpacity('0');
+          await reader.locator('.intro time').hover();
+          await waitForOpacity('1');
+          assert.deepEqual(await title.boundingBox(), titleBox);
+          await reader.mouse.move(0, 0);
+          await waitForOpacity('0');
+          await button.press('Tab');
+          await reader.keyboard.press('Shift+Tab');
+          assert.ok(await button.evaluate(el => el.matches(':focus-visible')));
+          await waitForOpacity('1');
+          assert.ok(await button.locator('.reading-enter svg').isVisible());
+          await button.press('Enter');
+          assert.equal(await button.getAttribute('aria-pressed'), 'true');
+          assert.equal(await button.getAttribute('title'), '退出沉浸阅读（I）');
+          assert.ok(await button.locator('.reading-enter').isHidden() && await button.locator('.reading-exit svg').isVisible());
+          assert.ok(await reader.locator('.library').isHidden() && await reader.locator('.contents').isHidden());
+          assert.ok((await reader.locator('.prose').boundingBox()).width <= 700);
+          await reader.reload();
+          assert.equal(await button.getAttribute('aria-pressed'), 'false');
+          await reader.keyboard.press('i');
+          assert.equal(await button.getAttribute('aria-pressed'), 'true');
+
+          await reader.setViewportSize({ width: 959, height: 900 });
+          await reader.waitForFunction(() => document.querySelector('#reading-mode').hidden &&
+            !document.documentElement.hasAttribute('data-reading'));
+          await reader.getByRole('button', { name: '本文目录' }).waitFor();
+          await reader.reload();
+          await reader.keyboard.press('i');
+          assert.equal(await reader.locator('html[data-reading]').count(), 0);
+          assert.ok(await reader.locator('#reading-mode').isHidden());
+          await reader.setViewportSize({ width: 960, height: 900 });
+          assert.equal(await button.getAttribute('aria-pressed'), 'false');
+          await reader.setViewportSize({ width: 1440, height: 900 });
+          await reader.keyboard.press('i');
+          assert.equal(await button.getAttribute('aria-pressed'), 'true');
+
+          await reader.keyboard.press('/');
+          const search = reader.getByRole('dialog', { name: '搜索文章' });
+          await search.waitFor();
+          await reader.keyboard.press('i');
+          assert.equal(await search.locator('input').inputValue(), 'i');
+          assert.equal(await reader.locator('#reading-mode').getAttribute('aria-pressed'), 'true');
+          await reader.keyboard.press('Escape');
+          await search.waitFor({ state: 'hidden' });
+          await reader.waitForFunction(() => document.activeElement?.id === 'reading-mode');
+          await reader.getByRole('link', { name: '查看大图：横向照片' }).click();
+          const viewer = reader.getByRole('dialog', { name: '文章图片' });
+          await viewer.locator('.pswp--ui-visible').waitFor();
+          await reader.keyboard.press('/');
+          await reader.keyboard.press('i');
+          assert.equal(await reader.locator('#reading-mode').getAttribute('aria-pressed'), 'true');
+          assert.ok(await search.isHidden());
+          assert.ok(await viewer.isVisible());
+          await reader.getByRole('button', { name: '关闭图片浏览' }).click();
+          await viewer.waitFor({ state: 'hidden' });
+
+          await reader.goto(new URL('posts/text-only/', homeUrl).href);
+          assert.equal(await button.getAttribute('aria-pressed'), 'false');
+          await reader.goto(homeUrl);
+          assert.equal(await reader.locator('html[data-reading], #reading-mode').count(), 0);
+          await reader.goto(article);
+          await reader.keyboard.press('i');
+          assert.equal(await button.getAttribute('aria-pressed'), 'true');
+          const paragraph = reader.locator('.prose p').filter({ hasText: contextA });
+          await paragraph.evaluate(p => p.scrollIntoView({ block: 'start' }));
+          const top = (await paragraph.boundingBox()).y;
+          await reader.keyboard.press('i');
+          assert.equal(await button.getAttribute('aria-pressed'), 'false');
+          assert.ok(Math.abs((await paragraph.boundingBox()).y - top) < 3);
+          assert.equal(await reader.evaluate(() => localStorage.getItem('qians.day:reading-mode')), 'true');
+          await reader.reload();
+          assert.equal(await button.getAttribute('aria-pressed'), 'false');
+        });
+
         const page = await browser.newPage({ viewport: { width: 375, height: 812 }, reducedMotion: 'no-preference' });
         await page.route(cdn + '/**', route => route.fulfill({
           contentType: 'image/webp',
@@ -451,17 +699,47 @@ import Site from '../layouts/Site.astro';
         await page.getByRole('link', { name: 'pictured' }).click();
         await choose(page.getByRole('button', { name: '随系统' }));
         assert.equal(await scheme(), 'light');
+        await page.setViewportSize({ width: 1440, height: 900 });
         const section = page.locator('[data-heading="notes-1"]');
         await section.click();
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
-        await t.test('the tablet outline leaves the target heading fully visible', async () => {
+        await t.test('the tablet outline opens from the top of the title area and closes on a keyboard jump', async () => {
           await page.setViewportSize({ width: 768, height: 1024 });
-          await page.locator('[data-heading="notes"]').click();
-          await section.click();
+          await page.evaluate(() => scrollTo(0, 0));
+          const trigger = page.getByRole('button', { name: '本文目录' });
+          const outline = page.locator('#article-contents');
+          await trigger.waitFor();
+          const [title, button, row] = await Promise.all([
+            page.locator('.intro h1').boundingBox(), trigger.boundingBox(), page.locator('.intro .meta').boundingBox(),
+          ]);
+          assert.equal(button.y - row.y, 8);
+          assert.ok(button.y + button.height <= title.y);
+          assert.ok(Math.abs(button.x + button.width - row.x - row.width) < 1);
+          assert.ok(await page.locator('#reading-mode').isHidden());
+          assert.ok(await outline.isHidden());
+          await trigger.press('Enter');
+          await outline.waitFor();
+          await page.keyboard.press('Tab');
+          const first = outline.getByRole('link', { name: 'Notes', exact: true }).first();
+          assert.ok(await first.evaluate(link => link === document.activeElement));
+          await page.keyboard.press('Escape');
+          await outline.waitFor({ state: 'hidden' });
+          assert.ok(await trigger.evaluate(button => button === document.activeElement));
+
+          await trigger.press('Enter');
+          await first.press('Enter');
+          await page.waitForURL('**/#notes');
+          await outline.waitFor({ state: 'hidden' });
+          await page.evaluate(() => scrollTo(0, 0));
+          await trigger.press('Enter');
+          await section.press('Enter');
+          await page.waitForURL('**/#notes-1');
+          await outline.waitFor({ state: 'hidden' });
           const heading = await page.locator('#notes-1').boundingBox();
-          const outline = await page.locator('.contents').boundingBox();
-          assert.ok(heading.y >= outline.y + outline.height + 7);
-          await page.setViewportSize({ width: 375, height: 812 });
+          assert.ok(heading.y >= 0 && heading.y + heading.height <= 1024);
+          await page.setViewportSize({ width: 1440, height: 900 });
+          await outline.waitFor();
+          assert.ok(await trigger.isHidden());
         });
         await t.test('Markdown and reference images reserve their intrinsic size', async () => {
           const sizes = await page.locator('.prose img').evaluateAll(images =>
@@ -474,6 +752,7 @@ import Site from '../layouts/Site.astro';
           const links = [...document.querySelectorAll('.contents a')];
           return links.length === expected.length && links.every((a, i) => parseFloat(getComputedStyle(a, '::before').width) === expected[i]);
         }
+        await page.setViewportSize({ width: 1440, height: 900 });
         await choose(mini);
         await page.reload();
         assert.equal(await page.locator('[data-outline="mini"]').getAttribute('aria-pressed'), 'true');
@@ -490,7 +769,7 @@ import Site from '../layouts/Site.astro';
         await page.keyboard.press('Tab');
         await hint.waitFor();
         assert.equal(await section.evaluate(a => a === document.activeElement), true);
-        await page.waitForFunction(marksAtWidths, [20, 17, 14, 11, 8]);
+        await page.waitForFunction(marksAtWidths, [32, 27, 22, 17, 12]);
         await page.keyboard.press('Escape');
         assert.equal(await hint.isVisible(), false);
         await page.keyboard.press('Enter');
@@ -538,6 +817,40 @@ import Site from '../layouts/Site.astro';
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));
         assert.equal((await page.goto(new URL('/posts/secret-draft/', page.url()).href)).status(), 404);
+        await t.test('narrow articles paginate in published order and keep the wide archive position', async t => {
+          const reader = await browser.newPage({ viewport: { width: 1180, height: 700 } });
+          t.after(() => reader.close());
+          const article = id => new URL(`/posts/${id}/`, homeUrl).href;
+          const library = reader.locator('#library');
+          const pagination = reader.getByRole('navigation', { name: '文章翻页' });
+          const links = () => pagination.locator('a').evaluateAll(anchors => anchors.map(a => [a.textContent, a.pathname]));
+          await reader.goto(article('text-only'));
+          await reader.evaluate(() => document.fonts.ready);
+          assert.ok(await pagination.isHidden());
+          const top = await library.evaluate(async el => {
+            el.scrollTop = el.scrollHeight;
+            await new Promise(resolve => requestAnimationFrame(resolve));
+            return el.scrollTop;
+          });
+          assert.ok(top > 0);
+          await reader.setViewportSize({ width: 1179, height: 700 });
+          assert.ok(await library.isHidden());
+          assert.deepEqual(await links(), [['上一篇', '/posts/pictured/'], ['下一篇', `/posts/${older[0]}/`], ['去首页', '/']]);
+          await pagination.getByRole('link', { name: '下一篇' }).click();
+          await reader.waitForURL(article(older[0]));
+          assert.ok(await reader.getByRole('navigation', { name: '本文目录' }).isVisible());
+          await reader.setViewportSize({ width: 1180, height: 700 });
+          await library.waitFor();
+          await reader.waitForFunction(top => Math.abs(document.querySelector('#library').scrollTop - top) <= 1, top);
+
+          await reader.setViewportSize({ width: 390, height: 844 });
+          await reader.goto(article('pictured'));
+          assert.deepEqual(await links(), [['下一篇', '/posts/text-only/'], ['去首页', '/']]);
+          await reader.goto(article(older.at(-1)));
+          assert.deepEqual(await links(), [['上一篇', `/posts/${older.at(-2)}/`], ['去首页', '/']]);
+          await pagination.getByRole('link', { name: '去首页' }).click();
+          await reader.waitForURL(homeUrl);
+        });
         await t.test('the full outline can be scrolled to its last link without scrolling the article', async t => {
           const reader = await browser.newPage();
           t.after(() => reader.close());
@@ -582,34 +895,71 @@ import Site from '../layouts/Site.astro';
           await page.evaluate(() => scrollTo(0, 200));
           await page.waitForFunction(() => Math.abs(document.querySelector('.library').getBoundingClientRect().top - document.querySelector('.contents').getBoundingClientRect().top) < 1);
         });
-        await t.test('a saved mini outline previews then follows a chapter on touch', async () => {
+        await t.test('the touch outline scrolls within a panel and retains accessible section targets', async t => {
           const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
+          t.after(() => phone.close());
+          await phone.addInitScript(() => {
+            localStorage.setItem('qians.day:mini-toc', 'true');
+            localStorage.setItem('qians.day:reading-mode', 'true');
+          });
           await phone.emulateMedia({ reducedMotion: 'reduce' });
           await phone.goto(new URL('/posts/text-only/', page.url()).href);
+          assert.ok(await phone.locator('#reading-mode').isHidden());
+          assert.equal(await phone.locator('html[data-reading]').count(), 0);
           assert.equal(await phone.locator('.contents').count(), 0);
+          assert.equal(await phone.getByRole('button', { name: '本文目录' }).count(), 0);
           await phone.getByRole('button', { name: '阅读设置' }).tap();
-          await phone.getByRole('button', { name: '迷你', exact: true }).tap();
+          assert.ok(await phone.getByRole('button', { name: '迷你', exact: true }).isDisabled());
+          assert.equal(await phone.getByRole('button', { name: '完整', exact: true }).getAttribute('aria-pressed'), 'true');
           await phone.getByRole('button', { name: '列表', exact: true }).tap();
           assert.equal(await phone.locator('#reading-settings:popover-open').count(), 1);
           await phone.touchscreen.tap(6, 6);
           assert.equal(await phone.locator('#reading-settings:popover-open').count(), 0);
           await phone.goto(new URL('/posts/pictured/', phone.url()).href);
+          assert.equal(await phone.locator('html[data-mini-toc]').count(), 0);
+          await phone.setViewportSize({ width: 1200, height: 844 });
+          assert.ok(await phone.evaluate(() => matchMedia('(pointer: coarse)').matches));
+          assert.ok(await phone.locator('#reading-mode').isHidden());
+          assert.equal(await phone.locator('html[data-reading]').count(), 0);
+          await phone.setViewportSize({ width: 390, height: 844 });
+          const trigger = phone.getByRole('button', { name: '本文目录' });
+          const panel = phone.locator('#article-contents');
+          assert.ok(await panel.isHidden());
+          await trigger.tap();
+          await panel.waitFor();
+          const panelSize = await panel.boundingBox();
           const target = phone.locator('[data-heading="notes-1"]');
-          const hint = phone.locator('.chapter-hint');
-          const resting = [12, 12, 12, 12, 12];
-          assert.ok(await phone.evaluate(marksAtWidths, resting));
-          assert.equal(await target.evaluate(a => getComputedStyle(a, '::before').transitionDuration), '0s');
-          await target.tap();
-          assert.equal(new URL(phone.url()).hash, '');
-          assert.equal(await hint.innerText(), 'Notes');
-          assert.ok(await hint.isVisible());
-          assert.ok(await phone.evaluate(marksAtWidths, [20, 17, 14, 11, 8]));
-          await target.tap();
+          const box = await target.boundingBox();
+          assert.ok(box.width >= 44 && box.height >= 44);
+          await phone.touchscreen.tap(box.x + box.width / 2, box.y + box.height / 2 + 6);
           await phone.waitForURL('**/#notes-1');
+          await panel.waitFor({ state: 'hidden' });
           await phone.waitForFunction(() => document.querySelector('[data-heading="notes-1"]').hasAttribute('aria-current'));
-          assert.equal(await hint.isVisible(), false);
-          assert.ok(await phone.evaluate(marksAtWidths, resting));
-          await phone.close();
+          assert.equal(await phone.evaluate(() => localStorage.getItem('qians.day:mini-toc')), 'true');
+
+          await phone.goto(new URL(`/posts/${older[0]}/`, phone.url()).href);
+          await trigger.tap();
+          assert.equal((await panel.boundingBox()).height, panelSize.height);
+          const nav = panel.getByRole('navigation');
+          const pageTop = await phone.evaluate(() => scrollY);
+          assert.ok(await nav.evaluate(el => {
+            el.scrollTop = el.scrollHeight;
+            return el.scrollTop > 0;
+          }));
+          assert.equal(await phone.evaluate(() => scrollY), pageTop);
+          const last = nav.getByRole('link').last();
+          await last.focus();
+          await phone.keyboard.press('/');
+          const search = phone.getByRole('dialog', { name: '搜索文章' });
+          await search.waitFor();
+          assert.ok(await panel.isHidden());
+          await phone.keyboard.press('Escape');
+          await search.waitFor({ state: 'hidden' });
+          await phone.waitForFunction(() => document.activeElement.id === 'contents-trigger');
+          await trigger.tap();
+          await last.tap();
+          await phone.waitForURL('**/#chapter-30');
+          await panel.waitFor({ state: 'hidden' });
         });
       } finally {
         await browser.close();

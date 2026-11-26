@@ -66,7 +66,8 @@ import SiteIcon from './SiteIcon.astro';
 
   function openSearch(previous: HTMLElement) {
     if (dialog.open) return;
-    opener = previous;
+    const panel = previous.closest('[popover]:popover-open');
+    opener = (panel?.id && document.querySelector<HTMLElement>(`[popovertarget="${CSS.escape(panel.id)}"]`)) || previous;
     input.value = '';
     composing = false;
     clearResults(idleMessage);
@@ -165,7 +166,8 @@ import SiteIcon from './SiteIcon.astro';
     composing = false;
     viewport?.removeEventListener('resize', fitViewport);
     clearResults(idleMessage);
-    (opener.isConnected ? opener : trigger).focus({ preventScroll: true });
+    const fallback = document.querySelector<HTMLElement>('html[data-reading] #reading-mode') ?? trigger;
+    (opener.getClientRects().length ? opener : fallback).focus({ preventScroll: true });
   });
   dialog.addEventListener('cancel', event => {
     if (composing) event.preventDefault();
@@ -236,7 +238,8 @@ import SiteIcon from './SiteIcon.astro';
     const target = event.target;
     if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select'))) return;
     event.preventDefault();
-    openSearch(target instanceof HTMLElement && target !== document.body ? target : trigger);
+    const fallback = document.querySelector<HTMLElement>('html[data-reading] #reading-mode') ?? trigger;
+    openSearch(target instanceof HTMLElement && target !== document.body ? target : fallback);
   });
   trigger.hidden = false;
 </script>

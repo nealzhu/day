@@ -1,0 +1,158 @@
+<div class="paragraph-share" data-pagefind-ignore>
+  <button type="button" id="share-paragraph" hidden>复制段落链接</button>
+  <p id="share-status" role="status"></p>
+</div>
+
+<script>
+  import { findQuote, readQuote, selectedQuote, writeQuote } from '../lib/paragraph-share';
+
+  const prose = document.querySelector<HTMLElement>('.prose')!;
+  const button = document.querySelector<HTMLButtonElement>('#share-paragraph')!;
+  const status = document.querySelector<HTMLElement>('#share-status')!;
+  const touch = matchMedia('(any-pointer: coarse)');
+  let selectionTimer = 0;
+  let messageTimer = 0;
+  let highlightTimer = 0;
+  let selecting = false;
+  let highlighted: HTMLElement | undefined;
+
+  function hide() {
+    clearTimeout(selectionTimer);
+    button.hidden = true;
+  }
+
+  function announce(message: string) {
+    clearTimeout(messageTimer);
+    status.textContent = message;
+    messageTimer = window.setTimeout(() => { status.textContent = ''; }, 2600);
+  }
+
+  function show() {
+    const selection = getSelection();
+    if (selecting || document.querySelector(':modal, :popover-open') ||
+        !selectedQuote(prose, selection)) return hide();
+
+    const rects = [...selection!.getRangeAt(0).getClientRects()].filter(rect => rect.width && rect.height);
+    const viewport = window.visualViewport;
+    const leftEdge = viewport?.offsetLeft ?? 0;
+    const topEdge = viewport?.offsetTop ?? 0;
+    const rightEdge = leftEdge + (viewport?.width ?? innerWidth);
+    const bottomEdge = topEdge + (viewport?.height ?? innerHeight);
+    const rect = rects.findLast(r => r.bottom > topEdge && r.top < bottomEdge);
+    if (!rect) return hide();
+    button.hidden = false;
+    const gap = 10;
+    const above = rect.top - button.offsetHeight - gap;
+    const below = rect.bottom + gap;
+    const bottom = bottomEdge - button.offsetHeight - gap;
+    const top = touch.matches && below <= bottom ? below : above >= topEdge + gap ? above : below;
+    const x = rect.left + (rect.width - button.offsetWidth) / 2;
+    button.style.left = `${Math.max(leftEdge + gap, Math.min(x, rightEdge - button.offsetWidth - gap))}px`;
+    button.style.top = `${Math.max(topEdge + gap, Math.min(top, bottom))}px`;
+  }
+
+  function schedule() {
+    clearTimeout(selectionTimer);
+    selectionTimer = window.setTimeout(show, touch.matches ? 240 : 100);
+  }
+
+  document.addEventListener('selectionchange', schedule);
+  document.addEventListener('pointerdown', event => {
+    if (button.contains(event.target as Node)) return;
+    selecting = true;
+    hide();
+  });
+  for (const type of ['pointerup', 'pointercancel']) {
+    document.addEventListener(type, () => {
+      if (!selecting) return;
+      selecting = false;
+      schedule();
+    });
+  }
+  document.addEventListener('keydown', event => {
+    selecting = false;
+    if (event.key === 'Escape' || event.key === '/') hide();
+  });
+  window.addEventListener('scroll', () => { button.hidden = true; }, { passive: true });
+  window.addEventListener('resize', hide);
+  window.visualViewport?.addEventListener('resize', hide);
+  window.visualViewport?.addEventListener('scroll', hide);
+  window.addEventListener('pagehide', hide);
+
+  button.addEventListener('pointerdown', event => event.preventDefault());
+  button.addEventListener('click', async () => {
+    if (document.querySelector(':modal')) return hide();
+    const quote = selectedQuote(prose, getSelection());
+    if (!quote) return hide();
+    try {
+      await navigator.clipboard.writeText(writeQuote(quote));
+      announce('段落链接已复制');
+      // Preserve the native selection for readers who also want to copy the text.
+      if (!button.matches(':focus-visible')) hide();
+    } catch {
+      announce('无法写入剪贴板，请重试');
+    }
+  });
+
+  function followQuote() {
+    clearTimeout(highlightTimer);
+    highlighted?.classList.remove('shared-paragraph');
+    highlighted = undefined;
+    const quote = readQuote(location.hash);
+    if (!quote || document.querySelector(':modal')) return;
+    highlighted = findQuote(prose, quote);
+    if (!highlighted) {
+      announce('原文已变更，无法定位此段');
+      return;
+    }
+    const target = highlighted;
+    target.classList.add('shared-paragraph');
+    target.scrollIntoView({ block: 'center', behavior: 'instant' });
+    highlightTimer = window.setTimeout(() => { target.classList.remove('shared-paragraph'); }, 4500);
+  }
+
+  window.addEventListener('hashchange', followQuote);
+  // Run after history restoration and font layout on direct access or reload.
+  const hash = location.hash;
+  const historyEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+  if (hash.startsWith('#quote=') && historyEntry?.type !== 'back_forward') {
+    const pending = new AbortController();
+    for (const event of ['pointerdown', 'wheel', 'keydown', 'hashchange', 'pagehide']) {
+      window.addEventListener(event, () => pending.abort(), { signal: pending.signal, passive: true });
+    }
+    document.fonts.ready.then(() => requestAnimationFrame(() => {
+      const cancelled = pending.signal.aborted;
+      pending.abort();
+      if (!cancelled && location.hash === hash) followQuote();
+    }));
+  }
+</script>
+
+<style>
+  #share-paragraph, #share-status {
+    position: fixed;
+    z-index: 3;
+    margin: 0;
+    padding: .35em var(--s1);
+    background: var(--paper);
+    color: var(--ink);
+    border: var(--rule);
+    border-radius: var(--radius);
+    font-size: var(--small);
+  }
+  #share-paragraph { min-height: 36px; }
+  #share-status {
+    inset: auto var(--gutter) max(var(--s2), env(safe-area-inset-bottom));
+    width: fit-content;
+    margin-inline: auto;
+    pointer-events: none;
+  }
+  #share-status:empty { padding: 0; border: 0; }
+  :global(html:has(:modal, :popover-open)) :is(#share-paragraph, #share-status) { visibility: hidden; }
+  :global(.prose .shared-paragraph) {
+    background: color-mix(in srgb, var(--accent) 16%, transparent);
+    outline: .25em solid color-mix(in srgb, var(--accent) 16%, transparent);
+    border-radius: var(--radius);
+  }
+  @media (any-pointer: coarse) { #share-paragraph { min-height: 44px; } }
+</style>

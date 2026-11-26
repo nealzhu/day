@@ -1,0 +1,45 @@
+<script>
+  interface ArchivePosition { path: string; id: string; view: string; top: number }
+
+  const list = document.querySelector<HTMLElement>('.posts')!;
+  const root = document.documentElement;
+  const key = 'qiansArchivePosition';
+
+  list.addEventListener('click', event => {
+    if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey ||
+        event.altKey || !(event.target instanceof Element) || document.querySelector(':modal')) return;
+    const link = event.target.closest<HTMLAnchorElement>('a[href]');
+    const item = link?.closest<HTMLElement>('[data-archive-entry]');
+    if (!item || !link || link.target || link.hasAttribute('download')) return;
+    const value: ArchivePosition = {
+      path: location.pathname, id: item.dataset.archiveEntry!, view: root.dataset.view!,
+      top: item.getBoundingClientRect().top,
+    };
+    try { history.replaceState({ ...history.state, [key]: value }, ''); } catch {}
+  });
+
+  window.addEventListener('pageshow', event => {
+    const saved = history.state?.[key] as ArchivePosition | undefined;
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+    if (!saved || saved.path !== location.pathname || location.hash ||
+        (!event.persisted && navigation?.type !== 'back_forward')) return;
+    const item = list.querySelector<HTMLElement>(`[data-archive-entry="${CSS.escape(saved.id)}"]`);
+    if (!item) return;
+
+    // Existing settings restore first. Same-view BFCache navigations keep their native offset.
+    const pending = new AbortController();
+    for (const type of ['pointerdown', 'wheel', 'keydown', 'hashchange', 'pagehide']) {
+      window.addEventListener(type, () => pending.abort(), { signal: pending.signal, passive: true });
+    }
+    document.fonts.ready.then(() => requestAnimationFrame(() => {
+      const cancelled = pending.signal.aborted;
+      pending.abort();
+      const sameView = root.dataset.view === saved.view;
+      if (cancelled || location.hash || document.querySelector(':modal') || (event.persisted && sameView)) return;
+      const rect = item.getBoundingClientRect();
+      const wanted = sameView ? saved.top : Math.max(0, Math.min(saved.top, innerHeight * .65));
+      const offset = rect.top - wanted;
+      if (Math.abs(offset) > 12) scrollBy({ top: offset, behavior: 'instant' });
+    }));
+  });
+</script>

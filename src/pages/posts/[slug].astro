@@ -28,20 +28,19 @@ const toc = headings.filter(heading => heading.depth >= 2);
     <article data-pagefind-body>
       <header class="intro">
         <div class="meta" data-pagefind-ignore>
-          <time datetime={publishedAt} data-pagefind-meta="date[datetime]">{publishedAt}</time>
-          {category && <a href={categoryPath(category)} data-pagefind-meta="category">{categories[category]}</a>}
-          {tags.length > 0 && (
-            <div class="tag-group">
-              <SiteIcon name="tag" size={16} />
-              <ul class="post-tags" role="list" aria-label="文章标签">
-                {tags.map(tag => <li>{tag}</li>)}
-              </ul>
-            </div>
-          )}
-        </div>
-        <div class="title-row">
-          <h1 data-pagefind-meta="title">{title}</h1>
-          <div class="title-controls" data-pagefind-ignore>
+          <div class="meta-details">
+            <time datetime={publishedAt} data-pagefind-meta="date[datetime]">{publishedAt}</time>
+            {category && <a href={categoryPath(category)} data-pagefind-meta="category">{categories[category]}</a>}
+            {tags.length > 0 && (
+              <div class="tag-group">
+                <SiteIcon name="tag" size={16} />
+                <ul class="post-tags" role="list" aria-label="文章标签">
+                  {tags.map(tag => <li>{tag}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
+          <div class="title-controls">
             <button id="reading-mode" class="article-control" type="button" aria-label="沉浸阅读" aria-pressed="false" title="进入沉浸阅读" hidden>
               <span class="reading-enter"><SiteIcon name="scroll" size={22} /></span>
               <span class="reading-exit"><SiteIcon name="close" size={20} /></span>
@@ -53,6 +52,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
             )}
           </div>
         </div>
+        <h1 data-pagefind-meta="title">{title}</h1>
         <p hidden data-pagefind-weight="2">{description}</p>
       </header>
       {toc.length > 0 && <ArticleContents headings={toc} />}
@@ -77,10 +77,10 @@ const toc = headings.filter(heading => heading.depth >= 2);
   .columns { max-width: var(--reading-measure); margin-inline: auto; }
   .columns article, .prose { min-width: 0; }
   .intro { margin-block-end: var(--s3); padding-block-end: var(--s3); border-bottom: var(--group-rule); }
-  .intro .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--s2); font-size: var(--small); color: var(--muted); }
-  .title-row { display: flex; align-items: flex-end; gap: var(--s1); margin-block-start: var(--s1); }
-  .title-row h1 { flex: 1; min-width: 0; }
-  .title-controls { display: flex; color: var(--muted); }
+  .intro .meta { display: flex; gap: var(--s1); font-size: var(--small); color: var(--muted); }
+  .meta-details { display: flex; flex: 1; flex-wrap: wrap; align-content: center; align-items: center; gap: 0 var(--s2); min-width: 0; }
+  .title-controls { display: flex; align-self: flex-start; position: relative; inset-block-start: var(--s1); }
+  .intro h1 { margin-block-start: var(--s1); }
   .tag-group { display: flex; align-items: flex-start; gap: .35em; max-inline-size: 100%; }
   .tag-group svg { flex: none; height: 1lh; }
   .post-tags {

@@ -487,6 +487,10 @@ import Site from '../layouts/Site.astro';
           assert.equal(await button.innerText(), '');
           const title = reader.locator('.intro h1');
           const titleBox = await title.boundingBox();
+          const metaBox = await reader.locator('.intro .meta').boundingBox();
+          const buttonBox = await button.boundingBox();
+          assert.equal(buttonBox.y - metaBox.y, 8);
+          assert.ok(buttonBox.y + buttonBox.height <= titleBox.y);
           const waitForOpacity = opacity => reader.waitForFunction(
             opacity => getComputedStyle(document.querySelector('#reading-mode')).opacity === opacity, opacity,
           );
@@ -636,17 +640,18 @@ import Site from '../layouts/Site.astro';
         const section = page.locator('[data-heading="notes-1"]');
         await section.click();
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
-        await t.test('the tablet outline opens from the title row and closes on a keyboard jump', async () => {
+        await t.test('the tablet outline opens from the top of the title area and closes on a keyboard jump', async () => {
           await page.setViewportSize({ width: 768, height: 1024 });
           await page.evaluate(() => scrollTo(0, 0));
           const trigger = page.getByRole('button', { name: '本文目录' });
           const outline = page.locator('#article-contents');
           await trigger.waitFor();
           const [title, button, row, reading] = await Promise.all([
-            page.locator('.intro h1').boundingBox(), trigger.boundingBox(), page.locator('.title-row').boundingBox(),
+            page.locator('.intro h1').boundingBox(), trigger.boundingBox(), page.locator('.intro .meta').boundingBox(),
             page.locator('#reading-mode').boundingBox(),
           ]);
-          assert.ok(Math.abs(title.y + title.height - button.y - button.height) < 1);
+          assert.equal(button.y - row.y, 8);
+          assert.ok(button.y + button.height <= title.y);
           assert.ok(Math.abs(button.x + button.width - row.x - row.width) < 1);
           assert.equal(button.y, reading.y);
           assert.ok(await outline.isHidden());

@@ -38,6 +38,7 @@ for (const post of posts) {
 </div>
 <ArchivePosition />
 <style>
+  :global([data-view="cards"]) .posts { container: archive-posts / inline-size; }
   .year { display: grid; grid-template-columns: minmax(7rem, 1fr) minmax(0, 4fr); gap: var(--s3); }
   .year > header { padding-block: var(--s2); color: var(--muted); }
   .year h2 { font-size: var(--h1); color: var(--accent); font-variant-numeric: lining-nums; }
@@ -70,9 +71,14 @@ for (const post of posts) {
     @keyframes cover-in { from { opacity: .65; } to { opacity: 1; } }
   }
   @media (max-width: 600px) {
-    .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
-    .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }
-    .year h2 { font-size: var(--h3); }
-    li { padding-block: var(--s2) var(--s3); }
+    :global([data-view="list"]) .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    :global([data-view="list"]) .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }
+    :global([data-view="list"]) .year h2 { font-size: var(--h3); }
+  }
+  /* Reserve 7rem for the year, a 1.5rem gap, and one desktop-size card. */
+  @container archive-posts (width < calc(7rem + 1.5rem + 15.25rem)) {
+    :global([data-view="cards"]) .year { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    :global([data-view="cards"]) .year > header { display: flex; align-items: baseline; gap: var(--s1); padding-block: var(--s2) 0; }
+    :global([data-view="cards"]) .year h2 { font-size: var(--h3); }
   }
 </style>

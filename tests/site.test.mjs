@@ -141,12 +141,19 @@ import Site from '../layouts/Site.astro';
           const reader = await browser.newPage({ viewport: { width: 1440, height: 900 } });
           t.after(() => reader.close());
           await reader.route(cdn + '/**', route => route.fulfill({ contentType: 'image/webp', body: bytes }));
-          const sizes = () => reader.locator('.posts .year ul').evaluateAll(grids => grids.map(grid => ({
-            count: grid.children.length,
-            columns: getComputedStyle(grid).gridTemplateColumns.split(' ').length,
-            widths: [...grid.children].map(card => card.getBoundingClientRect().width),
-          })));
-          for (const [width, columns] of [[1440, 3], [768, 2], [390, 1]]) {
+          const sizes = () => reader.locator('.posts .year').evaluateAll(groups => groups.map(group => {
+            const grid = group.querySelector('ul');
+            return {
+              count: grid.children.length,
+              columns: getComputedStyle(grid).gridTemplateColumns.split(' ').length,
+              widths: [...grid.children].map(card => card.getBoundingClientRect().width),
+              yearAbove: group.querySelector('header').getBoundingClientRect().bottom <= grid.getBoundingClientRect().top + 1,
+            };
+          }));
+          for (const [width, columns, yearAbove] of [
+            [1440, 3, false], [768, 2, false], [680, 2, false], [640, 1, false],
+            [600, 1, false], [500, 1, false], [440, 1, false], [410, 1, true], [390, 1, true],
+          ]) {
             await reader.setViewportSize({ width, height: 900 });
             await reader.goto(homeUrl);
             const home = await sizes();
@@ -157,8 +164,14 @@ import Site from '../layouts/Site.astro';
             const cardWidth = home[1].widths[0];
             for (const group of [...home, ...category]) {
               assert.equal(group.columns, columns);
+              assert.equal(group.yearAbove, yearAbove);
               for (const width of group.widths) assert.ok(Math.abs(width - cardWidth) < 1);
             }
+          }
+          await reader.evaluate(() => { document.documentElement.dataset.view = 'list'; });
+          for (const [width, yearAbove] of [[640, false], [600, true], [500, true]]) {
+            await reader.setViewportSize({ width, height: 900 });
+            assert.ok((await sizes()).every(group => group.yearAbove === yearAbove));
           }
         });
         await t.test('static search scopes and ranks results, loads on demand and supports keyboard and IME', async t => {

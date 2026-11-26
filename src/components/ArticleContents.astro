@@ -3,7 +3,7 @@ import type { MarkdownHeading } from 'astro';
 interface Props { headings: MarkdownHeading[] }
 const { headings } = Astro.props;
 ---
-<aside class="contents rail" data-pagefind-ignore aria-label="章节导航">
+<aside class="contents rail" id="article-contents" data-pagefind-ignore aria-label="章节导航">
   <h2>本文目录</h2>
   <nav aria-label="本文目录">
     {headings.map(({ depth, slug, text }) => <a data-heading={slug} style={`--level: ${depth - 2}`} href={`#${slug}`}><span title={text}>{text}</span></a>)}
@@ -36,11 +36,25 @@ const { headings } = Astro.props;
     :global(html:not([data-mini-toc])) .contents h2 { flex: none; }
     :global(html:not([data-mini-toc])) .contents nav { max-height: none; }
   }
-  @media (max-width: 959px) {
-    .contents { position: sticky; top: 0; z-index: 1; background: var(--paper); padding-block: .35rem; margin-bottom: var(--s3); }
-    .contents nav { display: flex; overflow-x: auto; overflow-y: hidden; margin-block: 0; }
-    .contents nav a { flex: none; max-width: 100%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-    :global(html:not([data-mini-toc])) .contents ~ :global(.prose :is(h2,h3,h4,h5,h6)) { scroll-margin-block-start: calc(var(--outline-height, 5rem) + var(--s1)); }
+  @media (width < 960px) {
+    .contents:not(:popover-open) { display: none; }
+    .contents:popover-open {
+      position: fixed;
+      inset: var(--contents-top) var(--contents-right) var(--contents-bottom) auto;
+      display: flex;
+      flex-direction: column;
+      inline-size: min(19rem, calc(100vw - var(--gutter) * 2));
+      block-size: min(18rem, var(--contents-space));
+      margin: 0;
+      padding: var(--s1) var(--s2);
+      border: var(--rule);
+      border-radius: var(--radius);
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .contents h2 { flex: none; }
+    .contents nav { flex: 1; min-height: 0; max-height: none; align-content: start; margin: var(--s1) 0 0; }
+    .contents nav a { min-height: 44px; align-content: center; }
   }
   :global(html[data-mini-toc]) .contents {
     --node-width: 40px;
@@ -111,6 +125,8 @@ const { headings } = Astro.props;
   function setup(toc: HTMLElement) {
     const root = document.documentElement;
     const prose = document.querySelector<HTMLElement>('.prose')!;
+    const trigger = document.querySelector<HTMLButtonElement>('#contents-trigger')!;
+    const narrow = matchMedia('(width < 960px)');
     const nav = toc.querySelector('nav')!;
     const links = Array.from(nav.querySelectorAll('a'));
     const headings = links.map(a => document.getElementById(a.dataset.heading!)!);
@@ -141,8 +157,27 @@ const { headings } = Astro.props;
       const area = nav.getBoundingClientRect();
       if (box.top < area.top) nav.scrollTop += box.top - area.top;
       if (box.bottom > area.bottom) nav.scrollTop += box.bottom - area.bottom;
-      if (box.left < area.left) nav.scrollLeft += box.left - area.left;
-      if (box.right > area.right) nav.scrollLeft += box.right - area.right;
+    }
+
+    function positionPanel() {
+      const anchor = trigger.getBoundingClientRect();
+      const gap = 6;
+      const edge = 8;
+      const above = anchor.top - gap - edge;
+      const below = root.clientHeight - anchor.bottom - gap - edge;
+      const openAbove = above > below;
+      toc.style.setProperty('--contents-top', openAbove ? 'auto' : `${anchor.bottom + gap}px`);
+      toc.style.setProperty('--contents-bottom', openAbove ? `${root.clientHeight - anchor.top + gap}px` : 'auto');
+      toc.style.setProperty('--contents-right', `${Math.max(edge, root.clientWidth - anchor.right)}px`);
+      toc.style.setProperty('--contents-space', `${Math.max(0, openAbove ? above : below)}px`);
+    }
+
+    function syncPopover() {
+      if ((!narrow.matches || root.hasAttribute('data-reading')) && toc.matches(':popover-open')) toc.hidePopover();
+      toc.toggleAttribute('popover', narrow.matches);
+      trigger.hidden = !narrow.matches;
+      if (active >= 0) reveal(links[active]);
+      schedule();
     }
 
     function update() {
@@ -167,6 +202,11 @@ const { headings } = Astro.props;
         active = current;
         links[active].setAttribute('aria-current', 'location');
         reveal(links[active]);
+      }
+      if (toc.matches(':popover-open')) {
+        const anchor = trigger.getBoundingClientRect();
+        if (anchor.bottom <= 0 || anchor.top >= root.clientHeight) toc.hidePopover();
+        else positionPanel();
       }
       if (preview) showHint(preview);
     }
@@ -201,25 +241,31 @@ const { headings } = Astro.props;
     });
     nav.addEventListener('click', event => {
       if (!linkAt(event.target)) return;
+      if (!event.defaultPrevented && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey &&
+          toc.matches(':popover-open')) toc.hidePopover();
       showHint(null);
       requestAnimationFrame(followFragment);
     });
     nav.addEventListener('scroll', () => { if (preview) showHint(preview); }, { passive: true });
+    toc.addEventListener('beforetoggle', event => {
+      if (event.newState === 'open') positionPanel();
+    });
+    toc.addEventListener('toggle', () => {
+      if (!toc.matches(':popover-open')) return;
+      if (active >= 0) reveal(links[active]);
+    });
+    narrow.addEventListener('change', syncPopover);
     new MutationObserver(() => {
       showHint(null);
-      if (active >= 0 && !root.hasAttribute('data-reading')) reveal(links[active]);
-      schedule();
+      syncPopover();
     }).observe(root, { attributes: true, attributeFilter: ['data-mini-toc', 'data-reading'] });
     window.addEventListener('scroll', schedule, { passive: true });
     window.addEventListener('resize', schedule);
     window.addEventListener('pageshow', followFragment);
     window.addEventListener('hashchange', followFragment);
-    new ResizeObserver(() => {
-      prose.style.setProperty('--outline-height', `${toc.offsetHeight}px`);
-      schedule();
-    }).observe(toc, { box: 'border-box' });
     new ResizeObserver(schedule).observe(prose);
     document.fonts.ready.then(schedule);
+    syncPopover();
     followFragment();
   }
 </script>

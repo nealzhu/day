@@ -115,6 +115,22 @@
       }
     }
   },
+  "responsiveArticleNavigation": {
+    "browser": "Chrome/156.0.0.0",
+    "phone": {
+      "width": 390,
+      "trigger": [44, 44],
+      "panelHeight": 288,
+      "panelScrollTopDuringSwipe": 180,
+      "articleScrollTopDuringSwipe": 0,
+      "selectedAndHighlightedHeading": "最后一行",
+      "paginationLabels": ["上一篇", "下一篇", "去首页"],
+      "paginationMidpoint": 195
+    },
+    "tablet": { "width": 768, "panelHeight": 288, "focusAfterEscape": "contents-trigger" },
+    "medium": { "width": 1024, "sideOutlineVisible": true, "archiveRailVisible": false },
+    "desktop": { "width": 1440, "archiveRailVisible": true, "proseWidth": 700 }
+  },
   "views": [
     {
       "file": "desktop-selection-light.png",
@@ -171,7 +187,16 @@
         844
       ],
       "mode": "light",
-      "scrollY": 500,
+      "scrollY": 0,
+      "proseWidth": 350,
+      "overflow": false,
+      "reading": false
+    },
+    {
+      "file": "mobile-pagination-light.png",
+      "viewport": [390, 844],
+      "mode": "light",
+      "scrollY": 79,
       "proseWidth": 350,
       "overflow": false,
       "reading": false

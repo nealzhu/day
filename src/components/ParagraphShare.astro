@@ -29,7 +29,7 @@
 
   function show() {
     const selection = getSelection();
-    if (selecting || document.querySelector(':modal, #reading-settings:popover-open') ||
+    if (selecting || document.querySelector(':modal, :popover-open') ||
         !selectedQuote(prose, selection)) return hide();
 
     const rects = [...selection!.getRangeAt(0).getClientRects()].filter(rect => rect.width && rect.height);
@@ -148,7 +148,7 @@
     pointer-events: none;
   }
   #share-status:empty { padding: 0; border: 0; }
-  :global(html:has(:modal, #reading-settings:popover-open)) :is(#share-paragraph, #share-status) { visibility: hidden; }
+  :global(html:has(:modal, :popover-open)) :is(#share-paragraph, #share-status) { visibility: hidden; }
   :global(.prose .shared-paragraph) {
     background: color-mix(in srgb, var(--accent) 16%, transparent);
     outline: .25em solid color-mix(in srgb, var(--accent) 16%, transparent);

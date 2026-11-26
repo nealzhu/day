@@ -12,10 +12,13 @@ import '../../styles/prose.css';
 export async function getStaticPaths() {
   const posts = await publishedPosts();
   const archive = posts.map(({ data }) => ({ title: data.title, slug: data.slug }));
-  return posts.map(post => ({ params: { slug: post.data.slug }, props: { post, archive } }));
+  return posts.map((post, index) => ({
+    params: { slug: post.data.slug },
+    props: { post, archive, previous: archive[index - 1], next: archive[index + 1] },
+  }));
 }
 
-const { post, archive } = Astro.props;
+const { post, archive, previous, next } = Astro.props;
 const { title, description, publishedAt, category, tags } = post.data;
 const { Content, headings } = await render(post);
 const toc = headings.filter(heading => heading.depth >= 2);
@@ -25,17 +28,24 @@ const toc = headings.filter(heading => heading.depth >= 2);
     <article data-pagefind-body>
       <header class="intro">
         <div class="meta" data-pagefind-ignore>
-          <time datetime={publishedAt} data-pagefind-meta="date[datetime]">{publishedAt}</time>
-          {category && <a href={categoryPath(category)} data-pagefind-meta="category">{categories[category]}</a>}
-          {tags.length > 0 && (
-            <div class="tag-group">
-              <SiteIcon name="tag" size={16} />
-              <ul class="post-tags" role="list" aria-label="文章标签">
-                {tags.map(tag => <li>{tag}</li>)}
-              </ul>
-            </div>
-          )}
+          <div class="meta-details">
+            <time datetime={publishedAt} data-pagefind-meta="date[datetime]">{publishedAt}</time>
+            {category && <a href={categoryPath(category)} data-pagefind-meta="category">{categories[category]}</a>}
+            {tags.length > 0 && (
+              <div class="tag-group">
+                <SiteIcon name="tag" size={16} />
+                <ul class="post-tags" role="list" aria-label="文章标签">
+                  {tags.map(tag => <li>{tag}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
           <button id="reading-mode" type="button" aria-pressed="false" hidden>沉浸阅读</button>
+          {toc.length > 0 && (
+            <button id="contents-trigger" type="button" popovertarget="article-contents" aria-label="本文目录" hidden>
+              <span><SiteIcon name="list" size={20} /></span>
+            </button>
+          )}
         </div>
         <h1 data-pagefind-meta="title">{title}</h1>
         <p hidden data-pagefind-weight="2">{description}</p>
@@ -51,6 +61,11 @@ const toc = headings.filter(heading => heading.depth >= 2);
         {archive.map(entry => <a href={postPath(entry.slug)} aria-current={entry.slug === post.data.slug ? 'page' : undefined}>{entry.title}</a>)}
       </nav>
     </aside>
+    <nav class="post-pagination" aria-label="文章翻页">
+      {previous && <a href={postPath(previous.slug)} rel="prev" title={previous.title}>上一篇</a>}
+      {next && <a href={postPath(next.slug)} rel="next" title={next.title}>下一篇</a>}
+      <a href="/">去首页</a>
+    </nav>
   </div>
 </Site>
 <style is:global>
@@ -58,6 +73,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
   .columns article, .prose { min-width: 0; }
   .intro { margin-block-end: var(--s3); padding-block-end: var(--s3); border-bottom: var(--group-rule); }
   .intro .meta { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0 var(--s2); font-size: var(--small); color: var(--muted); }
+  .meta-details { display: contents; }
   .intro h1 { margin-block-start: var(--s1); }
   .tag-group { display: flex; align-items: flex-start; gap: .35em; max-inline-size: 100%; }
   .tag-group svg { flex: none; height: 1lh; }
@@ -77,7 +93,19 @@ const toc = headings.filter(heading => heading.depth >= 2);
   .rail a { display: block; padding: .42em .65em; color: inherit; text-decoration: none; line-height: 1.55; }
   .rail a:hover { text-decoration: underline; color: var(--accent); }
   .rail a[aria-current] { color: var(--accent); text-decoration: underline; text-underline-offset: .24em; }
-  .library { margin-top: var(--page-gap); }
+  .library, #contents-trigger { display: none; }
+  .post-pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 var(--s2);
+    margin-top: var(--s4);
+    padding-top: var(--s1);
+    border-top: var(--group-rule);
+    font-size: var(--small);
+  }
+  .post-pagination a { display: grid; place-items: center; min-height: 44px; padding: 0 var(--s1); color: var(--muted); text-decoration: none; }
+  .post-pagination a:is(:hover, :focus-visible) { color: var(--accent); text-decoration: underline; }
   #reading-mode {
     margin-inline-start: auto;
     padding: 0 .25em;
@@ -87,7 +115,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
     white-space: nowrap;
   }
   html[data-reading] :is(.mast, .mast-actions) { display: contents; }
-  html[data-reading] :is(.mast > .brand, .mast > nav, #settings-trigger, #search-trigger, .colophon, .columns > .library, .columns article .contents) { display: none; }
+  html[data-reading] :is(.mast > .brand, .mast > nav, #settings-trigger, #search-trigger, .colophon, .columns > .library, .columns article .contents, #contents-trigger, .post-pagination) { display: none; }
   html[data-reading] .columns { display: block; max-width: var(--reading-measure); }
   html[data-reading] .columns article { display: block; }
   html[data-reading] #reading-mode {
@@ -107,6 +135,40 @@ const toc = headings.filter(heading => heading.depth >= 2);
   @media (any-pointer: coarse) {
     #reading-mode { min-height: 44px; }
   }
+  @media (width < 960px) {
+    html:not([data-reading]) .meta:has(#contents-trigger:not([hidden])) { flex-wrap: nowrap; column-gap: var(--s1); }
+    html:not([data-reading]) .meta:has(#contents-trigger:not([hidden])) .meta-details {
+      display: flex;
+      flex: 1;
+      flex-wrap: wrap;
+      align-content: center;
+      gap: 0 var(--s1);
+      min-width: 0;
+      min-height: 44px;
+    }
+    .meta:has(#contents-trigger:not([hidden])) #reading-mode { min-height: 44px; }
+    #contents-trigger {
+      display: grid;
+      place-items: center;
+      flex: none;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border: 0;
+      border-radius: calc(2 * var(--radius));
+      background: transparent;
+    }
+    #contents-trigger span {
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      border: var(--rule);
+      border-radius: inherit;
+    }
+    #contents-trigger:is(:hover, :focus-visible), .columns:has(#article-contents:popover-open) #contents-trigger { color: var(--accent); }
+    #contents-trigger:is(:hover, :focus-visible) span, .columns:has(#article-contents:popover-open) #contents-trigger span { background: var(--inset); }
+  }
   @media (min-width: 960px) {
     .columns { max-width: none; display: grid; grid-template-columns: minmax(0, var(--reading-measure)) minmax(9rem, 12rem); gap: var(--s4); justify-content: center; }
     .columns article { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-content: start; }
@@ -114,7 +176,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
     .prose { grid-row: 2; }
     .contents { grid-column: 2; grid-row: 1 / 3; position: sticky; top: var(--s4); }
     .rail nav { max-height: calc(100dvh - 7rem); }
-    .library { grid-column: 1; margin-top: var(--s4); }
+    .post-pagination { grid-column: 1; margin-top: 0; }
   }
   @media (min-width: 960px) and (max-width: 1179px) {
     .columns:not(:has(.contents)) { grid-template-columns: minmax(0, var(--reading-measure)); }
@@ -129,6 +191,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
     }
     .library h2 { flex: none; }
     .library nav { max-height: none; }
+    .post-pagination { display: none; }
   }
 </style>
 <script>
@@ -139,21 +202,23 @@ const toc = headings.filter(heading => heading.depth >= 2);
   const intro = document.querySelector<HTMLElement>('.intro')!;
   const button = document.querySelector<HTMLButtonElement>('#reading-mode')!;
   const desktop = matchMedia('(min-width: 960px)');
+  const libraryAvailable = matchMedia('(min-width: 1180px)');
   const storageKey = 'qians.day:archive-scroll';
   const readingKey = 'qians.day:reading-mode';
   let offset = 0;
 
   function reading() { return root.hasAttribute('data-reading'); }
+  function hasLibrary() { return libraryAvailable.matches && !reading(); }
   function fitRails() {
     if (desktop.matches && !reading()) columns.style.setProperty('--article-top', `${Math.max(0, columns.getBoundingClientRect().top)}px`);
   }
 
   function restoreArchive() {
     try { offset = Number(sessionStorage.getItem(storageKey)) || 0; } catch {}
-    if (!reading()) library.scrollTop = offset;
+    if (hasLibrary()) library.scrollTop = offset;
   }
   function saveArchive() {
-    if (!reading()) offset = library.scrollTop;
+    if (hasLibrary()) offset = library.scrollTop;
     try { sessionStorage.setItem(storageKey, String(offset)); } catch {}
   }
 
@@ -171,7 +236,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
     root.toggleAttribute('data-reading', enabled);
     updateControl();
     if (anchor && top !== undefined) scrollBy({ top: anchor.getBoundingClientRect().top - top, behavior: 'instant' });
-    if (!enabled) library.scrollTop = offset;
+    if (hasLibrary()) library.scrollTop = offset;
     fitRails();
   }
 
@@ -189,8 +254,11 @@ const toc = headings.filter(heading => heading.depth >= 2);
   button.hidden = false;
   fitRails();
   restoreArchive();
+  const savedOffset = offset;
   const originalOffset = library.scrollTop;
-  document.fonts.ready.then(() => { if (!reading() && library.scrollTop === originalOffset) library.scrollTop = offset; });
+  document.fonts.ready.then(() => { if (hasLibrary() && library.scrollTop === originalOffset) library.scrollTop = savedOffset; });
+  library.addEventListener('scroll', () => { if (hasLibrary()) offset = library.scrollTop; }, { passive: true });
+  libraryAvailable.addEventListener('change', () => { if (hasLibrary()) library.scrollTop = offset; });
   window.addEventListener('scroll', fitRails, { passive: true });
   window.addEventListener('resize', fitRails);
   new ResizeObserver(fitRails).observe(document.querySelector('.mast')!);

@@ -7,15 +7,14 @@ import SiteIcon from '../components/SiteIcon.astro';
 import { categories, categoryKeys } from '../lib/content-model';
 import { categoryPath } from '../lib/posts';
 
-interface Props { title: string; description: string; noindex?: boolean; article?: boolean }
-const { title, description, noindex, article } = Astro.props;
+interface Props { title: string; description: string; noindex?: boolean }
+const { title, description, noindex } = Astro.props;
 const pathname = Astro.url.pathname;
-const readingMedia = article ? '(min-width: 960px) and (not (pointer: coarse))' : undefined;
 const fontBase = import.meta.env.MODE === 'preview' ? '' : fontCdn;
 const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontBase}/${fontPrefix}/faces.css`;
 ---
 <!doctype html>
-<html lang="zh-CN" data-view="cards" data-reading-media={readingMedia}>
+<html lang="zh-CN" data-view="cards">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,14 +27,6 @@ const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontB
             matchMedia('(min-width: 960px) and (hover: hover) and (not (any-pointer: coarse))').matches) document.documentElement.setAttribute('data-mini-toc', '');
       } catch {}
     </script>
-    {article && <script is:inline>
-      try {
-        const root = document.documentElement;
-        if (matchMedia(root.dataset.readingMedia).matches && localStorage.getItem('qians.day:reading-mode') === 'true') {
-          root.setAttribute('data-reading', '');
-        }
-      } catch {}
-    </script>}
     <title>{title} · 骞言碎语</title>
     <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />

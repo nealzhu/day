@@ -23,7 +23,7 @@ const { title, description, publishedAt, category, tags } = post.data;
 const { Content, headings } = await render(post);
 const toc = headings.filter(heading => heading.depth >= 2);
 ---
-<Site title={title} description={description} article>
+<Site title={title} description={description}>
   <div class="columns">
     <article data-pagefind-body>
       <header class="intro">
@@ -41,7 +41,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
             )}
           </div>
           <div class="title-controls">
-            <button id="reading-mode" class="article-control" type="button" aria-label="沉浸阅读" aria-pressed="false" title="进入沉浸阅读" hidden>
+            <button id="reading-mode" class="article-control" type="button" aria-label="沉浸阅读" aria-pressed="false" aria-keyshortcuts="I" title="进入沉浸阅读（I）" hidden>
               <span class="reading-enter"><SiteIcon name="bamboo-scroll" size={22} /></span>
               <span class="reading-exit"><SiteIcon name="close" size={20} /></span>
             </button>
@@ -187,12 +187,10 @@ const toc = headings.filter(heading => heading.depth >= 2);
   const intro = document.querySelector<HTMLElement>('.intro')!;
   const button = document.querySelector<HTMLButtonElement>('#reading-mode')!;
   const desktop = matchMedia('(min-width: 960px)');
-  const readingAvailable = matchMedia(root.dataset.readingMedia!);
+  const readingAvailable = matchMedia('(min-width: 960px) and (not (pointer: coarse))');
   const libraryAvailable = matchMedia('(min-width: 1180px)');
   const storageKey = 'qians.day:archive-scroll';
-  const readingKey = 'qians.day:reading-mode';
   let offset = 0;
-  let prefersReading = false;
 
   function reading() { return root.hasAttribute('data-reading'); }
   function hasLibrary() { return libraryAvailable.matches && !reading(); }
@@ -209,11 +207,6 @@ const toc = headings.filter(heading => heading.depth >= 2);
     try { sessionStorage.setItem(storageKey, String(offset)); } catch {}
   }
 
-  function updateControl() {
-    button.setAttribute('aria-pressed', String(reading()));
-    button.title = reading() ? '退出沉浸阅读' : '进入沉浸阅读';
-  }
-
   function toggleReading(enabled: boolean) {
     if (reading() === enabled) return;
     saveArchive();
@@ -221,33 +214,40 @@ const toc = headings.filter(heading => heading.depth >= 2);
     const anchor = scrollY > 0 ? [intro, ...prose.children].find(block => block.getBoundingClientRect().bottom > guide) : undefined;
     const top = anchor?.getBoundingClientRect().top;
     root.toggleAttribute('data-reading', enabled);
-    updateControl();
+    button.setAttribute('aria-pressed', String(enabled));
+    button.title = enabled ? '退出沉浸阅读（I）' : '进入沉浸阅读（I）';
     if (anchor && top !== undefined) scrollBy({ top: anchor.getBoundingClientRect().top - top, behavior: 'instant' });
     if (hasLibrary()) library.scrollTop = offset;
     fitRails();
   }
 
-  function syncReading() {
+  function syncReadingAvailability() {
     button.hidden = !readingAvailable.matches;
-    toggleReading(readingAvailable.matches && prefersReading);
+    if (button.hidden) toggleReading(false);
   }
 
-  function restoreReading() {
-    try { prefersReading = localStorage.getItem(readingKey) === 'true'; } catch {}
-    syncReading();
+  function toggleReadingFromInput() {
+    if (!readingAvailable.matches || document.querySelector(':modal, :popover-open')) return false;
+    toggleReading(!reading());
+    return true;
   }
 
-  button.addEventListener('click', () => {
-    if (!readingAvailable.matches || document.querySelector(':modal')) return;
-    prefersReading = !reading();
-    try { localStorage.setItem(readingKey, String(prefersReading)); } catch {}
-    syncReading();
+  button.addEventListener('click', toggleReadingFromInput);
+  document.addEventListener('keydown', event => {
+    if (event.key.toLowerCase() !== 'i' || event.defaultPrevented || event.repeat || event.isComposing ||
+        event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const target = event.target;
+    if (target instanceof HTMLElement && (target.isContentEditable || target.closest('input, textarea, select'))) return;
+    if (toggleReadingFromInput()) event.preventDefault();
   });
-  readingAvailable.addEventListener('change', syncReading);
-  window.addEventListener('pageshow', event => { if (event.persisted) restoreReading(); });
+  readingAvailable.addEventListener('change', syncReadingAvailability);
+  window.addEventListener('pageshow', event => {
+    if (!event.persisted) return;
+    syncReadingAvailability();
+    toggleReading(false);
+  });
 
-  updateControl();
-  restoreReading();
+  syncReadingAvailability();
   fitRails();
   restoreArchive();
   const savedOffset = offset;

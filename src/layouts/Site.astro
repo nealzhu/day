@@ -10,11 +10,12 @@ import { categoryPath } from '../lib/posts';
 interface Props { title: string; description: string; noindex?: boolean; article?: boolean }
 const { title, description, noindex, article } = Astro.props;
 const pathname = Astro.url.pathname;
+const readingMedia = article ? '(min-width: 960px) and (not (pointer: coarse))' : undefined;
 const fontBase = import.meta.env.MODE === 'preview' ? '' : fontCdn;
 const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontBase}/${fontPrefix}/faces.css`;
 ---
 <!doctype html>
-<html lang="zh-CN" data-view="cards">
+<html lang="zh-CN" data-view="cards" data-reading-media={readingMedia}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,7 +30,10 @@ const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontB
     </script>
     {article && <script is:inline>
       try {
-        if (localStorage.getItem('qians.day:reading-mode') === 'true') document.documentElement.setAttribute('data-reading', '');
+        const root = document.documentElement;
+        if (matchMedia(root.dataset.readingMedia).matches && localStorage.getItem('qians.day:reading-mode') === 'true') {
+          root.setAttribute('data-reading', '');
+        }
       } catch {}
     </script>}
     <title>{title} · 骞言碎语</title>

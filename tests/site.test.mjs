@@ -551,6 +551,19 @@ import Site from '../layouts/Site.astro';
           await reader.reload();
           assert.equal(await button.getAttribute('aria-pressed'), 'true');
 
+          await reader.setViewportSize({ width: 959, height: 900 });
+          await reader.waitForFunction(() => document.querySelector('#reading-mode').hidden &&
+            !document.documentElement.hasAttribute('data-reading'));
+          await reader.getByRole('button', { name: '本文目录' }).waitFor();
+          await reader.reload();
+          assert.equal(await reader.locator('html[data-reading]').count(), 0);
+          assert.ok(await reader.locator('#reading-mode').isHidden());
+          assert.equal(await reader.evaluate(() => localStorage.getItem('qians.day:reading-mode')), 'true');
+          await reader.setViewportSize({ width: 960, height: 900 });
+          await reader.waitForFunction(() => document.documentElement.hasAttribute('data-reading'));
+          assert.equal(await button.getAttribute('aria-pressed'), 'true');
+          await reader.setViewportSize({ width: 1440, height: 900 });
+
           await reader.keyboard.press('/');
           const search = reader.getByRole('dialog', { name: '搜索文章' });
           await search.waitFor();
@@ -683,14 +696,13 @@ import Site from '../layouts/Site.astro';
           const trigger = page.getByRole('button', { name: '本文目录' });
           const outline = page.locator('#article-contents');
           await trigger.waitFor();
-          const [title, button, row, reading] = await Promise.all([
+          const [title, button, row] = await Promise.all([
             page.locator('.intro h1').boundingBox(), trigger.boundingBox(), page.locator('.intro .meta').boundingBox(),
-            page.locator('#reading-mode').boundingBox(),
           ]);
           assert.equal(button.y - row.y, 8);
           assert.ok(button.y + button.height <= title.y);
           assert.ok(Math.abs(button.x + button.width - row.x - row.width) < 1);
-          assert.equal(button.y, reading.y);
+          assert.ok(await page.locator('#reading-mode').isHidden());
           assert.ok(await outline.isHidden());
           await trigger.press('Enter');
           await outline.waitFor();
@@ -873,9 +885,14 @@ import Site from '../layouts/Site.astro';
         await t.test('the touch outline scrolls within a panel and retains accessible section targets', async t => {
           const phone = await browser.newPage({ viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true });
           t.after(() => phone.close());
-          await phone.addInitScript(() => localStorage.setItem('qians.day:mini-toc', 'true'));
+          await phone.addInitScript(() => {
+            localStorage.setItem('qians.day:mini-toc', 'true');
+            localStorage.setItem('qians.day:reading-mode', 'true');
+          });
           await phone.emulateMedia({ reducedMotion: 'reduce' });
           await phone.goto(new URL('/posts/text-only/', page.url()).href);
+          assert.ok(await phone.locator('#reading-mode').isHidden());
+          assert.equal(await phone.locator('html[data-reading]').count(), 0);
           assert.equal(await phone.locator('.contents').count(), 0);
           assert.equal(await phone.getByRole('button', { name: '本文目录' }).count(), 0);
           await phone.getByRole('button', { name: '阅读设置' }).tap();
@@ -887,12 +904,14 @@ import Site from '../layouts/Site.astro';
           assert.equal(await phone.locator('#reading-settings:popover-open').count(), 0);
           await phone.goto(new URL('/posts/pictured/', phone.url()).href);
           assert.equal(await phone.locator('html[data-mini-toc]').count(), 0);
+          await phone.setViewportSize({ width: 1200, height: 844 });
+          assert.ok(await phone.evaluate(() => matchMedia('(pointer: coarse)').matches));
+          assert.ok(await phone.locator('#reading-mode').isHidden());
+          assert.equal(await phone.locator('html[data-reading]').count(), 0);
+          await phone.setViewportSize({ width: 390, height: 844 });
           const trigger = phone.getByRole('button', { name: '本文目录' });
           const panel = phone.locator('#article-contents');
           assert.ok(await panel.isHidden());
-          const reading = phone.getByRole('button', { name: '沉浸阅读', exact: true });
-          assert.equal(await reading.evaluate(el => getComputedStyle(el).opacity), '1');
-          assert.equal((await reading.boundingBox()).y, (await trigger.boundingBox()).y);
           await trigger.tap();
           await panel.waitFor();
           const panelSize = await panel.boundingBox();

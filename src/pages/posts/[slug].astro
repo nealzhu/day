@@ -148,13 +148,8 @@ const toc = headings.filter(heading => heading.depth >= 2);
   html[data-reading] .title-controls { display: contents; }
   html[data-reading] #reading-mode {
     position: fixed;
-    inset: auto max(var(--s1), env(safe-area-inset-right)) max(var(--s1), env(safe-area-inset-bottom)) auto;
+    inset: var(--s2) var(--s2) auto auto;
     z-index: 2;
-  }
-  @media (min-width: 960px) {
-    html[data-reading] #reading-mode {
-      inset: var(--s2) var(--s2) auto auto;
-    }
   }
   @media (width < 960px) {
     #contents-trigger { display: grid; }
@@ -192,10 +187,12 @@ const toc = headings.filter(heading => heading.depth >= 2);
   const intro = document.querySelector<HTMLElement>('.intro')!;
   const button = document.querySelector<HTMLButtonElement>('#reading-mode')!;
   const desktop = matchMedia('(min-width: 960px)');
+  const readingAvailable = matchMedia(root.dataset.readingMedia!);
   const libraryAvailable = matchMedia('(min-width: 1180px)');
   const storageKey = 'qians.day:archive-scroll';
   const readingKey = 'qians.day:reading-mode';
   let offset = 0;
+  let prefersReading = false;
 
   function reading() { return root.hasAttribute('data-reading'); }
   function hasLibrary() { return libraryAvailable.matches && !reading(); }
@@ -230,18 +227,27 @@ const toc = headings.filter(heading => heading.depth >= 2);
     fitRails();
   }
 
+  function syncReading() {
+    button.hidden = !readingAvailable.matches;
+    toggleReading(readingAvailable.matches && prefersReading);
+  }
+
+  function restoreReading() {
+    try { prefersReading = localStorage.getItem(readingKey) === 'true'; } catch {}
+    syncReading();
+  }
+
   button.addEventListener('click', () => {
-    if (document.querySelector(':modal')) return;
-    toggleReading(!reading());
-    try { localStorage.setItem(readingKey, String(reading())); } catch {}
+    if (!readingAvailable.matches || document.querySelector(':modal')) return;
+    prefersReading = !reading();
+    try { localStorage.setItem(readingKey, String(prefersReading)); } catch {}
+    syncReading();
   });
-  window.addEventListener('pageshow', event => {
-    if (!event.persisted) return;
-    try { toggleReading(localStorage.getItem(readingKey) === 'true'); } catch {}
-  });
+  readingAvailable.addEventListener('change', syncReading);
+  window.addEventListener('pageshow', event => { if (event.persisted) restoreReading(); });
 
   updateControl();
-  button.hidden = false;
+  restoreReading();
   fitRails();
   restoreArchive();
   const savedOffset = offset;

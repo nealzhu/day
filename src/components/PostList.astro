@@ -55,7 +55,7 @@ for (const post of posts) {
   .meta span::before { content: '·'; margin-right: .7em; }
   p { margin: 0; color: var(--muted); }
   :global([data-view="list"]) img { display: none; }
-  :global([data-view="cards"]) ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
+  :global([data-view="cards"]) ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr)); gap: var(--s3); padding-block: var(--s3); }
   :global([data-view="cards"]) li { border: 0; padding: 0; display: flex; flex-direction: column; align-items: start; }
   :global([data-view="cards"]) img {
     display: block; object-fit: cover;

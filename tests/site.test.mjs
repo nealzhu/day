@@ -137,6 +137,30 @@ import Site from '../layouts/Site.astro';
       const browser = await chromium.launch({ channel: 'chrome' });
       try {
         const homeUrl = `http://127.0.0.1:${server.server.address().port}/`;
+        await t.test('archive cards keep the same column widths across years and categories', async t => {
+          const reader = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+          t.after(() => reader.close());
+          await reader.route(cdn + '/**', route => route.fulfill({ contentType: 'image/webp', body: bytes }));
+          const sizes = () => reader.locator('.posts .year ul').evaluateAll(grids => grids.map(grid => ({
+            count: grid.children.length,
+            columns: getComputedStyle(grid).gridTemplateColumns.split(' ').length,
+            widths: [...grid.children].map(card => card.getBoundingClientRect().width),
+          })));
+          for (const [width, columns] of [[1440, 3], [768, 2], [390, 1]]) {
+            await reader.setViewportSize({ width, height: 900 });
+            await reader.goto(homeUrl);
+            const home = await sizes();
+            await reader.goto(new URL('categories/engineering/', homeUrl).href);
+            const category = await sizes();
+            assert.deepEqual(home.map(group => group.count), [2, older.length]);
+            assert.deepEqual(category.map(group => group.count), [1, grouped.length]);
+            const cardWidth = home[1].widths[0];
+            for (const group of [...home, ...category]) {
+              assert.equal(group.columns, columns);
+              for (const width of group.widths) assert.ok(Math.abs(width - cardWidth) < 1);
+            }
+          }
+        });
         await t.test('static search scopes and ranks results, loads on demand and supports keyboard and IME', async t => {
           const reader = await browser.newPage();
           t.after(() => reader.close());

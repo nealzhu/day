@@ -28,29 +28,31 @@ const toc = headings.filter(heading => heading.depth >= 2);
     <article data-pagefind-body>
       <header class="intro">
         <div class="meta" data-pagefind-ignore>
-          <div class="meta-details">
-            <time datetime={publishedAt} data-pagefind-meta="date[datetime]">{publishedAt}</time>
-            {category && <a href={categoryPath(category)} data-pagefind-meta="category">{categories[category]}</a>}
-            {tags.length > 0 && (
-              <div class="tag-group">
-                <SiteIcon name="tag" size={16} />
-                <ul class="post-tags" role="list" aria-label="文章标签">
-                  {tags.map(tag => <li>{tag}</li>)}
-                </ul>
-              </div>
-            )}
-          </div>
-          <button id="reading-mode" class="article-control" type="button" aria-label="沉浸阅读" aria-pressed="false" title="进入沉浸阅读" hidden>
-            <span class="reading-enter"><SiteIcon name="scroll" size={22} /></span>
-            <span class="reading-exit"><SiteIcon name="close" size={20} /></span>
-          </button>
-          {toc.length > 0 && (
-            <button id="contents-trigger" class="article-control" type="button" popovertarget="article-contents" aria-label="本文目录" hidden>
-              <span><SiteIcon name="list" size={20} /></span>
-            </button>
+          <time datetime={publishedAt} data-pagefind-meta="date[datetime]">{publishedAt}</time>
+          {category && <a href={categoryPath(category)} data-pagefind-meta="category">{categories[category]}</a>}
+          {tags.length > 0 && (
+            <div class="tag-group">
+              <SiteIcon name="tag" size={16} />
+              <ul class="post-tags" role="list" aria-label="文章标签">
+                {tags.map(tag => <li>{tag}</li>)}
+              </ul>
+            </div>
           )}
         </div>
-        <h1 data-pagefind-meta="title">{title}</h1>
+        <div class="title-row">
+          <h1 data-pagefind-meta="title">{title}</h1>
+          <div class="title-controls" data-pagefind-ignore>
+            <button id="reading-mode" class="article-control" type="button" aria-label="沉浸阅读" aria-pressed="false" title="进入沉浸阅读" hidden>
+              <span class="reading-enter"><SiteIcon name="scroll" size={22} /></span>
+              <span class="reading-exit"><SiteIcon name="close" size={20} /></span>
+            </button>
+            {toc.length > 0 && (
+              <button id="contents-trigger" class="article-control" type="button" popovertarget="article-contents" aria-label="本文目录" hidden>
+                <span><SiteIcon name="list" size={20} /></span>
+              </button>
+            )}
+          </div>
+        </div>
         <p hidden data-pagefind-weight="2">{description}</p>
       </header>
       {toc.length > 0 && <ArticleContents headings={toc} />}
@@ -76,8 +78,9 @@ const toc = headings.filter(heading => heading.depth >= 2);
   .columns article, .prose { min-width: 0; }
   .intro { margin-block-end: var(--s3); padding-block-end: var(--s3); border-bottom: var(--group-rule); }
   .intro .meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--s2); font-size: var(--small); color: var(--muted); }
-  .meta-details { display: contents; }
-  .intro h1 { margin-block-start: var(--s1); }
+  .title-row { display: flex; align-items: flex-end; gap: var(--s1); margin-block-start: var(--s1); }
+  .title-row h1 { flex: 1; min-width: 0; }
+  .title-controls { display: flex; color: var(--muted); }
   .tag-group { display: flex; align-items: flex-start; gap: .35em; max-inline-size: 100%; }
   .tag-group svg { flex: none; height: 1lh; }
   .post-tags {
@@ -131,12 +134,18 @@ const toc = headings.filter(heading => heading.depth >= 2);
   .article-control[aria-pressed="true"] span { background: var(--paper); }
   .article-control:is(:hover, :focus-visible), .columns:has(#article-contents:popover-open) #contents-trigger { color: var(--accent); }
   .article-control:is(:hover, :focus-visible) span, .columns:has(#article-contents:popover-open) #contents-trigger span { background: var(--inset); }
-  #reading-mode { margin-inline-start: auto; }
   #contents-trigger, #reading-mode[aria-pressed="false"] .reading-exit, #reading-mode[aria-pressed="true"] .reading-enter { display: none; }
+  @media (hover: hover) and (pointer: fine) and (not (any-pointer: coarse)) {
+    html:not([data-reading]) .intro:not(:hover, :has(:focus-visible)) #reading-mode { opacity: 0; pointer-events: none; }
+    @media (prefers-reduced-motion: no-preference) {
+      #reading-mode { transition: opacity var(--motion-ink) ease-out; }
+    }
+  }
   html[data-reading] :is(.mast, .mast-actions) { display: contents; }
   html[data-reading] :is(.mast > .brand, .mast > nav, #settings-trigger, #search-trigger, .colophon, .columns > .library, .columns article .contents, #contents-trigger, .post-pagination) { display: none; }
   html[data-reading] .columns { display: block; max-width: var(--reading-measure); }
   html[data-reading] .columns article { display: block; }
+  html[data-reading] .title-controls { display: contents; }
   html[data-reading] #reading-mode {
     position: fixed;
     inset: auto max(var(--s1), env(safe-area-inset-right)) max(var(--s1), env(safe-area-inset-bottom)) auto;
@@ -148,16 +157,6 @@ const toc = headings.filter(heading => heading.depth >= 2);
     }
   }
   @media (width < 960px) {
-    html:not([data-reading]) .meta:has(#contents-trigger:not([hidden])) { flex-wrap: nowrap; align-items: flex-start; column-gap: var(--s1); }
-    html:not([data-reading]) .meta:has(#contents-trigger:not([hidden])) .meta-details {
-      display: flex;
-      flex: 1;
-      flex-wrap: wrap;
-      align-content: center;
-      gap: 0 var(--s1);
-      min-width: 0;
-      min-height: 44px;
-    }
     #contents-trigger { display: grid; }
   }
   @media (min-width: 960px) {

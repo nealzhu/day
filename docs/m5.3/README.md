@@ -8,8 +8,8 @@
 | --- | --- |
 | [段落分享入口](../../src/components/ParagraphShare.astro) · [定位规则](../../src/lib/paragraph-share.ts) | 从单段选择生成版本化 URL 片段，包含段落序号、段内偏移、所选文字以及前后最多 24 个 Unicode 字符。首选完整上下文，经编辑后可回退到至少一侧足够长且唯一的上下文。重复匹配、上下文不足或已删除内容留在当前页面。 |
 | [文章列表](../../src/components/PostList.astro) · [归档位置](../../src/components/ArchivePosition.astro) | 默认使用原生 History 和 BFCache。当前历史条目保存路由、视图、文章 ID 和相对视口坐标，从文章返回且布局有变化时校正一次。切换卡片与列表仍锚定同一文章。 |
-| [文章详情](../../src/pages/posts/%5Bslug%5D.astro) · [站点布局](../../src/layouts/Site.astro) | 沉浸阅读记忆本地偏好，切换时补偿正文滚动。低于 1180 px 时在文末居中展示相邻文章和去首页。相邻文章按首页顺序确定，首末篇省去没有对应文章的方向。 |
-| [目录](../../src/components/ArticleContents.astro) · [阅读设置](../../src/components/ReadingSettings.astro) | 低于 960 px 时，日期行右端的按钮打开原生 Popover。浮层通常高 288 px，在短视口内会收缩，内容可独立纵向滚动。侧栏与浮层复用同一份目录。触屏及浮层链接至少高 44 px，宽屏鼠标环境可用迷你目录。 |
+| [文章详情](../../src/pages/posts/%5Bslug%5D.astro) · [站点布局](../../src/layouts/Site.astro) | 沉浸阅读记忆本地偏好，切换时补偿正文滚动。鼠标移入标题区或键盘聚焦时显示横卷，触屏可直接点击。低于 1180 px 时在文末居中展示相邻文章和去首页。相邻文章按首页顺序确定，首末篇省去没有对应文章的方向。 |
+| [目录](../../src/components/ArticleContents.astro) · [阅读设置](../../src/components/ReadingSettings.astro) | 低于 960 px 时，目录与沉浸阅读入口对齐在标题右下。目录按钮打开原生 Popover，浮层通常高 288 px，在短视口内会收缩，内容可独立纵向滚动。侧栏与浮层复用同一份目录。触屏及浮层链接至少高 44 px，宽屏鼠标环境可用迷你目录。 |
 | [搜索](../../src/components/SiteSearch.astro) · [灯箱](../../src/lib/image-viewer.ts) | 沉浸模式保留 `/` 搜索入口。顶层弹窗打开时其余阅读操作让位，关闭后恢复原焦点。灯箱在开场动画还未结束时收到关闭操作，会在动画完成后关闭。 |
 | [静态回归](../../tests/site.test.mjs) | 覆盖真实剪贴板写入、链接定位、归档返回、跨文章阅读偏好、触控目录及搜索和灯箱。 |
 
@@ -44,7 +44,7 @@
 - [桌面深色 · 定位段落高亮](screenshots/desktop-highlight-dark.png)
 - [桌面深色 · 700 px 沉浸阅读](screenshots/desktop-immersive-dark.png)
 - [首页 · 返回图文卡片](screenshots/archive-return-cards.png)
-- [移动浅色 · 日期行目录浮层](screenshots/mobile-outline-light.png)
+- [移动浅色 · 标题区目录浮层](screenshots/mobile-outline-light.png)
 - [移动浅色 · 文末翻页链接](screenshots/mobile-pagination-light.png)
 - [移动深色 · 段落分享](screenshots/mobile-share-dark.png)
 - [移动浅色 · 沉浸模式](screenshots/mobile-immersive-light.png)

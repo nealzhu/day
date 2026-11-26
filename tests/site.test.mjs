@@ -485,6 +485,21 @@ import Site from '../layouts/Site.astro';
           assert.equal(await button.getAttribute('aria-pressed'), 'false');
           assert.equal(await button.getAttribute('title'), '进入沉浸阅读');
           assert.equal(await button.innerText(), '');
+          const title = reader.locator('.intro h1');
+          const titleBox = await title.boundingBox();
+          const waitForOpacity = opacity => reader.waitForFunction(
+            opacity => getComputedStyle(document.querySelector('#reading-mode')).opacity === opacity, opacity,
+          );
+          await waitForOpacity('0');
+          await reader.locator('.intro time').hover();
+          await waitForOpacity('1');
+          assert.deepEqual(await title.boundingBox(), titleBox);
+          await reader.mouse.move(0, 0);
+          await waitForOpacity('0');
+          await button.press('Tab');
+          await reader.keyboard.press('Shift+Tab');
+          assert.ok(await button.evaluate(el => el.matches(':focus-visible')));
+          await waitForOpacity('1');
           assert.ok(await button.locator('.reading-enter svg').isVisible());
           await button.press('Enter');
           assert.equal(await button.getAttribute('aria-pressed'), 'true');
@@ -621,17 +636,19 @@ import Site from '../layouts/Site.astro';
         const section = page.locator('[data-heading="notes-1"]');
         await section.click();
         await page.waitForFunction(() => document.querySelector('[aria-current="location"]')?.getAttribute('href') === '#notes-1');
-        await t.test('the tablet outline opens from the date row and closes on a keyboard jump', async () => {
+        await t.test('the tablet outline opens from the title row and closes on a keyboard jump', async () => {
           await page.setViewportSize({ width: 768, height: 1024 });
           await page.evaluate(() => scrollTo(0, 0));
           const trigger = page.getByRole('button', { name: '本文目录' });
           const outline = page.locator('#article-contents');
           await trigger.waitFor();
-          const [date, button, meta] = await Promise.all([
-            page.locator('.intro time').boundingBox(), trigger.boundingBox(), page.locator('.intro .meta').boundingBox(),
+          const [title, button, row, reading] = await Promise.all([
+            page.locator('.intro h1').boundingBox(), trigger.boundingBox(), page.locator('.title-row').boundingBox(),
+            page.locator('#reading-mode').boundingBox(),
           ]);
-          assert.ok(date.y >= button.y && date.y + date.height <= button.y + button.height);
-          assert.ok(Math.abs(button.x + button.width - meta.x - meta.width) < 1);
+          assert.ok(Math.abs(title.y + title.height - button.y - button.height) < 1);
+          assert.ok(Math.abs(button.x + button.width - row.x - row.width) < 1);
+          assert.equal(button.y, reading.y);
           assert.ok(await outline.isHidden());
           await trigger.press('Enter');
           await outline.waitFor();
@@ -831,6 +848,9 @@ import Site from '../layouts/Site.astro';
           const trigger = phone.getByRole('button', { name: '本文目录' });
           const panel = phone.locator('#article-contents');
           assert.ok(await panel.isHidden());
+          const reading = phone.getByRole('button', { name: '沉浸阅读', exact: true });
+          assert.equal(await reading.evaluate(el => getComputedStyle(el).opacity), '1');
+          assert.equal((await reading.boundingBox()).y, (await trigger.boundingBox()).y);
           await trigger.tap();
           await panel.waitFor();
           const panelSize = await panel.boundingBox();

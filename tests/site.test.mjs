@@ -7,7 +7,7 @@ import test from 'node:test';
 import { preview } from 'astro';
 import { chromium } from 'playwright-core';
 import { cardPlaceholderFile, cardPlaceholderKey } from '../scripts/card-placeholder.mjs';
-import { article, copySiteFixture, temporaryDirectory } from './fixtures.mjs';
+import { article, copySiteFixture, giscusClientFixture, giscusWidgetFixture, temporaryDirectory } from './fixtures.mjs';
 
 test('production build and browser behaviour', async t => {
   const project = await temporaryDirectory(t);
@@ -83,6 +83,125 @@ import Site from '../layouts/Site.astro';
     }
   });
 
+  await t.test('comments are lazy, isolated by Article ID, recoverable and theme-aware', async t => {
+    const server = await preview({ root: project, server: { host: '127.0.0.1', port: 0 }, logLevel: 'silent' });
+    const browser = await chromium.launch({ channel: 'chrome' });
+    t.after(async () => { await browser.close(); await server.stop(); });
+    const reader = await browser.newPage({ viewport: { width: 1440, height: 900 }, colorScheme: 'light' });
+    const site = 'https://qians.day';
+    const provider = 'https://giscus.app';
+    const local = `http://127.0.0.1:${server.server.address().port}`;
+    const requests = [];
+    let breakScript = true;
+    let breakWidget = true;
+    const knownDiscussion = 'https://github.com/nealzhu/day/discussions/90';
+    await reader.route('**/*', async route => {
+      const url = new URL(route.request().url());
+      if (url.origin === site) {
+        return route.fulfill({ response: await route.fetch({ url: new URL(url.pathname, local).href }) });
+      }
+      if (url.origin !== provider) return route.abort();
+      requests.push(url);
+      if (url.pathname === '/client.js') {
+        if (breakScript) return route.abort();
+        return route.fulfill({ contentType: 'text/javascript', headers: { 'access-control-allow-origin': site }, body: giscusClientFixture });
+      }
+      assert.equal(url.pathname, '/zh-CN/widget');
+      const discussion = url.searchParams.get('term') === 'article-pictured' ? knownDiscussion : undefined;
+      return route.fulfill({ contentType: 'text/html', body: breakWidget
+        ? giscusWidgetFixture({ error: 'API rate limit exceeded' })
+        : giscusWidgetFixture({ discussion }) });
+    });
+
+    await reader.goto(`${site}/posts/pictured/`);
+    const comments = reader.getByRole('region', { name: '评论' });
+    const frame = comments.locator('iframe');
+    const link = comments.getByRole('link', { name: '在 GitHub 查看讨论' });
+    await comments.getByRole('button', { name: '加载评论' }).waitFor({ state: 'attached' });
+    assert.equal(requests.length, 0);
+    await reader.keyboard.press('i');
+    await reader.keyboard.press('End');
+    assert.ok(await comments.isHidden());
+    assert.equal(requests.length, 0);
+    await reader.keyboard.press('i');
+    await comments.evaluate(section => section.scrollIntoView());
+    const retry = comments.getByRole('button', { name: '重试' });
+    await retry.waitFor();
+    assert.deepEqual(requests.map(url => url.pathname), ['/client.js']);
+    assert.equal(await frame.count(), 0);
+
+    breakScript = false;
+    await retry.click();
+    await frame.waitFor({ state: 'attached' });
+    await retry.waitFor();
+    const originalFrame = await frame.elementHandle();
+    breakWidget = false;
+    await retry.click();
+    await link.waitFor();
+    assert.equal(await link.getAttribute('href'), knownDiscussion);
+    assert.ok(await originalFrame.evaluate(element => element === document.querySelector('.giscus-frame')));
+    assert.deepEqual(requests.map(url => url.pathname), ['/client.js', '/client.js', '/zh-CN/widget', '/zh-CN/widget']);
+    const query = requests.at(-1).searchParams;
+    for (const [key, value] of Object.entries({
+      mapping: 'specific', strict: '1', term: 'article-pictured', repo: 'nealzhu/day', repoId: 'R_kgDOV2z4ZA',
+      category: 'Article Comments', categoryId: 'DIC_kwDOV2z4ZM4DMC8T', backLink: `${site}/posts/pictured/`,
+      lang: 'zh-CN', reactionsEnabled: '1', inputPosition: 'top', loading: 'lazy',
+    })) assert.equal(query.get(key), value, key);
+
+    const widget = frame.contentFrame();
+    await reader.emulateMedia({ colorScheme: 'dark' });
+    await widget.locator('html[data-theme="transparent_dark"]').waitFor({ state: 'attached' });
+    await reader.locator('#settings-trigger').hover();
+    await reader.locator('[data-theme-choice="light"]').click();
+    await widget.locator('html[data-theme="light"]').waitFor({ state: 'attached' });
+    await reader.keyboard.press('Escape');
+    await reader.keyboard.press('i');
+    assert.ok(await comments.isHidden());
+    await reader.keyboard.press('i');
+    assert.ok(await originalFrame.evaluate(element => element === document.querySelector('.giscus-frame')));
+    assert.equal(requests.length, 4);
+
+    const iframeHeight = await frame.evaluate(element => element.style.height);
+    await reader.evaluate(origin => {
+      const source = document.querySelector('.giscus-frame').contentWindow;
+      const data = { giscus: { resizeHeight: 999, error: 'Discussion not found' } };
+      window.dispatchEvent(new MessageEvent('message', { origin, source: window, data }));
+      window.dispatchEvent(new MessageEvent('message', { origin: location.origin, source, data }));
+      const metadata = { giscus: { discussion: { url: 'https://github.com/other/repo/discussions/1' } } };
+      window.dispatchEvent(new MessageEvent('message', { origin, source, data: metadata }));
+    }, provider);
+    assert.equal(await frame.evaluate(element => element.style.height), iframeHeight);
+    assert.equal(await link.getAttribute('href'), knownDiscussion);
+
+    await reader.setViewportSize({ width: 390, height: 844 });
+    await reader.goto(`${site}/posts/text-only/`);
+    await comments.getByRole('button', { name: '加载评论' }).click();
+    await frame.waitFor();
+    assert.equal(await comments.locator('.discussion-link').getAttribute('href'), null);
+    assert.equal(requests.at(-1).searchParams.get('term'), 'article-text-only');
+    assert.ok(!await reader.evaluate(() => document.documentElement.scrollWidth > innerWidth));
+
+    await reader.unrouteAll();
+    await reader.route(`${provider}/**`, route => { requests.push(new URL(route.request().url())); return route.abort(); });
+    const count = requests.length;
+    await reader.goto(`${local}/posts/text-only/`);
+    assert.match(await comments.innerText(), /此环境未启用评论/);
+    await reader.keyboard.press('End');
+    assert.equal(requests.length, count);
+  });
+
+  await article(posts, 'text-only', { category: undefined, title: '已更名的文章', slug: 'renamed-article' });
+  await t.test('an edited title and slug keep the discussion term and update the backlink', async () => {
+    execFileSync(process.execPath, [resolve('node_modules/astro/astro.js'), 'build', '--force'], {
+      cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
+    });
+    const renamed = await readFile(join(dist, 'posts/renamed-article/index.html'), 'utf8');
+    assert.match(renamed, /data-comment-term="article-text-only"/);
+    assert.match(renamed, /name="giscus:backlink" content="https:\/\/qians\.day\/posts\/renamed-article\/"/);
+  });
+  await article(posts, 'text-only', { category: undefined, description: '北极星摘要。' },
+    '我用 Cloudflare 存档星图，翻到一张罕见的地图。 pictured');
+
   execFileSync(process.execPath, [join(project, 'scripts/build-preview.mjs')], {
     cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
   });
@@ -108,6 +227,7 @@ import Site from '../layouts/Site.astro';
     assert.ok(home.includes(cover));
     assert.ok(!home.includes(second));
     const detail = await html('posts/pictured/index.html');
+    assert.doesNotMatch(detail, /data-comment-term=/);
     assert.ok(detail.includes(cover) && detail.includes(second));
     assert.match(detail, /href="#notes-1"/);
     assert.match(detail, /id="notes-1"/);

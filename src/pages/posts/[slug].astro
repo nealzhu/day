@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import ImageGallery from '../../components/ImageGallery.astro';
 import ParagraphShare from '../../components/ParagraphShare.astro';
 import ArticleContents from '../../components/ArticleContents.astro';
+import Comments from '../../components/Comments.astro';
 import SiteIcon from '../../components/SiteIcon.astro';
 import Site from '../../layouts/Site.astro';
 import { categories } from '../../lib/content-model';
@@ -19,11 +20,12 @@ export async function getStaticPaths() {
 }
 
 const { post, archive, previous, next } = Astro.props;
-const { title, description, publishedAt, category, tags } = post.data;
+const { articleId, title, description, publishedAt, category, tags } = post.data;
 const { Content, headings } = await render(post);
 const toc = headings.filter(heading => heading.depth >= 2);
 ---
 <Site title={title} description={description}>
+  <meta slot="head" name="giscus:backlink" content={new URL(postPath(post.data.slug), Astro.site)} />
   <div class="columns">
     <article data-pagefind-body>
       <header class="intro">
@@ -59,6 +61,7 @@ const toc = headings.filter(heading => heading.depth >= 2);
       <div class="prose" data-image-gallery={firstImage(post) ? true : undefined}><Content /></div>
       {firstImage(post) && <ImageGallery />}
       <ParagraphShare />
+      <Comments articleId={articleId} />
     </article>
     <aside class="rail library">
       <h2>全部文章 <small>{archive.length}</small></h2>

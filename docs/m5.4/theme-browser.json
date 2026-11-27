@@ -1,0 +1,196 @@
+{
+  "desktop": {
+    "viewport": [
+      1440,
+      900
+    ],
+    "providerRequestsBefore": 0,
+    "stylesheetBefore": 0,
+    "light": {
+      "scheme": "light",
+      "themeLoaded": true,
+      "summaryHidden": true,
+      "reactionTotalHidden": true,
+      "widgetWidth": 700,
+      "overflow": false,
+      "targetHeight": 34,
+      "order": [
+        0,
+        48,
+        182
+      ],
+      "composer": "rgb(240, 237, 229)",
+      "body": "rgba(0, 0, 0, 0)"
+    },
+    "dark": {
+      "scheme": "dark",
+      "themeLoaded": true,
+      "summaryHidden": true,
+      "reactionTotalHidden": true,
+      "widgetWidth": 700,
+      "overflow": false,
+      "targetHeight": 34,
+      "order": [
+        0,
+        48,
+        182
+      ],
+      "composer": "rgb(43, 45, 40)",
+      "body": "rgba(0, 0, 0, 0)"
+    },
+    "network": [
+      {
+        "path": "/client.js",
+        "status": 200,
+        "bytes": 3596
+      },
+      {
+        "path": "/default.css",
+        "status": 200,
+        "bytes": 167
+      },
+      {
+        "path": "/zh-CN/widget",
+        "status": 200,
+        "bytes": 4236,
+        "term": "article-01M54COMMENTIMAGE",
+        "theme": "http://127.0.0.1:4329/comments/theme.css#light",
+        "canonicalBacklink": "https://qians.day/posts/browser-long/",
+        "category": "Article Comments",
+        "strict": "1"
+      }
+    ],
+    "sameIframe": true
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "providerRequestsBefore": 0,
+    "stylesheetBefore": 0,
+    "light": {
+      "scheme": "light",
+      "themeLoaded": true,
+      "summaryHidden": true,
+      "reactionTotalHidden": true,
+      "widgetWidth": 350,
+      "overflow": false,
+      "targetHeight": 44,
+      "order": [
+        0,
+        58,
+        198
+      ],
+      "composer": "rgb(240, 237, 229)",
+      "body": "rgba(0, 0, 0, 0)"
+    },
+    "dark": {
+      "scheme": "dark",
+      "themeLoaded": true,
+      "summaryHidden": true,
+      "reactionTotalHidden": true,
+      "widgetWidth": 350,
+      "overflow": false,
+      "targetHeight": 44,
+      "order": [
+        0,
+        58,
+        198
+      ],
+      "composer": "rgb(43, 45, 40)",
+      "body": "rgba(0, 0, 0, 0)"
+    },
+    "network": [
+      {
+        "path": "/client.js",
+        "status": 200,
+        "bytes": 3596
+      },
+      {
+        "path": "/default.css",
+        "status": 200,
+        "bytes": 167
+      },
+      {
+        "path": "/zh-CN/widget",
+        "status": 200,
+        "bytes": 4236,
+        "term": "article-01M54COMMENTIMAGE",
+        "theme": "http://127.0.0.1:4329/comments/theme.css#light",
+        "canonicalBacklink": "https://qians.day/posts/browser-long/",
+        "category": "Article Comments",
+        "strict": "1"
+      }
+    ],
+    "sameIframe": true
+  },
+  "upstreamDemo": {
+    "desktop": {
+      "light": {
+        "scheme": "light",
+        "width": 752,
+        "composer": "rgb(240, 237, 229)",
+        "summaryHidden": true,
+        "overflow": false,
+        "sortVisible": true,
+        "order": [
+          0,
+          56,
+          184
+        ],
+        "targetHeight": 34
+      },
+      "dark": {
+        "scheme": "dark",
+        "width": 752,
+        "composer": "rgb(43, 45, 40)",
+        "summaryHidden": true,
+        "overflow": false,
+        "sortVisible": true,
+        "order": [
+          0,
+          56,
+          184
+        ],
+        "targetHeight": 34
+      }
+    },
+    "mobile": {
+      "light": {
+        "scheme": "light",
+        "width": 374,
+        "composer": "rgb(240, 237, 229)",
+        "summaryHidden": true,
+        "overflow": false,
+        "sortVisible": true,
+        "order": [
+          0,
+          170,
+          304
+        ],
+        "targetHeight": 44
+      },
+      "dark": {
+        "scheme": "dark",
+        "width": 374,
+        "composer": "rgb(43, 45, 40)",
+        "summaryHidden": true,
+        "overflow": false,
+        "sortVisible": true,
+        "order": [
+          0,
+          170,
+          304
+        ],
+        "targetHeight": 44
+      }
+    },
+    "loggedOutReactionMenuOpens": true
+  },
+  "pagesThemeHeaders": {
+    "content-type": "text/css; charset=utf-8",
+    "access-control-allow-origin": "https://giscus.app",
+    "x-content-type-options": "nosniff"
+  }
+}

@@ -92,12 +92,18 @@ import Site from '../layouts/Site.astro';
     const provider = 'https://giscus.app';
     const local = `http://127.0.0.1:${server.server.address().port}`;
     const requests = [];
+    const themeRequests = [];
     let breakScript = true;
     let breakWidget = true;
     const knownDiscussion = 'https://github.com/nealzhu/day/discussions/90';
     await reader.route('**/*', async route => {
       const url = new URL(route.request().url());
       if (url.origin === site) {
+        if (url.pathname === '/comments/theme.css') {
+          themeRequests.push(url);
+          return route.fulfill({ contentType: 'text/css', headers: { 'access-control-allow-origin': provider },
+            body: await readFile(join(dist, 'comments/theme.css'), 'utf8') });
+        }
         return route.fulfill({ response: await route.fetch({ url: new URL(url.pathname, local).href }) });
       }
       if (url.origin !== provider) return route.abort();
@@ -119,6 +125,7 @@ import Site from '../layouts/Site.astro';
     const link = comments.getByRole('link', { name: '在 GitHub 查看讨论' });
     await comments.getByRole('button', { name: '加载评论' }).waitFor({ state: 'attached' });
     assert.equal(requests.length, 0);
+    assert.equal(themeRequests.length, 0);
     await reader.keyboard.press('i');
     await reader.keyboard.press('End');
     assert.ok(await comments.isHidden());
@@ -146,20 +153,32 @@ import Site from '../layouts/Site.astro';
       mapping: 'specific', strict: '1', term: 'article-pictured', repo: 'nealzhu/day', repoId: 'R_kgDOV2z4ZA',
       category: 'Article Comments', categoryId: 'DIC_kwDOV2z4ZM4DMC8T', backLink: `${site}/posts/pictured/`,
       lang: 'zh-CN', reactionsEnabled: '1', inputPosition: 'top', loading: 'lazy',
+      theme: `${site}/comments/theme.css#light`,
     })) assert.equal(query.get(key), value, key);
 
     const widget = frame.contentFrame();
+    const reaction = widget.locator('.gsc-reactions-menu summary[aria-label="添加回应"]').first();
+    await reaction.waitFor();
+    await widget.locator('.gsc-reactions-count').waitFor({ state: 'hidden' });
+    assert.equal(await widget.locator('.gsc-comments-count').isVisible(), false);
+    assert.equal(await widget.locator('.gsc-comment-box-tabs').isVisible(), false);
+    const order = await widget.locator('main').evaluate(main => ['.gsc-reactions', '.gsc-comment-box', '.gsc-timeline']
+      .map(selector => main.querySelector(selector).getBoundingClientRect().top));
+    assert.ok(order[0] < order[1] && order[1] < order[2]);
     await reader.emulateMedia({ colorScheme: 'dark' });
-    await widget.locator('html[data-theme="transparent_dark"]').waitFor({ state: 'attached' });
+    await widget.locator('#giscus-theme[href$="#dark"]').waitFor({ state: 'attached' });
+    assert.equal(await widget.locator('html').evaluate(html => getComputedStyle(html).colorScheme), 'dark');
     await reader.locator('#settings-trigger').hover();
     await reader.locator('[data-theme-choice="light"]').click();
-    await widget.locator('html[data-theme="light"]').waitFor({ state: 'attached' });
+    await widget.locator('#giscus-theme[href$="#light"]').waitFor({ state: 'attached' });
+    assert.equal(await widget.locator('html').evaluate(html => getComputedStyle(html).colorScheme), 'light');
     await reader.keyboard.press('Escape');
     await reader.keyboard.press('i');
     assert.ok(await comments.isHidden());
     await reader.keyboard.press('i');
     assert.ok(await originalFrame.evaluate(element => element === document.querySelector('.giscus-frame')));
     assert.equal(requests.length, 4);
+    assert.ok(themeRequests.length > 0);
 
     const iframeHeight = await frame.evaluate(element => element.style.height);
     await reader.evaluate(origin => {

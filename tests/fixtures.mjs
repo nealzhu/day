@@ -53,29 +53,48 @@ export const giscusClientFixture = `
   });`;
 
 export function giscusWidgetFixture({ error, discussion } = {}) {
+  const reactions = `<details class="gsc-reactions-menu"><summary class="gsc-reactions-button gsc-social-reaction-summary-item" aria-label="添加回应">☺</summary>
+    <div class="gsc-reactions-popover">登录后可添加回应</div></details>`;
   return `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
-      html { color-scheme: light; }
-      html[data-theme="transparent_dark"] { color-scheme: dark; }
-      body { margin: 0; font: 15px/1.5 system-ui; color: light-dark(#292923,#e8e3d7); }
-      p { margin: 0 0 12px; }
-      section { border: 1px solid light-dark(#cfc9b9,#5e5e52); border-radius: 3px; padding: 14px; }
-      textarea { box-sizing: border-box; width: 100%; font: inherit; min-height: 64px; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font: 15px/1.5 system-ui; }
+      p { margin: 0; }
+      .gsc-main, .gsc-comments { display: flex; flex-direction: column; }
+      .gsc-reactions > div, .gsc-header, .gsc-comment-footer { display: flex; gap: 8px; }
+      .gsc-social-reaction-summary-item { display: inline-flex; justify-content: center; align-items: center; border: 1px solid; border-radius: 999px; }
+      .gsc-comment-box textarea { display: block; width: 100%; font: inherit; }
+      .gsc-comment-box-buttons { text-align: right; }
+      .btn-primary { display: inline-flex; align-items: center; background: var(--color-btn-primary-bg); color: var(--color-btn-primary-text); text-decoration: none; }
     </style>
-    <p>${discussion ? '1 条评论' : '0 条评论'} · 0 个回应</p>
-    <section aria-label="隔离测试评论"><label for="comment">发表评论</label>
-      <textarea id="comment" placeholder="撰写评论" disabled></textarea>
-      <button disabled>使用 GitHub 登录</button>
-    </section>
+    <main><div class="gsc-main">
+      <div class="gsc-reactions"><h4 class="gsc-reactions-count">0 个回应</h4><div>${reactions}
+        ${discussion ? '<button class="gsc-social-reaction-summary-item" disabled>👍 3</button><button class="gsc-social-reaction-summary-item" disabled>❤️ 2</button>' : ''}</div></div>
+      <div class="gsc-comments"><div class="gsc-header"><div class="gsc-left-header"><h4 class="gsc-comments-count">${discussion ? '2 条评论' : '0 条评论'}</h4></div></div>
+      <form class="gsc-comment-box">
+        <div class="gsc-comment-box-tabs">撰写 · 预览</div>
+        <div class="gsc-comment-box-main"><textarea class="gsc-comment-box-textarea" placeholder="登录后可发表评论" disabled></textarea><div class="gsc-comment-box-textarea-extras">Markdown</div></div>
+        <div class="gsc-comment-box-bottom"><div class="gsc-comment-box-buttons"><a class="btn-primary" href="#" target="_top" onclick="event.preventDefault()">使用 GitHub 登录</a></div></div>
+      </form>
+      ${discussion ? `<div class="gsc-timeline">
+        <div class="gsc-comment"><div><header class="gsc-comment-header"><strong>山风</strong> <time>2 天前</time></header><p class="gsc-comment-content">把读到的句子抄在书签上，下一次翻开还会想起那天下午。</p><div class="gsc-comment-footer">${reactions}</div></div></div>
+        <div class="gsc-comment"><div><header class="gsc-comment-header"><strong>书页之间</strong> <time>1 天前</time></header><p class="gsc-comment-content">也喜欢慢慢读完一篇长文，留一点时间想想。</p><div class="gsc-comment-footer">${reactions}</div><div class="gsc-replies"><div class="gsc-reply"><header class="gsc-reply-header"><strong>骞言碎语</strong> <time>今天</time></header><p class="gsc-reply-content">谢谢你留下这句话。</p></div></div></div></div>
+      </div>` : ''}</div>
+    </div></main>
     <script>
       const query = new URLSearchParams(location.search);
       const parentOrigin = new URL(query.get('origin')).origin;
-      const showTheme = theme => { document.documentElement.dataset.theme = theme; };
+      const link = document.createElement('link');
+      link.id = 'giscus-theme';
+      link.rel = 'stylesheet';
+      link.crossOrigin = 'anonymous';
+      document.head.append(link);
+      const showTheme = theme => { link.href = theme; };
       showTheme(query.get('theme'));
       addEventListener('message', event => {
         if (event.origin === parentOrigin && event.source === parent) showTheme(event.data.giscus.setConfig.theme);
       });
-      parent.postMessage({giscus: {resizeHeight: document.body.scrollHeight}}, parentOrigin);
+      new ResizeObserver(() => parent.postMessage({giscus: {resizeHeight: document.body.scrollHeight}}, parentOrigin)).observe(document.body);
       parent.postMessage({giscus: ${JSON.stringify(discussion ? { discussion: { url: discussion } } : { error: error ?? 'Discussion not found' })}}, parentOrigin);
     </script></html>`;
 }

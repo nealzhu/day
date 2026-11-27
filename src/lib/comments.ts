@@ -1,6 +1,7 @@
 export const comments = {
   siteOrigin: 'https://qians.day',
   providerOrigin: 'https://giscus.app',
+  themePath: '/comments/theme.css',
   repo: 'nealzhu/day',
   repoId: 'R_kgDOV2z4ZA',
   category: 'Article Comments',

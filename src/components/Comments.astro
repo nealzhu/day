@@ -32,7 +32,8 @@ const production = import.meta.env.MODE === 'production';
     const systemTheme = matchMedia('(prefers-color-scheme: dark)');
     const lifetime = new AbortController();
     const { signal } = lifetime;
-    const { siteOrigin: _site, providerOrigin, ...config } = comments;
+    const { siteOrigin, providerOrigin, themePath, ...config } = comments;
+    const themeUrl = new URL(themePath, siteOrigin).href;
     const frame = () => host.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
     let script: HTMLScriptElement | undefined;
     let timeout = 0;
@@ -43,7 +44,8 @@ const production = import.meta.env.MODE === 'production';
 
     function theme() {
       const preference = root.dataset.theme;
-      return preference === 'dark' || (preference !== 'light' && systemTheme.matches) ? 'transparent_dark' : 'light';
+      const dark = preference === 'dark' || (preference !== 'light' && systemTheme.matches);
+      return `${themeUrl}#${dark ? 'dark' : 'light'}`;
     }
 
     function syncTheme() {
@@ -191,7 +193,7 @@ const production = import.meta.env.MODE === 'production';
   }
   :global(html[data-reading]) .comments { display: none; }
   .comments-header, .comments-controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); }
-  .comments-header { justify-content: space-between; margin-block-end: var(--s1); }
+  .comments-header { justify-content: space-between; margin-block-end: var(--s2); }
   .comments-header h2 { font-size: var(--h3); }
   .discussion-link, .comments-status, .comments-load { font-size: var(--small); }
   .comments-status { margin: 0; color: var(--muted); }
@@ -204,5 +206,5 @@ const production = import.meta.env.MODE === 'production';
   }
   .comments[data-state='ready'] .comments-controls { display: none; }
   .comments:not([data-state='ready']) .giscus { height: 0; min-height: 0; overflow: hidden; visibility: hidden; }
-  .giscus :global(.giscus-frame) { display: block; }
+  .giscus :global(.giscus-frame) { display: block; color-scheme: inherit; }
 </style>

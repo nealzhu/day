@@ -58,7 +58,7 @@ main {
   --color-attention-fg: light-dark(#795714, #edd08a);
   --color-attention-muted: color-mix(in srgb, var(--color-attention-fg) 35%, var(--paper));
   --color-attention-subtle: color-mix(in srgb, var(--color-attention-fg) 12%, var(--paper));
-  --font-family-default: system-ui, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --font-family-default: 'Day Reading', 'PingFang SC', 'Microsoft YaHei', serif;
   color: var(--ink);
   font-family: var(--font-family-default);
   padding-block-end: 4px;
@@ -203,6 +203,9 @@ main .gsc-comment-box-textarea.form-control {
   line-height: 1.5;
   resize: none;
   opacity: 1;
+}
+main .gsc-comment-box-textarea.form-control:not(.gsc-is-fixed-width) {
+  font-family: var(--font-family-default);
 }
 main .gsc-comment-box-textarea::placeholder { color: var(--muted); opacity: 1; }
 /* Giscus owns the native placeholder and reply action names inside its iframe. */

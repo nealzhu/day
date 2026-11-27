@@ -13,7 +13,7 @@
 
 有「全部文章」侧栏时使用侧栏导航。侧栏隐藏时，文章翻页和首页入口显示在正文和评论区之间。评论区标题为「欢迎留下你的想法」，下方依次显示表情回应、输入框与留言。保留单个表情的实际人数、留言排序和原生登录入口。
 
-[自定义主题](../../public/comments/theme.css)使用 M4 的色彩并沿用 Giscus 的交互。两种主题共享同一个透明底样式表。Cloudflare Pages 仅为该样式表设置 Giscus 专用 CORS 头，样式随 iframe 按需加载。 [Giscus 自定义主题说明](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#data-theme)
+[自定义主题](../../src/styles/comments.css)使用 M4 的色彩并沿用 Giscus 的交互。两种主题共享同一个透明底样式表。Cloudflare Pages 为该样式表设置 Giscus 专用 CORS 头。构建时引用站点相同的版本化霞鹜文楷字体样式表，主题和所需字体子集随 iframe 按需加载。 [Giscus 自定义主题说明](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#data-theme)
 
 Ego Lite 检查过 1440 px 桌面和 390 px 触屏的明暗布局、总数隐藏和主题切换。移动端实际点击可到下一篇及首页，文章表情入口高 44 px。主题切换和沉浸阅读退出复用原 iframe。 [前一版测量与响应头](theme-browser.json)
 
@@ -58,3 +58,5 @@ Ego Lite 用隔离构建实测访客、登录态、发布、取消、重新打�
 - `MEDIA_BASE_URL=https://site-cdn.qians.day pnpm run build` 通过。
 
 待仓库所有者指定并授权专用测试文章或隔离讨论后，在获准的来源验证真实 GitHub 登录、首评建帖、回复和 Reactions。正式站点的来源配置将在仓库默认分支包含 `giscus.json` 后生效。
+
+正式环境启用评论区霞鹜文楷前，需要在字体 CDN 放行 Giscus iframe 的跨域字体请求，并用正式页面复验。放行前，评论区使用系统字体栈中的后备字体。

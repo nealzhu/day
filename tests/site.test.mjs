@@ -7,6 +7,7 @@ import test from 'node:test';
 import { preview } from 'astro';
 import { chromium } from 'playwright-core';
 import { cardPlaceholderFile, cardPlaceholderKey } from '../scripts/card-placeholder.mjs';
+import { fontCdn, fontDirectory, fontPrefix } from '../scripts/font-assets.mjs';
 import { article, copySiteFixture, giscusClientFixture, giscusWidgetFixture, temporaryDirectory } from './fixtures.mjs';
 
 test('production build and browser behaviour', async t => {
@@ -77,6 +78,8 @@ import Site from '../layouts/Site.astro';
     assert.equal(pagefind.languages['zh-cn'].page_count, older.length + 2);
     assert.ok(!files.some(path => /^pagefind[\/\\]pagefind-(.*ui|highlight)\./.test(path)));
     assert.ok(!files.some(path => /\.woff2$|faces\.css$|^fonts[\/\\]/.test(path)));
+    const commentTheme = await readFile(join(dist, 'comments/theme.css'), 'utf8');
+    assert.ok(commentTheme.startsWith(`@import url("${fontCdn}/${fontPrefix}/faces.css");`));
     for (const path of files.filter(path => path.endsWith('.html'))) {
       assert.ok((await readFile(join(dist, path), 'utf8')).includes(
         'href="https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css"'), path);
@@ -99,6 +102,11 @@ import Site from '../layouts/Site.astro';
     let readyDelay = 0;
     await reader.route('**/*', async route => {
       const url = new URL(route.request().url());
+      if (url.origin === fontCdn && url.pathname.startsWith(`/${fontPrefix}/`)) {
+        const name = url.pathname.split('/').at(-1);
+        return route.fulfill({ headers: { 'access-control-allow-origin': '*' },
+          path: join(project, fontDirectory, name) });
+      }
       if (url.origin === site) {
         if (url.pathname === '/comments/theme.css') {
           themeRequests.push(url);
@@ -183,6 +191,14 @@ import Site from '../layouts/Site.astro';
     assert.equal(await widget.locator('.gsc-comments-count').isVisible(), false);
     assert.equal(await widget.locator('.gsc-comment-box-tabs').isVisible(), false);
     assert.equal(await widget.locator('.gsc-comment-box-textarea').getAttribute('placeholder'), '登录后可发表评论');
+    for (const selector of ['.gsc-comment-content', '.gsc-reply-content', '.gsc-comment-box-textarea']) {
+      const text = widget.locator(selector).first();
+      assert.ok(await text.evaluate(async element => {
+        const style = getComputedStyle(element);
+        const faces = await document.fonts.load(`${style.fontSize} "Day Reading"`, element.textContent || element.placeholder);
+        return style.fontFamily.startsWith('"Day Reading"') && faces.length > 0 && faces.every(face => face.status === 'loaded');
+      }), `Expected the site's reading font in ${selector}`);
+    }
     assert.ok(await widget.getByRole('link', { name: '使用 GitHub 登录' }).isVisible());
     const chips = widget.locator('.gsc-reactions .gsc-direct-reaction-buttons button');
     const chipPositions = () => chips.evaluateAll(buttons => buttons.map(button => button.getBoundingClientRect().toJSON()));

@@ -52,35 +52,69 @@ export const giscusClientFixture = `
     }
   });`;
 
-export function giscusWidgetFixture({ error, discussion } = {}) {
-  const reactions = `<details class="gsc-reactions-menu"><summary class="gsc-reactions-button gsc-social-reaction-summary-item" aria-label="添加回应">☺</summary>
-    <div class="gsc-reactions-popover">登录后可添加回应</div></details>`;
+export function giscusWidgetFixture({ error, discussion, signedIn = false } = {}) {
+  const emojis = ['👍', '👎', '😄', '🎉', '😕', '❤️', '🚀', '👀'];
+  const disabled = signedIn ? '' : 'disabled';
+  const login = '?preview-auth=1#comments';
+  const reactions = (position, groups = []) => `<details class="gsc-reactions-menu">
+    <summary class="gsc-reactions-button gsc-social-reaction-summary-item" aria-label="添加回应">☺</summary>
+    <div class="gsc-reactions-popover ${position} left">
+      <p>${signedIn ? '选择您的回应' : `<a href="${login}" target="_top">登录</a>后可添加回应。`}</p><div></div>
+      <div>${emojis.map(emoji => `<button class="gsc-emoji-button" type="button" data-emoji="${emoji}" ${disabled}>${emoji}</button>`).join('')}</div>
+    </div></details><div class="gsc-direct-reaction-buttons">${groups.map(([emoji, count]) =>
+      `<button class="gsc-social-reaction-summary-item" type="button" data-emoji="${emoji}" ${disabled}>${emoji} <span>${count}</span></button>`).join('')}</div>`;
+  const avatar = (initial, background) => `data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><rect width="30" height="30" fill="${background}"/><text x="15" y="20" text-anchor="middle" fill="white" font-size="13" font-family="sans-serif">${initial}</text></svg>`)}`;
+  const profile = (account, name, initial, color, age) => {
+    const url = `https://github.com/${account}`;
+    return `<header class="gsc-comment-header"><div class="gsc-comment-author">
+      <a class="gsc-comment-author-avatar" href="${url}"><img src="${avatar(initial,color)}" alt="">${name}</a>
+      <a href="#"><time>${age}</time></a></div></header>`;
+  };
+  const reply = (text, age) => `<div class="gsc-reply"><div class="fixture-reply-layout">
+    <div class="gsc-reply-author-avatar"><img src="${avatar('骞','#82503c')}" alt=""></div>
+    <div><header class="gsc-reply-header"><div class="gsc-reply-author"><a href="https://github.com/nealzhu">骞言碎语</a><a href="#"><time>${age}</time></a></div></header>
+    <p class="gsc-reply-content">${text}</p><div class="gsc-reply-footer"><div class="gsc-reply-reactions">${reactions('top')}</div></div></div>
+    </div></div>`;
+  const replyBox = signedIn ? `<div class="gsc-reply-box"><button type="button">回复</button></div>
+    <form class="gsc-comment-box gsc-comment-box-is-reply" hidden><div class="gsc-comment-box-main"><textarea placeholder="写下回复" required></textarea></div>
+      <div class="gsc-comment-box-buttons"><button class="btn-primary" type="submit">发送回复</button></div></form>` : '';
+  const comment = (header, text, existingReplies = '') => `<div class="gsc-comment"><div>${header}<p class="gsc-comment-content">${text}</p>
+    <div class="gsc-comment-footer"><div class="gsc-comment-reactions">
+      <button class="gsc-upvote-button gsc-social-reaction-summary-item" aria-label="赞同" disabled>↑</button>${reactions('top')}</div></div>
+    <div class="gsc-replies">${existingReplies}</div>${replyBox}</div></div>`;
   return `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
       * { box-sizing: border-box; }
       body { margin: 0; font: 15px/1.5 system-ui; }
       p { margin: 0; }
       .gsc-main, .gsc-comments { display: flex; flex-direction: column; }
-      .gsc-reactions > div, .gsc-header, .gsc-comment-footer { display: flex; gap: 8px; }
+      .gsc-reactions > div, .gsc-header, .gsc-comment-reactions, .gsc-reply-reactions, .gsc-direct-reaction-buttons { display: flex; align-items: center; gap: 8px; }
+      .gsc-comment-author, .gsc-reply-author, .gsc-comment-author-avatar, .fixture-reply-layout { display: flex; align-items: center; gap: 8px; }
+      .fixture-reply-layout { align-items: start; }
+      .fixture-reply-layout time, .gsc-comment-author time { color: var(--muted); font-size: 12px; }
+      .gsc-comment-author a, .gsc-reply-author a { color: inherit; text-decoration: none; }
+      button { font: inherit; color: inherit; border: 0; background: none; }
       .gsc-social-reaction-summary-item { display: inline-flex; justify-content: center; align-items: center; border: 1px solid; border-radius: 999px; }
+      .gsc-upvote-button { border: 0; }
       .gsc-comment-box textarea { display: block; width: 100%; font: inherit; }
       .gsc-comment-box-buttons { text-align: right; }
       .btn-primary { display: inline-flex; align-items: center; background: var(--color-btn-primary-bg); color: var(--color-btn-primary-text); text-decoration: none; }
     </style>
     <main><div class="gsc-main">
-      <div class="gsc-reactions"><h4 class="gsc-reactions-count">0 个回应</h4><div>${reactions}
-        ${discussion ? '<button class="gsc-social-reaction-summary-item" disabled>👍 3</button><button class="gsc-social-reaction-summary-item" disabled>❤️ 2</button>' : ''}</div></div>
+      <div class="gsc-reactions"><h4 class="gsc-reactions-count">0 个回应</h4><div>${reactions('bottom', discussion ? [['👍', 3], ['❤️', 2]] : [])}</div></div>
       <div class="gsc-comments"><div class="gsc-header"><div class="gsc-left-header"><h4 class="gsc-comments-count">${discussion ? '2 条评论' : '0 条评论'}</h4></div></div>
       <form class="gsc-comment-box">
         <div class="gsc-comment-box-tabs">撰写 · 预览</div>
-        <div class="gsc-comment-box-main"><textarea class="gsc-comment-box-textarea" placeholder="登录后可发表评论" disabled></textarea><div class="gsc-comment-box-textarea-extras">Markdown</div></div>
-        <div class="gsc-comment-box-bottom"><div class="gsc-comment-box-buttons"><a class="btn-primary" href="#" target="_top" onclick="event.preventDefault()">使用 GitHub 登录</a></div></div>
+        <div class="gsc-comment-box-main"><textarea class="gsc-comment-box-textarea" placeholder="${signedIn ? '写下你的想法' : '登录后可发表评论'}" ${disabled}></textarea><div class="gsc-comment-box-textarea-extras">Markdown</div></div>
+        <div class="gsc-comment-box-bottom"><div class="gsc-comment-box-buttons">${signedIn ? '' : `<a class="btn-primary" href="${login}" target="_top">使用 GitHub 登录</a>`}</div></div>
       </form>
       ${discussion ? `<div class="gsc-timeline">
-        <div class="gsc-comment"><div><header class="gsc-comment-header"><strong>山风</strong> <time>2 天前</time></header><p class="gsc-comment-content">把读到的句子抄在书签上，下一次翻开还会想起那天下午。</p><div class="gsc-comment-footer">${reactions}</div></div></div>
-        <div class="gsc-comment"><div><header class="gsc-comment-header"><strong>书页之间</strong> <time>1 天前</time></header><p class="gsc-comment-content">也喜欢慢慢读完一篇长文，留一点时间想想。</p><div class="gsc-comment-footer">${reactions}</div><div class="gsc-replies"><div class="gsc-reply"><header class="gsc-reply-header"><strong>骞言碎语</strong> <time>今天</time></header><p class="gsc-reply-content">谢谢你留下这句话。</p></div></div></div></div>
+        ${comment(profile('mountain-reader', '山风', '山', '#577166', '2 天前'), '把读到的句子抄在书签上，下一次翻开还会想起那天下午。')}
+        ${comment(profile('page-reader', '书页之间', '书', '#6d5976', '1 天前'), '也喜欢慢慢读完一篇长文，留一点时间想想。', reply('谢谢你留下这句话。', '今天'))}
       </div>` : ''}</div>
     </div></main>
+    <template id="reply-template">${reply('', '刚刚')}</template>
     <script>
       const query = new URLSearchParams(location.search);
       const parentOrigin = new URL(query.get('origin')).origin;
@@ -91,6 +125,51 @@ export function giscusWidgetFixture({ error, discussion } = {}) {
       document.head.append(link);
       const showTheme = theme => { link.href = theme; };
       showTheme(query.get('theme'));
+      const login = new URL(query.get('origin'));
+      login.searchParams.set('preview-auth', '1');
+      login.hash = 'comments';
+      for (const link of document.querySelectorAll('a[target="_top"]')) link.href = login.href;
+      document.addEventListener('click', event => {
+        const button = event.target.closest('button');
+        if (!button || button.disabled) return;
+        const replyBox = button.closest('.gsc-reply-box');
+        if (replyBox) {
+          replyBox.hidden = true;
+          replyBox.nextElementSibling.hidden = false;
+          replyBox.nextElementSibling.querySelector('textarea').focus();
+        }
+        if (!button.dataset.emoji) return;
+        const menu = button.closest('details');
+        const groups = menu?.nextElementSibling ?? button.parentElement;
+        let chip = [...groups.children].find(chip => chip.dataset.emoji === button.dataset.emoji);
+        if (!chip) {
+          chip = document.createElement('button');
+          chip.type = 'button';
+          chip.className = 'gsc-social-reaction-summary-item';
+          chip.dataset.emoji = button.dataset.emoji;
+          chip.append(button.dataset.emoji + ' ', document.createElement('span'));
+          chip.lastElementChild.textContent = '0';
+          groups.append(chip);
+        }
+        const selected = chip.classList.toggle('has-reacted');
+        const count = Number(chip.lastElementChild.textContent) + (selected ? 1 : -1);
+        chip.lastElementChild.textContent = count;
+        if (!count) chip.remove();
+        if (menu) menu.open = false;
+      });
+      document.addEventListener('submit', event => {
+        event.preventDefault();
+        const form = event.target;
+        if (!form.classList.contains('gsc-comment-box-is-reply')) return;
+        const body = form.querySelector('textarea').value.trim();
+        if (!body) return;
+        const reply = document.querySelector('#reply-template').content.cloneNode(true);
+        reply.querySelector('.gsc-reply-content').textContent = body;
+        form.closest('.gsc-comment').querySelector('.gsc-replies').append(reply);
+        form.reset();
+        form.hidden = true;
+        form.previousElementSibling.hidden = false;
+      });
       addEventListener('message', event => {
         if (event.origin === parentOrigin && event.source === parent) showTheme(event.data.giscus.setConfig.theme);
       });

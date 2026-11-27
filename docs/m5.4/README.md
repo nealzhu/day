@@ -11,13 +11,19 @@
 
 ## 评论区样式调整
 
-正文结束后直接显示文章翻页和首页入口，桌面与移动端顺序一致。评论区标题为「欢迎留下你的想法」，下方依次显示表情回应、输入框与留言。保留单个表情的实际人数、留言排序和原生登录入口。留言采用细分隔，回复使用缩进。
+有「全部文章」侧栏时使用侧栏导航。侧栏隐藏时，文章翻页和首页入口显示在正文和评论区之间。评论区标题为「欢迎留下你的想法」，下方依次显示表情回应、输入框与留言。保留单个表情的实际人数、留言排序和原生登录入口。
 
 [自定义主题](../../public/comments/theme.css)使用 M4 的色彩并沿用 Giscus 的交互。两种主题共享同一个透明底样式表。Cloudflare Pages 仅为该样式表设置 Giscus 专用 CORS 头，样式随 iframe 按需加载。 [Giscus 自定义主题说明](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#data-theme)
 
-Ego Lite 在 1440 px 桌面和 390 px 触屏检查了正文、翻页和评论区的顺序，以及明暗布局、总数隐藏和主题切换。移动端实际点击可到下一篇及首页，表情入口高 44 px。主题切换和沉浸阅读退出复用原 iframe。隔离构建提供截图，并在 Giscus 官方示例中复核真实控件和未登录时的表情菜单。 [测量与响应头](theme-browser.json)
+Ego Lite 检查过 1440 px 桌面和 390 px 触屏的明暗布局、总数隐藏和主题切换。移动端实际点击可到下一篇及首页，文章表情入口高 44 px。主题切换和沉浸阅读退出复用原 iframe。 [前一版测量与响应头](theme-browser.json)
 
-[桌面浅色](screenshots/theme-desktop-light.png) · [桌面深色](screenshots/theme-desktop-dark.png) · [移动端浅色](screenshots/theme-mobile-light.png) · [移动端深色](screenshots/theme-mobile-dark.png)
+### 表情和回复复验
+
+表情选择器覆盖在评论内容上，展开时已发布的表情保持位置与尺寸。访客可看到登录提示和八种表情。登录后浮层只显示八种可操作的表情。留言及回复显示 GitHub 头像，站点作者 `nealzhu` 的时间后显示「作者」。一级留言的回应按钮缩小，登录后可通过该条留言的「回复」打开原生回复框。嵌套回复只使用缩进。
+
+GitHub 留言旁的原生 ↑ 保留为只读计数，Giscus 当前禁用了该按钮的提交。登录后可在表情浮层选择 👍 表达赞同。 [Giscus 官方实现](https://github.com/giscus/giscus/blob/main/components/Comment.tsx) · [GitHub API 限制](https://github.com/orgs/community/discussions/3968)
+
+官方 Giscus 示例复核了访客的八种表情、浮层定位、原生头像和投票限制。登录态的选表情与发回复使用隔离数据验证。 [桌面表情浮层](screenshots/reaction-popover-preview.png) · [移动端回复](screenshots/nested-reply-preview.png)
 
 ## 初版 Ego Lite 浏览器记录
 

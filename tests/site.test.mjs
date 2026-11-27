@@ -113,9 +113,10 @@ import Site from '../layouts/Site.astro';
       }
       assert.equal(url.pathname, '/zh-CN/widget');
       const discussion = url.searchParams.get('term') === 'article-pictured';
+      const signedIn = new URL(url.searchParams.get('origin')).searchParams.has('preview-auth');
       return route.fulfill({ contentType: 'text/html', body: breakWidget
         ? giscusWidgetFixture({ error: 'API rate limit exceeded' })
-        : giscusWidgetFixture({ discussion }) });
+        : giscusWidgetFixture({ discussion, signedIn }) });
     });
 
     await reader.goto(`${site}/posts/pictured/`);
@@ -160,6 +161,20 @@ import Site from '../layouts/Site.astro';
     await widget.locator('.gsc-reactions-count').waitFor({ state: 'hidden' });
     assert.equal(await widget.locator('.gsc-comments-count').isVisible(), false);
     assert.equal(await widget.locator('.gsc-comment-box-tabs').isVisible(), false);
+    const chips = widget.locator('.gsc-reactions .gsc-direct-reaction-buttons button');
+    const chipPositions = () => chips.evaluateAll(buttons => buttons.map(button => button.getBoundingClientRect().toJSON()));
+    const positions = await chipPositions();
+    await reaction.click();
+    const menu = widget.locator('.gsc-reactions .gsc-reactions-popover');
+    await menu.getByText('后可添加回应。').waitFor();
+    assert.deepEqual(await chipPositions(), positions);
+    assert.equal(await menu.locator('button:disabled').count(), 8);
+    await reaction.click();
+    assert.ok(await widget.locator('.gsc-comment-author-avatar img').first().isVisible());
+    assert.ok(await widget.locator('.gsc-reply-author-avatar img').isVisible());
+    assert.equal(await widget.locator('.gsc-reply-author').evaluate(author => getComputedStyle(author, '::after').content), '"作者"');
+    assert.equal(await widget.locator('.gsc-reply').evaluate(reply => getComputedStyle(reply).borderInlineStartWidth), '0px');
+    assert.ok(await widget.locator('.gsc-upvote-button').first().isDisabled());
     const order = await widget.locator('main').evaluate(main => ['.gsc-reactions', '.gsc-comment-box', '.gsc-timeline']
       .map(selector => main.querySelector(selector).getBoundingClientRect().top));
     assert.ok(order[0] < order[1] && order[1] < order[2]);
@@ -195,6 +210,19 @@ import Site from '../layouts/Site.astro';
     assert.equal(await comments.getAttribute('data-state'), 'ready');
     assert.equal(requests.at(-1).searchParams.get('term'), 'article-text-only');
     assert.ok(!await reader.evaluate(() => document.documentElement.scrollWidth > innerWidth));
+
+    await reader.goto(`${site}/posts/pictured/?preview-auth=1`);
+    await comments.evaluate(section => section.scrollIntoView());
+    await frame.waitFor();
+    await reaction.click();
+    assert.equal(await menu.locator('p').isVisible(), false);
+    await menu.getByRole('button', { name: '👍' }).click();
+    assert.equal(await chips.first().locator('span').textContent(), '4');
+    const firstComment = widget.locator('.gsc-comment').first();
+    await firstComment.getByRole('button', { name: '回复', exact: true }).click();
+    await firstComment.getByPlaceholder('写下回复').fill('这是隔离预览中的回复。');
+    await firstComment.getByRole('button', { name: '发送回复' }).click();
+    await firstComment.getByText('这是隔离预览中的回复。').waitFor();
 
     await reader.unrouteAll();
     await reader.route(`${provider}/**`, route => { requests.push(new URL(route.request().url())); return route.abort(); });
@@ -952,7 +980,7 @@ import Site from '../layouts/Site.astro';
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));
         assert.equal((await page.goto(new URL('/posts/secret-draft/', page.url()).href)).status(), 404);
-        await t.test('pagination is before comments at every width and keeps the wide archive position', async t => {
+        await t.test('pagination is before comments without the archive rail and preserves its scroll position', async t => {
           const reader = await browser.newPage({ viewport: { width: 1180, height: 700 } });
           t.after(() => reader.close());
           const article = id => new URL(`/posts/${id}/`, homeUrl).href;
@@ -966,12 +994,11 @@ import Site from '../layouts/Site.astro';
           });
           await reader.goto(article('text-only'));
           await reader.evaluate(() => document.fonts.ready);
-          assert.ok(await pagination.isVisible());
-          assert.ok(await beforeComments());
+          assert.ok(await library.isVisible() && await pagination.isHidden());
           await reader.keyboard.press('i');
           assert.ok(await pagination.isHidden() && await comments.isHidden());
           await reader.keyboard.press('i');
-          assert.ok(await beforeComments());
+          assert.ok(await comments.isVisible() && await pagination.isHidden());
           const top = await library.evaluate(async el => {
             el.scrollTop = el.scrollHeight;
             await new Promise(resolve => requestAnimationFrame(resolve));

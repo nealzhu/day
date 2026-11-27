@@ -10,6 +10,7 @@ const production = import.meta.env.MODE === 'production';
   data-comment-term={production ? commentTerm(articleId) : undefined}>
   <h2 id="comments-heading">欢迎留下你的想法</h2>
   <div class="comments-controls">
+    <span class="comments-loading-mark" aria-hidden="true">···</span>
     <p role="status" class="comments-status">此环境未启用评论。</p>
     <button class="comments-load" type="button" hidden>加载评论</button>
   </div>
@@ -71,7 +72,7 @@ const production = import.meta.env.MODE === 'production';
     const observer = 'IntersectionObserver' in window ? new IntersectionObserver(([entry]) => {
       near = entry.isIntersecting;
       loadWhenNear();
-    }, { rootMargin: '0px 0px 240px' }) : undefined;
+    }) : undefined;
 
     function loadWhenNear() {
       // A short article can put comments in view on the initial paint.
@@ -86,7 +87,7 @@ const production = import.meta.env.MODE === 'production';
         startOnScroll.abort();
       }
       section!.dataset.state = 'loading';
-      status.textContent = '正在加载评论…';
+      status.textContent = '正在载入留言';
       button.hidden = true;
       clearTimeout(timeout);
       timeout = window.setTimeout(failed, 15_000);
@@ -182,6 +183,25 @@ const production = import.meta.env.MODE === 'production';
   .comments-controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); }
   .comments-status, .comments-load { font-size: var(--small); }
   .comments-status { margin: 0; color: var(--muted); }
+  .comments-loading-mark { display: none; }
+  .comments[data-state='loading'] .comments-controls {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 6rem;
+    background: var(--inset);
+    border-radius: var(--radius);
+  }
+  .comments[data-state='loading'] .comments-loading-mark {
+    display: block;
+    color: var(--accent);
+    letter-spacing: .24em;
+    line-height: 1;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .comments[data-state='loading'] .comments-loading-mark { animation: comments-loading 1.5s ease-in-out infinite alternate; }
+    @keyframes comments-loading { to { opacity: .45; } }
+  }
   .comments-load {
     min-height: 44px;
     padding: 0 var(--s2);

@@ -4,7 +4,7 @@
 
 ## 实现
 
-- [Comments.astro](../../src/components/Comments.astro) 使用官方原生脚本，继承 M4 的正文宽度、分隔线、颜色和控件样式。正常滚动进入视口下方 240 px 时启动加载。短文首屏已包含评论区时，读者可直接点击「加载评论」。沉浸阅读隐藏评论区，退出后恢复原 iframe。
+- [Comments.astro](../../src/components/Comments.astro) 使用官方原生脚本，继承 M4 的正文宽度、分隔线、颜色和控件样式。滚动至评论区进入视口时启动加载，等待期间显示「正在载入留言」。短文首屏已包含评论区时，读者可直接点击「加载评论」。沉浸阅读隐藏评论区，退出后恢复原 iframe。
 - [配置](../../src/lib/comments.ts) 将永久 `articleId` 映射为 `article-${articleId}`，在 `Article Comments` 分类内严格匹配。文章的 Canonical URL 通过 `giscus:backlink` 传给 Giscus，供创建讨论时写入正文。文章改标题或 Slug 时，既有讨论继续关联同一 Article ID。既有讨论正文中的回链仍是创建当时的地址。 [Giscus 高级用法](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md)
 - 网站显式或系统主题变化时，通过 `postMessage` 将浅色或深色主题地址发给当前 iframe。接收时同时验证来源和 iframe。首次评论或回应由 Giscus 按需建立讨论。
 - 脚本错误、服务错误或 15 秒无就绪消息时显示重试。脚本失败后可以重新请求，已有 iframe 时重载该 iframe。正式构建也只在 `https://qians.day` 启用评论。[giscus.json](../../giscus.json) 在 GitHub 默认分支生效，来源仅允许正式站点。
@@ -24,6 +24,12 @@ Ego Lite 检查过 1440 px 桌面和 390 px 触屏的明暗布局、总数隐藏
 GitHub 留言旁的原生 ↑ 保留为只读计数，Giscus 当前禁用了该按钮的提交。登录后可在表情浮层选择 👍 表达赞同。 [Giscus 官方实现](https://github.com/giscus/giscus/blob/main/components/Comment.tsx) · [GitHub API 限制](https://github.com/orgs/community/discussions/3968)
 
 官方 Giscus 示例复核了访客的八种表情、浮层定位、原生头像和投票限制。登录态的选表情与发回复使用隔离数据验证。 [桌面表情浮层](screenshots/reaction-popover-preview.png) · [移动端回复](screenshots/nested-reply-preview.png)
+
+### 输入框和加载状态
+
+主留言与楼内回复共用同款输入框。登录态显示「说说你的想法吧」，有内容时启用「发布」。楼内回复的「取消」收起编辑器，重新打开时保留草稿。已有表情与计数间距为 4 px，嵌套回复正文与表情行之间增加 8 px 间距。
+
+Ego Lite 用隔离构建实测访客、登录态、发布、取消、重新打开和 2.2 秒慢加载。在 Giscus 官方示例中复核访客输入框及原生表情间距。自动化回归另覆盖脚本失败、服务错误、15 秒无响应和重试恢复。正式加载时长取决于 Giscus 和 GitHub 的网络响应。 [慢加载](screenshots/comment-loading-preview.png) · [桌面留言](screenshots/comment-composer-preview.png) · [移动端回复框](screenshots/reply-composer-preview.png)
 
 ## 初版 Ego Lite 浏览器记录
 

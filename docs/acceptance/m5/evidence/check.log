@@ -1,0 +1,24 @@
+
+> qians-day@0.1.0 check /Users/neal/code/creative/blog/day
+> astro check
+
+01:39:54 [content] Syncing content
+01:39:54 [content] Synced content
+01:39:54 [types] Generated 167ms
+01:39:54 [check] Getting diagnostics for Astro files in /Users/neal/code/creative/blog/day...
+src/components/SiteSearch.astro:239:15 - warning ts(6385): 'keyCode' is deprecated.
+
+239         event.keyCode === 229 || event.ctrlKey || event.metaKey || event.altKey || document.querySelector(':modal')) return;
+                  ~~~~~~~
+src/components/SiteSearch.astro:209:49 - warning ts(6385): 'keyCode' is deprecated.
+
+209     if (composing || event.isComposing || event.keyCode === 229) {
+                                                    ~~~~~~~
+
+Result (55 files):
+- 0 errors
+- 0 warnings
+- 2 hints
+
+
+exit_code=0

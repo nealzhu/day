@@ -1,0 +1,54 @@
+
+> qians-day@0.1.0 build /Users/neal/code/creative/blog/day
+> astro build --force
+
+01:40:52 [WARN] [content] data store cleared (force)
+01:40:52 [content] Syncing content
+01:40:52 [content] Synced content
+01:40:52 [types] Generated 156ms
+01:40:52 [build] output: "static"
+01:40:52 [build] mode: "static"
+01:40:52 [build] directory: /Users/neal/code/creative/blog/day/dist/
+01:40:52 [build] Collecting build info...
+01:40:52 [build] ✓ Completed in 172ms.
+01:40:52 [build] Building static entrypoints...
+01:40:52 [vite] ✓ built in 405ms
+01:40:52 [build] ✓ Completed in 417ms.
+
+ building client (vite)
+01:40:52 [vite] transforming...
+01:40:52 [vite] ✓ 15 modules transformed.
+01:40:52 [vite] rendering chunks...
+01:40:52 [vite] computing gzip size...
+01:40:52 [vite] dist/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js     1.70 kB │ gzip:  0.89 kB
+01:40:52 [vite] dist/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.B4qBo3Lu.js   4.75 kB │ gzip:  2.18 kB
+01:40:52 [vite] dist/_astro/image-viewer.DMdGLzpg.js                                         70.14 kB │ gzip: 20.56 kB
+01:40:52 [vite] ✓ built in 73ms
+
+ generating static routes
+01:40:52 ▶ src/pages/404.astro
+01:40:52   └─ /404.html (+3ms)
+01:40:52 ▶ src/pages/categories/[category].astro
+01:40:52   └─ /categories/engineering/index.html (+1ms)
+01:40:52 ▶ src/pages/categories/index.astro
+01:40:52   └─ /categories/index.html (+1ms)
+01:40:52 λ src/pages/comments/theme.css.ts
+01:40:52   └─ /comments/theme.css (+1ms)
+01:40:52 ▶ src/pages/index.astro
+01:40:52   └─ /index.html (+1ms)
+01:40:52 ▶ src/pages/posts/[slug].astro
+01:40:52   ├─ /posts/m2-smoke-test/index.html (+1ms)
+01:40:52   └─ /posts/m2-smoke-no-image-test/index.html (+1ms)
+01:40:52 λ src/pages/robots.txt.ts
+01:40:52   └─ /robots.txt (+0ms)
+01:40:52 λ src/pages/rss.xml.ts
+01:40:52   └─ /rss.xml (+1ms)
+01:40:52 λ src/pages/sitemap.xml.ts
+01:40:52   └─ /sitemap.xml (+0ms)
+01:40:52 ✓ Completed in 17ms.
+
+01:40:52 [pagefind] Built search index from 2 article pages.
+01:40:52 [build] 6 page(s) built in 712ms
+01:40:52 [build] Complete!
+
+exit_code=0

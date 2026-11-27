@@ -1,0 +1,67 @@
+
+> qians-day@0.1.0 test /Users/neal/code/creative/blog/day
+> node --test tests/*.test.mjs
+
+✔ duplicate ID (9.530167ms)
+✔ duplicate slug (2.794791ms)
+✔ ID differs from folder (2.132458ms)
+✔ unknown category (2.256916ms)
+✔ invalid publication state (1.651458ms)
+✔ invalid date (1.789084ms)
+✔ empty description (2.392166ms)
+✔ missing referenced WebP identifies the article and filename (3.389875ms)
+✔ category may be omitted (1.957541ms)
+CDN font full: passed, 323 assets, 323 GET attempts, 155 ms
+CDN font full: failed, 1 assets, 1 GET attempts, 2 ms
+CDN font full: failed, 1 assets, 1 GET attempts, 2 ms
+CDN font full: failed, 1 assets, 1 GET attempts, 2 ms
+CDN font full: failed, 1 assets, 1 GET attempts, 1 ms
+CDN font full: failed, 1 assets, 1 GET attempts, 0 ms
+CDN font full: failed, 1 assets, 1 GET attempts, 2 ms
+CDN font full: passed, 1 assets, 2 GET attempts, 254 ms
+CDN font full: failed, 1 assets, 3 GET attempts, 757 ms
+✔ CDN release gate checks every stylesheet dependency and blocks invalid responses (1269.25575ms)
+✔ first deployment uses paginated R2 inventory, publishes CSS last and records successful full verification (72.887959ms)
+✔ an ordinary post creates its media and checks only CSS and three WOFF2 subsets (51.217292ms)
+✔ a font upgrade gets independent acceptance and preserves historical objects (107.837125ms)
+✔ a failed upload or full CDN check can be retried without overwriting content or trusting a partial check (47.557791ms)
+✔ a missing unsampled R2 font is restored and all CDN assets are verified again (66.51025ms)
+✔ failed smoke falls back to full verification and invalidates prior acceptance even if full verification fails (73.075084ms)
+✔ manual full verification and manifest identity changes bypass accepted smoke mode (106.278584ms)
+✔ a changed R2 object fails full integrity validation without overwriting the existing font (59.029959ms)
+▶ production build and browser behaviour
+  ✔ production pages reference CDN fonts without bundling a second copy (1238.621792ms)
+  ✔ comments are lazy, isolated by Article ID, recoverable and theme-aware (3983.944709ms)
+  ✔ an edited title and slug keep the discussion term and update the backlink (1149.33725ms)
+  ✔ drafts and WebPs are absent from the entire output (9.754708ms)
+  ✔ routes, CDN cover, headings, canonical, RSS and sitemap (1.5475ms)
+  ▶ list, cards, restored preference and mobile navigation
+    ✔ returning from a keyboard search result restores the archive without a modal (711.79325ms)
+    ✔ archive cards keep the same column widths across years and categories (982.655709ms)
+    ✔ static search scopes and ranks results, loads on demand and supports keyboard and IME (2119.702667ms)
+    ✔ search drops late fragments and displays a failed load (925.178125ms)
+    ✔ article image gallery is lazy, preserves links, and restores focus and scroll (1222.118917ms)
+    ✔ gallery images link directly to their source with JavaScript disabled (220.540667ms)
+    ✔ paragraph links preserve selection and refuse ambiguous or missing destinations (890.551209ms)
+    ✔ history returns to the article card or title and direct archive visits start at the top (733.998916ms)
+    ✔ the immersive reading shortcut respects page visits, screen size and dialogs (1981.402708ms)
+    ✔ hover and keyboard allow consecutive changes in the reading settings (572.820875ms)
+    ✔ the tablet outline opens from the top of the title area and closes on a keyboard jump (118.406291ms)
+    ✔ Markdown and reference images reserve their intrinsic size (3.070125ms)
+    ✔ the last archive entry is clickable while the article stays at its start (2.639041ms)
+    ✔ pagination is before comments without the archive rail and preserves its scroll position (582.320667ms)
+    ✔ the full outline can be scrolled to its last link without scrolling the article (538.3355ms)
+    ✔ deep closing headings keep distinct destinations at the bottom of the page (622.875042ms)
+    ✔ the touch outline scrolls within a panel and retains accessible section targets (902.089333ms)
+  ✔ list, cards, restored preference and mobile navigation (17190.328833ms)
+✔ production build and browser behaviour (24961.078208ms)
+ℹ tests 42
+ℹ suites 0
+ℹ pass 42
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 25523.389959
+
+exit_code=0

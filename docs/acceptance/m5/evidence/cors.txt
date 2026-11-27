@@ -1,0 +1,44 @@
+
+origin=https://qians.day
+url=https://qians.day/comments/theme.css
+HTTP/2 200
+content-type: text/css; charset=utf-8
+access-control-allow-origin: https://giscus.app
+cache-control: public, max-age=0, must-revalidate
+
+origin=https://qians.day
+url=https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css
+HTTP/2 200
+content-type: text/css
+vary: Origin
+access-control-allow-origin: https://qians.day
+cache-control: public, no-cache
+
+origin=https://qians.day
+url=https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/a4552d779fe3406d1b34.woff2
+HTTP/2 200
+content-type: font/woff2
+vary: Origin
+access-control-allow-origin: https://qians.day
+cache-control: public, max-age=31536000, immutable
+
+origin=https://giscus.app
+url=https://qians.day/comments/theme.css
+HTTP/2 200
+content-type: text/css; charset=utf-8
+access-control-allow-origin: https://giscus.app
+cache-control: public, max-age=0, must-revalidate
+
+origin=https://giscus.app
+url=https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css
+HTTP/2 200
+content-type: text/css
+vary: Origin
+cache-control: public, no-cache
+
+origin=https://giscus.app
+url=https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/a4552d779fe3406d1b34.woff2
+HTTP/2 200
+content-type: font/woff2
+vary: Origin
+cache-control: public, max-age=31536000, immutable

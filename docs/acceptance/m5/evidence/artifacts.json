@@ -1,0 +1,20 @@
+{
+  "routes": [
+    "404.html",
+    "categories/engineering/index.html",
+    "categories/index.html",
+    "index.html",
+    "posts/m2-smoke-no-image-test/index.html",
+    "posts/m2-smoke-test/index.html"
+  ],
+  "indexLanguages": {
+    "zh-cn": {
+      "hash": "zh-cn_ed44c37c246cc",
+      "wasm": null,
+      "page_count": 2
+    }
+  },
+  "localFonts": 0,
+  "m5TestOrDraftRoutes": 0,
+  "forbiddenOutputMatches": 0
+}

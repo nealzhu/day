@@ -1,6 +1,6 @@
 # 骞言碎语 · M5.5 综合验收
 
-**2026-11-28 · M5 工程验收通过，完整签收仍有待确认事项。** 两项 P2 已修复并复测，未发现 P0/P1，也没有已复现的缺陷阻断 M6 开发。正式访客评论加载已通过。真实 GitHub 登录与写入仍待授权，正式产物保留了基线已经公开的两篇 M2 部署冒烟文章。 [问题清单](ISSUES.md) · [性能报告](PERFORMANCE.md)
+**2026-11-28 · M5 工程验收通过，完整签收仍有待确认事项。** 三项 P2 已修复并复测，未发现 P0/P1，也没有已复现的缺陷阻断 M6 开发。正式访客评论加载已通过。真实 GitHub 登录与写入仍待授权，正式产物保留了基线已经公开的两篇 M2 部署冒烟文章。 [问题清单](ISSUES.md) · [性能报告](PERFORMANCE.md)
 
 ## 基线与测试环境
 
@@ -44,3 +44,9 @@
 - **已执行及源码确认。** R2 增量同步仿真覆盖分页、并发、补件、字体 CSS 最后发布、失败重跑及 CDN 全量／冒烟切换。正式 CDN 从公开地址只读 GET 323 个对象，全部通过字节、MIME、缓存和正式站 CORS 校验。PR 和生产工作流、媒体同步、字体发布及 CDN 脚本与 M4 后基线相同。 [CDN 校验](evidence/cdn-fonts.log) · [PR 工作流](../../../.github/workflows/pr-check.yml) · [生产工作流](../../../.github/workflows/deploy.yml)
 
 **尚未验证。** 真实 GitHub 登录及首次建帖、评论、回复和表情待授权。Safari WebDriver session 超时，已补 WebKit；实体 Safari、手机原生选区手柄和实机读屏仍未覆盖。生产写入与该候选的正式部署未执行。M6 的启动没有已发现的工程阻断。 [遗留事项](ISSUES.md)
+
+## Giscus 视觉补验
+
+`pnpm run preview:comments /posts/m2-smoke-test/` 在独立 Chrome 窗口加载本地生产产物。真实 `giscus.app` iframe 按该篇文章 ID 读取公开讨论，主题 CSS 取自本地。预览观察到一条真实点赞，当时尚无公开留言。访客预览拦截登录和写入。 [预览命令](../../../README.md#用真实-giscus-预览评论)
+
+1440 × 900 深色、768 × 1024 浅色及 390 × 844 深色实测表情贴齐输入框左边缘，输入框圆角 10 px，主按钮 999 px，触控按钮保持 44 px。隔离回归补入真实 Giscus 的冲突选择器和登录态 DOM，验证隐藏主输入框的退出入口。线上字体分包在本轮采样仍发生跨域失败，截图里的评论文字使用后备字体。 [桌面](screenshots/real-giscus-1440-dark.png) · [平板](screenshots/real-giscus-768-light.png) · [手机](screenshots/real-giscus-390-dark.png)

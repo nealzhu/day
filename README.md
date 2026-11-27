@@ -13,6 +13,16 @@ pnpm dev
 
 开发服务器默认从生产 CDN 读取图片，字体直接取自仓库。编辑尚未上传的图片时，可用 `MEDIA_BASE_URL=/ pnpm dev --force`。此时开发服务器从文章目录读取图片，浏览器使用与 R2 相同的 `/posts/<articleId>/<filename>` 路径。
 
+### 用真实 Giscus 预览评论
+
+```sh
+pnpm run preview:comments /posts/m2-smoke-test/
+```
+
+命令使用临时目录构建生产版本，打开独立 Chrome 窗口。窗口中的 `qians.day` 页面和评论主题来自本地构建，真实 Giscus iframe 则按该文章的永久 ID 读取公开讨论。进入评论区或点击「加载评论」查看。省略路径时从首页开始。修改主题后重新运行命令即可复验。
+
+预览使用独立的访客会话，允许读取真实评论和表情，屏蔽 Giscus 登录和写入请求。普通本地预览继续使用原入口。 [Giscus 来源配置](giscus.json)
+
 ## Markdown 文章
 
 每篇文章保存为 `src/content/posts/<articleId>/index.md`。客户端在创建文章时分配一次 ID，后续编辑沿用同一目录与 ID。新客户端可生成 ULID，现有 M2 ID 继续有效。标题、分类与发布日期均可独立编辑。Slug 决定公开地址 `/posts/<slug>/`，发布后应保留。RSS 以文章 ID 标识条目。

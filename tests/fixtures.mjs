@@ -56,16 +56,16 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
   const emojis = ['👍', '👎', '😄', '🎉', '😕', '❤️', '🚀', '👀'];
   const disabled = signedIn ? '' : 'disabled';
   const login = '?preview-auth=1#comments';
-  const action = '<button class="btn btn-primary" type="submit" disabled>';
+  const action = '<button class="btn btn-primary rounded-md" type="submit" disabled>';
   const composer = (nested = false) => `<form class="gsc-comment-box${nested ? ' gsc-comment-box-is-reply' : ''}" ${nested ? 'hidden' : ''}>
     <div class="gsc-comment-box-tabs">撰写 · 预览</div>
     <div class="gsc-comment-box-main"><div class="gsc-comment-box-write">
       <textarea class="form-control gsc-comment-box-textarea" placeholder="${nested ? '回复' : signedIn ? '撰写评论' : '登录后可发表评论'}" ${disabled}></textarea>
       <div class="gsc-comment-box-textarea-extras">Markdown</div>
     </div></div>
-    <div class="gsc-comment-box-bottom"><div class="gsc-comment-box-buttons">${nested
+    <div class="gsc-comment-box-bottom">${signedIn && !nested ? '<button type="button" class="link-secondary text-sm">退出登录</button>' : ''}<div class="gsc-comment-box-buttons">${nested
       ? `<button type="button" class="btn" data-cancel-reply>取消</button>${action}回复</button>`
-      : signedIn ? `${action}评论</button>` : `<a class="btn-primary" href="${login}" target="_top">使用 GitHub 登录</a>`}</div></div>
+      : signedIn ? `${action}评论</button>` : `<a class="btn-primary rounded-md" href="${login}" target="_top">使用 GitHub 登录</a>`}</div></div>
     </form>`;
   const reactions = (position, groups = []) => `<details class="gsc-reactions-menu">
     <summary class="gsc-reactions-button gsc-social-reaction-summary-item" aria-label="添加回应"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor"/><path d="M5 9a3 3 0 0 0 6 0M6 6h1m2 0h1" fill="none" stroke="currentColor"/></svg></summary>
@@ -99,6 +99,10 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
       p { margin: 0; }
       .gsc-main, .gsc-comments { display: flex; flex-direction: column; }
       .gsc-reactions > div, .gsc-header, .gsc-comment-reactions, .gsc-reply-reactions, .gsc-direct-reaction-buttons { display: flex; align-items: center; gap: 8px; }
+      #__next .justify-center { justify-content: center; }
+      #__next .mt-2 { margin-top: 8px; }
+      #__next .rounded-md { border-radius: 6px; }
+      .gsc-comment-box:not(.gsc-comment-box-is-reply) { border-radius: 4px; }
       .gsc-comment-author, .gsc-reply-author, .gsc-comment-author-avatar, .fixture-reply-layout { display: flex; align-items: center; gap: 8px; }
       .fixture-reply-layout { align-items: start; }
       .fixture-reply-layout time, .gsc-comment-author time { color: var(--muted); font-size: 12px; }
@@ -111,15 +115,15 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
       .btn-primary { display: inline-flex; align-items: center; background: var(--color-btn-primary-bg); color: var(--color-btn-primary-text); text-decoration: none; }
       .btn-primary:disabled { background: var(--color-btn-primary-disabled-bg); color: var(--color-btn-primary-disabled-text); }
     </style>
-    <main><div class="gsc-main">
-      <div class="gsc-reactions"><h4 class="gsc-reactions-count">0 个回应</h4><div>${reactions('bottom', discussion ? [['👍', 3], ['❤️', 2]] : [])}</div></div>
+    <div id="__next"><main><div class="gsc-main">
+      <div class="gsc-reactions"><h4 class="gsc-reactions-count">0 个回应</h4><div class="justify-center mt-2">${reactions('bottom', discussion ? [['👍', 3], ['❤️', 2]] : [])}</div></div>
       <div class="gsc-comments"><div class="gsc-header"><div class="gsc-left-header"><h4 class="gsc-comments-count">${discussion ? '2 条评论' : '0 条评论'}</h4></div></div>
       ${composer()}
       <div class="gsc-timeline" ${discussion ? '' : 'hidden'}>
         ${discussion ? `${comment(profile('mountain-reader', '山风', '山', '#577166', '2 天前'), '把读到的句子抄在书签上，下一次翻开还会想起那天下午。')}
         ${comment(profile('page-reader', '书页之间', '书', '#6d5976', '1 天前'), '也喜欢慢慢读完一篇长文，留一点时间想想。', reply('谢谢你留下这句话。', '今天'))}
         ` : ''}</div></div>
-    </div></main>
+    </div></main></div>
     <template id="comment-template">${comment(profile('nealzhu', '骞言碎语', '骞', '#82503c', '刚刚'), '')}</template>
     <template id="reply-template">${reply('', '刚刚')}</template>
     <script>

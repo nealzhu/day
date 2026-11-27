@@ -69,7 +69,8 @@ main .gsc-header:not(:has(.gsc-right-header)) { display: none; }
 
 main .gsc-main { gap: 14px; }
 main .gsc-comments { gap: 14px; }
-main .gsc-reactions > div {
+/* Giscus scopes its utility classes to #__next. Match that scope for these overrides. */
+#__next main .gsc-reactions > div {
   justify-content: flex-start;
   flex-wrap: wrap;
   margin: 0;
@@ -183,7 +184,7 @@ main .gsc-right-header [aria-current='true'] .btn { color: var(--accent); backgr
   main .gsc-comments > :is(.gsc-comment-box, .gsc-timeline) { grid-column: 1 / -1; }
 }
 
-main .gsc-comment-box {
+#__next main .gsc-comment-box {
   border: 0;
   border-radius: 10px;
   background: var(--inset);
@@ -233,13 +234,16 @@ main .gsc-comment-box-bottom {
   gap: 4px;
   margin: 6px 0 0;
 }
+main .gsc-comment-box:not(.gsc-comment-box-is-reply) .gsc-comment-box-bottom > button.link-secondary[type='button'] {
+  display: none;
+}
 main .gsc-comment-box-buttons { display: inline-flex; gap: 6px; margin-inline-start: auto; }
 main .gsc-comment-box-buttons :is(.btn, .btn-primary) { margin: 0; }
 main .gsc-comment-box-buttons .btn-primary {
   min-height: 38px;
   padding-inline: 14px;
-  border-radius: 999px;
 }
+#__next main .gsc-comment-box-buttons .btn-primary { border-radius: 999px; }
 main .gsc-comment-box-buttons button[type='submit'].btn-primary { font-size: 0; }
 main .gsc-comment-box-buttons button[type='submit'].btn-primary::after { content: '发布' / ''; font-size: 14px; }
 main .gsc-comment-box-buttons button[type='submit']:disabled { cursor: default; }
@@ -285,6 +289,7 @@ main :is(.gsc-comment-reactions, .gsc-reply-reactions) {
   margin: 0;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-start;
 }
 main :is(.gsc-comment-reactions, .gsc-reply-reactions) span.gsc-direct-reaction-button-emoji {
   display: inline-grid;

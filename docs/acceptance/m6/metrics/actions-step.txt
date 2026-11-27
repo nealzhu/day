@@ -1,0 +1,8 @@
+https://github.com/nealzhu/day/actions/runs/46052188208/job/140685980624
+                text "Sync R2 media and verify CDN font delivery"
+                  text "R2 site/: 1 listed objects, 1 ListObjectsV2 attempts"
+                  text "R2 posts/: 1 listed objects, 1 ListObjectsV2 attempts"
+                  text "R2 fonts/lxgw-wenkai/v1.530/: 324 listed objects, 1 ListObjectsV2 attempts"
+                  text "R2 inventory: 774 ms"
+                  text "R2 asset sync: 0 conditional PUTs, 2 existing objects"
+                  text "CDN font smoke: passed, 4 assets, 4 GET attempts, 387 ms"

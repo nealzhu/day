@@ -1,0 +1,1087 @@
+[
+  {
+    "label": "home",
+    "request": "GET",
+    "url": "https://qians.day/",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:28.987Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 6938,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "vary": "accept-encoding",
+      "cf-cache-status": "DYNAMIC",
+      "content-encoding": "gzip",
+      "cf-ray": "a613a5228f93b921-AMS"
+    },
+    "decodedBytes": 21085,
+    "sha256": "df7b37c61c53ff5c43f3e184bc66c21bb71761ca1fa5d92b1f3009484acd142f",
+    "time": {
+      "dns": 40.201,
+      "tcp": 400.829,
+      "tls": 209.436,
+      "ttfb": 1095.715,
+      "total": 1096.049
+    }
+  },
+  {
+    "label": "html",
+    "request": "GET",
+    "url": "https://qians.day/posts/m2-smoke-test/",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:30.092Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 9599,
+    "headers": {
+      "content-type": "text/html; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "vary": "accept-encoding",
+      "cf-cache-status": "DYNAMIC",
+      "content-encoding": "gzip",
+      "cf-ray": "a613a528796cf794-AMS"
+    },
+    "decodedBytes": 29108,
+    "sha256": "eaf32b9b9961490e6b28bc131cf955fa7748411517b29355af34286c3cd07b10",
+    "time": {
+      "dns": 2.834,
+      "tcp": 360.45300000000003,
+      "tls": 165.05499999999995,
+      "ttfb": 847.502,
+      "total": 847.812
+    }
+  },
+  {
+    "label": "comments-theme",
+    "request": "GET",
+    "url": "https://qians.day/comments/theme.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:30.948Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 3579,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "access-control-allow-origin": "https://giscus.app",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"9376f5400cab56409f790920212091a7\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "EXPIRED",
+      "cf-ray": "a613a52f6bf71e37-AMS"
+    },
+    "decodedBytes": 13832,
+    "sha256": "4a05213116fa3a186cf65b5eae7df3729f846e3abdd07c42a29406f5d9dec463",
+    "time": {
+      "dns": 2.033,
+      "tcp": 502.434,
+      "tls": 245.64600000000004,
+      "ttfb": 1060.363,
+      "total": 1060.664
+    }
+  },
+  {
+    "label": "comments-theme",
+    "request": "conditional GET",
+    "url": "https://qians.day/comments/theme.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:32.016Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "https://giscus.app",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"9376f5400cab56409f790920212091a7\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a534aa37f2bb-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.281,
+      "tcp": 367.88300000000004,
+      "tls": 184.21400000000006,
+      "ttfb": 783.383,
+      "total": 783.473
+    }
+  },
+  {
+    "label": "cover",
+    "request": "GET",
+    "url": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:32.808Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 6796,
+    "headers": {
+      "content-type": "image/webp",
+      "content-length": "6796",
+      "etag": "\"4adc9e28cbdcd3b12f0c8195daf26422\"",
+      "last-modified": "Sun, 22 Nov 2026 14:37:26 GMT",
+      "vary": "Origin",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, max-age=31536000, immutable",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a53afb01b921-AMS"
+    },
+    "decodedBytes": 6796,
+    "sha256": "ffdf4a3ffd685441cccd3e78cae384f418dc3b742ef8c38a8765a2f2aca90461",
+    "time": {
+      "dns": 12.735,
+      "tcp": 425.988,
+      "tls": 305.276,
+      "ttfb": 1536.913,
+      "total": 1537.2030000000002
+    }
+  },
+  {
+    "label": "cover",
+    "request": "conditional GET",
+    "url": "https://site-cdn.qians.day/site/card-placeholder-ffdf4a3ffd68.webp",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:34.353Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "etag": "\"4adc9e28cbdcd3b12f0c8195daf26422\"",
+      "last-modified": "Sun, 22 Nov 2026 14:37:26 GMT",
+      "vary": "Origin",
+      "age": "0",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, max-age=31536000, immutable",
+      "cf-cache-status": "HIT",
+      "cf-ray": "a613a543cb09b823-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.6359999999999997,
+      "tcp": 432.85799999999995,
+      "tls": 182.58500000000006,
+      "ttfb": 827.8389999999999,
+      "total": 827.92
+    }
+  },
+  {
+    "label": "article-photo",
+    "request": "GET",
+    "url": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:35.188Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 436,
+    "headers": {
+      "content-type": "image/webp",
+      "content-length": "436",
+      "etag": "\"f24dc615b02dbc1d2f44d3c01e424433\"",
+      "last-modified": "Sat, 21 Nov 2026 18:53:58 GMT",
+      "vary": "Origin",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, max-age=31536000, immutable",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a5491db9f3b9-AMS"
+    },
+    "decodedBytes": 436,
+    "sha256": "27e984fd8dc502125f2f6aa79f31561023864a1812534b485a0dcf49d49384fb",
+    "time": {
+      "dns": 2.274,
+      "tcp": 455.659,
+      "tls": 192.71200000000005,
+      "ttfb": 1177.2169999999999,
+      "total": 1177.511
+    }
+  },
+  {
+    "label": "article-photo",
+    "request": "conditional GET",
+    "url": "https://site-cdn.qians.day/posts/01K00000000000000000000000/test-27e984fd8dc5.webp",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:36.373Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "etag": "\"f24dc615b02dbc1d2f44d3c01e424433\"",
+      "last-modified": "Sat, 21 Nov 2026 18:53:58 GMT",
+      "vary": "Origin",
+      "age": "0",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, max-age=31536000, immutable",
+      "cf-cache-status": "HIT",
+      "cf-ray": "a613a54fb8b5fff2-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.225,
+      "tcp": 361.944,
+      "tls": 168.45099999999996,
+      "ttfb": 727.279,
+      "total": 727.373
+    }
+  },
+  {
+    "label": "font-css",
+    "request": "GET",
+    "url": "https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:37.108Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 71755,
+    "headers": {
+      "content-type": "text/css",
+      "last-modified": "Tue, 24 Nov 2026 19:15:25 GMT",
+      "vary": "Origin",
+      "etag": "W/\"5d3eea8e80a7529c2ce481986e9ce169\"",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, no-cache",
+      "cf-cache-status": "REVALIDATED",
+      "content-encoding": "gzip",
+      "cf-ray": "a613a554fefc26de-AMS"
+    },
+    "decodedBytes": 218815,
+    "sha256": "a59f232fe7586593306b20a833093a5956019462d0ea766afbf939bdae876c77",
+    "time": {
+      "dns": 2.378,
+      "tcp": 369.48400000000004,
+      "tls": 263.763,
+      "ttfb": 1021.661,
+      "total": 1161.733
+    }
+  },
+  {
+    "label": "font-css",
+    "request": "conditional GET",
+    "url": "https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:38.278Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "etag": "\"5d3eea8e80a7529c2ce481986e9ce169\"",
+      "last-modified": "Tue, 24 Nov 2026 19:15:25 GMT",
+      "vary": "Origin",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, no-cache",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a55ba8f5fead-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.2880000000000003,
+      "tcp": 358.44899999999996,
+      "tls": 171.24200000000002,
+      "ttfb": 920.278,
+      "total": 920.376
+    }
+  },
+  {
+    "label": "font",
+    "request": "GET",
+    "url": "https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/6f6f6c093f140e7d1d4c.woff2",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:39.207Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 54772,
+    "headers": {
+      "content-type": "font/woff2",
+      "content-length": "54772",
+      "etag": "\"04572ca9282aaa7064b2e5449758c994\"",
+      "last-modified": "Tue, 24 Nov 2026 19:08:35 GMT",
+      "vary": "Origin",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, max-age=31536000, immutable",
+      "age": "261134",
+      "cf-cache-status": "HIT",
+      "cf-ray": "a613a5624a178699-AMS"
+    },
+    "decodedBytes": 54772,
+    "sha256": "6f6f6c093f140e7d1d4c0f928c3ede6ecff1599de9b398895f5a57abaf86eecb",
+    "time": {
+      "dns": 2.6189999999999998,
+      "tcp": 402.11800000000005,
+      "tls": 229.935,
+      "ttfb": 871.9350000000001,
+      "total": 919.193
+    }
+  },
+  {
+    "label": "font",
+    "request": "conditional GET",
+    "url": "https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/6f6f6c093f140e7d1d4c.woff2",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:40.135Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "etag": "\"04572ca9282aaa7064b2e5449758c994\"",
+      "last-modified": "Tue, 24 Nov 2026 19:08:35 GMT",
+      "vary": "Origin",
+      "age": "261135",
+      "access-control-allow-origin": "https://qians.day",
+      "cache-control": "public, max-age=31536000, immutable",
+      "cf-cache-status": "HIT",
+      "cf-ray": "a613a567dc394df8-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.233,
+      "tcp": 421.30600000000004,
+      "tls": 209.09,
+      "ttfb": 946.5980000000001,
+      "total": 946.702
+    }
+  },
+  {
+    "label": "font-iframe",
+    "request": "GET",
+    "url": "https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/6f6f6c093f140e7d1d4c.woff2",
+    "requestOrigin": "https://giscus.app",
+    "startedAt": "2026-11-27T19:47:41.089Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 54772,
+    "headers": {
+      "content-type": "font/woff2",
+      "content-length": "54772",
+      "etag": "\"04572ca9282aaa7064b2e5449758c994\"",
+      "last-modified": "Tue, 24 Nov 2026 19:08:35 GMT",
+      "vary": "Origin",
+      "access-control-allow-origin": "https://giscus.app",
+      "cache-control": "public, max-age=31536000, immutable",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a56d88bc71e9-AMS"
+    },
+    "decodedBytes": 54772,
+    "sha256": "6f6f6c093f140e7d1d4c0f928c3ede6ecff1599de9b398895f5a57abaf86eecb",
+    "time": {
+      "dns": 2.431,
+      "tcp": 394.603,
+      "tls": 186.19300000000004,
+      "ttfb": 992.91,
+      "total": 1035.148
+    }
+  },
+  {
+    "label": "font-iframe",
+    "request": "conditional GET",
+    "url": "https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/6f6f6c093f140e7d1d4c.woff2",
+    "requestOrigin": "https://giscus.app",
+    "startedAt": "2026-11-27T19:47:42.131Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "etag": "\"04572ca9282aaa7064b2e5449758c994\"",
+      "last-modified": "Tue, 24 Nov 2026 19:08:35 GMT",
+      "vary": "Origin",
+      "age": "0",
+      "access-control-allow-origin": "https://giscus.app",
+      "cache-control": "public, max-age=31536000, immutable",
+      "cf-cache-status": "HIT",
+      "cf-ray": "a613a573cf60ffff-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.457,
+      "tcp": 366.514,
+      "tls": 173.53999999999996,
+      "ttfb": 737.469,
+      "total": 737.58
+    }
+  },
+  {
+    "label": "_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+    "request": "GET",
+    "url": "https://qians.day/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:42.877Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 897,
+    "headers": {
+      "content-type": "application/javascript",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"6e043da592ca2b7b66498e33ef4a19c3\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a5793bb40a48-AMS"
+    },
+    "decodedBytes": 1699,
+    "sha256": "df0af34fb2263dc086ebb448ef2d4b45e182d8e8d205bddcb0c1e1daa988fac2",
+    "time": {
+      "dns": 2.002,
+      "tcp": 392.64300000000003,
+      "tls": 241.72399999999993,
+      "ttfb": 943.641,
+      "total": 943.894
+    }
+  },
+  {
+    "label": "_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+    "request": "conditional GET",
+    "url": "https://qians.day/_astro/ImageGallery.astro_astro_type_script_index_0_lang.Dsw0ilyt.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:43.828Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"6e043da592ca2b7b66498e33ef4a19c3\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a57ed990fe7b-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.079,
+      "tcp": 410.57300000000004,
+      "tls": 201.48999999999995,
+      "ttfb": 875.5840000000001,
+      "total": 875.664
+    }
+  },
+  {
+    "label": "_astro/ParagraphShare.astro_astro_type_script_index_0_lang.B4qBo3Lu.js",
+    "request": "GET",
+    "url": "https://qians.day/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.B4qBo3Lu.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:44.711Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 2180,
+    "headers": {
+      "content-type": "application/javascript",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"88b3ff04f23724a44bf623e1bf3f5c5f\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a584af649715-AMS"
+    },
+    "decodedBytes": 4750,
+    "sha256": "62eed139365103634db3ddafc685a630106936f2901e51f0424d7afe253d9493",
+    "time": {
+      "dns": 2.153,
+      "tcp": 412.73199999999997,
+      "tls": 226.88199999999998,
+      "ttfb": 974.8480000000001,
+      "total": 975.1260000000001
+    }
+  },
+  {
+    "label": "_astro/ParagraphShare.astro_astro_type_script_index_0_lang.B4qBo3Lu.js",
+    "request": "conditional GET",
+    "url": "https://qians.day/_astro/ParagraphShare.astro_astro_type_script_index_0_lang.B4qBo3Lu.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:45.694Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"88b3ff04f23724a44bf623e1bf3f5c5f\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a58a9b0b3c26-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 1.9680000000000002,
+      "tcp": 436.23199999999997,
+      "tls": 194.95800000000003,
+      "ttfb": 962.754,
+      "total": 962.851
+    }
+  },
+  {
+    "label": "_astro/_category_.H_W0nklu.css",
+    "request": "GET",
+    "url": "https://qians.day/_astro/_category_.H_W0nklu.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:46.665Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 2926,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"240e58dddb9a309fd3b400d8d3e85dff\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a590bb40971a-AMS"
+    },
+    "decodedBytes": 10591,
+    "sha256": "c06626c6eaf7e1495a9acfb61d0d7bbf526ad0d4651c8cfc348cac170752a0a8",
+    "time": {
+      "dns": 2.2929999999999997,
+      "tcp": 395.78200000000004,
+      "tls": 204.29499999999996,
+      "ttfb": 915.472,
+      "total": 915.775
+    }
+  },
+  {
+    "label": "_astro/_category_.H_W0nklu.css",
+    "request": "conditional GET",
+    "url": "https://qians.day/_astro/_category_.H_W0nklu.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:47.588Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"240e58dddb9a309fd3b400d8d3e85dff\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a5968b3fb6a8-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.336,
+      "tcp": 399.373,
+      "tls": 243.55099999999996,
+      "ttfb": 949.337,
+      "total": 949.45
+    }
+  },
+  {
+    "label": "_astro/_slug_.oXcecw3I.css",
+    "request": "GET",
+    "url": "https://qians.day/_astro/_slug_.oXcecw3I.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:48.545Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 3406,
+    "headers": {
+      "content-type": "text/css; charset=utf-8",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"3768aeca91f95ce5ca531aac07901891\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a59bdcd28069-AMS"
+    },
+    "decodedBytes": 14042,
+    "sha256": "4faf0b1be621cf4435fa619046bc1bed0273dc512f6870cc3fe7cf0beee0b8ce",
+    "time": {
+      "dns": 2.179,
+      "tcp": 364.98900000000003,
+      "tls": 172.33300000000003,
+      "ttfb": 773.786,
+      "total": 774.135
+    }
+  },
+  {
+    "label": "_astro/_slug_.oXcecw3I.css",
+    "request": "conditional GET",
+    "url": "https://qians.day/_astro/_slug_.oXcecw3I.css",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:49.327Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"3768aeca91f95ce5ca531aac07901891\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a5a1b896d0d9-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.4,
+      "tcp": 473.35099999999994,
+      "tls": 217.698,
+      "ttfb": 1000.445,
+      "total": 1000.5280000000001
+    }
+  },
+  {
+    "label": "_astro/image-viewer.DMdGLzpg.js",
+    "request": "GET",
+    "url": "https://qians.day/_astro/image-viewer.DMdGLzpg.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:50.335Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 20418,
+    "headers": {
+      "content-type": "application/javascript",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"bf5621399ee35df688e2b2f2aecb8a61\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a5a7a9de6615-AMS"
+    },
+    "decodedBytes": 70137,
+    "sha256": "2f8a455f3f0842fca5d2829013ae88df4a4aeae361e89b49e93a1d333f1b2c07",
+    "time": {
+      "dns": 2.383,
+      "tcp": 400.96099999999996,
+      "tls": 204.517,
+      "ttfb": 1060.017,
+      "total": 1071.415
+    }
+  },
+  {
+    "label": "_astro/image-viewer.DMdGLzpg.js",
+    "request": "conditional GET",
+    "url": "https://qians.day/_astro/image-viewer.DMdGLzpg.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:51.415Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"bf5621399ee35df688e2b2f2aecb8a61\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a5af0e54aa76-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.305,
+      "tcp": 482.26099999999997,
+      "tls": 219.67699999999996,
+      "ttfb": 1012.9410000000001,
+      "total": 1013.0429999999999
+    }
+  },
+  {
+    "label": "pagefind/fragment/zh-cn_446a1ff.pf_fragment",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/fragment/zh-cn_446a1ff.pf_fragment",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:52.436Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 605,
+    "headers": {
+      "content-type": "application/octet-stream",
+      "content-length": "605",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"b7c4bd95261f0c27fdfa7c6e239a2e16\"",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5b4da3622d1-AMS"
+    },
+    "decodedBytes": 605,
+    "sha256": "9f8a05a5656e4a1d67b581878f1d61975c8ee0e329a0108e0b8303832d55a5d4",
+    "time": {
+      "dns": 2.0660000000000003,
+      "tcp": 400.84700000000004,
+      "tls": 207.03999999999994,
+      "ttfb": 1040.586,
+      "total": 1040.819
+    }
+  },
+  {
+    "label": "pagefind/fragment/zh-cn_446a1ff.pf_fragment",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/fragment/zh-cn_446a1ff.pf_fragment",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:53.484Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5bae90791f2-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 1.859,
+      "tcp": 380.78499999999997,
+      "tls": 183.751,
+      "ttfb": 799.668,
+      "total": 799.766
+    }
+  },
+  {
+    "label": "pagefind/fragment/zh-cn_776e2f1.pf_fragment",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/fragment/zh-cn_776e2f1.pf_fragment",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:54.291Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 406,
+    "headers": {
+      "content-type": "application/octet-stream",
+      "content-length": "406",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"491f820ea280ea12321d6539d8caf235\"",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5bfee9a95ab-AMS"
+    },
+    "decodedBytes": 406,
+    "sha256": "17bb043e9e15306e48c94e75e8f6cad097ae4c7ceee0f37888830f20eb267a90",
+    "time": {
+      "dns": 2.028,
+      "tcp": 390.39700000000005,
+      "tls": 169.17899999999997,
+      "ttfb": 1002.572,
+      "total": 1002.804
+    }
+  },
+  {
+    "label": "pagefind/fragment/zh-cn_776e2f1.pf_fragment",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/fragment/zh-cn_776e2f1.pf_fragment",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:55.301Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5c7ed569fee-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.058,
+      "tcp": 490.31399999999996,
+      "tls": 305.444,
+      "ttfb": 1093.06,
+      "total": 1093.1519999999998
+    }
+  },
+  {
+    "label": "pagefind/index/zh-cn_f83388f.pf_index",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/index/zh-cn_f83388f.pf_index",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:56.402Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 1099,
+    "headers": {
+      "content-type": "application/octet-stream",
+      "content-length": "1099",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"3ca007d5ac90e991c0c0f9ef9c0c5ea5\"",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5cdccd1df76-AMS"
+    },
+    "decodedBytes": 1099,
+    "sha256": "dc1420d354d2af0ff12d01566ad37d7970c32e1570c09ea65e3a6f9b18ddb103",
+    "time": {
+      "dns": 2.026,
+      "tcp": 417.60200000000003,
+      "tls": 216.99999999999997,
+      "ttfb": 1069.915,
+      "total": 1070.12
+    }
+  },
+  {
+    "label": "pagefind/index/zh-cn_f83388f.pf_index",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/index/zh-cn_f83388f.pf_index",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:57.480Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5d3b98fc28a-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.2889999999999997,
+      "tcp": 366.28900000000004,
+      "tls": 172.10200000000003,
+      "ttfb": 749.8359999999999,
+      "total": 750.024
+    }
+  },
+  {
+    "label": "pagefind/pagefind-entry.json",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/pagefind-entry.json",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:58.238Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 167,
+    "headers": {
+      "content-type": "application/json",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"e5a8de1efc14169eca85d0a6aef3123b\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5d92a59d179-AMS"
+    },
+    "decodedBytes": 180,
+    "sha256": "3e58107fdb4ab81ff8282c91a0ce058d4c820cc1db9d658e056a7552182a990e",
+    "time": {
+      "dns": 2.476,
+      "tcp": 386.932,
+      "tls": 263.575,
+      "ttfb": 1052.529,
+      "total": 1053.142
+    }
+  },
+  {
+    "label": "pagefind/pagefind-entry.json",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/pagefind-entry.json",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:47:59.299Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5dfb9fcbd47-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.7560000000000002,
+      "tcp": 466.396,
+      "tls": 172.06299999999996,
+      "ttfb": 990.9440000000001,
+      "total": 991.0550000000001
+    }
+  },
+  {
+    "label": "pagefind/pagefind-worker.js",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/pagefind-worker.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:00.299Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 12331,
+    "headers": {
+      "content-type": "application/javascript",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"083e932d7d9a365edff987ed6bf996b8\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a5e6eba4fb9b-AMS"
+    },
+    "decodedBytes": 42928,
+    "sha256": "78115e3651f11d29f03a1f3eb2776a7901c22532bdfa23b7ae73c693c0867bda",
+    "time": {
+      "dns": 1.786,
+      "tcp": 515.2730000000001,
+      "tls": 247.21499999999997,
+      "ttfb": 1200.764,
+      "total": 1207.568
+    }
+  },
+  {
+    "label": "pagefind/pagefind-worker.js",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/pagefind-worker.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:01.514Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"083e932d7d9a365edff987ed6bf996b8\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a5ed790e4150-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.058,
+      "tcp": 406.642,
+      "tls": 212.82899999999998,
+      "ttfb": 886.892,
+      "total": 886.992
+    }
+  },
+  {
+    "label": "pagefind/pagefind.js",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/pagefind.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:02.410Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 13277,
+    "headers": {
+      "content-type": "application/javascript",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"31adcb0a9726278e60bba9715802069c\"",
+      "content-encoding": "gzip",
+      "vary": "accept-encoding",
+      "cf-cache-status": "MISS",
+      "cf-ray": "a613a5f28eb50d28-AMS"
+    },
+    "decodedBytes": 47228,
+    "sha256": "02746cc529f88f853275720dcb1c2b6a18b0c7a92b73fae82ca2738e64500bcd",
+    "time": {
+      "dns": 2.37,
+      "tcp": 366.51500000000004,
+      "tls": 170.401,
+      "ttfb": 769.312,
+      "total": 772.354
+    }
+  },
+  {
+    "label": "pagefind/pagefind.js",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/pagefind.js",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:03.190Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "W/\"31adcb0a9726278e60bba9715802069c\"",
+      "cf-cache-status": "REVALIDATED",
+      "cf-ray": "a613a5f7a96c0c13-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 1.863,
+      "tcp": 403.18,
+      "tls": 172.13000000000005,
+      "ttfb": 787.058,
+      "total": 787.1479999999999
+    }
+  },
+  {
+    "label": "pagefind/pagefind.zh-cn_ed44c37c246cc.pf_meta",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/pagefind.zh-cn_ed44c37c246cc.pf_meta",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:03.984Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 135,
+    "headers": {
+      "content-type": "application/octet-stream",
+      "content-length": "135",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"bdfeb41838d38cb5efddf4c75475de56\"",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a5fd0b750a54-AMS"
+    },
+    "decodedBytes": 135,
+    "sha256": "36f132002c6e3c5be989343f7317cb0612c26e63db38daaf41f9240a75d49dc5",
+    "time": {
+      "dns": 2.1470000000000002,
+      "tcp": 399.28,
+      "tls": 213.17700000000005,
+      "ttfb": 1038.4180000000001,
+      "total": 1038.64
+    }
+  },
+  {
+    "label": "pagefind/pagefind.zh-cn_ed44c37c246cc.pf_meta",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/pagefind.zh-cn_ed44c37c246cc.pf_meta",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:05.031Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a6034fd52908-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.218,
+      "tcp": 402.305,
+      "tls": 189.89099999999996,
+      "ttfb": 828.688,
+      "total": 828.784
+    }
+  },
+  {
+    "label": "pagefind/wasm.unknown.pagefind",
+    "request": "GET",
+    "url": "https://qians.day/pagefind/wasm.unknown.pagefind",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:05.867Z",
+    "status": 200,
+    "protocol": "2",
+    "encoded": 55386,
+    "headers": {
+      "content-type": "application/octet-stream",
+      "content-length": "55386",
+      "access-control-allow-origin": "*",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"dab4668a16cb734234ce71f2185f939e\"",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a6097bdcb192-AMS"
+    },
+    "decodedBytes": 55386,
+    "sha256": "7add525659192e7baf940ef743cc052098e5fc45c94462179a59376d5d1bdc74",
+    "time": {
+      "dns": 2.968,
+      "tcp": 433.914,
+      "tls": 281.579,
+      "ttfb": 1064.319,
+      "total": 1119.5539999999999
+    }
+  },
+  {
+    "label": "pagefind/wasm.unknown.pagefind",
+    "request": "conditional GET",
+    "url": "https://qians.day/pagefind/wasm.unknown.pagefind",
+    "requestOrigin": "https://qians.day",
+    "startedAt": "2026-11-27T19:48:06.994Z",
+    "status": 304,
+    "protocol": "2",
+    "encoded": 0,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "a613a60ffcf4d593-AMS"
+    },
+    "decodedBytes": 0,
+    "time": {
+      "dns": 2.2590000000000003,
+      "tcp": 399.40799999999996,
+      "tls": 237.155,
+      "ttfb": 904.048,
+      "total": 904.1360000000001
+    }
+  }
+]

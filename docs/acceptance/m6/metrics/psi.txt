@@ -1,0 +1,29 @@
+2026-11-27T19:45:51.944Z
+https://pagespeed.web.dev/analysis/https-qians-day/nslu92oj24k3w8wit54wq4?form_factor=mobile
+        container
+          image
+          text "了解您的真实用户的体验"
+          container
+            button "button" [ref=10]
+              svg_root
+            text "无任何数据"
+        container
+          container
+            image
+2026-11-27T19:52:23.817Z
+https://pagespeed.web.dev/analysis/https-qians-day/nslu92oj24k3w8wit54wq4?form_factor=desktop
+      tabpanel "computer桌面设备"
+        container
+          image
+          text "了解您的真实用户的体验"
+          container
+            button "button" [ref=352]
+              svg_root
+            text "无任何数据"
+        container
+          container
+            image
+            text "诊断性能问题"
+          container
+            container
+              anchor [ref=353, url=https://pagespeed.web.dev/#performance]

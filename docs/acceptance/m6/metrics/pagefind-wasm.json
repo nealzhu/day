@@ -1,0 +1,17 @@
+{
+  "local": {
+    "bytes": 55400,
+    "sha256": "2289cc9af9f629dbf6670222d8e12785ec35454417000cc60978fafec34fcca0",
+    "wasmBytes": 126927,
+    "wasmSha256": "043595fb5427ee46adc62609313d3cfdb4db58ebd43b06b5fd3f469d2e93a35c",
+    "wasmMagicHex": "7061676566696e64"
+  },
+  "production": {
+    "bytes": 55386,
+    "sha256": "7add525659192e7baf940ef743cc052098e5fc45c94462179a59376d5d1bdc74",
+    "wasmBytes": 126927,
+    "wasmSha256": "7e13ac727ad3f5ae057c00db924382f74d27adf190e05ff2903419596903e333",
+    "wasmMagicHex": "7061676566696e64"
+  },
+  "url": "https://qians.day/pagefind/wasm.unknown.pagefind"
+}

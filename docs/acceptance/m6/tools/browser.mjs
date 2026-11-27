@@ -318,20 +318,22 @@ async function interaction({ context, page, cdp, requests, console, device, netw
     case 'comments-delayed-failure': {
       const prose = await checkProse();
       const section = page.locator('.comments');
-      steps.push(await phase('reach-comments', async () => {
+      const reach = await phase('reach-comments', async () => {
+        const initialState = await section.getAttribute('data-state');
         await section.evaluate(el => el.scrollIntoView({ block: 'center', behavior: 'instant' }));
         const scroll = await page.evaluate(() => scrollY);
         const expected = scenario === 'comments-delayed-failure' ? 'failed' : 'ready';
-        let trigger = 'scroll';
-        if (scroll === 0) {
-          trigger = 'explicit-click';
-          await section.locator('.comments-load').click();
-        }
+        const trigger = initialState ? 'initial-viewport' : scroll > 0 ? 'scroll' : 'viewport';
         await page.locator(`.comments[data-state="${expected}"]`).waitFor({ state: 'attached' });
-        return { ...(await stamp()), trigger, scroll, state: expected,
+        return { ...(await stamp()), trigger, initialState, scroll, state: expected,
           proseBefore: prose, proseAfter: await checkProse(),
           iframeCount: await page.locator('.giscus-frame').count() };
-      }));
+      });
+      if (reach.observed.initialState) {
+        reach.readyMs = null;
+        reach.throughPaintMs = null;
+      }
+      steps.push(reach);
       await capture(scenario);
       const frame = page.frames().find(f => f.url().startsWith('https://giscus.app/'));
       if (frame) {

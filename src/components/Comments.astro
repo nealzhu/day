@@ -34,7 +34,6 @@ const production = import.meta.env.MODE === 'production';
     const frame = () => host.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
     let script: HTMLScriptElement | undefined;
     let timeout = 0;
-    let near = false;
     let started = false;
     let connected = false;
     let frameTheme: string | undefined;
@@ -69,24 +68,15 @@ const production = import.meta.env.MODE === 'production';
       if (document.activeElement === section) button.focus({ preventScroll: true });
     }
 
-    const startOnScroll = new AbortController();
+    // The observer controls when Giscus and its iframe start loading.
     const observer = 'IntersectionObserver' in window ? new IntersectionObserver(([entry]) => {
-      near = entry.isIntersecting;
-      loadWhenNear();
-    }) : undefined;
-
-    function loadWhenNear() {
-      // A short article can put comments in view on the initial paint.
-      if (near && scrollY > 0 && !root.hasAttribute('data-reading')) load();
-    }
+      if (entry.isIntersecting && !started && !root.hasAttribute('data-reading')) load();
+    }, { rootMargin: '200px 0px' }) : undefined;
 
     function load() {
       if (section!.dataset.state === 'loading') return;
-      if (!started) {
-        started = true;
-        observer?.disconnect();
-        startOnScroll.abort();
-      }
+      started = true;
+      observer?.disconnect();
       section!.dataset.state = 'loading';
       status.textContent = '正在载入留言';
       button.hidden = true;
@@ -157,7 +147,6 @@ const production = import.meta.env.MODE === 'production';
     window.addEventListener('pagehide', event => {
       if (event.persisted) return;
       lifetime.abort();
-      startOnScroll.abort();
       observer?.disconnect();
       themeObserver.disconnect();
       clearTimeout(timeout);
@@ -170,7 +159,6 @@ const production = import.meta.env.MODE === 'production';
       load();
     }, { signal });
     observer?.observe(section);
-    if (observer) window.addEventListener('scroll', loadWhenNear, { passive: true, signal: startOnScroll.signal });
   }
 </script>
 

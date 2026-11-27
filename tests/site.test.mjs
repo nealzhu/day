@@ -138,17 +138,19 @@ import Site from '../layouts/Site.astro';
     assert.ok(await heading.isHidden());
     assert.equal(requests.length, 0);
     assert.equal(themeRequests.length, 0);
-    await comments.evaluate(section => scrollBy(0, section.getBoundingClientRect().top - innerHeight - 80));
+    await comments.evaluate(section => scrollBy({ top: section.getBoundingClientRect().top - innerHeight - 280, behavior: 'instant' }));
     await reader.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
     assert.equal(requests.length, 0);
     await reader.keyboard.press('i');
     await reader.keyboard.press('End');
     assert.ok(await comments.isHidden());
     assert.equal(requests.length, 0);
+    await reader.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
     await reader.keyboard.press('i');
-    await comments.evaluate(section => section.scrollIntoView());
+    await comments.evaluate(section => scrollBy({ top: section.getBoundingClientRect().top - innerHeight - 100, behavior: 'instant' }));
     const retry = comments.getByRole('button', { name: '重试' });
     await retry.waitFor();
+    assert.ok(await comments.evaluate(section => section.getBoundingClientRect().top > innerHeight));
     assert.deepEqual(requests.map(url => url.pathname), ['/client.js']);
     assert.equal(await frame.count(), 0);
 
@@ -185,9 +187,10 @@ import Site from '../layouts/Site.astro';
     for (const [key, value] of Object.entries({
       mapping: 'specific', strict: '1', term: 'article-pictured', repo: 'nealzhu/day', repoId: 'R_kgDOV2z4ZA',
       category: 'Article Comments', categoryId: 'DIC_kwDOV2z4ZM4DMC8T', backLink: `${site}/posts/pictured/`,
-      lang: 'zh-CN', reactionsEnabled: '1', inputPosition: 'top', loading: 'lazy',
+      lang: 'zh-CN', reactionsEnabled: '1', inputPosition: 'top',
       theme: `${site}/comments/theme.css#light`,
     })) assert.equal(query.get(key), value, key);
+    assert.equal(query.has('loading'), false);
 
     const widget = frame.contentFrame();
     const reaction = widget.locator('.gsc-reactions-menu summary[aria-label="添加回应"]').first();
@@ -263,10 +266,21 @@ import Site from '../layouts/Site.astro';
     assert.equal(await frame.evaluate(element => element.style.height), iframeHeight);
     assert.equal(await comments.getAttribute('data-state'), 'ready');
 
+    await reader.setViewportSize({ width: 1440, height: 120 });
+    await reader.goto(`${site}/posts/text-only/`);
+    await reader.evaluate(() => document.fonts.ready.then(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))));
+    assert.ok(await comments.evaluate(section => section.getBoundingClientRect().top > innerHeight + 200));
+    assert.equal(requests.length, 4);
+    await reader.setViewportSize({ width: 1440, height: 900 });
+    await frame.waitFor();
+    assert.equal(await reader.evaluate(() => scrollY), 0);
+    assert.deepEqual(requests.slice(4).map(url => url.pathname), ['/client.js', '/zh-CN/widget']);
+
     await reader.setViewportSize({ width: 390, height: 844 });
     await reader.goto(`${site}/posts/text-only/`);
-    await comments.getByRole('button', { name: '加载评论' }).click();
     await frame.waitFor();
+    assert.ok(await comments.evaluate(section => scrollY === 0 && section.getBoundingClientRect().top < innerHeight));
+    assert.ok(await reader.evaluate(() => document.activeElement === document.body));
     assert.equal(await comments.getAttribute('data-state'), 'ready');
     assert.equal(requests.at(-1).searchParams.get('term'), 'article-text-only');
     assert.ok(!await reader.evaluate(() => document.documentElement.scrollWidth > innerWidth));
@@ -351,7 +365,6 @@ import Site from '../layouts/Site.astro';
     quietWidget = true;
     await reader.clock.install();
     await reader.goto(`${site}/posts/text-only/`);
-    await comments.getByRole('button', { name: '加载评论' }).click();
     await comments.getByText('正在载入留言', { exact: true }).waitFor();
     await frame.waitFor({ state: 'attached' });
     await reader.clock.fastForward(15_001);

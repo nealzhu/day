@@ -68,7 +68,7 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
       : signedIn ? `${action}评论</button>` : `<a class="btn-primary" href="${login}" target="_top">使用 GitHub 登录</a>`}</div></div>
     </form>`;
   const reactions = (position, groups = []) => `<details class="gsc-reactions-menu">
-    <summary class="gsc-reactions-button gsc-social-reaction-summary-item" aria-label="添加回应">☺</summary>
+    <summary class="gsc-reactions-button gsc-social-reaction-summary-item" aria-label="添加回应"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor"/><path d="M5 9a3 3 0 0 0 6 0M6 6h1m2 0h1" fill="none" stroke="currentColor"/></svg></summary>
     <div class="gsc-reactions-popover ${position} left">
       <p>${signedIn ? '选择您的回应' : `<a href="${login}" target="_top">登录</a>后可添加回应。`}</p><div></div>
       <div>${emojis.map(emoji => `<button class="gsc-emoji-button" type="button" data-emoji="${emoji}" ${disabled}>${emoji}</button>`).join('')}</div>
@@ -90,7 +90,7 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
   const replyBox = signedIn ? `<div class="gsc-reply-box"><button type="button">回复</button></div>${composer(true)}` : '';
   const comment = (header, text, existingReplies = '') => `<div class="gsc-comment"><div>${header}<p class="gsc-comment-content">${text}</p>
     <div class="gsc-comment-footer"><div class="gsc-comment-reactions">
-      <button class="gsc-upvote-button gsc-social-reaction-summary-item" aria-label="赞同" disabled>↑</button>${reactions('top')}</div></div>
+      <button class="gsc-upvote-button gsc-social-reaction-summary-item" aria-label="赞同" disabled><svg class="gsc-direct-reaction-button-emoji" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14V2m-4 4 4-4 4 4" fill="none" stroke="currentColor"/></svg></button>${reactions('top')}</div></div>
     <div class="gsc-replies">${existingReplies}</div>${replyBox}</div></div>`;
   return `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
     <style>

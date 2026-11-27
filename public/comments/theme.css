@@ -15,6 +15,9 @@ main {
   --divider: 1px solid var(--rule);
   --reaction-size: 34px;
   --small-reaction-size: 26px;
+  --reaction-icon-size: 26px;
+  --small-reaction-icon-size: 20px;
+  --comment-emoji-size: 14px;
   --hover: color-mix(in srgb, var(--inset) 85%, var(--accent));
   --color-fg-default: var(--ink);
   --color-fg-muted: var(--muted);
@@ -89,6 +92,24 @@ main .gsc-social-reaction-summary-item:not(.gsc-upvote-button):hover:enabled {
   color: var(--accent);
 }
 main .gsc-social-reaction-summary-item.has-reacted { border-color: var(--accent); }
+main .gsc-reactions-button {
+  inline-size: var(--reaction-size);
+  block-size: var(--reaction-size);
+  padding: 0;
+}
+main :is(.gsc-reactions-button, .gsc-upvote-button) > svg { display: none; }
+main .gsc-reactions-button::after, main .gsc-upvote-button::before {
+  content: '';
+  display: block;
+  flex: none;
+  background: currentColor;
+  mask: var(--reaction-symbol) center / contain no-repeat;
+}
+main .gsc-reactions-button::after {
+  --reaction-symbol: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Ccircle%20cx%3D%2212%22%20cy%3D%2212%22%20r%3D%229.6%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.65%22%2F%3E%3Ccircle%20cx%3D%228.65%22%20cy%3D%229.7%22%20r%3D%221.05%22%2F%3E%3Ccircle%20cx%3D%2215.35%22%20cy%3D%229.7%22%20r%3D%221.05%22%2F%3E%3Cpath%20d%3D%22M8.1%2013.25a4.45%204.45%200%200%200%207.8%200%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.65%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  inline-size: var(--reaction-icon-size);
+  block-size: var(--reaction-icon-size);
+}
 main .gsc-reactions-menu[open] > summary { background: var(--hover); color: var(--accent); }
 main .gsc-reactions-menu { position: relative; flex: none; }
 main .gsc-reactions-menu:not([open]) > .gsc-reactions-popover { display: none; }
@@ -245,13 +266,31 @@ main :is(.gsc-comment-content, .gsc-reply-content) { font-size: 15px; line-heigh
 main .gsc-comment-footer { margin: 0; }
 main :is(.gsc-comment-reactions, .gsc-reply-reactions) {
   --reaction-size: var(--small-reaction-size);
+  --reaction-icon-size: var(--small-reaction-icon-size);
   margin: 0;
   flex-wrap: wrap;
   align-items: center;
 }
-main :is(.gsc-comment-reactions, .gsc-reply-reactions) .gsc-reactions-button { padding-inline: 0; }
-main :is(.gsc-comment-reactions, .gsc-reply-reactions) .gsc-reactions-button svg { width: 14px; height: 14px; }
-main .gsc-upvote-button { min-height: var(--reaction-size); color: var(--muted); }
+main :is(.gsc-comment-reactions, .gsc-reply-reactions) span.gsc-direct-reaction-button-emoji {
+  display: inline-grid;
+  place-items: center;
+  inline-size: var(--reaction-icon-size);
+  block-size: var(--reaction-icon-size);
+  font-size: var(--comment-emoji-size);
+  line-height: 1;
+}
+main .gsc-upvote-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  min-height: var(--reaction-size);
+  color: var(--muted);
+}
+main .gsc-upvote-button::before {
+  --reaction-symbol: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M10%2017V3.5M4.9%208.7%2010%203.5l5.1%205.2%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  inline-size: 18px;
+  block-size: 18px;
+}
 main .gsc-upvote-button:disabled { pointer-events: none; }
 main .gsc-replies { background: transparent; border: 0; }
 main .gsc-reply { margin-inline-start: 22px; padding: 10px 0 4px; }
@@ -272,6 +311,12 @@ main .gsc-reply-box > button:is(:hover, :focus-visible) { color: var(--accent); 
 main .gsc-comment-box-is-reply { margin-block-start: 8px; }
 
 @media (any-pointer: coarse) {
-  main { --reaction-size: 44px; --small-reaction-size: 34px; }
+  main {
+    --reaction-size: 44px;
+    --small-reaction-size: 34px;
+    --reaction-icon-size: 30px;
+    --small-reaction-icon-size: 24px;
+    --comment-emoji-size: 16px;
+  }
   main .gsc-comment-box-buttons :is(.btn-primary, button[type='button']) { min-height: 44px; }
 }

@@ -7,7 +7,8 @@ import test from 'node:test';
 import { preview } from 'astro';
 import { chromium } from 'playwright-core';
 import { cardPlaceholderFile, cardPlaceholderKey } from '../scripts/card-placeholder.mjs';
-import { article, copySiteFixture, temporaryDirectory } from './fixtures.mjs';
+import { fontCdn, fontDirectory, fontPrefix } from '../scripts/font-assets.mjs';
+import { article, copySiteFixture, giscusClientFixture, giscusWidgetFixture, temporaryDirectory } from './fixtures.mjs';
 
 test('production build and browser behaviour', async t => {
   const project = await temporaryDirectory(t);
@@ -77,11 +78,266 @@ import Site from '../layouts/Site.astro';
     assert.equal(pagefind.languages['zh-cn'].page_count, older.length + 2);
     assert.ok(!files.some(path => /^pagefind[\/\\]pagefind-(.*ui|highlight)\./.test(path)));
     assert.ok(!files.some(path => /\.woff2$|faces\.css$|^fonts[\/\\]/.test(path)));
+    const commentTheme = await readFile(join(dist, 'comments/theme.css'), 'utf8');
+    assert.ok(commentTheme.startsWith(`@import url("${fontCdn}/${fontPrefix}/faces.css");`));
     for (const path of files.filter(path => path.endsWith('.html'))) {
       assert.ok((await readFile(join(dist, path), 'utf8')).includes(
         'href="https://site-cdn.qians.day/fonts/lxgw-wenkai/v1.530/faces.css"'), path);
     }
   });
+
+  await t.test('comments are lazy, isolated by Article ID, recoverable and theme-aware', { timeout: 45_000 }, async t => {
+    const server = await preview({ root: project, server: { host: '127.0.0.1', port: 0 }, logLevel: 'silent' });
+    const browser = await chromium.launch({ channel: 'chrome' });
+    t.after(async () => { await browser.close(); await server.stop(); });
+    const reader = await browser.newPage({ viewport: { width: 1440, height: 900 }, colorScheme: 'light' });
+    const site = 'https://qians.day';
+    const provider = 'https://giscus.app';
+    const local = `http://127.0.0.1:${server.server.address().port}`;
+    const requests = [];
+    const themeRequests = [];
+    let breakScript = true;
+    let breakWidget = true;
+    let quietWidget = false;
+    let readyDelay = 0;
+    await reader.route('**/*', async route => {
+      const url = new URL(route.request().url());
+      if (url.origin === fontCdn && url.pathname.startsWith(`/${fontPrefix}/`)) {
+        const name = url.pathname.split('/').at(-1);
+        return route.fulfill({ headers: { 'access-control-allow-origin': '*' },
+          path: join(project, fontDirectory, name) });
+      }
+      if (url.origin === site) {
+        if (url.pathname === '/comments/theme.css') {
+          themeRequests.push(url);
+          return route.fulfill({ contentType: 'text/css', headers: { 'access-control-allow-origin': provider },
+            body: await readFile(join(dist, 'comments/theme.css'), 'utf8') });
+        }
+        return route.fulfill({ response: await route.fetch({ url: new URL(url.pathname, local).href }) });
+      }
+      if (url.origin !== provider) return route.abort();
+      requests.push(url);
+      if (url.pathname === '/client.js') {
+        if (breakScript) return route.abort();
+        return route.fulfill({ contentType: 'text/javascript', headers: { 'access-control-allow-origin': site }, body: giscusClientFixture });
+      }
+      assert.equal(url.pathname, '/zh-CN/widget');
+      if (quietWidget) return route.fulfill({ contentType: 'text/html', body: '<!doctype html><title>等待讨论响应</title>' });
+      const discussion = url.searchParams.get('term') === 'article-pictured';
+      const signedIn = new URL(url.searchParams.get('origin')).searchParams.has('preview-auth');
+      return route.fulfill({ contentType: 'text/html', body: breakWidget
+        ? giscusWidgetFixture({ error: 'API rate limit exceeded' })
+        : giscusWidgetFixture({ discussion, signedIn, readyDelay }) });
+    });
+
+    await reader.goto(`${site}/posts/pictured/`);
+    const comments = reader.getByRole('region', { name: '欢迎留下你的想法' });
+    const frame = comments.locator('iframe');
+    const heading = comments.locator('#comments-heading');
+    await comments.getByRole('button', { name: '加载评论' }).waitFor({ state: 'attached' });
+    assert.ok(await heading.isHidden());
+    assert.equal(requests.length, 0);
+    assert.equal(themeRequests.length, 0);
+    await comments.evaluate(section => scrollBy(0, section.getBoundingClientRect().top - innerHeight - 80));
+    await reader.evaluate(() => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))));
+    assert.equal(requests.length, 0);
+    await reader.keyboard.press('i');
+    await reader.keyboard.press('End');
+    assert.ok(await comments.isHidden());
+    assert.equal(requests.length, 0);
+    await reader.keyboard.press('i');
+    await comments.evaluate(section => section.scrollIntoView());
+    const retry = comments.getByRole('button', { name: '重试' });
+    await retry.waitFor();
+    assert.deepEqual(requests.map(url => url.pathname), ['/client.js']);
+    assert.equal(await frame.count(), 0);
+
+    breakScript = false;
+    await retry.click();
+    await frame.waitFor({ state: 'attached' });
+    await retry.waitFor();
+    const originalFrame = await frame.elementHandle();
+    breakWidget = false;
+    await reader.emulateMedia({ reducedMotion: 'reduce' });
+    readyDelay = 1000;
+    await retry.click();
+    await comments.getByText('正在载入留言', { exact: true }).waitFor();
+    assert.ok(await frame.isHidden());
+    assert.ok(await heading.isHidden());
+    const brush = comments.locator('.comments-loading-mark');
+    await brush.waitFor();
+    assert.equal(await brush.evaluate(mark => getComputedStyle(mark, '::before').animationName), 'none');
+    await frame.waitFor();
+    assert.ok(await heading.isVisible());
+    assert.equal(await comments.evaluate(section => getComputedStyle(section).borderTopWidth), '0px');
+    assert.ok(await brush.isHidden());
+    readyDelay = 0;
+    assert.ok(await comments.getByRole('status').isHidden());
+    assert.equal(await comments.getByRole('link', { name: /查看讨论/ }).count(), 0);
+    assert.ok(await originalFrame.evaluate(element => element === document.querySelector('.giscus-frame')));
+    assert.deepEqual(requests.map(url => url.pathname), ['/client.js', '/client.js', '/zh-CN/widget', '/zh-CN/widget']);
+    const query = requests.at(-1).searchParams;
+    for (const [key, value] of Object.entries({
+      mapping: 'specific', strict: '1', term: 'article-pictured', repo: 'nealzhu/day', repoId: 'R_kgDOV2z4ZA',
+      category: 'Article Comments', categoryId: 'DIC_kwDOV2z4ZM4DMC8T', backLink: `${site}/posts/pictured/`,
+      lang: 'zh-CN', reactionsEnabled: '1', inputPosition: 'top', loading: 'lazy',
+      theme: `${site}/comments/theme.css#light`,
+    })) assert.equal(query.get(key), value, key);
+
+    const widget = frame.contentFrame();
+    const reaction = widget.locator('.gsc-reactions-menu summary[aria-label="添加回应"]').first();
+    await reaction.waitFor();
+    await widget.locator('.gsc-reactions-count').waitFor({ state: 'hidden' });
+    assert.equal(await widget.locator('.gsc-comments-count').isVisible(), false);
+    assert.equal(await widget.locator('.gsc-comment-box-tabs').isVisible(), false);
+    assert.equal(await widget.locator('.gsc-comment-box-textarea').getAttribute('placeholder'), '登录后可发表评论');
+    for (const selector of ['.gsc-comment-content', '.gsc-reply-content', '.gsc-comment-box-textarea']) {
+      const text = widget.locator(selector).first();
+      assert.ok(await text.evaluate(async element => {
+        const style = getComputedStyle(element);
+        const faces = await document.fonts.load(`${style.fontSize} "Day Reading"`, element.textContent || element.placeholder);
+        return style.fontFamily.startsWith('"Day Reading"') && faces.length > 0 && faces.every(face => face.status === 'loaded');
+      }), `Expected the site's reading font in ${selector}`);
+    }
+    assert.ok(await widget.getByRole('link', { name: '使用 GitHub 登录' }).isVisible());
+    const chips = widget.locator('.gsc-reactions .gsc-direct-reaction-buttons button');
+    const chipPositions = () => chips.evaluateAll(buttons => buttons.map(button => button.getBoundingClientRect().toJSON()));
+    const positions = await chipPositions();
+    assert.equal(await chips.first().evaluate(chip => getComputedStyle(chip).columnGap), '4px');
+    await reaction.click();
+    const menu = widget.locator('.gsc-reactions .gsc-reactions-popover');
+    await menu.getByText('后可添加回应。').waitFor();
+    assert.deepEqual(await chipPositions(), positions);
+    assert.equal(await menu.locator('button:disabled').count(), 8);
+    await widget.locator('.gsc-comment-content').first().click();
+    await menu.waitFor({ state: 'hidden' });
+    await reaction.click();
+    await menu.waitFor();
+    await heading.click();
+    await menu.waitFor({ state: 'hidden' });
+    await reaction.click();
+    await menu.waitFor();
+    await widget.locator('.gsc-comment-content').first().click();
+    assert.ok(await widget.locator('.gsc-comment-author-avatar img').first().isVisible());
+    assert.ok(await widget.locator('.gsc-reply-author-avatar img').isVisible());
+    assert.equal(await widget.locator('.gsc-reply-author').evaluate(author => getComputedStyle(author, '::after').content), '"作者"');
+    assert.equal(await widget.locator('.gsc-reply').evaluate(reply => getComputedStyle(reply).borderInlineStartWidth), '0px');
+    assert.equal(await widget.locator('.gsc-reply-footer').evaluate(footer => getComputedStyle(footer).marginBlockStart), '8px');
+    assert.ok(await widget.locator('.gsc-upvote-button').first().isDisabled());
+    const order = await widget.locator('main').evaluate(main => ['.gsc-reactions', '.gsc-comment-box', '.gsc-timeline']
+      .map(selector => main.querySelector(selector).getBoundingClientRect().top));
+    assert.ok(order[0] < order[1] && order[1] < order[2]);
+    await reader.emulateMedia({ colorScheme: 'dark' });
+    await widget.locator('#giscus-theme[href$="#dark"]').waitFor({ state: 'attached' });
+    assert.equal(await widget.locator('html').evaluate(html => getComputedStyle(html).colorScheme), 'dark');
+    await reader.locator('#settings-trigger').hover();
+    await reader.locator('[data-theme-choice="light"]').click();
+    await widget.locator('#giscus-theme[href$="#light"]').waitFor({ state: 'attached' });
+    assert.equal(await widget.locator('html').evaluate(html => getComputedStyle(html).colorScheme), 'light');
+    await reader.keyboard.press('Escape');
+    await reader.keyboard.press('i');
+    assert.ok(await comments.isHidden());
+    await reader.keyboard.press('i');
+    assert.ok(await originalFrame.evaluate(element => element === document.querySelector('.giscus-frame')));
+    assert.equal(requests.length, 4);
+    assert.ok(themeRequests.length > 0);
+
+    const iframeHeight = await frame.evaluate(element => element.style.height);
+    await reader.evaluate(origin => {
+      const source = document.querySelector('.giscus-frame').contentWindow;
+      const data = { giscus: { resizeHeight: 999, error: 'API rate limit exceeded' } };
+      window.dispatchEvent(new MessageEvent('message', { origin, source: window, data }));
+      window.dispatchEvent(new MessageEvent('message', { origin: location.origin, source, data }));
+    }, provider);
+    assert.equal(await frame.evaluate(element => element.style.height), iframeHeight);
+    assert.equal(await comments.getAttribute('data-state'), 'ready');
+
+    await reader.setViewportSize({ width: 390, height: 844 });
+    await reader.goto(`${site}/posts/text-only/`);
+    await comments.getByRole('button', { name: '加载评论' }).click();
+    await frame.waitFor();
+    assert.equal(await comments.getAttribute('data-state'), 'ready');
+    assert.equal(requests.at(-1).searchParams.get('term'), 'article-text-only');
+    assert.ok(!await reader.evaluate(() => document.documentElement.scrollWidth > innerWidth));
+
+    await reader.goto(`${site}/posts/pictured/?preview-auth=1`);
+    await comments.evaluate(section => section.scrollIntoView());
+    await frame.waitFor();
+    await reaction.click();
+    assert.equal(await menu.locator('p').isVisible(), false);
+    await menu.getByRole('button', { name: '👍' }).click();
+    assert.equal(await chips.first().locator('.gsc-social-reaction-summary-item-count').textContent(), '4');
+    const editor = widget.locator('.gsc-comment-box:not(.gsc-comment-box-is-reply)');
+    const topInput = editor.locator('textarea');
+    const topPublish = editor.locator('button[type=submit]');
+    assert.ok(await topPublish.isDisabled());
+    assert.ok(await editor.locator('.gsc-comment-box-tabs').isHidden());
+    assert.ok(await editor.locator('.gsc-comment-box-textarea-extras').isHidden());
+    assert.equal(await topInput.evaluate(input => getComputedStyle(input).borderTopWidth), '0px');
+    assert.match(await editor.locator('.gsc-comment-box-write').evaluate(write => getComputedStyle(write, '::before').content), /说说你的想法吧/);
+    assert.match(await topPublish.evaluate(button => getComputedStyle(button, '::after').content), /发布/);
+    await topInput.fill('   ');
+    assert.ok(await topPublish.isDisabled());
+    await topInput.fill('这是一条隔离预览中的一级留言。');
+    assert.equal(await editor.locator('.gsc-comment-box-write').evaluate(write => getComputedStyle(write, '::before').content), 'none');
+    await topPublish.click();
+    await widget.getByText('这是一条隔离预览中的一级留言。').waitFor();
+    assert.equal(await topInput.inputValue(), '');
+    assert.ok(await topPublish.isDisabled());
+    const firstComment = widget.locator('.gsc-comment').first();
+    const opener = firstComment.locator('.gsc-reply-box button');
+    const replyEditor = firstComment.locator('.gsc-comment-box-is-reply');
+    const replyInput = replyEditor.locator('textarea');
+    const replyPublish = replyEditor.locator('button[type=submit]');
+    await opener.press('Enter');
+    await replyEditor.waitFor();
+    assert.ok(await replyPublish.isDisabled());
+    assert.ok(await replyInput.evaluate(input => input === document.activeElement));
+    assert.equal(await replyInput.evaluate(input => getComputedStyle(input).backgroundColor), 'rgba(0, 0, 0, 0)');
+    await replyInput.fill('这是隔离预览中的回复。');
+    await replyEditor.getByRole('button', { name: '取消' }).press('Enter');
+    assert.ok(await replyEditor.isHidden());
+    assert.ok(await opener.evaluate(button => button === document.activeElement));
+    assert.equal(await firstComment.getByText('这是隔离预览中的回复。').count(), 0);
+    await opener.press('Enter');
+    assert.equal(await replyInput.inputValue(), '这是隔离预览中的回复。');
+    await replyPublish.click();
+    await firstComment.getByText('这是隔离预览中的回复。').waitFor();
+    assert.ok(await replyEditor.isHidden());
+
+    quietWidget = true;
+    await reader.clock.install();
+    await reader.goto(`${site}/posts/text-only/`);
+    await comments.getByRole('button', { name: '加载评论' }).click();
+    await comments.getByText('正在载入留言', { exact: true }).waitFor();
+    await frame.waitFor({ state: 'attached' });
+    await reader.clock.fastForward(15_001);
+    await retry.waitFor();
+    assert.match(await comments.getByRole('status').innerText(), /暂时无法加载评论/);
+    quietWidget = false;
+    await retry.click();
+    await frame.waitFor();
+
+    await reader.unrouteAll();
+    await reader.route(`${provider}/**`, route => { requests.push(new URL(route.request().url())); return route.abort(); });
+    const count = requests.length;
+    await reader.goto(`${local}/posts/text-only/`);
+    assert.match(await comments.innerText(), /此环境未启用评论/);
+    await reader.keyboard.press('End');
+    assert.equal(requests.length, count);
+  });
+
+  await article(posts, 'text-only', { category: undefined, title: '已更名的文章', slug: 'renamed-article' });
+  await t.test('an edited title and slug keep the discussion term and update the backlink', async () => {
+    execFileSync(process.execPath, [resolve('node_modules/astro/astro.js'), 'build', '--force'], {
+      cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
+    });
+    const renamed = await readFile(join(dist, 'posts/renamed-article/index.html'), 'utf8');
+    assert.match(renamed, /data-comment-term="article-text-only"/);
+    assert.match(renamed, /name="giscus:backlink" content="https:\/\/qians\.day\/posts\/renamed-article\/"/);
+  });
+  await article(posts, 'text-only', { category: undefined, description: '北极星摘要。' },
+    '我用 Cloudflare 存档星图，翻到一张罕见的地图。 pictured');
 
   execFileSync(process.execPath, [join(project, 'scripts/build-preview.mjs')], {
     cwd: project, env: { ...process.env, MEDIA_BASE_URL: cdn }, stdio: 'pipe',
@@ -108,6 +364,7 @@ import Site from '../layouts/Site.astro';
     assert.ok(home.includes(cover));
     assert.ok(!home.includes(second));
     const detail = await html('posts/pictured/index.html');
+    assert.doesNotMatch(detail, /data-comment-term=/);
     assert.ok(detail.includes(cover) && detail.includes(second));
     assert.match(detail, /href="#notes-1"/);
     assert.match(detail, /id="notes-1"/);
@@ -817,16 +1074,25 @@ import Site from '../layouts/Site.astro';
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));
         assert.equal((await page.goto(new URL('/posts/secret-draft/', page.url()).href)).status(), 404);
-        await t.test('narrow articles paginate in published order and keep the wide archive position', async t => {
+        await t.test('pagination is before comments without the archive rail and preserves its scroll position', async t => {
           const reader = await browser.newPage({ viewport: { width: 1180, height: 700 } });
           t.after(() => reader.close());
           const article = id => new URL(`/posts/${id}/`, homeUrl).href;
           const library = reader.locator('#library');
           const pagination = reader.getByRole('navigation', { name: '文章翻页' });
+          const comments = reader.getByRole('region', { name: '欢迎留下你的想法' });
           const links = () => pagination.locator('a').evaluateAll(anchors => anchors.map(a => [a.textContent, a.pathname]));
+          const beforeComments = () => pagination.evaluate(nav => {
+            const comments = nav.nextElementSibling;
+            return comments?.matches('.comments') && nav.getBoundingClientRect().bottom <= comments.getBoundingClientRect().top;
+          });
           await reader.goto(article('text-only'));
           await reader.evaluate(() => document.fonts.ready);
-          assert.ok(await pagination.isHidden());
+          assert.ok(await library.isVisible() && await pagination.isHidden());
+          await reader.keyboard.press('i');
+          assert.ok(await pagination.isHidden() && await comments.isHidden());
+          await reader.keyboard.press('i');
+          assert.ok(await comments.isVisible() && await pagination.isHidden());
           const top = await library.evaluate(async el => {
             el.scrollTop = el.scrollHeight;
             await new Promise(resolve => requestAnimationFrame(resolve));
@@ -835,6 +1101,7 @@ import Site from '../layouts/Site.astro';
           assert.ok(top > 0);
           await reader.setViewportSize({ width: 1179, height: 700 });
           assert.ok(await library.isHidden());
+          assert.ok(await beforeComments());
           assert.deepEqual(await links(), [['上一篇', '/posts/pictured/'], ['下一篇', `/posts/${older[0]}/`], ['去首页', '/']]);
           await pagination.getByRole('link', { name: '下一篇' }).click();
           await reader.waitForURL(article(older[0]));
@@ -845,6 +1112,7 @@ import Site from '../layouts/Site.astro';
 
           await reader.setViewportSize({ width: 390, height: 844 });
           await reader.goto(article('pictured'));
+          assert.ok(await beforeComments());
           assert.deepEqual(await links(), [['下一篇', '/posts/text-only/'], ['去首页', '/']]);
           await reader.goto(article(older.at(-1)));
           assert.deepEqual(await links(), [['上一篇', `/posts/${older.at(-2)}/`], ['去首页', '/']]);

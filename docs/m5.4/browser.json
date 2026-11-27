@@ -1,0 +1,289 @@
+{
+  "environment": "Ego Lite, Astro static build, official loader and isolated widget responses",
+  "browser": "156.0.8078.96",
+  "desktop": {
+    "desktopFirstScreen": {
+      "viewport": [
+        1440,
+        900
+      ],
+      "scrollY": 0,
+      "sectionTop": 2860.515625,
+      "width": 700,
+      "proseWidth": 700,
+      "horizontalOverflow": false,
+      "providerRequests": 0,
+      "visible": true,
+      "category": true,
+      "iframeCount": 0,
+      "theme": "light",
+      "discussion": null
+    },
+    "searchResults": [
+      "/posts/browser-long/"
+    ],
+    "galleryOpened": true,
+    "paragraphShareVisible": true,
+    "immersiveBeforeLoad": {
+      "visible": false,
+      "requests": 0
+    },
+    "desktopLight": {
+      "viewport": [
+        1440,
+        900
+      ],
+      "scrollY": 2355,
+      "sectionTop": 505.515625,
+      "width": 700,
+      "proseWidth": 700,
+      "horizontalOverflow": false,
+      "providerRequests": 3,
+      "visible": true,
+      "phase": "ready",
+      "category": true,
+      "iframeCount": 1,
+      "title": "文章评论",
+      "theme": "light",
+      "discussion": "https://github.com/nealzhu/day/discussions/90"
+    },
+    "afterFirstLoad": [
+      {
+        "path": "/client.js",
+        "status": 200,
+        "bytes": 3596
+      },
+      {
+        "path": "/default.css",
+        "status": 200,
+        "bytes": 167
+      },
+      {
+        "path": "/zh-CN/widget",
+        "status": 200,
+        "bytes": 1493,
+        "term": "article-01M54COMMENTIMAGE",
+        "theme": "light",
+        "canonicalBacklink": "https://qians.day/posts/browser-long/",
+        "category": "Article Comments",
+        "strict": "1"
+      }
+    ],
+    "desktopDark": {
+      "viewport": [
+        1440,
+        900
+      ],
+      "scrollY": 2355,
+      "sectionTop": 505.515625,
+      "width": 700,
+      "proseWidth": 700,
+      "horizontalOverflow": false,
+      "providerRequests": 3,
+      "visible": true,
+      "phase": "ready",
+      "category": true,
+      "iframeCount": 1,
+      "title": "文章评论",
+      "theme": "dark",
+      "discussion": "https://github.com/nealzhu/day/discussions/90",
+      "iframeTheme": "transparent_dark",
+      "sameIframe": true,
+      "requests": 3
+    },
+    "immersiveAfterLoad": {
+      "visible": false,
+      "requests": 3
+    },
+    "immersiveRestored": true
+  },
+  "mobile": {
+    "mobileFirstScreen": {
+      "viewport": [
+        390,
+        844
+      ],
+      "scrollY": 0,
+      "section": {
+        "x": 20,
+        "top": 332.65625,
+        "width": 350
+      },
+      "overflow": false,
+      "category": false,
+      "iframeCount": 0,
+      "discussion": null,
+      "status": "",
+      "providerRequests": 0
+    },
+    "scriptFailure": {
+      "viewport": [
+        390,
+        844
+      ],
+      "scrollY": 0,
+      "section": {
+        "x": 20,
+        "top": 332.65625,
+        "width": 350
+      },
+      "overflow": false,
+      "phase": "failed",
+      "category": false,
+      "iframeCount": 0,
+      "discussion": null,
+      "status": "暂时无法加载评论，请稍后重试。"
+    },
+    "afterScriptFailure": [
+      {
+        "path": "/client.js",
+        "status": 503,
+        "bytes": 11
+      }
+    ],
+    "widgetFailure": {
+      "viewport": [
+        390,
+        844
+      ],
+      "scrollY": 0,
+      "section": {
+        "x": 20,
+        "top": 332.65625,
+        "width": 350
+      },
+      "overflow": false,
+      "phase": "failed",
+      "category": false,
+      "iframeCount": 1,
+      "discussion": null,
+      "status": "暂时无法加载评论，请稍后重试。"
+    },
+    "afterWidgetFailure": [
+      {
+        "path": "/client.js",
+        "status": 503,
+        "bytes": 11
+      },
+      {
+        "path": "/client.js",
+        "status": 200,
+        "bytes": 3596
+      },
+      {
+        "path": "/default.css",
+        "status": 200,
+        "bytes": 167
+      },
+      {
+        "path": "/zh-CN/widget",
+        "status": 200,
+        "bytes": 1450,
+        "term": "article-01M54COMMENTSHORT",
+        "theme": "light",
+        "canonicalBacklink": "https://qians.day/posts/browser-short/",
+        "category": "Article Comments",
+        "strict": "1"
+      }
+    ],
+    "mobileLoaded": {
+      "viewport": [
+        390,
+        844
+      ],
+      "scrollY": 0,
+      "section": {
+        "x": 20,
+        "top": 332.65625,
+        "width": 350
+      },
+      "overflow": false,
+      "phase": "ready",
+      "category": false,
+      "iframeCount": 1,
+      "discussion": null,
+      "status": ""
+    },
+    "mobileSameIframe": true,
+    "afterRecovery": [
+      {
+        "path": "/client.js",
+        "status": 503,
+        "bytes": 11
+      },
+      {
+        "path": "/client.js",
+        "status": 200,
+        "bytes": 3596
+      },
+      {
+        "path": "/default.css",
+        "status": 200,
+        "bytes": 167
+      },
+      {
+        "path": "/zh-CN/widget",
+        "status": 200,
+        "bytes": 1450,
+        "term": "article-01M54COMMENTSHORT",
+        "theme": "light",
+        "canonicalBacklink": "https://qians.day/posts/browser-short/",
+        "category": "Article Comments",
+        "strict": "1"
+      },
+      {
+        "path": "/zh-CN/widget",
+        "status": 200,
+        "bytes": 1455,
+        "term": "article-01M54COMMENTSHORT",
+        "theme": "light",
+        "canonicalBacklink": "https://qians.day/posts/browser-short/",
+        "category": "Article Comments",
+        "strict": "1"
+      }
+    ],
+    "localProductionBuild": {
+      "viewport": [
+        390,
+        844
+      ],
+      "scrollY": 0,
+      "section": {
+        "x": 20,
+        "top": 333.65625,
+        "width": 350
+      },
+      "overflow": false,
+      "category": true,
+      "iframeCount": 0,
+      "discussion": null,
+      "status": "此环境未启用评论。",
+      "providerRequests": 0
+    }
+  },
+  "renamed": {
+    "before": {
+      "path": "/zh-CN/widget",
+      "status": 200,
+      "bytes": 1493,
+      "term": "article-01M54COMMENTIMAGE",
+      "theme": "light",
+      "canonicalBacklink": "https://qians.day/posts/browser-long/",
+      "category": "Article Comments",
+      "strict": "1"
+    },
+    "after": {
+      "path": "/zh-CN/widget",
+      "status": 200,
+      "bytes": 1493,
+      "term": "article-01M54COMMENTIMAGE",
+      "theme": "transparent_dark",
+      "canonicalBacklink": "https://qians.day/posts/browser-renamed/",
+      "category": "Article Comments",
+      "strict": "1"
+    },
+    "title": "改名后的长文",
+    "canonical": "https://qians.day/posts/browser-renamed/",
+    "discussion": "https://github.com/nealzhu/day/discussions/90"
+  }
+}

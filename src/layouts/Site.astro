@@ -32,6 +32,7 @@ const fontStyle = import.meta.env.DEV ? `/${fontDirectory}/faces.css` : `${fontB
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={new URL(pathname, Astro.site)} />}
+    <slot name="head" />
     <link rel="alternate" type="application/rss+xml" title="骞言碎语" href="/rss.xml" />
     <link rel="stylesheet" crossorigin="anonymous" href={fontStyle} />
   </head>

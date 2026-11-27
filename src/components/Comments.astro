@@ -1,0 +1,229 @@
+---
+import { commentTerm } from '../lib/comments';
+
+interface Props { articleId: string }
+const { articleId } = Astro.props;
+const production = import.meta.env.MODE === 'production';
+---
+
+<section class="comments" aria-labelledby="comments-heading" data-pagefind-ignore
+  data-comment-term={production ? commentTerm(articleId) : undefined}>
+  <h2 id="comments-heading">欢迎留下你的想法</h2>
+  <div class="comments-controls">
+    <span class="comments-loading-mark" aria-hidden="true"></span>
+    <p role="status" class="comments-status">此环境未启用评论。</p>
+    <button class="comments-load" type="button" hidden>加载评论</button>
+  </div>
+  {production && <div class="giscus" id="comments"></div>}
+</section>
+
+<script>
+  import { comments } from '../lib/comments';
+
+  const section = document.querySelector<HTMLElement>('[data-comment-term]');
+  if (section && location.origin === comments.siteOrigin) {
+    const root = document.documentElement;
+    const host = section.querySelector<HTMLElement>('.giscus')!;
+    const status = section.querySelector<HTMLElement>('.comments-status')!;
+    const button = section.querySelector<HTMLButtonElement>('.comments-load')!;
+    const systemTheme = matchMedia('(prefers-color-scheme: dark)');
+    const lifetime = new AbortController();
+    const { signal } = lifetime;
+    const { siteOrigin, providerOrigin, themePath, ...config } = comments;
+    const themeUrl = new URL(themePath, siteOrigin).href;
+    const frame = () => host.querySelector<HTMLIFrameElement>('iframe.giscus-frame');
+    let script: HTMLScriptElement | undefined;
+    let timeout = 0;
+    let near = false;
+    let started = false;
+    let connected = false;
+    let frameTheme: string | undefined;
+
+    function theme() {
+      const preference = root.dataset.theme;
+      const dark = preference === 'dark' || (preference !== 'light' && systemTheme.matches);
+      return `${themeUrl}#${dark ? 'dark' : 'light'}`;
+    }
+
+    function syncTheme() {
+      const current = theme();
+      const target = frame()?.contentWindow;
+      if (!connected || current === frameTheme || !target) return;
+      target.postMessage({ giscus: { setConfig: { theme: current } } }, providerOrigin);
+      frameTheme = current;
+    }
+
+    function ready() {
+      clearTimeout(timeout);
+      section!.dataset.state = 'ready';
+      status.textContent = '';
+      button.hidden = true;
+    }
+
+    function failed() {
+      clearTimeout(timeout);
+      section!.dataset.state = 'failed';
+      status.textContent = '暂时无法加载评论，请稍后重试。';
+      button.textContent = '重试';
+      button.hidden = false;
+    }
+
+    const startOnScroll = new AbortController();
+    const observer = 'IntersectionObserver' in window ? new IntersectionObserver(([entry]) => {
+      near = entry.isIntersecting;
+      loadWhenNear();
+    }) : undefined;
+
+    function loadWhenNear() {
+      // A short article can put comments in view on the initial paint.
+      if (near && scrollY > 0 && !root.hasAttribute('data-reading')) load();
+    }
+
+    function load() {
+      if (section!.dataset.state === 'loading') return;
+      if (!started) {
+        started = true;
+        observer?.disconnect();
+        startOnScroll.abort();
+      }
+      section!.dataset.state = 'loading';
+      status.textContent = '正在载入留言';
+      button.hidden = true;
+      clearTimeout(timeout);
+      timeout = window.setTimeout(failed, 15_000);
+
+      const iframe = frame();
+      if (iframe) {
+        // Keep the iframe and the native client's single message listener on retries.
+        connected = false;
+        const url = new URL(iframe.src);
+        frameTheme = theme();
+        url.searchParams.set('theme', frameTheme);
+        iframe.src = url.href;
+      } else if (!script) {
+        frameTheme = theme();
+        script = document.createElement('script');
+        script.src = `${providerOrigin}/client.js`;
+        script.async = true;
+        script.crossOrigin = 'anonymous';
+        Object.assign(script.dataset, config, { term: section!.dataset.commentTerm, theme: frameTheme });
+        script.addEventListener('load', () => {
+          script?.remove();
+          script = undefined;
+          const iframe = frame();
+          if (iframe) iframe.title = '文章评论';
+          else failed();
+        }, { once: true, signal });
+        script.addEventListener('error', () => {
+          script?.remove();
+          script = undefined;
+          failed();
+        }, { once: true, signal });
+        host.after(script);
+      }
+    }
+
+    window.addEventListener('message', event => {
+      if (event.origin !== providerOrigin) return;
+      // The native client checks the origin. Guard its listener against other frames at that origin.
+      const source = frame()?.contentWindow;
+      if (!source || event.source !== source) {
+        event.stopImmediatePropagation();
+        return;
+      }
+      const message = event.data?.giscus;
+      if (!message || typeof message !== 'object') return;
+      if (message.signOut === true || (typeof message.error === 'string' &&
+          /Bad credentials|Invalid state value|State has expired/.test(message.error))) {
+        // The native client clears the expired session and reloads this same iframe.
+        connected = false;
+        frameTheme = undefined;
+        return;
+      }
+      connected = true;
+      syncTheme();
+      if (typeof message.error === 'string') {
+        if (message.error.startsWith('Discussion not found')) ready();
+        else failed();
+      } else if (typeof message.discussion?.id === 'string' && message.discussion.id) {
+        ready();
+      }
+    }, { capture: true, signal });
+
+    const themeObserver = new MutationObserver(syncTheme);
+    themeObserver.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+    systemTheme.addEventListener('change', syncTheme, { signal });
+    window.addEventListener('pagehide', event => {
+      if (event.persisted) return;
+      lifetime.abort();
+      startOnScroll.abort();
+      observer?.disconnect();
+      themeObserver.disconnect();
+      clearTimeout(timeout);
+    }, { signal });
+
+    status.textContent = '';
+    button.hidden = false;
+    button.addEventListener('click', load, { signal });
+    observer?.observe(section);
+    if (observer) window.addEventListener('scroll', loadWhenNear, { passive: true, signal: startOnScroll.signal });
+  }
+</script>
+
+<style>
+  .comments {
+    grid-column: 1;
+    min-width: 0;
+    margin-block-start: var(--s4);
+  }
+  :global(html[data-reading]) .comments { display: none; }
+  h2 { font-size: var(--h3); margin-block-end: var(--s2); }
+  .comments:not([data-state='ready']) h2 { display: none; }
+  .comments-controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); }
+  .comments-status, .comments-load { font-size: var(--small); }
+  .comments-status { margin: 0; color: var(--muted); }
+  .comments-loading-mark { display: none; }
+  .comments[data-state='loading'] .comments-controls {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 6rem;
+    background: var(--inset);
+    border-radius: var(--radius);
+  }
+  .comments[data-state='loading'] .comments-loading-mark {
+    display: block;
+    width: 5.5rem;
+    height: 7px;
+    margin-block-end: var(--s1);
+    background: color-mix(in srgb, var(--ink) 18%, var(--inset));
+    clip-path: polygon(0 56%, 4% 35%, 9% 27%, 13% 12%, 26% 20%, 38% 7%, 58% 16%, 73% 8%,
+      81% 22%, 92% 15%, 100% 32%, 94% 51%, 97% 67%, 88% 64%, 82% 79%, 73% 75%, 59% 92%,
+      47% 84%, 34% 94%, 24% 81%, 16% 91%, 8% 76%, 2% 72%);
+  }
+  .comments-loading-mark::before {
+    content: '';
+    display: block;
+    height: 100%;
+    background: var(--ink);
+    transform: scaleX(.55);
+    transform-origin: left center;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .comments[data-state='loading'] .comments-loading-mark::before { animation: comments-loading 3s ease-out both; }
+    @keyframes comments-loading {
+      from { transform: scaleX(.06); }
+      to { transform: scaleX(.94); }
+    }
+  }
+  .comments-load {
+    min-height: 44px;
+    padding: 0 var(--s2);
+    border: var(--rule);
+    border-radius: var(--radius);
+    background: var(--inset);
+  }
+  .comments[data-state='ready'] .comments-controls { display: none; }
+  .comments:not([data-state='ready']) .giscus { height: 0; min-height: 0; overflow: hidden; visibility: hidden; }
+  .giscus :global(.giscus-frame) { display: block; color-scheme: inherit; }
+</style>

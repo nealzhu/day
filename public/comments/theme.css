@@ -74,7 +74,7 @@ main .gsc-reactions > div {
   flex-wrap: wrap;
   margin: 0;
 }
-main .gsc-reactions .gsc-direct-reaction-buttons { display: contents; }
+main :is(.gsc-reactions, .gsc-comment-reactions, .gsc-reply-reactions) .gsc-direct-reaction-buttons { display: contents; }
 main .gsc-social-reaction-summary-item:not(.gsc-upvote-button) {
   min-height: var(--reaction-size);
   min-width: var(--reaction-size);
@@ -84,8 +84,19 @@ main .gsc-social-reaction-summary-item:not(.gsc-upvote-button) {
   background: var(--inset);
   color: var(--muted);
 }
-main .gsc-direct-reaction-button { column-gap: 4px; }
-main .gsc-direct-reaction-button .gsc-social-reaction-summary-item-count { margin: 0; padding: 0; }
+main .gsc-direct-reaction-button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  block-size: var(--reaction-size);
+  padding-block: 0;
+  column-gap: 4px;
+}
+main .gsc-direct-reaction-button .gsc-social-reaction-summary-item-count {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
 main .gsc-social-reaction-summary-item.has-reacted,
 main .gsc-social-reaction-summary-item:not(.gsc-upvote-button):hover:enabled {
   background: var(--hover);
@@ -93,6 +104,7 @@ main .gsc-social-reaction-summary-item:not(.gsc-upvote-button):hover:enabled {
 }
 main .gsc-social-reaction-summary-item.has-reacted { border-color: var(--accent); }
 main .gsc-reactions-button {
+  display: flex;
   inline-size: var(--reaction-size);
   block-size: var(--reaction-size);
   padding: 0;
@@ -278,12 +290,15 @@ main :is(.gsc-comment-reactions, .gsc-reply-reactions) span.gsc-direct-reaction-
   block-size: var(--reaction-icon-size);
   font-size: var(--comment-emoji-size);
   line-height: 1;
+  transform: translateY(.5px);
 }
 main .gsc-upvote-button {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   min-height: var(--reaction-size);
+  block-size: var(--reaction-size);
+  padding-block: 0;
   color: var(--muted);
 }
 main .gsc-upvote-button::before {

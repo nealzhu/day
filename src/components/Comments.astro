@@ -6,7 +6,7 @@ const { articleId } = Astro.props;
 const production = import.meta.env.MODE === 'production';
 ---
 
-<section class="comments" aria-labelledby="comments-heading" data-pagefind-ignore
+<section class="comments" aria-labelledby="comments-heading" tabindex="-1" data-pagefind-ignore
   data-comment-term={production ? commentTerm(articleId) : undefined}>
   <h2 id="comments-heading">欢迎留下你的想法</h2>
   <div class="comments-controls">
@@ -66,6 +66,7 @@ const production = import.meta.env.MODE === 'production';
       status.textContent = '暂时无法加载评论，请稍后重试。';
       button.textContent = '重试';
       button.hidden = false;
+      if (document.activeElement === section) button.focus({ preventScroll: true });
     }
 
     const startOnScroll = new AbortController();
@@ -164,7 +165,10 @@ const production = import.meta.env.MODE === 'production';
 
     status.textContent = '';
     button.hidden = false;
-    button.addEventListener('click', load, { signal });
+    button.addEventListener('click', () => {
+      section.focus({ preventScroll: true });
+      load();
+    }, { signal });
     observer?.observe(section);
     if (observer) window.addEventListener('scroll', loadWhenNear, { passive: true, signal: startOnScroll.signal });
   }

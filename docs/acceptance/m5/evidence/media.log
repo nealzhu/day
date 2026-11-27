@@ -1,0 +1,8 @@
+
+> qians-day@0.1.0 verify:media /Users/neal/code/creative/blog/day
+> node scripts/verify-media.mjs
+
+Verified 2 articles and 1 media files.
+Verified 323 versioned font assets (321 WOFF2, faces.css, OFL.txt).
+
+exit_code=0

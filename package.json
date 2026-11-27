@@ -13,6 +13,7 @@
     "build": "astro build --force",
     "build:preview": "node scripts/build-preview.mjs",
     "preview": "pnpm run build:preview && astro preview",
+    "preview:comments": "node scripts/preview-comments.mjs",
     "test": "node --test tests/*.test.mjs",
     "lab:typography:build": "astro build --root labs/typography",
     "lab:typography": "pnpm run lab:typography:build && node labs/typography/serve.mjs"

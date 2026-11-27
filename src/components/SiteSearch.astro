@@ -161,6 +161,8 @@ import SiteIcon from './SiteIcon.astro';
 
   trigger.addEventListener('click', () => openSearch(trigger));
   document.querySelector('#search-close')!.addEventListener('click', () => dialog.close());
+  // Leave the archived page unobstructed when it returns from the back-forward cache.
+  window.addEventListener('pagehide', () => { if (dialog.open) dialog.close(); });
   dialog.addEventListener('close', () => {
     if (dialog.open) return;
     composing = false;

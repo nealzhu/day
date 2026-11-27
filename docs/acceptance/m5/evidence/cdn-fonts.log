@@ -1,0 +1,8 @@
+
+> qians-day@0.1.0 verify:cdn-fonts /Users/neal/code/creative/blog/day
+> node scripts/verify-cdn-fonts.mjs
+
+CDN font full: passed, 323 assets, 323 GET attempts, 53417 ms
+Verified bytes, content types, cache policy and production CORS for 323 CDN font assets.
+
+exit_code=0

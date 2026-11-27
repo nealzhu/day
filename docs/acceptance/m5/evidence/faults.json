@@ -1,0 +1,89 @@
+{
+  "searchBlocked": {
+    "failures": [
+      {
+        "url": "http://127.0.0.1:4632/pagefind/pagefind.js",
+        "type": "Script",
+        "message": "",
+        "blocked": "inspector"
+      }
+    ],
+    "article": "给一篇文章配照片，最容易忽略的是第二次打开它的时",
+    "focus": "search-trigger"
+  },
+  "imageAndFontBlocked": {
+    "image": [
+      0,
+      223.328125
+    ],
+    "p": "端着咖啡坐下来时，先看到的是杯沿上一圈白",
+    "fontStatus": 0,
+    "failures": [
+      {
+        "url": "http://127.0.0.1:4632/fonts/lxgw-wenkai/v1.530/faces.css",
+        "type": "Stylesheet",
+        "message": "",
+        "blocked": "inspector"
+      },
+      {
+        "url": "http://127.0.0.1:4632/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "type": "Image",
+        "message": "",
+        "blocked": "inspector"
+      },
+      {
+        "url": "http://127.0.0.1:4632/posts/lab-life/chelsea-93411e1e1563.webp",
+        "type": "Image",
+        "message": "",
+        "blocked": "inspector"
+      },
+      {
+        "url": "http://127.0.0.1:4632/posts/lab-life/chelsea-93411e1e1563.webp",
+        "type": "Image",
+        "message": "",
+        "blocked": "inspector"
+      },
+      {
+        "url": "http://127.0.0.1:4632/posts/lab-life/coffee-f5b9cdcf1726.webp",
+        "type": "Image",
+        "message": "",
+        "blocked": "inspector"
+      },
+      {
+        "url": "http://127.0.0.1:4632/posts/lab-life/chelsea-93411e1e1563.webp",
+        "type": "Image",
+        "message": "",
+        "blocked": "inspector"
+      }
+    ],
+    "gallery": "error shown and Escape restored normal reading"
+  },
+  "slow": {
+    "article": "端着咖啡坐下来时，先看到的是杯沿上一圈白",
+    "loadMs": 2141.7000000178814,
+    "glyphFiles": 24,
+    "image": 600,
+    "layoutShifts": []
+  },
+  "storage": {
+    "defaults": {
+      "view": "cards"
+    },
+    "changedInPage": "list",
+    "afterReload": "cards",
+    "articleAndOutline": "usable"
+  },
+  "commentsBlocked": {
+    "failures": [
+      {
+        "url": "https://giscus.app/client.js",
+        "type": "Script",
+        "message": "",
+        "blocked": "inspector"
+      }
+    ],
+    "article": "这是 qians.day 的第二篇测试文",
+    "state": "failed with retry",
+    "recovered": true
+  }
+}

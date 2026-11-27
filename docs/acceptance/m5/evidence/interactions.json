@@ -1,0 +1,57 @@
+{
+  "search": {
+    "composition": {
+      "text": "meititongbu",
+      "status": "",
+      "links": 0
+    },
+    "search": {
+      "focus": "search-input",
+      "links": [
+        "/posts/m2-smoke-test/"
+      ],
+      "highlight": [
+        "媒体",
+        "同步"
+      ]
+    },
+    "afterBack": {
+      "navigation": "navigate",
+      "focus": "search-trigger",
+      "modalCount": 0
+    }
+  },
+  "quote": {
+    "text": "章配照片，最容易忽略的是",
+    "focusAfterModal": "reading-mode",
+    "afterReload": "quote highlighted, normal mode",
+    "invalid": "no match and no markup in the status"
+  },
+  "touchOutline": {
+    "trigger": [
+      348,
+      142.4375,
+      44,
+      44
+    ],
+    "second": [
+      218,
+      279.828125,
+      262,
+      44
+    ],
+    "hash": "#为什么从内容计算摘要"
+  },
+  "gallery": {
+    "beforeScale": 1,
+    "afterScale": 2.72027,
+    "restored": {
+      "scroll": 50,
+      "focused": "0",
+      "modalCount": 0
+    },
+    "initialScroll": 50,
+    "swipe": "2 / 2",
+    "reduceMotion": true
+  }
+}

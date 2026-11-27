@@ -1,0 +1,8 @@
+{
+  "version": "27.2",
+  "checks": [
+    "desktop dark Pagefind, keyboard activation, immersive search focus, history",
+    "desktop gallery open, next, escape, return focus",
+    "iPhone 13 emulation 390×844 tap to expand and jump, hash, chapter indicator, no immersive control"
+  ]
+}

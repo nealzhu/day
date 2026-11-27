@@ -167,6 +167,7 @@ main .gsc-emoji-button:disabled:hover .gsc-emoji { transform: none; }
 main summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
 main .gsc-header { justify-content: flex-end; }
+main .gsc-right-header { --color-segmented-control-button-selected-border: transparent; }
 main .gsc-right-header .btn {
   min-height: 32px;
   padding-inline: 10px;
@@ -259,7 +260,18 @@ main .gsc-timeline { gap: 0; }
 main .gsc-comment { padding-block: 18px; }
 main .gsc-comment + .gsc-comment { border-block-start: var(--divider); }
 main .gsc-comment > div { border: 0; background: transparent; }
-main .gsc-comment-header { padding: 0; }
+/* Giscus renders the closed reply control after the footer and any existing replies. */
+main .gsc-comment > div:has(> .gsc-reply-box:not([hidden]) > button) {
+  display: grid;
+  grid-template-columns: minmax(0, max-content) max-content minmax(0, 1fr);
+  grid-template-areas:
+    'header header header'
+    'content content content'
+    'reactions reply .'
+    'replies replies replies';
+  column-gap: 8px;
+}
+main .gsc-comment-header { grid-area: header; padding: 0; }
 main :is(.gsc-comment-author-avatar, .gsc-reply-author-avatar) img {
   display: block;
   width: 30px;
@@ -280,9 +292,10 @@ main :is(.gsc-comment-author, .gsc-reply-author):has(> a:is([href='https://githu
   white-space: nowrap;
 }
 main :is(.gsc-comment-author, .gsc-reply-author):has(> a:is([href='https://github.com/nealzhu' i], [href='https://github.com/nealzhu/' i])) > div { display: none; }
+main .gsc-comment-content { grid-area: content; }
 main .gsc-comment-content:not(.minimized) { padding: 10px 0; }
 main :is(.gsc-comment-content, .gsc-reply-content) { font-size: 15px; line-height: 1.7; overflow-wrap: anywhere; }
-main .gsc-comment-footer { margin: 0; }
+main .gsc-comment-footer { grid-area: reactions; margin: 0; }
 main :is(.gsc-comment-reactions, .gsc-reply-reactions) {
   --reaction-size: var(--small-reaction-size);
   --reaction-icon-size: var(--small-reaction-icon-size);
@@ -313,17 +326,18 @@ main .gsc-upvote-button::before {
   --reaction-symbol: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20d%3D%22M10%2017V3.5M4.9%208.7%2010%203.5l5.1%205.2%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
   inline-size: 18px;
   block-size: 18px;
+  transform: translateY(1px);
 }
+main .gsc-upvote-button.has-reacted { background: transparent; }
 main .gsc-upvote-button:disabled { pointer-events: none; }
-main .gsc-replies { background: transparent; border: 0; }
+main .gsc-replies { grid-area: replies; background: transparent; border: 0; }
 main .gsc-reply { margin-inline-start: 22px; padding: 10px 0 4px; }
 main .gsc-reply > .gsc-tl-line { display: none; }
 main .gsc-reply-footer { margin-block-start: 8px; }
-main .gsc-reply-box { padding: 4px 0 0; border: 0; background: transparent; }
-main .gsc-reply-box > button {
+main .gsc-reply-box { grid-area: reply; align-self: center; padding: 0; border: 0; background: transparent; }
+#__next main .gsc-reply-box > button {
   width: auto;
-  min-height: var(--small-reaction-size);
-  padding: 0 8px;
+  padding: 0;
   border: 0;
   background: transparent;
   color: var(--muted);

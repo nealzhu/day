@@ -274,6 +274,29 @@ import Site from '../layouts/Site.astro';
     await reader.goto(`${site}/posts/pictured/?preview-auth=1`);
     await comments.evaluate(section => section.scrollIntoView());
     await frame.waitFor();
+    const sort = widget.locator('.gsc-right-header [aria-current="true"]');
+    assert.equal(await sort.evaluate(item => getComputedStyle(item).borderColor), 'rgba(0, 0, 0, 0)');
+    const threadedComment = widget.locator('.gsc-comment').filter({ has: widget.locator('.gsc-reply') });
+    const upvote = threadedComment.locator('.gsc-upvote-button.has-reacted');
+    assert.deepEqual(await upvote.evaluate(button => [
+      getComputedStyle(button).backgroundColor,
+      new DOMMatrix(getComputedStyle(button, '::before').transform).m42,
+    ]), ['rgba(0, 0, 0, 0)', 1]);
+    const replyLayout = await threadedComment.locator('.gsc-reply-box > button').evaluate(button => {
+      const comment = button.closest('.gsc-comment');
+      const op = button.getBoundingClientRect();
+      const lastEmoji = comment.querySelector('.gsc-comment-reactions .gsc-direct-reaction-button:last-child').getBoundingClientRect();
+      const nested = comment.querySelector('.gsc-replies').getBoundingClientRect();
+      const center = rect => rect.top + rect.height / 2;
+      const label = document.createRange();
+      label.selectNodeContents(button);
+      return {
+        nextToEmoji: op.left > lastEmoji.right && op.left - lastEmoji.right < 12 && Math.abs(center(op) - center(lastEmoji)) < 1,
+        aboveReplies: op.bottom <= nested.top,
+        fitsLabel: Math.abs(op.width - label.getBoundingClientRect().width) < 1,
+      };
+    });
+    assert.deepEqual(replyLayout, { nextToEmoji: true, aboveReplies: true, fitsLabel: true });
     await reaction.click();
     assert.equal(await menu.locator('p').isVisible(), false);
     await menu.getByRole('button', { name: '👍' }).click();
@@ -306,6 +329,11 @@ import Site from '../layouts/Site.astro';
     const replyPublish = replyEditor.locator('button[type=submit]');
     await opener.press('Enter');
     await replyEditor.waitFor();
+    assert.ok(await replyEditor.evaluate(form => {
+      const card = form.parentElement.getBoundingClientRect();
+      const editor = form.getBoundingClientRect();
+      return Math.abs(card.width - editor.width) < 1;
+    }));
     assert.ok(await replyPublish.isDisabled());
     assert.ok(await replyInput.evaluate(input => input === document.activeElement));
     assert.equal(await replyInput.evaluate(input => getComputedStyle(input).backgroundColor), 'rgba(0, 0, 0, 0)');

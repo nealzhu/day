@@ -146,7 +146,14 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
         const textarea = event.target;
         if (textarea.matches('.gsc-comment-box-textarea')) textarea.form.querySelector('[type=submit]').disabled = !textarea.value.trim();
       });
+      function closeReactionMenus(target) {
+        for (const menu of document.querySelectorAll('.gsc-reactions-menu[open]')) {
+          if (!menu.contains(target)) menu.open = false;
+        }
+      }
+      addEventListener('blur', () => closeReactionMenus(null));
       document.addEventListener('click', event => {
+        closeReactionMenus(event.target);
         const button = event.target.closest('button');
         if (!button || button.disabled) return;
         const replyBox = button.closest('.gsc-reply-box');

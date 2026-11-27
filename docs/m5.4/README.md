@@ -4,7 +4,7 @@
 
 ## 实现
 
-- [Comments.astro](../../src/components/Comments.astro) 使用官方原生脚本，继承 M4 的正文宽度、分隔线、颜色和控件样式。滚动至评论区进入视口时启动加载，等待期间显示「正在载入留言」。短文首屏已包含评论区时，读者可直接点击「加载评论」。沉浸阅读隐藏评论区，退出后恢复原 iframe。
+- [Comments.astro](../../src/components/Comments.astro) 使用官方原生脚本，继承 M4 的正文宽度、颜色和控件样式。滚动至评论区进入视口时启动加载，等待期间显示逐渐着墨的笔刷和「正在载入留言」。标题随评论内容就绪后显示，标题上方留白。短文首屏已包含评论区时，读者可直接点击「加载评论」。沉浸阅读隐藏评论区，退出后恢复原 iframe。
 - [配置](../../src/lib/comments.ts) 将永久 `articleId` 映射为 `article-${articleId}`，在 `Article Comments` 分类内严格匹配。文章的 Canonical URL 通过 `giscus:backlink` 传给 Giscus，供创建讨论时写入正文。文章改标题或 Slug 时，既有讨论继续关联同一 Article ID。既有讨论正文中的回链仍是创建当时的地址。 [Giscus 高级用法](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md)
 - 网站显式或系统主题变化时，通过 `postMessage` 将浅色或深色主题地址发给当前 iframe。接收时同时验证来源和 iframe。首次评论或回应由 Giscus 按需建立讨论。
 - 脚本错误、服务错误或 15 秒无就绪消息时显示重试。脚本失败后可以重新请求，已有 iframe 时重载该 iframe。正式构建也只在 `https://qians.day` 启用评论。[giscus.json](../../giscus.json) 在 GitHub 默认分支生效，来源仅允许正式站点。
@@ -20,6 +20,8 @@ Ego Lite 检查过 1440 px 桌面和 390 px 触屏的明暗布局、总数隐藏
 ### 表情和回复复验
 
 表情选择器覆盖在评论内容上，展开时已发布的表情保持位置与尺寸。访客可看到登录提示和八种表情。登录后浮层只显示八种可操作的表情。留言及回复显示 GitHub 头像，站点作者 `nealzhu` 的时间后显示「作者」。一级留言的回应按钮缩小，登录后可通过该条留言的「回复」打开原生回复框。嵌套回复只使用缩进。
+
+点击浮层以外的评论内容会收起菜单。隔离预览在 iframe 失焦时也会收起。正式 Giscus 的点击监听范围是评论 iframe。 [Giscus 浮层实现](https://github.com/giscus/giscus/blob/main/lib/hooks.ts)
 
 GitHub 留言旁的原生 ↑ 保留为只读计数，Giscus 当前禁用了该按钮的提交。登录后可在表情浮层选择 👍 表达赞同。 [Giscus 官方实现](https://github.com/giscus/giscus/blob/main/components/Comment.tsx) · [GitHub API 限制](https://github.com/orgs/community/discussions/3968)
 

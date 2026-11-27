@@ -10,7 +10,7 @@ const production = import.meta.env.MODE === 'production';
   data-comment-term={production ? commentTerm(articleId) : undefined}>
   <h2 id="comments-heading">欢迎留下你的想法</h2>
   <div class="comments-controls">
-    <span class="comments-loading-mark" aria-hidden="true">···</span>
+    <span class="comments-loading-mark" aria-hidden="true"></span>
     <p role="status" class="comments-status">此环境未启用评论。</p>
     <button class="comments-load" type="button" hidden>加载评论</button>
   </div>
@@ -175,11 +175,10 @@ const production = import.meta.env.MODE === 'production';
     grid-column: 1;
     min-width: 0;
     margin-block-start: var(--s4);
-    padding-block-start: var(--s3);
-    border-top: var(--group-rule);
   }
   :global(html[data-reading]) .comments { display: none; }
   h2 { font-size: var(--h3); margin-block-end: var(--s2); }
+  .comments:not([data-state='ready']) h2 { display: none; }
   .comments-controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); }
   .comments-status, .comments-load { font-size: var(--small); }
   .comments-status { margin: 0; color: var(--muted); }
@@ -194,13 +193,28 @@ const production = import.meta.env.MODE === 'production';
   }
   .comments[data-state='loading'] .comments-loading-mark {
     display: block;
-    color: var(--accent);
-    letter-spacing: .24em;
-    line-height: 1;
+    width: 5.5rem;
+    height: 7px;
+    margin-block-end: var(--s1);
+    background: color-mix(in srgb, var(--ink) 18%, var(--inset));
+    clip-path: polygon(0 56%, 4% 35%, 9% 27%, 13% 12%, 26% 20%, 38% 7%, 58% 16%, 73% 8%,
+      81% 22%, 92% 15%, 100% 32%, 94% 51%, 97% 67%, 88% 64%, 82% 79%, 73% 75%, 59% 92%,
+      47% 84%, 34% 94%, 24% 81%, 16% 91%, 8% 76%, 2% 72%);
+  }
+  .comments-loading-mark::before {
+    content: '';
+    display: block;
+    height: 100%;
+    background: var(--ink);
+    transform: scaleX(.55);
+    transform-origin: left center;
   }
   @media (prefers-reduced-motion: no-preference) {
-    .comments[data-state='loading'] .comments-loading-mark { animation: comments-loading 1.5s ease-in-out infinite alternate; }
-    @keyframes comments-loading { to { opacity: .45; } }
+    .comments[data-state='loading'] .comments-loading-mark::before { animation: comments-loading 3s ease-out both; }
+    @keyframes comments-loading {
+      from { transform: scaleX(.06); }
+      to { transform: scaleX(.94); }
+    }
   }
   .comments-load {
     min-height: 44px;

@@ -6,16 +6,16 @@
 
 - [Comments.astro](../../src/components/Comments.astro) 使用官方原生脚本，继承 M4 的正文宽度、分隔线、颜色和控件样式。正常滚动进入视口下方 240 px 时启动加载。短文首屏已包含评论区时，读者可直接点击「加载评论」。沉浸阅读隐藏评论区，退出后恢复原 iframe。
 - [配置](../../src/lib/comments.ts) 将永久 `articleId` 映射为 `article-${articleId}`，在 `Article Comments` 分类内严格匹配。文章的 Canonical URL 通过 `giscus:backlink` 传给 Giscus，供创建讨论时写入正文。文章改标题或 Slug 时，既有讨论继续关联同一 Article ID。既有讨论正文中的回链仍是创建当时的地址。 [Giscus 高级用法](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md)
-- 网站显式或系统主题变化时，通过 `postMessage` 将浅色或深色主题地址发给当前 iframe。接收时同时验证来源和 iframe。只在 Giscus 返回当前仓库的有效讨论地址时显示「在 GitHub 查看讨论」。首次评论或回应由 Giscus 按需建立讨论。
+- 网站显式或系统主题变化时，通过 `postMessage` 将浅色或深色主题地址发给当前 iframe。接收时同时验证来源和 iframe。首次评论或回应由 Giscus 按需建立讨论。
 - 脚本错误、服务错误或 15 秒无就绪消息时显示重试。脚本失败后可以重新请求，已有 iframe 时重载该 iframe。正式构建也只在 `https://qians.day` 启用评论。[giscus.json](../../giscus.json) 在 GitHub 默认分支生效，来源仅允许正式站点。
 
 ## 评论区样式调整
 
-左侧保留「评论」，右侧保留 GitHub 讨论链接。表情回应、输入框与留言按阅读顺序排列。评论总数和回应总数收起，保留单个表情的实际人数、留言排序和原生登录入口。留言采用细分隔，回复使用缩进。
+正文结束后直接显示文章翻页和首页入口，桌面与移动端顺序一致。评论区标题为「欢迎留下你的想法」，下方依次显示表情回应、输入框与留言。保留单个表情的实际人数、留言排序和原生登录入口。留言采用细分隔，回复使用缩进。
 
 [自定义主题](../../public/comments/theme.css)使用 M4 的色彩并沿用 Giscus 的交互。两种主题共享同一个透明底样式表。Cloudflare Pages 仅为该样式表设置 Giscus 专用 CORS 头，样式随 iframe 按需加载。 [Giscus 自定义主题说明](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#data-theme)
 
-Ego Lite 在 1440 px 桌面和 390 px 触屏检查了明暗布局、总数隐藏和主题切换。移动端表情入口高 44 px，主题切换复用原 iframe。隔离构建提供截图，并在 Giscus 官方示例中复核真实控件和未登录时的表情菜单。 [测量与响应头](theme-browser.json)
+Ego Lite 在 1440 px 桌面和 390 px 触屏检查了正文、翻页和评论区的顺序，以及明暗布局、总数隐藏和主题切换。移动端实际点击可到下一篇及首页，表情入口高 44 px。主题切换和沉浸阅读退出复用原 iframe。隔离构建提供截图，并在 Giscus 官方示例中复核真实控件和未登录时的表情菜单。 [测量与响应头](theme-browser.json)
 
 [桌面浅色](screenshots/theme-desktop-light.png) · [桌面深色](screenshots/theme-desktop-dark.png) · [移动端浅色](screenshots/theme-mobile-light.png) · [移动端深色](screenshots/theme-mobile-dark.png)
 

@@ -95,6 +95,6 @@ export function giscusWidgetFixture({ error, discussion } = {}) {
         if (event.origin === parentOrigin && event.source === parent) showTheme(event.data.giscus.setConfig.theme);
       });
       new ResizeObserver(() => parent.postMessage({giscus: {resizeHeight: document.body.scrollHeight}}, parentOrigin)).observe(document.body);
-      parent.postMessage({giscus: ${JSON.stringify(discussion ? { discussion: { url: discussion } } : { error: error ?? 'Discussion not found' })}}, parentOrigin);
+      parent.postMessage({giscus: ${JSON.stringify(discussion ? { discussion: { id: 'fixture-discussion' } } : { error: error ?? 'Discussion not found' })}}, parentOrigin);
     </script></html>`;
 }

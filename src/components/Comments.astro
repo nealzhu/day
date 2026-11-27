@@ -8,10 +8,7 @@ const production = import.meta.env.MODE === 'production';
 
 <section class="comments" aria-labelledby="comments-heading" data-pagefind-ignore
   data-comment-term={production ? commentTerm(articleId) : undefined}>
-  <div class="comments-header">
-    <h2 id="comments-heading">评论</h2>
-    <a class="discussion-link" target="_blank" rel="noopener noreferrer" hidden>在 GitHub 查看讨论</a>
-  </div>
+  <h2 id="comments-heading">欢迎留下你的想法</h2>
   <div class="comments-controls">
     <p role="status" class="comments-status">此环境未启用评论。</p>
     <button class="comments-load" type="button" hidden>加载评论</button>
@@ -28,7 +25,6 @@ const production = import.meta.env.MODE === 'production';
     const host = section.querySelector<HTMLElement>('.giscus')!;
     const status = section.querySelector<HTMLElement>('.comments-status')!;
     const button = section.querySelector<HTMLButtonElement>('.comments-load')!;
-    const discussion = section.querySelector<HTMLAnchorElement>('.discussion-link')!;
     const systemTheme = matchMedia('(prefers-color-scheme: dark)');
     const lifetime = new AbortController();
     const { signal } = lifetime;
@@ -146,20 +142,10 @@ const production = import.meta.env.MODE === 'production';
       connected = true;
       syncTheme();
       if (typeof message.error === 'string') {
-        if (message.error.startsWith('Discussion not found')) {
-          discussion.hidden = true;
-          discussion.removeAttribute('href');
-          ready();
-        } else failed();
-      }
-      if (typeof message.discussion?.url === 'string') {
-        const path = `https://github.com/${config.repo}/discussions/`;
-        const url = message.discussion.url;
-        if (url.startsWith(path) && /^[1-9]\d*$/.test(url.slice(path.length))) {
-          discussion.href = url;
-          discussion.hidden = false;
-          ready();
-        }
+        if (message.error.startsWith('Discussion not found')) ready();
+        else failed();
+      } else if (typeof message.discussion?.id === 'string' && message.discussion.id) {
+        ready();
       }
     }, { capture: true, signal });
 
@@ -192,10 +178,9 @@ const production = import.meta.env.MODE === 'production';
     border-top: var(--group-rule);
   }
   :global(html[data-reading]) .comments { display: none; }
-  .comments-header, .comments-controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); }
-  .comments-header { justify-content: space-between; margin-block-end: var(--s2); }
-  .comments-header h2 { font-size: var(--h3); }
-  .discussion-link, .comments-status, .comments-load { font-size: var(--small); }
+  h2 { font-size: var(--h3); margin-block-end: var(--s2); }
+  .comments-controls { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--s2); }
+  .comments-status, .comments-load { font-size: var(--small); }
   .comments-status { margin: 0; color: var(--muted); }
   .comments-load {
     min-height: 44px;

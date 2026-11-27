@@ -9,7 +9,7 @@ export const comments = {
   mapping: 'specific',
   strict: '1',
   reactionsEnabled: '1',
-  // The widget reports a GitHub URL only after a discussion exists.
+  // Giscus reports metadata when an existing discussion is ready.
   emitMetadata: '1',
   inputPosition: 'top',
   lang: 'zh-CN',

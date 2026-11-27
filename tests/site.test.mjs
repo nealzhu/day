@@ -95,7 +95,6 @@ import Site from '../layouts/Site.astro';
     const themeRequests = [];
     let breakScript = true;
     let breakWidget = true;
-    const knownDiscussion = 'https://github.com/nealzhu/day/discussions/90';
     await reader.route('**/*', async route => {
       const url = new URL(route.request().url());
       if (url.origin === site) {
@@ -113,16 +112,15 @@ import Site from '../layouts/Site.astro';
         return route.fulfill({ contentType: 'text/javascript', headers: { 'access-control-allow-origin': site }, body: giscusClientFixture });
       }
       assert.equal(url.pathname, '/zh-CN/widget');
-      const discussion = url.searchParams.get('term') === 'article-pictured' ? knownDiscussion : undefined;
+      const discussion = url.searchParams.get('term') === 'article-pictured';
       return route.fulfill({ contentType: 'text/html', body: breakWidget
         ? giscusWidgetFixture({ error: 'API rate limit exceeded' })
         : giscusWidgetFixture({ discussion }) });
     });
 
     await reader.goto(`${site}/posts/pictured/`);
-    const comments = reader.getByRole('region', { name: '评论' });
+    const comments = reader.getByRole('region', { name: '欢迎留下你的想法' });
     const frame = comments.locator('iframe');
-    const link = comments.getByRole('link', { name: '在 GitHub 查看讨论' });
     await comments.getByRole('button', { name: '加载评论' }).waitFor({ state: 'attached' });
     assert.equal(requests.length, 0);
     assert.equal(themeRequests.length, 0);
@@ -144,8 +142,8 @@ import Site from '../layouts/Site.astro';
     const originalFrame = await frame.elementHandle();
     breakWidget = false;
     await retry.click();
-    await link.waitFor();
-    assert.equal(await link.getAttribute('href'), knownDiscussion);
+    await frame.waitFor();
+    assert.equal(await comments.getByRole('link', { name: /查看讨论/ }).count(), 0);
     assert.ok(await originalFrame.evaluate(element => element === document.querySelector('.giscus-frame')));
     assert.deepEqual(requests.map(url => url.pathname), ['/client.js', '/client.js', '/zh-CN/widget', '/zh-CN/widget']);
     const query = requests.at(-1).searchParams;
@@ -183,20 +181,18 @@ import Site from '../layouts/Site.astro';
     const iframeHeight = await frame.evaluate(element => element.style.height);
     await reader.evaluate(origin => {
       const source = document.querySelector('.giscus-frame').contentWindow;
-      const data = { giscus: { resizeHeight: 999, error: 'Discussion not found' } };
+      const data = { giscus: { resizeHeight: 999, error: 'API rate limit exceeded' } };
       window.dispatchEvent(new MessageEvent('message', { origin, source: window, data }));
       window.dispatchEvent(new MessageEvent('message', { origin: location.origin, source, data }));
-      const metadata = { giscus: { discussion: { url: 'https://github.com/other/repo/discussions/1' } } };
-      window.dispatchEvent(new MessageEvent('message', { origin, source, data: metadata }));
     }, provider);
     assert.equal(await frame.evaluate(element => element.style.height), iframeHeight);
-    assert.equal(await link.getAttribute('href'), knownDiscussion);
+    assert.equal(await comments.getAttribute('data-state'), 'ready');
 
     await reader.setViewportSize({ width: 390, height: 844 });
     await reader.goto(`${site}/posts/text-only/`);
     await comments.getByRole('button', { name: '加载评论' }).click();
     await frame.waitFor();
-    assert.equal(await comments.locator('.discussion-link').getAttribute('href'), null);
+    assert.equal(await comments.getAttribute('data-state'), 'ready');
     assert.equal(requests.at(-1).searchParams.get('term'), 'article-text-only');
     assert.ok(!await reader.evaluate(() => document.documentElement.scrollWidth > innerWidth));
 
@@ -956,16 +952,26 @@ import Site from '../layouts/Site.astro';
         await page.waitForFunction(top => document.querySelector('#library').scrollTop === top, previous);
         assert.equal(await nav.locator('[aria-current]').innerText(), older.at(-1));
         assert.equal((await page.goto(new URL('/posts/secret-draft/', page.url()).href)).status(), 404);
-        await t.test('narrow articles paginate in published order and keep the wide archive position', async t => {
+        await t.test('pagination is before comments at every width and keeps the wide archive position', async t => {
           const reader = await browser.newPage({ viewport: { width: 1180, height: 700 } });
           t.after(() => reader.close());
           const article = id => new URL(`/posts/${id}/`, homeUrl).href;
           const library = reader.locator('#library');
           const pagination = reader.getByRole('navigation', { name: '文章翻页' });
+          const comments = reader.getByRole('region', { name: '欢迎留下你的想法' });
           const links = () => pagination.locator('a').evaluateAll(anchors => anchors.map(a => [a.textContent, a.pathname]));
+          const beforeComments = () => pagination.evaluate(nav => {
+            const comments = nav.nextElementSibling;
+            return comments?.matches('.comments') && nav.getBoundingClientRect().bottom <= comments.getBoundingClientRect().top;
+          });
           await reader.goto(article('text-only'));
           await reader.evaluate(() => document.fonts.ready);
-          assert.ok(await pagination.isHidden());
+          assert.ok(await pagination.isVisible());
+          assert.ok(await beforeComments());
+          await reader.keyboard.press('i');
+          assert.ok(await pagination.isHidden() && await comments.isHidden());
+          await reader.keyboard.press('i');
+          assert.ok(await beforeComments());
           const top = await library.evaluate(async el => {
             el.scrollTop = el.scrollHeight;
             await new Promise(resolve => requestAnimationFrame(resolve));
@@ -974,6 +980,7 @@ import Site from '../layouts/Site.astro';
           assert.ok(top > 0);
           await reader.setViewportSize({ width: 1179, height: 700 });
           assert.ok(await library.isHidden());
+          assert.ok(await beforeComments());
           assert.deepEqual(await links(), [['上一篇', '/posts/pictured/'], ['下一篇', `/posts/${older[0]}/`], ['去首页', '/']]);
           await pagination.getByRole('link', { name: '下一篇' }).click();
           await reader.waitForURL(article(older[0]));
@@ -984,6 +991,7 @@ import Site from '../layouts/Site.astro';
 
           await reader.setViewportSize({ width: 390, height: 844 });
           await reader.goto(article('pictured'));
+          assert.ok(await beforeComments());
           assert.deepEqual(await links(), [['下一篇', '/posts/text-only/'], ['去首页', '/']]);
           await reader.goto(article(older.at(-1)));
           assert.deepEqual(await links(), [['上一篇', `/posts/${older.at(-2)}/`], ['去首页', '/']]);

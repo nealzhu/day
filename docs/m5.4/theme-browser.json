@@ -52,7 +52,7 @@
       {
         "path": "/zh-CN/widget",
         "status": 200,
-        "bytes": 4236,
+        "bytes": 4208,
         "term": "article-01M54COMMENTIMAGE",
         "theme": "http://127.0.0.1:4329/comments/theme.css#light",
         "canonicalBacklink": "https://qians.day/posts/browser-long/",
@@ -60,7 +60,23 @@
         "strict": "1"
       }
     ],
-    "sameIframe": true
+    "sameIframe": true,
+    "placement": {
+      "copy": "欢迎留下你的想法",
+      "links": [
+        "下一篇",
+        "去首页"
+      ],
+      "followedByComments": true,
+      "sourceLinkCount": 0,
+      "positions": [
+        520,
+        552,
+        605,
+        637
+      ],
+      "immersiveRestored": true
+    }
   },
   "mobile": {
     "viewport": [
@@ -115,7 +131,7 @@
       {
         "path": "/zh-CN/widget",
         "status": 200,
-        "bytes": 4236,
+        "bytes": 4208,
         "term": "article-01M54COMMENTIMAGE",
         "theme": "http://127.0.0.1:4329/comments/theme.css#light",
         "canonicalBacklink": "https://qians.day/posts/browser-long/",
@@ -123,7 +139,23 @@
         "strict": "1"
       }
     ],
-    "sameIframe": true
+    "sameIframe": true,
+    "placement": {
+      "copy": "欢迎留下你的想法",
+      "links": [
+        "下一篇",
+        "去首页"
+      ],
+      "followedByComments": true,
+      "sourceLinkCount": 0,
+      "positions": [
+        506,
+        538,
+        591,
+        623
+      ],
+      "navigationWorked": true
+    }
   },
   "upstreamDemo": {
     "desktop": {

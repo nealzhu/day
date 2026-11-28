@@ -13,7 +13,6 @@ export const comments = {
   emitMetadata: '1',
   inputPosition: 'top',
   lang: 'zh-CN',
-  loading: 'lazy',
 } as const;
 
 export function commentTerm(articleId: string) {

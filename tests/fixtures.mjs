@@ -87,10 +87,10 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
     <div><header class="gsc-reply-header"><div class="gsc-reply-author"><a href="https://github.com/nealzhu">骞言碎语</a><a href="#"><time>${age}</time></a></div></header>
     <p class="gsc-reply-content">${text}</p><div class="gsc-reply-footer"><div class="gsc-reply-reactions">${reactions('top')}</div></div></div>
     </div></div>`;
-  const replyBox = signedIn ? `<div class="gsc-reply-box"><button type="button">回复</button></div>${composer(true)}` : '';
+  const replyBox = signedIn ? `<div class="gsc-reply-box"><button type="button" class="form-control w-full px-2 py-1">回复</button></div>${composer(true)}` : '';
   const comment = (header, text, existingReplies = '') => `<div class="gsc-comment"><div>${header}<p class="gsc-comment-content">${text}</p>
     <div class="gsc-comment-footer"><div class="gsc-comment-reactions">
-      <button class="gsc-upvote-button gsc-social-reaction-summary-item" aria-label="赞同" disabled><svg class="gsc-direct-reaction-button-emoji" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14V2m-4 4 4-4 4 4" fill="none" stroke="currentColor"/></svg></button>${reactions('top')}</div></div>
+      <button class="gsc-upvote-button gsc-social-reaction-summary-item${signedIn ? ' has-reacted' : ''}" aria-label="赞同" disabled><svg class="gsc-direct-reaction-button-emoji" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14V2m-4 4 4-4 4 4" fill="none" stroke="currentColor"/></svg><span class="gsc-social-reaction-summary-item-count">1</span></button>${reactions('top', [['👍', 1]])}</div></div>
     <div class="gsc-replies">${existingReplies}</div>${replyBox}</div></div>`;
   return `<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
     <style>
@@ -99,9 +99,16 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
       p { margin: 0; }
       .gsc-main, .gsc-comments { display: flex; flex-direction: column; }
       .gsc-reactions > div, .gsc-header, .gsc-comment-reactions, .gsc-reply-reactions, .gsc-direct-reaction-buttons { display: flex; align-items: center; gap: 8px; }
+      .gsc-right-header { display: flex; list-style: none; margin: 0; padding: 0; }
+      .BtnGroup-item { border: 1px solid transparent; }
+      .BtnGroup-item.BtnGroup-item--selected { border-color: var(--color-segmented-control-button-selected-border, var(--color-border-default)); }
+      .gsc-comment-footer, .gsc-reply-box { display: flex; }
       #__next .justify-center { justify-content: center; }
       #__next .mt-2 { margin-top: 8px; }
       #__next .rounded-md { border-radius: 6px; }
+      #__next .w-full { width: 100%; }
+      #__next .px-2 { padding-inline: 8px; }
+      #__next .py-1 { padding-block: 4px; }
       .gsc-comment-box:not(.gsc-comment-box-is-reply) { border-radius: 4px; }
       .gsc-comment-author, .gsc-reply-author, .gsc-comment-author-avatar, .fixture-reply-layout { display: flex; align-items: center; gap: 8px; }
       .fixture-reply-layout { align-items: start; }
@@ -117,7 +124,10 @@ export function giscusWidgetFixture({ error, discussion, signedIn = false, ready
     </style>
     <div id="__next"><main><div class="gsc-main">
       <div class="gsc-reactions"><h4 class="gsc-reactions-count">0 个回应</h4><div class="justify-center mt-2">${reactions('bottom', discussion ? [['👍', 3], ['❤️', 2]] : [])}</div></div>
-      <div class="gsc-comments"><div class="gsc-header"><div class="gsc-left-header"><h4 class="gsc-comments-count">${discussion ? '2 条评论' : '0 条评论'}</h4></div></div>
+      <div class="gsc-comments"><div class="gsc-header"><div class="gsc-left-header"><h4 class="gsc-comments-count">${discussion ? '2 条评论' : '0 条评论'}</h4></div>${discussion ? `<ul class="gsc-right-header BtnGroup">
+        <li class="BtnGroup-item BtnGroup-item--selected" aria-current="true"><button class="btn">最早</button></li>
+        <li class="BtnGroup-item" aria-current="false"><button class="btn">最新</button></li>
+      </ul>` : ''}</div>
       ${composer()}
       <div class="gsc-timeline" ${discussion ? '' : 'hidden'}>
         ${discussion ? `${comment(profile('mountain-reader', '山风', '山', '#577166', '2 天前'), '把读到的句子抄在书签上，下一次翻开还会想起那天下午。')}
